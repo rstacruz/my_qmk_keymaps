@@ -14,6 +14,7 @@
 enum custom_keycodes {
   MC_MUTE = SAFE_RANGE,
   MC_SHOT,
+  MC_HTTP,
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -78,17 +79,17 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * ┆pad ┆┄┐  ┌────┬────┬────┬────┬────┐     ┌────┏━━━━┯━━━━┯━━━━┓────┐
    * └┄┄┄┄┘ └› │    │    │ .  │    │    │     │ :  ┃ 1  │ 2  │ 3  ┃ /  │
    *           ├────┼────┼────┼────┼────┤     ├────┃────┼────┼────┃────┤
-   *           │bck │hom │caps│cmbt│    │     │ -  ┃ 4  │ 5  │ 6  ┃ +  │
+   *           │    │    │    │    │ m¹ │     │ -  ┃ 4  │ 5  │ 6  ┃ +  │
    *           ├────┼────┼────┼────┼────┤     ├────┃────┼────┼────┃────┤
-   *           │    │    │    │    │ m¹ │     │ 0  ┃ 7  │ 8  │ 9  ┃ *  │
+   *           │bck │hom │caps│cmbt│    │     │ 0  ┃ 7  │ 8  │ 9  ┃ *  │
    *           └────┴────┴────┴────┴────┘     └────┗━━━━┷━━━━┷━━━━┛────┘
    *                                                    │ ▓▓ │     _gam
    *                                                    └────┘
    */
   [_PAD] = LAYOUT_planck_2x2u(
     __x__,       __x__,       KC_DOT,  __x__,   __x__,   __x__, __x__, KC_COLN, KC_1,  KC_2,  KC_3,  KC_PSLS,
-    KC_WWW_BACK, KC_WWW_HOME, KC_CAPS, CMB_TOG, __x__,   __x__, __x__, KC_PMNS, KC_4,  KC_5,  KC_6,  KC_PPLS,
-    __x__,       __x__,       __x__,   __x__,   MC_SHOT, __x__, __x__, KC_0,    KC_7,  KC_8,  KC_9,  KC_PAST,
+    MC_HTTP,     __x__,       __x__,   __x__,   MC_SHOT, __x__, __x__, KC_PMNS, KC_4,  KC_5,  KC_6,  KC_PPLS,
+    KC_WWW_BACK, KC_WWW_HOME, KC_CAPS, CMB_TOG, __x__,   __x__, __x__, KC_0,    KC_7,  KC_8,  KC_9,  KC_PAST,
     _____,       _____,       _____,   _____,   /**/     _____, _____, /**/     _____, _____, _____, DF(_GAM)
   ),
 
@@ -180,17 +181,22 @@ bool get_ignore_mod_tap_interrupt(uint16_t keycode, keyrecord_t *record) {
 }
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-    switch (keycode) {
-    case MC_MUTE:
-        if (record->event.pressed) {
-            SEND_STRING(SS_LSFT(SS_LALT("a")));
-        }
-        break;
-    case MC_SHOT:
-        if (record->event.pressed) {
-            SEND_STRING(SS_LSFT(SS_LCTL(SS_LALT("4"))));
-        }
-        break;
+  switch (keycode) {
+  case MC_MUTE:
+    if (record->event.pressed) {
+        SEND_STRING(SS_LSFT(SS_LALT("a")));
     }
-    return true;
+    break;
+  case MC_SHOT:
+    if (record->event.pressed) {
+        SEND_STRING(SS_LSFT(SS_LCTL(SS_LALT("4"))));
+    }
+    break;
+  case MC_HTTP:
+    if (record->event.pressed) {
+        SEND_STRING("https://");
+    }
+    break;
+  }
+  return true;
 };
