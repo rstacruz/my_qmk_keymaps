@@ -1,5 +1,11 @@
 # My keymap
 
+My personal keymaps for the [QMK firmware] for mechanical keyboards.
+
+[qmk firmware]: https://qmk.fm/
+
+![Preview of the keymap](./preview.png)
+
 ## Compiling and flashing
 
 Get QMK CLI installed and set up ([instructions here](https://beta.docs.qmk.fm/cli/cli)). Then:
