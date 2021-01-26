@@ -14,7 +14,7 @@ else
 endif
 
 help:
-	echo "Try 'make c' (compile) or 'make f' (flash)"
+	@echo "Try 'make c' (compile) or 'make f' (flash)"
 
 compile: push
 	cd ${qmk_home} && ${make} ${keyboard_id}:${keymap_name}
