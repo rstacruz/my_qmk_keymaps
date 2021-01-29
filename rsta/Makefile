@@ -16,6 +16,9 @@ endif
 help:
 	@echo "Try 'make c' (compile) or 'make f' (flash)"
 
+ref:
+	@grep -E '[│─┄]' keymap.c | less
+
 compile: push
 	cd ${qmk_home} && ${make} ${keyboard_id}:${keymap_name}
 
@@ -39,3 +42,4 @@ push: \
 
 c: compile
 f: flash
+r: ref

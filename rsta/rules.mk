@@ -1,4 +1,4 @@
-VIA_ENABLE = yes
+#VIA_ENABLE = yes
 LTO_ENABLE = yes
 COMBO_ENABLE = yes
 AUDIO_ENABLE = yes
