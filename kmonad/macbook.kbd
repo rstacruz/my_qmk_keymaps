@@ -1,0 +1,67 @@
+(defcfg
+  input  (iokit-name "Apple Internal Keyboard / Trackpad")
+  output (kext)
+  fallthrough true
+)
+
+(defalias
+  c\  (tap-next \ lctl)
+  srt (tap-next ret (layer-toggle nav))
+  ;   (tap-hold-next-release 200 bks (layer-toggle nav))
+  NAV (layer-toggle nav)
+  SYM (layer-toggle sym)
+  cbs (around lmet bks)
+  cdh (layer-switch colemak-dh)  ;; not-wide mode
+  bac (layer-switch colemak-dh-wide)
+)
+
+;; ────────────────────────────────────────────────────────────────────────────
+
+(defsrc
+  tab  q    w    e    r    t         y    u    i    o    p    [    ]    \
+  caps a    s    d    f    g         h    j    k    l    ;    '         ret
+  lsft z    x    c    v    b         n    m    ,    .    /              rsft
+  lctl lalt lmet                     spc                           rmet ralt
+)
+
+;; ───────────────────────────────────────────────────────────────────────────
+
+(deflayer colemak-dh-wide
+  tab  q    w    f    p    b         esc  j    l    u    y    @NAV '    @c\
+  lctl a    r    s    t    g         bks  m    n    e    i    o         ret
+  lsft z    x    c    d    v         ent  k    h    ,    .              rsft
+  lalt lmet @SYM                     spc                           @NAV rctl
+)
+
+(deflayer nav
+  _    lctl XX   .    :    -         _    pgup ent  up   bks  _    _    _
+  lmet 1    2    3    4    5         home pgdn left down rght ret       _
+  _    6    7    8    9    0         end  esc  _    _    _              _
+  _    _    _                        ret                           _    @cdh
+)
+
+(deflayer sym
+  _    '    "    ^    ?    `         _    [    <    =    >    ]    _    _
+  _    !    @    #    $    %         _    {    \(   :    \)   }         _
+  _    ;    ~    |    &    \         _    /    *    -    +             \_
+  _    _    _                        _                             bks  _
+)
+
+(deflayer colemak-dh
+  tab  q    w    f    p    b         j    l    u    y    ;    [    ]    \
+  lctl a    r    s    t    g         m    n    e    i    o    '         ret
+  lsft z    x    c    d    v         k    h    ,    .    /              rsft
+  lctl lmet lalt                     spc       ralt @bac
+)
+
+;; ────────────────────────────────────────────────────────────────────────────
+;;
+(deflayer blank
+  _    _    _    _    _    _         _    _    _    _    _    _    _    _
+  _    _    _    _    _    _         _    _    _    _    _    _         _
+  _    _    _    _    _    _         _    _    _    _    _              _
+  _    _    _                        _         _    _
+)
+
+;; ────────────────────────────────────────────────────────────────────────────
+;; vim: ft=lisp
