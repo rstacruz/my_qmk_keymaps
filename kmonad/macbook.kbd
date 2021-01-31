@@ -34,6 +34,13 @@
 )
 
 (deflayer nav
+  _    lctl XX   .    :    -         _    left down up   rght _    _    _
+  lmet 1    2    3    4    5         _    bks  ret  pgdn pgup _         _
+  _    6    7    8    9    0         _    esc  tab  home end            _
+  _    _    _                        _                             _    @cdh
+)
+
+(deflayer nav-original
   _    lctl XX   .    :    -         _    pgup ent  up   bks  _    _    _
   lmet 1    2    3    4    5         home pgdn left down rght ret       _
   _    6    7    8    9    0         end  esc  _    _    _              _

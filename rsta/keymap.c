@@ -8,9 +8,9 @@
 
 #define _SYM 1
 #define _NAV 2
-#define _PAD 3
-#define _FUN 4
-#define _GAM 5
+#define _PAD 4
+#define _FUN 5
+#define _GAM 6
 
 /* Macros */
 enum custom_keycodes {
@@ -56,19 +56,19 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = { /*
   ), /*
 
   ┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄
-  Navigate  ┌────┬────┬────┬────┬────┐     ┌────┎━━━━┯━━━━┯━━━━┓────┐
-            │ ⌃  │ ,  │ .  │ :  │ -  │     │pg↑ ┃home│ ▲  │end ┃ ⌃  │
-            ├────┼────┼────┼────┼────┤     ├────┃────┼────┼────┃────┤
+  Navigate  ┌────┬────┬────┬────┬────┐     ┌────┬────┏━━━━┓────┬────┐
+            │ ⌃  │ ⌥  │ ⌘  │ :  │ -  │     │pg↑ │home┃ ▲  ┃end │ ⌫ ⌃│
+            ┌────┬────┬────┬────┬────┐     ├────┏━━━━┛────┗━━━━┓────┤
             │ 1  │ 2  │ 3  │ 4  │ 5  │     │pg↓ ┃ ◀  │ ▼  │ ▶  ┃ ↵  │
-  ┌┄┄┄┄┐    ├────┼────┼────┼────┼────┤     ├────┗━━━━┷━━━━┷━━━━┛────┤
-  ┆nav ┆ ┄› │ 6  │ 7  │ 8  │ 9  │ 0  │     │ ⎋  │ ⌫⌫ │ ⌫  │ ↹  │ ⌦  │
-  └┄┄┄┄┘    └────┴────┴────┴────┴────┘     └────┴────┴────┴────┴────┘ */
+  ┌┄┄┄┄┐    ├────┼────┼────┼────┼────┤     ├────┗━━━━┷━━━━┷━━━━┛────┐
+  ┆nav ┆ ┄› │ 6  │ 7  │ 8  │ 9  │ 0  │     │ ⎋  │ ↹  │ ⌘  │ ⌥  │ ⌃  │
+  └┄┄┄┄┘    └────┴────┴────┴────┴────┘     └────┴─── └────┴────┴────┘ */
 
   [_NAV] = LAYOUT_planck_2x2u(
-    KC_LCTL, KC_COMM, KC_DOT, KC_COLN,  KC_MINS, __x__, __x__, KC_PGUP, KC_HOME, KC_UP,   KC_END,  KC_LCTL,
-    KC_1,    KC_2,    KC_3,   KC_4,     KC_5,    __x__, __x__, KC_PGDN, KC_LEFT, KC_DOWN, KC_RGHT, KC_ENT,
-    KC_6,    KC_7,    KC_8,   KC_9,     KC_0,    __x__, __x__, KC_ESC,  xx_CBSP, KC_BSPC, KC_TAB,  KC_DEL,
-    _____,   _____,   _____,  MO(_FUN), /**/     _____, _____, /**/     _____,   _____,   _____,   _____
+    KC_LCTL, KC_LGUI, KC_LALT, KC_COLN,  KC_MINS, __x__, __x__, KC_PGUP, KC_HOME, KC_UP,   KC_END,  KC_RCTL,
+    KC_1,    KC_2,    KC_3,    KC_4,     KC_5,    __x__, __x__, KC_PGDN, KC_LEFT, KC_DOWN, KC_RGHT, KC_ENT,
+    KC_6,    KC_7,    KC_8,    KC_9,     KC_0,    __x__, __x__, KC_ESC,  KC_TAB,  KC_RALT, KC_RGUI, RCTL_T(KC_BSPC),
+    _____,   _____,   _____,   MO(_FUN), /**/     _____, _____, /**/     _____,   _____,   _____,   _____
   ), /*
 
   ┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄
@@ -88,9 +88,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = { /*
   ), /*
 
   ┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄
-  Function  ┏━━━━┓────┬────┌────┬────┐     ┌────┎━━━━┯━━━━┯━━━━┓────┐
-            ┃rset┃ f₁₁│f₁₂ │rmb │lmb │     │ w↑ ┃play│ ▲  │next┃vol⁺│
-  ┌┄┄┄┄┐    ┗━━━━┛ ───┼─── └────┴────┘     ├────┃────┼────┼────┃────┤
+  Function  ┏━━━━┓────┬────┌────┬────┐     ┌────┬────┏━━━━┓────┬────┐
+            ┃rset┃ f₁₁│f₁₂ │rmb │lmb │     │ w↑ │play┃ ▲  ┃next│vol⁺│
+  ┌┄┄┄┄┐    ┗━━━━┛ ───┼─── └────┴────┘     ├────┏━━━━┛────┗━━━━┓────┤
   ┆sym ┆    │ f₁ │ f₂ │ f₃ │ f₄ │ f₅ │     │ w↓ ┃ ◀  │ ▼  │ ▶  ┃vol⁻│
   └┄┄┄┄┘ ┐  ├────┼────┼────┼────┼────┤     ├────┗━━━━┷━━━━┷━━━━┛────┤
     ┆nav ┆  │ f₆ │ f₇ │ f₈ │ f₉ │f₁₀ │     │    │    │rgb │scr⁻│scr⁺│
@@ -139,6 +139,10 @@ with space  │    │    │    │    │    │     │    │    │    │ 
             ├────┼────┼────┼────┼────┤     ├────┼────┼────┼────┼────┤
             │    │    │    │    │    │     │ ⎋  │ ↹  │    │    │    │
             └────┴────┴────┴────┴────┴─────┴────┴────┴────┴────┴────┘
+Chords      ┌────┬────┬────┬────┬────┐     ┌────┬────┬────┬────┬────┐
+            │    │    │    │    │    │     │    │    │    │    │    │
+            └────┴────┴────┴────┴────┴─────┴┆───┴┆───┴────┴────┴────┘
+                                            └┄ ' ┘
 */
 
 enum combos { CM_0, CM_1, CM_2, CM_3, CM_4, CM_5, CM_6 };
@@ -147,12 +151,16 @@ const uint16_t PROGMEM combo_0[] = {KC_SPC, KC_M, COMBO_END};
 const uint16_t PROGMEM combo_1[] = {KC_SPC, KC_H, COMBO_END};
 const uint16_t PROGMEM combo_2[] = {KC_SPC, KC_N, COMBO_END};
 const uint16_t PROGMEM combo_3[] = {KC_SPC, KC_K, COMBO_END};
+const uint16_t PROGMEM combo_4[] = {KC_H, KC_COMM, COMBO_END};
+const uint16_t PROGMEM combo_hps[] = {KC_H, KC_P, KC_S, COMBO_END};
 
 combo_t key_combos[COMBO_COUNT] = {
-  [CM_0] = COMBO(combo_0, C(KC_BSPC)),
+  [CM_0] = COMBO(combo_0, C(A(KC_BSPC))),
   [CM_1] = COMBO(combo_1, KC_TAB),
   [CM_2] = COMBO(combo_2, KC_ENT),
-  [CM_3] = COMBO(combo_3, KC_ESC)
+  [CM_3] = COMBO(combo_3, KC_ESC),
+  [CM_4] = COMBO(combo_4, KC_QUOT),
+  [CM_5] = COMBO_ACTION(combo_hps),
 };
 
 // https://beta.docs.qmk.fm/using-qmk/software-features/tap_hold#ignore-mod-tap-interrupt
@@ -188,3 +196,14 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   }
   return true;
 };
+
+// https://beta.docs.qmk.fm/using-qmk/software-features/feature_combo
+void process_combo_event(uint16_t combo_index, bool pressed) {
+  switch(combo_index) {
+    case CM_5:
+      if (pressed) {
+        SEND_STRING("https://");
+      }
+      break;
+  }
+}
