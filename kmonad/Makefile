@@ -1,6 +1,12 @@
 pwd := $(shell pwd -LP)
 target := ${HOME}/.config/kmonad
 
-install:
+install-mi: clean
+	ln -nfs "${pwd}/mi.kbd" "${target}/"
+
+install-macbook: clean
+	ln -nfs "${pwd}/macbook.kbd" "${target}/"
+
+clean:
 	rm -rf "${target}"
-	ln -nfs "${pwd}" "${target}"
+	mkdir "${target}"
