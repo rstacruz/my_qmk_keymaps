@@ -57,7 +57,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = { /*
 
   ┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄
   Navigate  ┌────┬────┬────┬────┬────┐     ┌────┬────┏━━━━┓────┬────┐
-            │ ⌃  │ ⌥  │ ⌘  │ :  │ -  │     │pg↑ │home┃ ▲  ┃end │ ⌫ ⌃│
+            │ ⎋ ⌃│ ⌥  │ ⌘  │ :  │ -  │     │pg↑ │home┃ ▲  ┃end │ ⌫ ⌃│
             ┌────┬────┬────┬────┬────┐     ├────┏━━━━┛────┗━━━━┓────┤
             │ 1  │ 2  │ 3  │ 4  │ 5  │     │pg↓ ┃ ◀  │ ▼  │ ▶  ┃ ↵  │
   ┌┄┄┄┄┐    ├────┼────┼────┼────┼────┤     ├────┗━━━━┷━━━━┷━━━━┛────┐
@@ -65,10 +65,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = { /*
   └┄┄┄┄┘    └────┴────┴────┴────┴────┘     └────┴─── └────┴────┴────┘ */
 
   [_NAV] = LAYOUT_planck_2x2u(
-    KC_LCTL, KC_LGUI, KC_LALT, KC_COLN,  KC_MINS, __x__, __x__, KC_PGUP, KC_HOME, KC_UP,   KC_END,  KC_RCTL,
-    KC_1,    KC_2,    KC_3,    KC_4,     KC_5,    __x__, __x__, KC_PGDN, KC_LEFT, KC_DOWN, KC_RGHT, KC_ENT,
-    KC_6,    KC_7,    KC_8,    KC_9,     KC_0,    __x__, __x__, KC_ESC,  KC_TAB,  KC_RALT, KC_RGUI, RCTL_T(KC_BSPC),
-    _____,   _____,   _____,   MO(_FUN), /**/     _____, _____, /**/     _____,   _____,   _____,   _____
+    LCTL_T(KC_ESC), KC_LGUI, KC_LALT, KC_COLN,  KC_MINS, __x__, __x__, KC_PGUP, KC_HOME, KC_UP,   KC_END,  KC_RCTL,
+    KC_1,           KC_2,    KC_3,    KC_4,     KC_5,    __x__, __x__, KC_PGDN, KC_LEFT, KC_DOWN, KC_RGHT, KC_ENT,
+    KC_6,           KC_7,    KC_8,    KC_9,     KC_0,    __x__, __x__, KC_ESC,  KC_TAB,  KC_RALT, KC_RGUI, RCTL_T(KC_BSPC),
+    _____,          _____,   _____,   MO(_FUN), /**/     _____, _____, /**/     _____,   _____,   _____,   _____
   ), /*
 
   ┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄
