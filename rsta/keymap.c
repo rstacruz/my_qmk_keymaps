@@ -56,6 +56,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = { /*
   ), /*
 
   ┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄
+  arisetnarositeq
   Navigate  ┌────┬────┬────┬────┬────┐     ┌────┬────┏━━━━┓────┬────┐
             │ ⎋ ⌃│ ⌥  │ ⌘  │ :  │ -  │     │pg↑ │home┃ ▲  ┃end │ ⌫ ⌃│
             ┌────┬────┬────┬────┬────┐     ├────┏━━━━┛────┗━━━━┓────┤
@@ -152,15 +153,17 @@ const uint16_t PROGMEM combo_1[] = {KC_SPC, KC_H, COMBO_END};
 const uint16_t PROGMEM combo_2[] = {KC_SPC, KC_N, COMBO_END};
 const uint16_t PROGMEM combo_3[] = {KC_SPC, KC_K, COMBO_END};
 const uint16_t PROGMEM combo_4[] = {KC_H, KC_COMM, COMBO_END};
+const uint16_t PROGMEM combo_5[] = {KC_COMM, KC_DOT, COMBO_END};
 const uint16_t PROGMEM combo_hps[] = {KC_H, KC_P, KC_S, COMBO_END};
 
 combo_t key_combos[COMBO_COUNT] = {
-  [CM_0] = COMBO(combo_0, C(A(KC_BSPC))),
+  [CM_0] = COMBO(combo_0, C(G(KC_BSPC))),
   [CM_1] = COMBO(combo_1, KC_TAB),
   [CM_2] = COMBO(combo_2, KC_ENT),
   [CM_3] = COMBO(combo_3, KC_ESC),
   [CM_4] = COMBO(combo_4, KC_QUOT),
-  [CM_5] = COMBO_ACTION(combo_hps),
+  [CM_5] = COMBO(combo_5, KC_MINS),
+  [CM_6] = COMBO_ACTION(combo_hps),
 };
 
 // https://beta.docs.qmk.fm/using-qmk/software-features/tap_hold#ignore-mod-tap-interrupt
@@ -200,7 +203,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 // https://beta.docs.qmk.fm/using-qmk/software-features/feature_combo
 void process_combo_event(uint16_t combo_index, bool pressed) {
   switch(combo_index) {
-    case CM_5:
+    case CM_6:
       if (pressed) {
         SEND_STRING("https://");
       }

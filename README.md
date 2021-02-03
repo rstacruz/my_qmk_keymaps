@@ -6,6 +6,15 @@ My personal keymaps for the [QMK firmware] for mechanical keyboards.
 
 ![Preview of the keymap](./preview.png)
 
+## Rationale
+
+- 30% layout with 5 columns per side
+- No home row mods
+- Minimise the use of tap-hold keys
+- All symbols in one layer
+
+[home row mods]: https://precondition.github.io/home-row-mods
+
 ## Compiling and flashing
 
 Get QMK CLI installed and set up ([instructions here](https://beta.docs.qmk.fm/cli/cli)). Then:
