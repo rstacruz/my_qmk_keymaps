@@ -33,7 +33,7 @@
 )
 
 (deflayer nav
-  _    lctl lalt .    :    -         pgup home up   end  rctl lalt _    _
+  _    lctl lalt .    :    -         pgup home up   end  bks  _    _    _
   _    1    2    3    4    5         pgdn left down rght ret  XX        _
   _    6    7    8    9    0         esc  tab  bks  XX   XX             _
   _    _    _                        _                             _    _
