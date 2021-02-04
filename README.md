@@ -1,8 +1,8 @@
-# My keymap
+<h1 align='center'>rsta keymap</h1>
 
-My personal keymaps for the [QMK firmware] for mechanical keyboards.
-
-[qmk firmware]: https://qmk.fm/
+<p align='center'>
+My personal keymaps for the <a href='https://qmk.fm/'>QMK firmware</a> for mechanical keyboards.
+</p>
 
 ![Preview of the keymap](./preview.png)
 
@@ -17,5 +17,5 @@ My personal keymaps for the [QMK firmware] for mechanical keyboards.
 
 ## Contents
 
-- [**rsta/**](./rsta/) &mdash; QMK keymap for an OLKB planck keyboard
+- [**qmk-planck/**](./qmk-planck/) &mdash; QMK keymap for an OLKB planck keyboard
 - [**kmonad/**](./kmonad/) &mdash; Keymaps for kmonad for laptop keyboards
