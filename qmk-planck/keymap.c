@@ -91,18 +91,19 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = { /*
 
   ┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄
   Function  ┏━━━━┓────┬────┌────┬────┐     ┌────┬────┏━━━━┓────┬────┐
-            ┃rset┃ f₁₁│f₁₂ │Lmb │    │     │ w↑ │play┃ ▲  ┃next│Rmb │
+            ┃rset┃ f₁₁│f₁₂ │    │rgb │     │ w↑ │    ┃ ▲  ┃    │scr⁺│
             ┗━━━━┛ ───┼─── └────┴────┘     ├────┏━━━━┛────┗━━━━┓────┤
-            │ f₁ │ f₂ │ f₃ │ f₄ │ f₅ │     │ w↓ ┃ ◀  │ ▼  │ ▶  ┃rgb │
+            │ f₁ │ f₂ │ f₃ │ f₄ │ f₅ │     │ w↓ ┃ ◀  │ ▼  │ ▶  ┃scr⁻│
   ┌┄┄┄┄┐    ├────┼────┼────┼────┼────┤     ├────┗━━━━┷━━━━┷━━━━┛────┤
-  ┆FUN ┆ ┄› │ f₆ │ f₇ │ f₈ │ f₉ │f₁₀ │     │vol⁻│vol⁺│scr⁻│scr⁺│ ▓▓ │
-  └┄┄┄┄┘    └────┴────┴────┴────┴────┘     └────┴────┴────┴────┴────┘ */
-
+  ┆FUN ┆ ┄› │ f₆ │ f₇ │ f₈ │ f₉ │f₁₀ │     │play│vol⁻│vol⁺│next│ ▓▓ │
+  └┄┄┄┄┘    └────┴────┴────┴────┴────┘  ┌──└────┴────┴────┴────┴────┘
+                                        │   rmb │lmb │
+                                        └───────┴────┘ */
   [_FUN] = LAYOUT_planck_2x2u(
-    RESET, KC_F11, KC_F12, KC_MS_BTN1, _____,  __x__, __x__, KC_WH_U, KC_MPLY, KC_MS_U, KC_MNXT, KC_MS_BTN2,
-    KC_F1, KC_F2,  KC_F3,  KC_F4,      KC_F5,  __x__, __x__, KC_WH_D, KC_MS_L, KC_MS_D, KC_MS_R, RGB_TOG,
-    KC_F6, KC_F7,  KC_F8,  KC_F9,      KC_F10, __x__, __x__, KC_VOLD, KC_VOLU, KC_BRID, KC_BRIU, _____,
-    _____, _____,  _____,  _____,      /**/    _____, _____, /**/     _____,   _____,   _____,   _____
+    RESET, KC_F11, KC_F12, _____, RGB_TOG, __x__, __x__,      KC_WH_U, _____,      KC_MS_U, _____,   KC_BRIU,
+    KC_F1, KC_F2,  KC_F3,  KC_F4, KC_F5,   __x__, __x__,      KC_WH_D, KC_MS_L,    KC_MS_D, KC_MS_R, KC_BRID,
+    KC_F6, KC_F7,  KC_F8,  KC_F9, KC_F10,  __x__, __x__,      KC_MPLY, KC_VOLD,    KC_VOLU, KC_MNXT, _____,
+    _____, _____,  _____,  _____, /**/     _____, KC_MS_BTN2, /**/     KC_MS_BTN1, _____,   _____,   _____
   ), /*
 
   ┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄
@@ -149,31 +150,22 @@ Chords      ┌────┬────┬────┬────┬─�
 
 enum combos { CM_0, CM_1, CM_2, CM_3, CM_4, CM_5, CM_6 };
 
-const uint16_t PROGMEM combo_0[] = {KC_SPC, KC_M, COMBO_END};
-const uint16_t PROGMEM combo_1[] = {KC_SPC, KC_H, COMBO_END};
-const uint16_t PROGMEM combo_2[] = {KC_SPC, KC_N, COMBO_END};
-const uint16_t PROGMEM combo_3[] = {KC_SPC, KC_K, COMBO_END};
-const uint16_t PROGMEM combo_4[] = {KC_H, KC_COMM, COMBO_END};
-const uint16_t PROGMEM combo_5[] = {KC_COMM, KC_DOT, COMBO_END};
+const uint16_t PROGMEM combo_0[] = {KC_H, KC_DOT, COMBO_END};
+const uint16_t PROGMEM combo_1[] = {KC_H, KC_COMM, COMBO_END};
+const uint16_t PROGMEM combo_2[] = {KC_COMM, KC_DOT, COMBO_END};
 const uint16_t PROGMEM combo_hps[] = {KC_H, KC_P, KC_S, COMBO_END};
 
 combo_t key_combos[COMBO_COUNT] = {
   [CM_0] = COMBO(combo_0, C(G(KC_BSPC))),
-  [CM_1] = COMBO(combo_1, KC_TAB),
-  [CM_2] = COMBO(combo_2, KC_ENT),
-  [CM_3] = COMBO(combo_3, KC_ESC),
-  [CM_4] = COMBO(combo_4, KC_QUOT),
-  [CM_5] = COMBO(combo_5, KC_MINS),
-  [CM_6] = COMBO_ACTION(combo_hps),
+  [CM_1] = COMBO(combo_1, KC_QUOT),
+  [CM_2] = COMBO(combo_2, KC_MINS),
+  [CM_3] = COMBO_ACTION(combo_hps),
 };
 
 // https://beta.docs.qmk.fm/using-qmk/software-features/tap_hold#ignore-mod-tap-interrupt
 bool get_ignore_mod_tap_interrupt(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
-    case MT(MOD_LCTL,KC_Q):
-    case MT(MOD_LSFT,KC_Z):
-    case MT(MOD_RSFT,KC_QUOT):
-    case MT(MOD_LSFT,KC_6):
+    case MT(MOD_LCTL,KC_QUOT):
       return true;
     default:
       return false;
@@ -204,7 +196,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 // https://beta.docs.qmk.fm/using-qmk/software-features/feature_combo
 void process_combo_event(uint16_t combo_index, bool pressed) {
   switch(combo_index) {
-    case CM_6:
+    case CM_3:
       if (pressed) {
         SEND_STRING("https://");
       }
