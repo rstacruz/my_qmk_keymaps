@@ -138,9 +138,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = { /*
 Chords      ┌────┬────┬────┬────┬────┐     ┌────┬────┬────┬────┬────┐
 with space  │    │    │    │    │    │     │    │    │    │    │    │
             ├────┼────┼────┼────┼────┤     ├────┼────┼────┼────┼────┤
-            │    │    │    │    │    │     │    │    │    │    │    │
+            │    │    │    │    │    │     │ ↵  │    │    │    │    │
             ├────┼────┼────┼────┼────┤     ├────┼────┼────┼────┼────┤
-            │    │    │    │    │    │     │    │    │    │    │    │
+            │    │    │    │    │    │     │esc │    │    │    │    │
             └────┴────┴────┴────┴────┴─────┴────┴────┴────┴────┴────┘
 Chords      ┌────┬────┬────┬────┬────┐     ┌────┬────┬────┬────┬────┐
             │ z  │ x  │ c  │ d  │ v  │     │ k  │ h  │ ,  │ .  │    │
@@ -155,12 +155,16 @@ const uint16_t PROGMEM combo_0[] = {KC_H, KC_DOT, COMBO_END};
 const uint16_t PROGMEM combo_1[] = {KC_H, KC_COMM, COMBO_END};
 const uint16_t PROGMEM combo_2[] = {KC_K, KC_H, COMBO_END};
 const uint16_t PROGMEM combo_3[] = {KC_COMM, KC_DOT, COMBO_END};
+const uint16_t PROGMEM combo_4[] = {KC_SPC, KC_M, COMBO_END};
+const uint16_t PROGMEM combo_5[] = {KC_SPC, KC_K, COMBO_END};
 
 combo_t key_combos[COMBO_COUNT] = {
   [CM_0] = COMBO(combo_0, C(G(KC_BSPC))),
   [CM_1] = COMBO(combo_1, KC_QUOT),
   [CM_2] = COMBO(combo_2, KC_SLSH),
   [CM_3] = COMBO(combo_3, KC_SCLN),
+  [CM_4] = COMBO(combo_4, KC_ENT),
+  [CM_5] = COMBO(combo_5, KC_ESC),
 };
 
 // https://beta.docs.qmk.fm/using-qmk/software-features/tap_hold#ignore-mod-tap-interrupt
