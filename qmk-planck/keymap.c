@@ -138,14 +138,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = { /*
 Chords      ┌────┬────┬────┬────┬────┐     ┌────┬────┬────┬────┬────┐
 with space  │    │    │    │    │    │     │    │    │    │    │    │
             ├────┼────┼────┼────┼────┤     ├────┼────┼────┼────┼────┤
-            │    │    │    │    │    │     │ ^⌫ │ ↵  │    │    │    │
+            │    │    │    │    │    │     │    │    │    │    │    │
             ├────┼────┼────┼────┼────┤     ├────┼────┼────┼────┼────┤
-            │    │    │    │    │    │     │ ⎋  │ ↹  │    │    │    │
+            │    │    │    │    │    │     │    │    │    │    │    │
             └────┴────┴────┴────┴────┴─────┴────┴────┴────┴────┴────┘
 Chords      ┌────┬────┬────┬────┬────┐     ┌────┬────┬────┬────┬────┐
-            │    │    │    │    │    │     │    │    │    │    │    │
-            └────┴────┴────┴────┴────┴─────┴┆───┴┆───┴┆───┴────┴────┘
-                                            └┄ - ┘┄ ' ┘
+            │ z  │ x  │ c  │ d  │ v  │     │ k  │ h  │ ,  │ .  │    │
+            └────┴────┴────┴────┴────┴─────┴┆───┴┆───┴┆───┴┆───┴────┘
+                                            └  / ┴  ' ┴  ; ┘
+                                                 └┄┄┄┄┄ ⌫  ┘
 */
 
 enum combos { CM_0, CM_1, CM_2, CM_3, CM_4, CM_5, CM_6 };
@@ -153,13 +154,13 @@ enum combos { CM_0, CM_1, CM_2, CM_3, CM_4, CM_5, CM_6 };
 const uint16_t PROGMEM combo_0[] = {KC_H, KC_DOT, COMBO_END};
 const uint16_t PROGMEM combo_1[] = {KC_H, KC_COMM, COMBO_END};
 const uint16_t PROGMEM combo_2[] = {KC_K, KC_H, COMBO_END};
-const uint16_t PROGMEM combo_hps[] = {KC_H, KC_P, KC_S, COMBO_END};
+const uint16_t PROGMEM combo_3[] = {KC_COMM, KC_DOT, COMBO_END};
 
 combo_t key_combos[COMBO_COUNT] = {
   [CM_0] = COMBO(combo_0, C(G(KC_BSPC))),
   [CM_1] = COMBO(combo_1, KC_QUOT),
-  [CM_2] = COMBO(combo_2, KC_MINS),
-  [CM_3] = COMBO_ACTION(combo_hps),
+  [CM_2] = COMBO(combo_2, KC_SLSH),
+  [CM_3] = COMBO(combo_3, KC_SCLN),
 };
 
 // https://beta.docs.qmk.fm/using-qmk/software-features/tap_hold#ignore-mod-tap-interrupt
@@ -176,30 +177,22 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
   case MC_MUTE:
     if (record->event.pressed) {
-        SEND_STRING(SS_LSFT(SS_LALT("a")));
+      // Zoom: mute or unmute
+      SEND_STRING(SS_LSFT(SS_LALT("a")));
     }
     break;
   case MC_HAND:
     if (record->event.pressed) {
-        SEND_STRING(SS_LSFT(SS_LALT("y")));
+      // Zoom: raise hand
+      SEND_STRING(SS_LSFT(SS_LALT("y")));
     }
     break;
   case MC_SHOT:
     if (record->event.pressed) {
-        SEND_STRING(SS_LSFT(SS_LCTL(SS_LALT("4"))));
+      // MacOS: take screenshot
+      SEND_STRING(SS_LSFT(SS_LCTL(SS_LALT("4"))));
     }
     break;
   }
   return true;
 };
-
-// https://beta.docs.qmk.fm/using-qmk/software-features/feature_combo
-void process_combo_event(uint16_t combo_index, bool pressed) {
-  switch(combo_index) {
-    case CM_3:
-      if (pressed) {
-        SEND_STRING("https://");
-      }
-      break;
-  }
-}
