@@ -2,23 +2,29 @@
 #define _____  KC_TRNS
 #define __x__  KC_NO
 
-#define xx_Z   MT(MOD_LSFT,KC_Z)     /* z + shift */
-#define xx_SPC MT(MOD_RSFT,KC_LSFT)  /* space + shift */
-#define xx_CBSP C(KC_BSPC)           /* delete word */
-#define xx_LCMD LALT_T(KC_ESC)
-#define xx_LOPT LGUI_T(KC_TAB)
-
 #define _SYM 1
 #define _NAV 2
-#define _PAD 4
-#define _FUN 5
-#define _GAM 6
+#define _PAD 3
+#define _FUN 4
+#define _GAM 5
+
+#define xx_Z   MT(MOD_LSFT,KC_Z)     // z + shift
+#define xx_CBSP C(KC_BSPC)           // delete word
+/* #define xx_LCMD LALT_T(KC_ES) */
+#define xx_LOPT LGUI_T(KC_TAB)
+#define xx_SPC KC_LSFT
+#define xx_LCMD TD(TD_0)
 
 /* Macros */
 enum custom_keycodes {
   MC_MUTE = SAFE_RANGE,
   MC_HAND,
   MC_SHOT,
+};
+
+/* Tap dance definitions */
+enum {
+  TD_0 = 0,
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = { /*
@@ -31,7 +37,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = { /*
             ├────┼────┼────┼────┼────┤     ├────┼────┼────┼────┼────┤
             │ z  │ x  │ c  │ d  │ v  │     │ k  │ h  │ ,  │ .  │ ↵ ⌃│
             └────┴────┼────┼────┴────┴─────┴────┴────┼────┼────┴────┘
-            │ ⌃  │ ⌥  │ ⌘ ⎋│SYM │   ⇧   │   ␣   │NAV │ ⌥ ↹│ mⁿ │ mⁿ │
+            │ ⌃  │ ⌥  │ ⌘  │SYM │   ⇧   │   ␣   │NAV │ ⌥ ↹│ mⁿ │ mⁿ │
   ┄         └────┴─── └────┴────┴───────┴───────┴────┴────┘ ───┴────┘ */
 
   [0] = LAYOUT_planck_2x2u(
@@ -140,7 +146,7 @@ with space  │    │    │    │    │    │     │    │    │    │ 
             ├────┼────┼────┼────┼────┤     ├────┼────┼────┼────┼────┤
             │    │    │    │    │    │     │ ↵  │    │    │    │    │
             ├────┼────┼────┼────┼────┤     ├────┼────┼────┼────┼────┤
-            │    │    │    │    │    │     │esc │    │    │    │    │
+            │    │    │    │    │    │     │ ⎋  │    │    │    │    │
             └────┴────┴────┴────┴────┴─────┴────┴────┴────┴────┴────┘
 Chords      ┌────┬────┬────┬────┬────┐     ┌────┬────┬────┬────┬────┐
             │ z  │ x  │ c  │ d  │ v  │     │ k  │ h  │ ,  │ .  │    │
@@ -199,4 +205,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     break;
   }
   return true;
+};
+
+// Tap Dance Definitions
+qk_tap_dance_action_t tap_dance_actions[] = {
+  [TD_0] = ACTION_TAP_DANCE_DOUBLE(KC_LALT, KC_LCTL),
 };
