@@ -12,7 +12,7 @@
 #define xx_CBSP C(KC_BSPC)           // delete word
 /* #define xx_LCMD LALT_T(KC_ES) */
 #define xx_LOPT LGUI_T(KC_TAB)
-#define xx_SPC KC_LSFT
+#define xx_LSPC KC_LSFT
 #define xx_LCMD TD(TD_0)
 
 /* Macros */
@@ -44,7 +44,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = { /*
     KC_Q,    KC_W,    KC_F,    KC_P,      KC_B, __x__,  __x__,  KC_J, KC_L,     KC_U,    KC_Y,    KC_BSPC,
     KC_A,    KC_R,    KC_S,    KC_T,      KC_G, __x__,  __x__,  KC_M, KC_N,     KC_E,    KC_I,    KC_O,
     KC_Z,    KC_X,    KC_C,    KC_D,      KC_V, __x__,  __x__,  KC_K, KC_H,     KC_COMM, KC_DOT,  LCTL_T(KC_ENT),
-    KC_LCTL, xx_LOPT, xx_LCMD, OSL(_SYM), /**/  xx_SPC, KC_SPC, /**/  MO(_NAV), xx_LOPT, MC_MUTE, MC_HAND
+    KC_LCTL, xx_LOPT, xx_LCMD, OSL(_SYM), /**/  xx_LSPC, KC_SPC, /**/  MO(_NAV), xx_LOPT, MC_MUTE, MC_HAND
   ), /*
 
   ┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄
@@ -148,14 +148,14 @@ Chords      ┌────┬────┬────┬────┬─�
             ├────┼────┼────┼────┼────┤ ctl ├────┼────┼────┼────┼────┤
             │ z  │ x  │ c  │ d  │ v  │   └┄│ k  │ h  │ ,  │ .  │    │
             └────┴────┴────┴────┴────┴─────┴────┴────┴────┴────┴────┘
-                  └ nav ┘└ - ┄┘              └ ; ┄└ ' ┄└ / ┄┘
+                        └ - ┄┘└ nav ┘        └ ; ┄└ ' ┄└ / ┄┘
                                                   └┄┄┄┄┄┄┄┄┄┘ ⌫
 Chords      ┌────┬────┬────┬────┬────┐     ┌────┬────┬────┬────┬────┐
 with space  │    │    │    │    │    │     │    │    │    │    │    │
             ├────┼────┼────┼────┼────┤     ├────┼────┼────┼────┼────┤
             │    │    │    │    │    │     │ ↵  │    │    │    │    │
             ├────┼────┼────┼────┼────┤     ├────┼────┼────┼────┼────┤
-            │    │    │    │    │    │     │ ⎋  │    │    │    │    │
+            │    │    │    │    │nav │     │ ⎋  │    │    │    │    │
             └────┴────┴────┴────┴────┴─────┴────┴────┴────┴────┴────┘
 */
 
@@ -168,7 +168,7 @@ const uint16_t PROGMEM combo_3[] = {KC_COMM, KC_DOT, COMBO_END};
 const uint16_t PROGMEM combo_4[] = {KC_C, KC_D, COMBO_END};
 const uint16_t PROGMEM combo_5[] = {KC_SPC, KC_K, COMBO_END};
 const uint16_t PROGMEM combo_6[] = {KC_SPC, KC_M, COMBO_END};
-const uint16_t PROGMEM combo_7[] = {KC_X, KC_C, COMBO_END};
+const uint16_t PROGMEM combo_7[] = {KC_D, KC_V, COMBO_END};
 const uint16_t PROGMEM combo_8[] = {KC_M, KC_K, COMBO_END};
 
 combo_t key_combos[COMBO_COUNT] = {
