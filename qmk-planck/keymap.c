@@ -76,7 +76,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = { /*
     KC_LCTL, KC_LGUI, KC_LALT, KC_TAB, KC_ESC, __x__, __x__, KC_PGUP, KC_HOME, KC_UP,   KC_END,  MO(_FUN),
     KC_1,    KC_2,    KC_3,    KC_4,   KC_5,   __x__, __x__, KC_PGDN, KC_LEFT, KC_DOWN, KC_RGHT, KC_ENT,
     KC_6,    KC_7,    KC_8,    KC_9,   KC_0,   __x__, __x__, KC_ESC,  KC_TAB,  __x__,   __x__,   MO(_PAD),
-    _____,   _____,   _____,   _____,   /**/     _____, _____, /**/     _____,   _____,   _____,   _____
+    _____,   _____,   _____,   _____,  /**/    _____, _____, /**/     _____,   _____,   _____,   _____
   ), /*
 
   ┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄
@@ -142,41 +142,45 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = { /*
 
 ┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄
 Chords      ┌────┬────┬────┬────┬────┐     ┌────┬────┬────┬────┬────┐
+            │    │    │    │    │    │     │    │    │    │    │    │
+            ├────┼────┼────┼────┼────┤     ├────┼────┼────┼────┼────┤
+            │    │    │    │    │    │   ┌┄│ m  │    │    │    │    │
+            ├────┼────┼────┼────┼────┤ ctl ├────┼────┼────┼────┼────┤
+            │ z  │ x  │ c  │ d  │ v  │   └┄│ k  │ h  │ ,  │ .  │    │
+            └────┴────┴────┴────┴────┴─────┴────┴────┴────┴────┴────┘
+                  └ nav ┘└ - ┄┘              └ ; ┄└ ' ┄└ / ┄┘
+                                                  └┄┄┄┄┄┄┄┄┄┘ ⌫
+Chords      ┌────┬────┬────┬────┬────┐     ┌────┬────┬────┬────┬────┐
 with space  │    │    │    │    │    │     │    │    │    │    │    │
             ├────┼────┼────┼────┼────┤     ├────┼────┼────┼────┼────┤
             │    │    │    │    │    │     │ ↵  │    │    │    │    │
             ├────┼────┼────┼────┼────┤     ├────┼────┼────┼────┼────┤
             │    │    │    │    │    │     │ ⎋  │    │    │    │    │
             └────┴────┴────┴────┴────┴─────┴────┴────┴────┴────┴────┘
-Chords      ┌────┬────┬────┬────┬────┐     ┌────┬────┬────┬────┬────┐
-            │    │    │    │    │    │     │ m  │    │    │    │    │
-            ├────┼────┼────┼────┼────┤     ├────┼────┼────┼────┼────┤
-            │ z  │ x  │ c  │ d  │ v  │     │ k  │ h  │ ,  │ .  │    │
-            └────┴────┴────┴────┴────┴─────┴┆───┴┆───┴┆───┴┆───┴────┘
-                                            └  / ┴  ' ┴  ; ┘
-                                            ┆    ┆         ┆
-                                            ┆    └┄┄┄┄┄ ⌫  ┘
-                                            └┄┄┄┄┄ -  ┘
 */
 
-enum combos { CM_0, CM_1, CM_2, CM_3, CM_4, CM_5, CM_6 };
+enum combos { CM_0, CM_1, CM_2, CM_3, CM_4, CM_5, CM_6, CM_7, CM_8 };
 
 const uint16_t PROGMEM combo_0[] = {KC_H, KC_DOT, COMBO_END};
 const uint16_t PROGMEM combo_1[] = {KC_H, KC_COMM, COMBO_END};
 const uint16_t PROGMEM combo_2[] = {KC_K, KC_H, COMBO_END};
 const uint16_t PROGMEM combo_3[] = {KC_COMM, KC_DOT, COMBO_END};
-const uint16_t PROGMEM combo_4[] = {KC_K, KC_COMM, COMBO_END};
+const uint16_t PROGMEM combo_4[] = {KC_C, KC_D, COMBO_END};
 const uint16_t PROGMEM combo_5[] = {KC_SPC, KC_K, COMBO_END};
 const uint16_t PROGMEM combo_6[] = {KC_SPC, KC_M, COMBO_END};
+const uint16_t PROGMEM combo_7[] = {KC_X, KC_C, COMBO_END};
+const uint16_t PROGMEM combo_8[] = {KC_M, KC_K, COMBO_END};
 
 combo_t key_combos[COMBO_COUNT] = {
   [CM_0] = COMBO(combo_0, C(KC_BSPC)),
   [CM_1] = COMBO(combo_1, KC_QUOT),
-  [CM_2] = COMBO(combo_2, KC_SLSH),
-  [CM_3] = COMBO(combo_3, KC_SCLN),
+  [CM_2] = COMBO(combo_2, KC_SCLN),
+  [CM_3] = COMBO(combo_3, KC_SLSH),
   [CM_4] = COMBO(combo_4, KC_MINS),
   [CM_5] = COMBO(combo_5, KC_ESC),
   [CM_6] = COMBO(combo_6, KC_ENT),
+  [CM_7] = COMBO_ACTION(combo_7),
+  [CM_8] = COMBO(combo_8, KC_LCTL),
 };
 
 // https://beta.docs.qmk.fm/using-qmk/software-features/tap_hold#ignore-mod-tap-interrupt
@@ -217,3 +221,14 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 qk_tap_dance_action_t tap_dance_actions[] = {
   [TD_0] = ACTION_TAP_DANCE_DOUBLE(KC_LALT, KC_LCTL),
 };
+
+void process_combo_event(uint16_t combo_index, bool pressed) {
+  switch(combo_index) {
+    case CM_7:
+      if (pressed) {
+        layer_on(_NAV);
+      } else {
+        layer_off(_NAV);
+      }
+  }
+}
