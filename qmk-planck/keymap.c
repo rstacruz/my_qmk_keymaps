@@ -41,7 +41,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = { /*
             └────┴────┼────┼────┴────┴─────┴────┴────┼────┼────┴────┘
             │ ⌃  │ ⌥  │ ⌘  │SYM │   ⇧   │   ␣   │NAV │ ⌥  │ mⁿ │ mⁿ │
   ┄         └────┴─── └─┆──┴────┴─┆─────┴───────┴────┴────┘ ───┴────┘
-                        └ ^       └ NAV   double-tap
+                        └ NAV     └ ^     Double-tap
   */
 
   [0] = LAYOUT_planck_2x2u(
@@ -61,10 +61,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = { /*
   └┄┄┄┄┘    └────┴────┴────┴────┴────┘     └────┴────┴────┴────┴────┘ */
 
   [_SYM] = LAYOUT_planck_2x2u(
-    KC_QUOT, KC_DQUO, KC_CIRC, KC_QUES, KC_GRV,  _____,    _____, KC_LBRC, KC_LT,   KC_EQL,  KC_GT,   KC_RBRC,
-    KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC, _____,    _____, KC_LCBR, KC_LPRN, KC_COLN, KC_RPRN, KC_RCBR,
-    KC_SCLN, KC_TILD, KC_PIPE, KC_AMPR, KC_BSLS, _____,    _____, KC_PSLS, KC_PAST, KC_PMNS, KC_PPLS, KC_UNDS,
-    __v__,   __v__,   __v__,   __v__,   /**/     MO(_NAV), __v__, /**/     __v__,   __v__,   __v__,   __v__
+    KC_QUOT, KC_DQUO, KC_CIRC, KC_QUES,  KC_GRV,  _____,    _____, KC_LBRC, KC_LT,   KC_EQL,  KC_GT,   KC_RBRC,
+    KC_EXLM, KC_AT,   KC_HASH, KC_DLR,   KC_PERC, _____,    _____, KC_LCBR, KC_LPRN, KC_COLN, KC_RPRN, KC_RCBR,
+    KC_SCLN, KC_TILD, KC_PIPE, KC_AMPR,  KC_BSLS, _____,    _____, KC_PSLS, KC_PAST, KC_PMNS, KC_PPLS, KC_UNDS,
+    __v__,   __v__,   __v__,   MO(_NAV), /**/     MO(_NAV), __v__, /**/     __v__,   __v__,   __v__,   __v__
   ), /*
 
   ┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄
@@ -225,32 +225,32 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 void tap_dance_sft_down (qk_tap_dance_state_t *state, void *user_data) {
 	switch (state->count) {
 		case 1: register_code(KC_LSFT); break;
-		case 2: layer_on(_NAV); break;
-		case 3: register_code(KC_LSFT); layer_on(_NAV); break;
+		case 2: register_code(KC_LCTL); break;
+		case 3: register_code(KC_LSFT); register_code(KC_LCTL); break;
 	}
 }
 
 void tap_dance_sft_up (qk_tap_dance_state_t *state, void *user_data) {
 	switch (state->count) {
 		case 1: unregister_code(KC_LSFT); break;
-		case 2: layer_off(_NAV); break;
-		case 3: unregister_code(KC_LSFT); layer_off(_NAV); break;
+		case 2: unregister_code(KC_LCTL); break;
+		case 3: unregister_code(KC_LSFT); unregister_code(KC_LCTL); break;
 	}
 }
 
 void tap_dance_cmd_down (qk_tap_dance_state_t *state, void *user_data) {
 	switch (state->count) {
 		case 1: register_code(KC_LALT); break;
-		case 2: register_code(KC_LCTL); break;
-		case 3: register_code(KC_LALT); register_code(KC_LCTL); break;
+		case 2: layer_on(_NAV); break;
+		case 3: register_code(KC_LALT); layer_on(_NAV); break;
 	}
 }
 
 void tap_dance_cmd_up (qk_tap_dance_state_t *state, void *user_data) {
 	switch (state->count) {
 		case 1: unregister_code(KC_LALT); break;
-		case 2: unregister_code(KC_LCTL); break;
-		case 3: unregister_code(KC_LALT); unregister_code(KC_LCTL); break;
+		case 2: layer_off(_NAV); break;
+		case 3: unregister_code(KC_LALT); layer_off(_NAV); break;
 	}
 }
 
