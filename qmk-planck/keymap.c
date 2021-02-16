@@ -85,7 +85,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = { /*
 
   ┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄
   Macropad  ┌────┐────┬────┌────┬────┐     ┌────┬────┬────┬────┬────┐
-            │    │    │    │    │    │     │bck │hom │caps│cmbt│lock│
+            │rgb │    │    │    │    │     │bck │hom │caps│cmbt│lock│
             └────┘ ───┼─── └────┴────┘     ├────┼────┼────┼────┼────┤
             │f₁₁ │f₁₂ │f₁₃ │f₁₄ │f₁₅ │     │    │    │    │    │    │
   ┌┄┄┄┄┐    ├────┼────┼────┼────┼────┤     ├────┼────┼────┼────┼────┤
@@ -93,7 +93,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = { /*
   └┄┄┄┄┘    └────┴────┴────┴────┴────┘     └────┴────┴────┴────┴────┘ */
 
   [_PAD] = LAYOUT_planck_2x2u(
-    _____,   _____,   _____,  _____,  _____,  _____, _____, KC_WWW_BACK, KC_WWW_HOME, KC_CAPS, CMB_TOG, DF(_LOC),
+    RGB_TOG, _____,   _____,  _____,  _____,  _____, _____, KC_WWW_BACK, KC_WWW_HOME, KC_CAPS, CMB_TOG, DF(_LOC),
     KC_F11,  KC_F12,  KC_F13, KC_F14, KC_F15, _____, _____, _____,       _____,       _____,   _____,   _____,
     KC_F16,  KC_F17,  KC_F18, KC_F19, KC_F20, _____, _____, _____,       _____,       _____,   MC_SHOT, _____,
     LAG_SWP, LAG_NRM, __v__,  __v__,  /**/    __v__, __v__, /**/         __v__,       __v__,   __v__,   DF(_GAM)
@@ -101,17 +101,17 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = { /*
 
   ┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄
   Function  ┏━━━━┓────┬────┌────┬────┐     ┌────┬────┏━━━━┓────┬────┐
-  Mouse     ┃rset┃ f₁₁│f₁₂ │rmb │lmb │     │ w↑ │vol⁻┃ ▲  ┃vol⁺│ ▓▓ │
+  Mouse     ┃rset┃ f₁₁│f₁₂ │rmb │lmb │     │ w↑ │ S↹ ┃ ▲  ┃^ ↹ │ ▓▓ │
             ┗━━━━┛ ───┼─── └────┴────┘     ├────┏━━━━┛────┗━━━━┓────┤
             │ f₁ │ f₂ │ f₃ │ f₄ │ f₅ │     │ w↓ ┃ ◀  │ ▼  │ ▶  ┃scr⁺│
   ┌┄┄┄┄┐    ├────┼────┼────┼────┼────┤     ├────┗━━━━┷━━━━┷━━━━┛────┤
-  ┆FUN ┆ ┄› │ f₆ │ f₇ │ f₈ │ f₉ │f₁₀ │     │play│next│    │rgb │scr⁻│
+  ┆FUN ┆ ┄› │ f₆ │ f₇ │ f₈ │ f₉ │f₁₀ │     │vol⁻│vol⁺│play│next│scr⁻│
   └┄┄┄┄┘    └────┴────┴────┴────┴────┘     └────┴────┴────┴────┴────┘ */
   [_FUN] = LAYOUT_planck_2x2u(
-    RESET, KC_F11, KC_F12, KC_MS_BTN2, KC_MS_BTN1, _____, _____, KC_WH_U, KC_VOLD, KC_MS_U, KC_VOLU, __v__,
-    KC_F1, KC_F2,  KC_F3,  KC_F4,      KC_F5,      _____, _____, KC_WH_D, KC_MS_L, KC_MS_D, KC_MS_R, KC_BRIU,
-    KC_F6, KC_F7,  KC_F8,  KC_F9,      KC_F10,     _____, _____, KC_MPLY, KC_MNXT, _____,   RGB_TOG, KC_BRID,
-    __v__, __v__,  __v__,  __v__,      /**/        __v__, __v__, /**/     __v__,   __v__,   __v__,   __v__
+    RESET, KC_F11, KC_F12, KC_MS_BTN2, KC_MS_BTN1, _____, _____, KC_WH_U, RCTL(LSFT(KC_TAB)), KC_MS_U, RCTL(KC_TAB), __v__,
+    KC_F1, KC_F2,  KC_F3,  KC_F4,      KC_F5,      _____, _____, KC_WH_D, KC_MS_L,            KC_MS_D, KC_MS_R,      KC_BRIU,
+    KC_F6, KC_F7,  KC_F8,  KC_F9,      KC_F10,     _____, _____, KC_VOLD, KC_VOLU,            KC_MPLY, KC_MNXT,      KC_BRID,
+    __v__, __v__,  __v__,  __v__,      /**/        __v__, __v__, /**/     __v__,              __v__,   __v__,        __v__
   ), /*
 
   ┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄
@@ -165,7 +165,7 @@ with space  │    │    │    │    │    │     │    │    │    │ 
             └────┴────┴────┴────┴────┴─────┴────┴────┴────┴────┴────┘
 */
 
-enum combos { CM_0, CM_1, CM_2, CM_3, CM_4, CM_5, CM_6, CM_7, CM_8 };
+enum combos { CM_0, CM_1, CM_2, CM_3, CM_4, CM_5, CM_6, CM_7, CM_8, CM_9, CM_10, CM_11, CM_12 };
 
 const uint16_t PROGMEM combo_0[] = {KC_H, KC_DOT, COMBO_END};
 const uint16_t PROGMEM combo_1[] = {KC_H, KC_COMM, COMBO_END};
