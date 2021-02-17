@@ -61,10 +61,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = { /*
   └┄┄┄┄┘    └────┴────┴────┴────┴────┘     └────┴────┴────┴────┴────┘ */
 
   [_SYM] = LAYOUT_planck_2x2u(
-    KC_QUOT, KC_DQUO, KC_CIRC, KC_QUES,  KC_GRV,  _____,    _____, KC_LBRC, KC_LT,   KC_EQL,  KC_GT,   KC_RBRC,
-    KC_EXLM, KC_AT,   KC_HASH, KC_DLR,   KC_PERC, _____,    _____, KC_LCBR, KC_LPRN, KC_COLN, KC_RPRN, KC_RCBR,
-    KC_SCLN, KC_TILD, KC_PIPE, KC_AMPR,  KC_BSLS, _____,    _____, KC_PSLS, KC_PAST, KC_PMNS, KC_PPLS, KC_UNDS,
-    __v__,   __v__,   __v__,   MO(_NAV), /**/     MO(_NAV), __v__, /**/     __v__,   __v__,   __v__,   __v__
+    KC_QUOT, KC_DQUO, KC_CIRC, KC_QUES, KC_GRV,  _____,   _____, KC_LBRC, KC_LT,   KC_EQL,  KC_GT,   KC_RBRC,
+    KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC, _____,   _____, KC_LCBR, KC_LPRN, KC_COLN, KC_RPRN, KC_RCBR,
+    KC_SCLN, KC_TILD, KC_PIPE, KC_AMPR, KC_BSLS, _____,   _____, KC_PSLS, KC_PAST, KC_PMNS, KC_PPLS, KC_UNDS,
+    __v__,   __v__,   __v__,   __v__,   /**/     KC_LCTL, __v__, /**/     __v__,   __v__,   __v__,   __v__
   ), /*
 
   ┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄
@@ -157,7 +157,7 @@ Chords      ┌────┬────┬────┬────┬─�
             │ z  │ x  │ c  │ d  │ v  │     │ k  │ h  │ ,  │ .  │    │
             └────┴────┴────┴────┴────┴─────┴────┴────┴────┴────┴────┘
                                              └ ; ┄└ ' ┄└ - ┄┘
-                                                  └┄┄┄┄  / ┄┘
+                                                  └┄┄┄┄  ? ┄┘
 Chords      ┌────┬────┬────┬────┬────┐     ┌────┬────┬────┬────┬────┐
 with space  │    │    │    │    │    │     │    │    │    │    │    │
             ├────┼────┼────┼────┼────┤     ├────┼────┼────┼────┼────┤
@@ -180,7 +180,7 @@ const uint16_t PROGMEM combo_7[] = {KC_SPC, KC_DOT, COMBO_END};
 const uint16_t PROGMEM combo_8[] = {KC_SPC, KC_M, COMBO_END};
 
 combo_t key_combos[COMBO_COUNT] = {
-  [CM_0] = COMBO(combo_0, KC_SLSH),
+  [CM_0] = COMBO(combo_0, KC_QUES),
   [CM_1] = COMBO(combo_1, KC_QUOT),
   [CM_2] = COMBO(combo_2, KC_SCLN),
   [CM_3] = COMBO(combo_3, KC_MINS),
@@ -229,16 +229,16 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 void tap_dance_sft_down (qk_tap_dance_state_t *state, void *user_data) {
 	switch (state->count) {
 		case 1: register_code(KC_LSFT); break;
-		case 2: register_code(KC_LCTL); break;
-		case 3: register_code(KC_LSFT); register_code(KC_LCTL); break;
+		case 2: layer_on(_NAV); break;
+		case 3: register_code(KC_LSFT); layer_on(_NAV); break;
 	}
 }
 
 void tap_dance_sft_up (qk_tap_dance_state_t *state, void *user_data) {
 	switch (state->count) {
 		case 1: unregister_code(KC_LSFT); break;
-		case 2: unregister_code(KC_LCTL); break;
-		case 3: unregister_code(KC_LSFT); unregister_code(KC_LCTL); break;
+		case 2: layer_off(_NAV); break;
+		case 3: unregister_code(KC_LSFT); layer_off(_NAV); break;
 	}
 }
 
