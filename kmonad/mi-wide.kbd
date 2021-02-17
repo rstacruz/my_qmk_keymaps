@@ -29,10 +29,10 @@
 )
 
 (deflayer colemak-dh-ext
-  @tsym q    w    f    p    b         ]    j    l    u    y    ;    '    @c\
-  @NAV  a    r    s    t    g         [    m    n    e    i    o         ret
-  lsft  z    x    c    d    v         /    k    h    ,    .              rsft
-  lctl  lmet lalt                     spc                           @NAV rctl
+  _     q    w    f    p    b         ]    j    l    u    y    ;    '    @c\
+  lctl  a    r    s    t    g         [    m    n    e    i    o         ret
+  lsft  z    x    c    d    v         /    k    h    ,    .              _
+  lmet  lalt @SYM                     spc                           @NAV _
 )
 
 (deflayer nav
