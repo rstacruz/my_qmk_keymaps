@@ -106,12 +106,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = { /*
             │ f₁ │ f₂ │ f₃ │ f₄ │ f₅ │     │ w↓ ┃ ◀  │ ▼  │ ▶  ┃scr⁺│
   ┌┄┄┄┄┐    ├────┼────┼────┼────┼────┤     ├────┗━━━━┷━━━━┷━━━━┛────┤
   ┆FUN ┆ ┄› │ f₆ │ f₇ │ f₈ │ f₉ │f₁₀ │     │vol⁻│vol⁺│play│next│scr⁻│
-  └┄┄┄┄┘    └────┴────┴────┴────┴────┘     └────┴────┴────┴────┴────┘ */
+  └┄┄┄┄┘    └────┴────┴────┴────┴────┘  ┌──└────┴────┴────┴────┴────┘
+                                        │ lmb   │
+                                        └───────┘ */
   [_FUN] = LAYOUT_planck_2x2u(
-    RESET, KC_F11, KC_F12, KC_MS_BTN2, KC_MS_BTN1, _____, _____, KC_WH_U, RCTL(LSFT(KC_TAB)), KC_MS_U, RCTL(KC_TAB), __v__,
-    KC_F1, KC_F2,  KC_F3,  KC_F4,      KC_F5,      _____, _____, KC_WH_D, KC_MS_L,            KC_MS_D, KC_MS_R,      KC_BRIU,
-    KC_F6, KC_F7,  KC_F8,  KC_F9,      KC_F10,     _____, _____, KC_VOLD, KC_VOLU,            KC_MPLY, KC_MNXT,      KC_BRID,
-    __v__, __v__,  __v__,  __v__,      /**/        __v__, __v__, /**/     __v__,              __v__,   __v__,        __v__
+    RESET, KC_F11, KC_F12, KC_MS_BTN2, KC_MS_BTN1, _____, _____,      KC_WH_U, RCTL(LSFT(KC_TAB)), KC_MS_U, RCTL(KC_TAB), __v__,
+    KC_F1, KC_F2,  KC_F3,  KC_F4,      KC_F5,      _____, _____,      KC_WH_D, KC_MS_L,            KC_MS_D, KC_MS_R,      KC_BRIU,
+    KC_F6, KC_F7,  KC_F8,  KC_F9,      KC_F10,     _____, _____,      KC_VOLD, KC_VOLU,            KC_MPLY, KC_MNXT,      KC_BRID,
+    __v__, __v__,  __v__,  __v__,      /**/        __v__, KC_MS_BTN1, /**/     __v__,              __v__,   __v__,        __v__
   ), /*
 
   ┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄
@@ -159,7 +161,7 @@ Chords      ┌────┬────┬────┬────┬─�
 Chords      ┌────┬────┬────┬────┬────┐     ┌────┬────┬────┬────┬────┐
 with space  │    │    │    │    │    │     │    │    │    │    │    │
             ├────┼────┼────┼────┼────┤     ├────┼────┼────┼────┼────┤
-            │    │    │    │    │    │     │    │    │    │    │    │
+            │    │    │    │    │    │     │ ⌃  │    │    │    │    │
             ├────┼────┼────┼────┼────┤     ├────┼────┼────┼────┼────┤
             │    │    │    │    │    │     │ ⎋  │ ↹  │ ↵  │ ⌫  │    │
             └────┴────┴────┴────┴────┴─────┴────┴────┴────┴────┴────┘
@@ -175,6 +177,7 @@ const uint16_t PROGMEM combo_4[] = {KC_SPC, KC_H, COMBO_END};
 const uint16_t PROGMEM combo_5[] = {KC_SPC, KC_K, COMBO_END};
 const uint16_t PROGMEM combo_6[] = {KC_SPC, KC_COMM, COMBO_END};
 const uint16_t PROGMEM combo_7[] = {KC_SPC, KC_DOT, COMBO_END};
+const uint16_t PROGMEM combo_8[] = {KC_SPC, KC_M, COMBO_END};
 
 combo_t key_combos[COMBO_COUNT] = {
   [CM_0] = COMBO(combo_0, KC_SLSH),
@@ -185,6 +188,7 @@ combo_t key_combos[COMBO_COUNT] = {
   [CM_5] = COMBO(combo_5, KC_ESC),
   [CM_6] = COMBO(combo_6, KC_ENT),
   [CM_7] = COMBO(combo_7, C(KC_BSPC)),
+  [CM_8] = COMBO(combo_8, KC_LCTL),
 };
 
 // https://beta.docs.qmk.fm/using-qmk/software-features/tap_hold#ignore-mod-tap-interrupt
