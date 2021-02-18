@@ -29,7 +29,7 @@
 )
 
 (deflayer colemak-dh-ext
-  _     q    w    f    p    b         ]    j    l    u    y    ;    '    @c\
+  @tsym q    w    f    p    b         ]    j    l    u    y    ;    '    @c\
   lctl  a    r    s    t    g         [    m    n    e    i    o         ret
   lsft  z    x    c    d    v         /    k    h    ,    .              _
   lmet  lalt @SYM                     spc                           @NAV _
