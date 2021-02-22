@@ -33,15 +33,15 @@
 
 (deflayer colemak-dh-ext
   _     _    _    _    _    _         _    _    _    _    _    _    _    _
-  @tnav q    w    f    p    b         ]    j    l    u    y    ;    '    @c\
-  lctl  a    r    s    t    g         [    m    n    e    i    o         ret
+  @tnav q    w    f    p    b         ;    j    l    u    y    bks  '    @c\
+  lctl  a    r    s    t    g         -    m    n    e    i    o         ret
   lsft  z    x    c    d    v         /    k    h    ,    .              _
   @opt  @cmd @SYM                     spc                           @NAV rsft
 )
 
 (deflayer nav
   _     _    _    _    _    _         _    _    _    _    _    _    _    _
-  _     XX   XX   0    :    -         _    pgup home up   end  bks  @cbs _
+  _     lctl XX   lalt :    -         _    pgup home up   end  bks  @cbs _
   _     1    2    3    4    5         _    pgdn left down rght ret       _
   _     6    7    8    9    0         _    esc  tab  bks  .              _
   _     _    _                        _                             _    _
