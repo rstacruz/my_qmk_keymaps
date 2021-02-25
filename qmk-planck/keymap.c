@@ -4,8 +4,8 @@
 
 #define _SYM 1
 #define _NAV 2
-#define _PAD 3
-#define _FUN 4
+#define _FUN 3
+#define _MMM 4
 #define _GAM 5
 #define _LOC 6
 
@@ -13,7 +13,8 @@
 /* #define xx_LSFT KC_LSFT */
 #define xx_LSFT TD(TD_SFT)
 #define xx_LCMD TD(TD_CMD)
-#define xx_SYM  MO(_SYM) /*TD(TD_SYM)*/
+#define xx_SYM  MO(_SYM)
+/* #define xx_SYM  TD(TD_SYM) */
 
 /* Macros */
 enum custom_keycodes {
@@ -41,14 +42,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = { /*
             └────┴────┼────┼────┴────┴─────┴────┴────┼────┼────┴────┘
             │ ⌃  │ ⌥  │ ⌘  │SYM │   ⇧   │   ␣   │NAV │ ⌘  │ ⌥  │ mⁿ │
   ┄         └────┴─── └─┆──┴────┴─┆─────┴───────┴────┴────┘ ───┴────┘
-                        └ NAV     └ ^     Double-tap
+                        └ ⌥       └ NAV   Double-tap
   */
 
   [0] = LAYOUT_planck_2x2u(
     KC_Q,    KC_W,    KC_F,    KC_P,   KC_B, _____,   _____,  KC_J, KC_L,     KC_U,    KC_Y,    KC_BSPC,
     KC_A,    KC_R,    KC_S,    KC_T,   KC_G, _____,   _____,  KC_M, KC_N,     KC_E,    KC_I,    KC_O,
     KC_Z,    KC_X,    KC_C,    KC_D,   KC_V, _____,   _____,  KC_K, KC_H,     KC_COMM, KC_DOT,  LCTL_T(KC_ENT),
-    KC_LCTL, KC_LGUI, xx_LCMD, xx_SYM, /**/  xx_LSFT, KC_SPC, /**/  MO(_NAV), KC_LCMD, KC_LGUI, MC_MUTE
+    KC_LCTL, KC_LGUI, xx_LCMD, xx_SYM, /**/  xx_LSFT, KC_SPC, /**/  MO(_NAV), xx_LCMD, KC_LGUI, MC_MUTE
   ), /*
 
   ┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄
@@ -69,7 +70,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = { /*
 
   ┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄
   Navigate  ┌────┬────┬────┐ ───┬────┐     ┌────┬────┏━━━━┓────┬────┐
-            │ ⌃  │ ⌥  │ ⌘  │ :  │FUN │     │pg↑ │home┃ ▲  ┃end │PAD │
+            │ ⌃  │ ⌥  │ ⌘  │ :  │MMM │     │pg↑ │home┃ ▲  ┃end │FUN │
             └────┴────┴────┘ ───┼────┤     ├────┏━━━━┛────┗━━━━┓────┤
             │ 1  │ 2  │ 3  │ 4  │ 5  │     │pg↓ ┃ ◀  │ ▼  │ ▶  ┃ ↵  │
   ┌┄┄┄┄┐    ├────┼────┼────┼────┼────┤     ├────┗━━━━┷━━━━┷━━━━┛────┤
@@ -80,43 +81,43 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = { /*
   */
 
   [_NAV] = LAYOUT_planck_2x2u(
-    KC_LCTL, KC_LGUI, KC_LALT, KC_COLN, MO(_FUN), _____, _____, KC_PGUP, KC_HOME, KC_UP,   KC_END,  MO(_PAD),
+    KC_LCTL, KC_LGUI, KC_LALT, KC_COLN, MO(_MMM), _____, _____, KC_PGUP, KC_HOME, KC_UP,   KC_END,  MO(_FUN),
     KC_1,    KC_2,    KC_3,    KC_4,    KC_5,     _____, _____, KC_PGDN, KC_LEFT, KC_DOWN, KC_RGHT, KC_ENT,
     KC_6,    KC_7,    KC_8,    KC_9,    KC_0,     _____, _____, KC_ESC,  KC_TAB,  KC_COMM, KC_DOT,  KC_RCTL,
     __v__,   __v__,   __v__,   __v__,   /**/      __v__, __v__, /**/     __v__,   __v__,   __v__,   __v__
   ), /*
 
   ┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄
-  Macropad  ┌────┐────┬────┌────┬────┐     ┌────┬────┬────┬────┬────┐
-            │rgb │    │    │    │    │     │ m⁰ │ mⁿ │    │ mⁿ │ ▓▓ │
-            └────┘ ───┼─── └────┴────┘     ├────┼────┼────┼────┼────┤
-            │f₁₉ │f₂₀ │f₁₃ │f₁₄ │f₁₅ │     │    │    │    │    │GAM │
+  Function  ┏━━━━┓────┬────┬────┬────┐     ┌────┬────┬────┬────┬────┐
+            ┃rset┃    │    │    │caps│     │rgb │hue⁻│hue⁺│cmbt│ ▓▓ │
+            ┗━━━━┛────┼────┼────┼────┤     ├────┼────┼────┼────┼────┤
+            │ f₁ │ f₂ │ f₃ │ f₄ │ f₅ │     │f₁₁ │f₁₂ │f₁₃ │f₁₄ │f₁₅ │
   ┌┄┄┄┄┐    ├────┼────┼────┼────┼────┤     ├────┼────┼────┼────┼────┤
-  ┆PAD ┆ ┄› │f₁₆ │f₁₇ │f₁₈ │    │    │     │bck │hom │caps│cmbt│lock│
+  ┆FUN ┆ ┄› │ f₆ │ f₇ │ f₈ │ f₉ │f₁₀ │     │f₁₆ │f₁₇ │f₁₈ │f₁₉ │f₂₀ │
   └┄┄┄┄┘    └────┴────┴────┴────┴────┘     └────┴────┴────┴────┴────┘ */
 
-  [_PAD] = LAYOUT_planck_2x2u(
-    RGB_TOG, _____,  _____,  _____,  _____,  _____, _____, MC_MUTE,     MC_HAND,     _____,   MC_SHOT, _____,
-    KC_F19,  KC_F20, KC_F13, KC_F14, KC_F15, _____, _____, _____,       _____,       _____,   _____,   DF(_GAM),
-    KC_F16,  KC_F17, KC_F18, KC_F19, KC_F20, _____, _____, KC_WWW_BACK, KC_WWW_HOME, KC_CAPS, CMB_TOG, DF(_LOC),
-    LAG_SWP, LAG_NRM, __v__,  __v__,  /**/    __v__, __v__, /**/         __v__,       __v__,   __v__,   _____
+  [_FUN] = LAYOUT_planck_2x2u(
+    RESET,   _____,   _____, _____, KC_CAPS, _____, _____, RGB_TOG, RGB_HUD, RGB_HUI, CMB_TOG, __v__,
+    KC_F1,   KC_F2,   KC_F3, KC_F4, KC_F5,   _____, _____, KC_F11,  KC_F12,  KC_F13,  KC_F14,  KC_F15,
+    KC_F6,   KC_F7,   KC_F8, KC_F9, KC_F10,  _____, _____, KC_F16,  KC_F17,  KC_F18,  KC_F19,  KC_F20,
+    LAG_SWP, LAG_NRM, __v__, __v__, /**/     __v__, __v__, /**/     __v__,   __v__,   __v__,   _____
   ), /*
 
   ┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄
-  Function  ┏━━━━┓────┬────┌────┬────┐     ┌────┬────┏━━━━┓────┬────┐
-  Mouse     ┃rset┃ f₁₁│f₁₂ │lmb │ ▓▓ │     │ w↑ │ S↹ ┃ ▲  ┃^ ↹ │rmb │
-            ┗━━━━┛ ───┼─── └────┴────┘     ├────┏━━━━┛────┗━━━━┓────┤
-            │ f₁ │ f₂ │ f₃ │ f₄ │ f₅ │     │ w↓ ┃ ◀  │ ▼  │ ▶  ┃scr⁺│
+  Mouse +   ┌────┬────┬────┬────┬────┐     ┌────┬────┏━━━━┓────┬────┐
+  Macros +  │ m⁰ │ mⁿ │ mⁿ │    │ ▓▓ │     │ w↑ │ S↹ ┃ ▲  ┃^ ↹ │rmb │
+  Media     ├────┼────┼────┼────┼────┤     ├────┏━━━━┛────┗━━━━┓────┤
+            │GAM │    │    │    │    │     │ w↓ ┃ ◀  │ ▼  │ ▶  ┃scr⁺│
   ┌┄┄┄┄┐    ├────┼────┼────┼────┼────┤     ├────┗━━━━┷━━━━┷━━━━┛────┤
-  ┆FUN ┆ ┄› │ f₆ │ f₇ │ f₈ │ f₉ │f₁₀ │     │vol⁻│vol⁺│play│next│scr⁻│
-  └┄┄┄┄┘    └────┴────┴────┴────┴────┘  ┌──└────┴────┴────┴────┴────┘
-                                        │ lmb   │
-                                        └───────┘ */
-  [_FUN] = LAYOUT_planck_2x2u(
-    RESET, KC_F11, KC_F12, KC_MS_BTN1, __v__,  _____, _____,      KC_WH_U, RCTL(LSFT(KC_TAB)), KC_MS_U, RCTL(KC_TAB), KC_MS_BTN2,
-    KC_F1, KC_F2,  KC_F3,  KC_F4,      KC_F5,  _____, _____,      KC_WH_D, KC_MS_L,            KC_MS_D, KC_MS_R,      KC_BRIU,
-    KC_F6, KC_F7,  KC_F8,  KC_F9,      KC_F10, _____, _____,      KC_VOLD, KC_VOLU,            KC_MPLY, KC_MNXT,      KC_BRID,
-    __v__, __v__,  __v__,  __v__,      /**/    __v__, KC_MS_BTN1, /**/     __v__,              __v__,   __v__,        __v__
+  ┆MMM ┆ ┄› │LOC │    │    │    │    │     │vol⁻│vol⁺│play│next│scr⁻│
+  └┄┄┄┄┘    └────┴────┴────┴────┴────┘──┬──└────┴────┴────┴────┴────┘
+                                │ lmb   │ lmb   │
+                                └───────┴───────┘ */
+  [_MMM] = LAYOUT_planck_2x2u(
+    MC_MUTE,  MC_HAND, MC_SHOT, _____, _____, _____,      _____,      KC_WH_U, RCTL(LSFT(KC_TAB)), KC_MS_U, RCTL(KC_TAB), KC_MS_BTN2,
+    DF(_GAM), _____,   _____,   _____, _____, _____,      _____,      KC_WH_D, KC_MS_L,            KC_MS_D, KC_MS_R,      KC_BRIU,
+    DF(_LOC), _____,   _____,   _____, _____, _____,      _____,      KC_VOLD, KC_VOLU,            KC_MPLY, KC_MNXT,      KC_BRID,
+    __v__,    __v__,   __v__,   __v__, /**/   KC_MS_BTN1, KC_MS_BTN1, /**/     __v__,              __v__,   __v__,        __v__
   ), /*
 
   ┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄
@@ -246,16 +247,16 @@ void tap_dance_sft_up (qk_tap_dance_state_t *state, void *user_data) {
 void tap_dance_cmd_down (qk_tap_dance_state_t *state, void *user_data) {
 	switch (state->count) {
 		case 1: register_code(KC_LALT); break;
-		case 2: layer_on(_NAV); break;
-		case 3: register_code(KC_LALT); layer_on(_NAV); break;
+		case 2: register_code(KC_LGUI); break;
+		case 3: register_code(KC_LALT); register_code(KC_LGUI); break;
 	}
 }
 
 void tap_dance_cmd_up (qk_tap_dance_state_t *state, void *user_data) {
 	switch (state->count) {
 		case 1: unregister_code(KC_LALT); break;
-		case 2: layer_off(_NAV); break;
-		case 3: unregister_code(KC_LALT); layer_off(_NAV); break;
+		case 2: unregister_code(KC_LGUI); break;
+		case 3: unregister_code(KC_LALT); unregister_code(KC_LGUI); break;
 	}
 }
 
