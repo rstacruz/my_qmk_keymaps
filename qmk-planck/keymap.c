@@ -42,7 +42,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = { /*
             └────┴────┼────┴────┴────┴─────┴────┴────┴────┼────┴────┘
             │ ⌃  │ ⌥  │ ⌘  │SYM │   ⇧   │   ␣   │NAV │ ⌘  │ ⌥  │ mⁿ │
   ┄         └────┴─── └─┆──┴────┴─┆─────┴───────┴────┴────┘ ───┴────┘
-                        └ ⌥       └ NAV   Double-tap
+                        └ ⌥       └ ⌃     Double-tap
   */
 
   [0] = LAYOUT_planck_2x2u(
@@ -59,15 +59,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = { /*
             │ !  │ @  │ #  │ $  │ %  │ 123 │ {  │ (  │ :  │ )  │ }  │
   ┌┄┄┄┄┐    ├────┼────┼────┼────┼────┤     ├────┼────┼────┼────┼────┤
   ┆SYM ┆ ┄› │ \  │ ~  │ |  │ &  │ ;  │ etc │ /  │ *  │ -  │ +  │ _  │ math
-  └┄┄┄┄┘    └────┴────┴────┴────┴────┘     └────┴────┴────┴────┴────┘
-            │    │    │    │ ▓▓ │ ⌃     │       │    │    │    │    │
+  └┄┄┄┄┘    └────┴────┴────┴────┴────┘─────└────┴────┴────┴────┴────┘
+            │    │    │    │ ▓▓ │ NAV   │       │    │    │    │    │
             └────┴─── └────┴────┴───────┴───────┴────┴────┘ ───┴────┘ */
 
   [_SYM] = LAYOUT_planck_2x2u(
-    KC_QUOT, KC_DQUO, KC_CIRC, KC_QUES, KC_GRV,  _____,   _____, KC_LBRC, KC_LT,   KC_EQL,  KC_GT,   KC_RBRC,
-    KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC, _____,   _____, KC_LCBR, KC_LPRN, KC_COLN, KC_RPRN, KC_RCBR,
-    KC_SCLN, KC_TILD, KC_PIPE, KC_AMPR, KC_BSLS, _____,   _____, KC_PSLS, KC_PAST, KC_PMNS, KC_PPLS, KC_UNDS,
-    __v__,   __v__,   __v__,   __v__,   /**/     KC_LCTL, __v__, /**/     __v__,   __v__,   __v__,   __v__
+    KC_QUOT, KC_DQUO, KC_CIRC, KC_QUES, KC_GRV,  _____,    _____, KC_LBRC, KC_LT,   KC_EQL,  KC_GT,   KC_RBRC,
+    KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC, _____,    _____, KC_LCBR, KC_LPRN, KC_COLN, KC_RPRN, KC_RCBR,
+    KC_SCLN, KC_TILD, KC_PIPE, KC_AMPR, KC_BSLS, _____,    _____, KC_PSLS, KC_PAST, KC_PMNS, KC_PPLS, KC_UNDS,
+    __v__,   __v__,   __v__,   __v__,   /**/     MO(_NAV), __v__, /**/     __v__,   __v__,   __v__,   __v__
   ), /*
 
   ┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄
@@ -76,7 +76,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = { /*
             └────┴────┴────┘ ───┼────┤     ├────┏━━━━┛────┗━━━━┓────┤
             │ 1  │ 2  │ 3  │ 4  │ 5  │     │pg↓ ┃ ◀  │ ▼  │ ▶  ┃ ↵  │
   ┌┄┄┄┄┐    ├────┼────┼────┼────┼────┤     ├────┗━━━━┷━━━━┷━━━━┛────┤
-  ┆NAV ┆ ┄› │ 6  │ 7  │ 8  │ 9  │ 0  │     │ ⎋  │ ↹  │ ,  │ .  │ ⌃  │
+  ┆NAV ┆ ┄› │ 6  │ 7  │ 8  │ 9  │ 0  │     │ ⎋  │ ↹  │ ↵  │ .  │ ⌃  │
   └┄┄┄┄┘    └────┴────┴────┴────┴────┘─────└────┴────┴────┴────┴────┘
             │    │    │    │    │       │       │ ▓▓ │ ⌘  │ ⌥  │    │
             └────┴─── └────┴────┴───────┴───────┴────┴────┘ ───┴────┘ */
@@ -84,13 +84,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = { /*
   [_NAV] = LAYOUT_planck_2x2u(
     KC_LCTL, KC_LGUI, KC_LALT, KC_COLN, MO(_MMM), _____, _____, KC_PGUP, KC_HOME, KC_UP,   KC_END,  MO(_FUN),
     KC_1,    KC_2,    KC_3,    KC_4,    KC_5,     _____, _____, KC_PGDN, KC_LEFT, KC_DOWN, KC_RGHT, KC_ENT,
-    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,     _____, _____, KC_ESC,  KC_TAB,  KC_COMM, KC_DOT,  KC_RCTL,
+    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,     _____, _____, KC_ESC,  KC_TAB,  KC_ENT,  KC_DOT,  KC_RCTL,
     __v__,   __v__,   __v__,   __v__,   /**/      __v__, __v__, /**/     __v__,   __v__,   __v__,   __v__
   ), /*
 
   ┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄
   Function  ┏━━━━┓────┬────┬────┬────┐     ┌────┬────┬────┬────┬────┐
-            ┃rset┃    │    │    │caps│     │rgb │hue⁻│hue⁺│cmbt│ ▓▓ │
+            ┃rset┃rgb │hue⁻│hue⁺│cmbt│     │caps│    │    │    │ ▓▓ │
             ┗━━━━┛────┼────┼────┼────┤     ├────┼────┼────┼────┼────┤
             │ f₁ │ f₂ │ f₃ │ f₄ │ f₅ │     │f₁₁ │f₁₂ │f₁₃ │f₁₄ │f₁₅ │
   ┌┄┄┄┄┐    ├────┼────┼────┼────┼────┤     ├────┼────┼────┼────┼────┤
@@ -98,10 +98,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = { /*
   └┄┄┄┄┘    └────┴────┴────┴────┴────┘     └────┴────┴────┴────┴────┘ */
 
   [_FUN] = LAYOUT_planck_2x2u(
-    RESET,   _____,   _____, _____, KC_CAPS, _____, _____, RGB_TOG, RGB_HUD, RGB_HUI, CMB_TOG, __v__,
-    KC_F1,   KC_F2,   KC_F3, KC_F4, KC_F5,   _____, _____, KC_F11,  KC_F12,  KC_F13,  KC_F14,  KC_F15,
-    KC_F6,   KC_F7,   KC_F8, KC_F9, KC_F10,  _____, _____, KC_F16,  KC_F17,  KC_F18,  KC_F19,  KC_F20,
-    LAG_SWP, LAG_NRM, __v__, __v__, /**/     __v__, __v__, /**/     __v__,   __v__,   __v__,   _____
+    RESET,   RGB_TOG, RGB_HUD, RGB_HUI, CMB_TOG, _____, _____, KC_CAPS, _____,  _____,  _____,  __v__,
+    KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   _____, _____, KC_F11, KC_F12, KC_F13, KC_F14,  KC_F15,
+    KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  _____, _____, KC_F16, KC_F17, KC_F18, KC_F19,  KC_F20,
+    LAG_SWP, LAG_NRM, __v__,   __v__,   /**/     __v__, __v__, /**/    __v__,  __v__,  __v__,   _____
   ), /*
 
   ┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄
@@ -232,16 +232,16 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 void tap_dance_sft_down (qk_tap_dance_state_t *state, void *user_data) {
 	switch (state->count) {
 		case 1: register_code(KC_LSFT); break;
-		case 2: layer_on(_NAV); break;
-		case 3: register_code(KC_LSFT); layer_on(_NAV); break;
+		case 2: register_code(KC_LCTL); break;
+		case 3: register_code(KC_LSFT); register_code(KC_LCTL); break;
 	}
 }
 
 void tap_dance_sft_up (qk_tap_dance_state_t *state, void *user_data) {
 	switch (state->count) {
 		case 1: unregister_code(KC_LSFT); break;
-		case 2: layer_off(_NAV); break;
-		case 3: unregister_code(KC_LSFT); layer_off(_NAV); break;
+		case 2: unregister_code(KC_LCTL); break;
+		case 3: unregister_code(KC_LSFT); unregister_code(KC_LCTL); break;
 	}
 }
 
