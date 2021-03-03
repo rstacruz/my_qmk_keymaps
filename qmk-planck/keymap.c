@@ -117,10 +117,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = { /*
                            │rmb │ lmb   │
                            └────┴───────┘ */
   [_MMM] = LAYOUT_planck_2x2u(
-    MC_MUTE,  MC_HAND, MC_SHOT, _____,      _____, _____,      _____, KC_WH_U, RCTL(LSFT(KC_TAB)), KC_MS_U, RCTL(KC_TAB), KC_MS_BTN2,
-    DF(_GAM), _____,   _____,   _____,      _____, _____,      _____, KC_WH_D, KC_MS_L,            KC_MS_D, KC_MS_R,      KC_BRIU,
-    DF(_LOC), _____,   _____,   _____,      _____, _____,      _____, KC_VOLD, KC_VOLU,            KC_MPLY, KC_MNXT,      KC_BRID,
-    __v__,    __v__,   __v__,   KC_MS_BTN2, /**/   KC_MS_BTN1, _____, /**/     __v__,              __v__,   __v__,        __v__
+    MC_MUTE,  MC_HAND, MC_SHOT, _____,      _____, _____,      _____,      KC_WH_U, RCTL(LSFT(KC_TAB)), KC_MS_U, RCTL(KC_TAB), KC_MS_BTN2,
+    DF(_GAM), _____,   _____,   _____,      _____, _____,      _____,      KC_WH_D, KC_MS_L,            KC_MS_D, KC_MS_R,      KC_BRIU,
+    DF(_LOC), _____,   _____,   _____,      _____, _____,      _____,      KC_VOLD, KC_VOLU,            KC_MPLY, KC_MNXT,      KC_BRID,
+    __v__,    __v__,   __v__,   KC_MS_BTN2, /**/   KC_MS_BTN1, KC_MS_BTN1, /**/     __v__,              __v__,   __v__,        __v__
   ), /*
 
   ┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄
