@@ -11,7 +11,8 @@
 
 (defalias
   c\   (tap-next \ lctl)
-  cbs  (around ctl bks)
+  cbs  (tap-next bks lctl)
+  bsw  (around ctl bks)
   tnav (tap-next tab (layer-toggle nav))
   tsym (tap-next tab (layer-toggle sym))
   NAV  (layer-toggle nav)
@@ -33,7 +34,7 @@
 
 (deflayer colemak-dh-ext
   _     _    _    _    _    _         _    _    _    _    _    _    _    _
-  @tnav q    w    f    p    b         ;    j    l    u    y    bks  '    @c\
+  @tnav q    w    f    p    b         ;    j    l    u    y    bks  '    @cbs
   lctl  a    r    s    t    g         -    m    n    e    i    o         ret
   lsft  z    x    c    d    v         /    k    h    ,    .              _
   @opt  @cmd @SYM                     spc                           @NAV rsft

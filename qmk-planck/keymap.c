@@ -79,12 +79,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = { /*
   ┆NAV ┆ ┄› │ 6  │ 7  │ 8  │ 9  │ 0  │     │ ⎋  │ ↹  │ ⌘  │ ⌥  │ ⌃  │
   └┄┄┄┄┘    └────┴────┴────┴────┴────┘──┬──└────┴────┴────┴────┴────┘
                                         │       │ ▓▓ │ .  │ 
-                                        └───────┴────┴────┘      */
+                                        └───────┴────┴────┘ */
 
   [_NAV] = LAYOUT_planck_2x2u(
     KC_LCTL, KC_LGUI, KC_LALT, KC_COLN, MO(_MMM), _____, _____, KC_PGUP, KC_HOME, KC_UP,   KC_END,  MO(_FUN),
     KC_1,    KC_2,    KC_3,    KC_4,    KC_5,     _____, _____, KC_PGDN, KC_LEFT, KC_DOWN, KC_RGHT, KC_ENT,
-    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,     _____, _____, KC_ESC,  KC_TAB,  KC_LCMD, KC_LGUI, KC_RCTL,
+    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,     _____, _____, KC_ESC,  KC_TAB,  KC_LALT, KC_LGUI, KC_RCTL,
     __v__,   __v__,   __v__,   __v__,   /**/      __v__, __v__, /**/     __v__,   KC_DOT,  __v__,   __v__
   ), /*
 
@@ -95,7 +95,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = { /*
             │ f₁ │ f₂ │ f₃ │ f₄ │ f₅ │     │f₁₁ │f₁₂ │f₁₃ │f₁₄ │f₁₅ │
   ┌┄┄┄┄┐    ├────┼────┼────┼────┼────┤     ├────┼────┼────┼────┼────┤
   ┆FUN ┆ ┄› │ f₆ │ f₇ │ f₈ │ f₉ │f₁₀ │     │f₁₆ │f₁₇ │f₁₈ │f₁₉ │f₂₀ │
-  └┄┄┄┄┘    └────┴────┴────┴────┴────┘     └────┴────┴────┴────┴────┘ */
+  └┄┄┄┄┘    └────┴────┴────┴────┴────┘     └────┴────┴────┴────┴────┘
+            │mac │win │
+            └────┴────┘ */
 
   [_FUN] = LAYOUT_planck_2x2u(
     RESET,   RGB_TOG, RGB_HUD, RGB_HUI, CMB_TOG, _____, _____, KC_CAPS, _____,  _____,  _____,  __v__,
@@ -160,7 +162,7 @@ Chords      ┌────┬────┬────┬────┬─�
             │ z  │ x  │ c  │ d  │ v  │     │ k  │ h  │ ,  │ .  │    │
             └────┴────┴────┴────┴────┴─────┴────┴────┴────┴────┴────┘
                                              └ ; ┄└ ' ┄└ - ┄┘
-                                                  └┄┄┄┄  ? ┄┘
+                                                  └┄┄┄┄  / ┄┘
 Chords      ┌────┬────┬────┬────┬────┐     ┌────┬────┬────┬────┬────┐
 with space  │    │    │    │    │    │     │    │    │    │    │    │
             ├────┼────┼────┼────┼────┤     ├────┼────┼────┼────┼────┤
@@ -183,7 +185,7 @@ const uint16_t PROGMEM combo_7[] = {KC_SPC, KC_DOT, COMBO_END};
 const uint16_t PROGMEM combo_8[] = {KC_SPC, KC_M, COMBO_END};
 
 combo_t key_combos[COMBO_COUNT] = {
-  [CM_0] = COMBO(combo_0, KC_QUES),
+  [CM_0] = COMBO(combo_0, KC_SLSH),
   [CM_1] = COMBO(combo_1, KC_QUOT),
   [CM_2] = COMBO(combo_2, KC_SCLN),
   [CM_3] = COMBO(combo_3, KC_MINS),

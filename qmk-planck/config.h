@@ -23,7 +23,7 @@
 // #define TAPPING_FORCE_HOLD
 
 /*
- * Mouse keys
+ *  keys
  * https://beta.docs.qmk.fm/using-qmk/advanced-keycodes/feature_mouse_keys
  */
 
@@ -49,5 +49,5 @@
  * Combo
  */
 
-#define COMBO_COUNT 9
+#define COMBO_COUNT 8
 #define COMBO_TERM 25
