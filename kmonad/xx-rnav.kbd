@@ -11,17 +11,21 @@
 
 (defalias
   c\   (tap-next \ lctl)
-  cbs  (around ctl bks)
+  sbs  (tap-next bks rsft)
+  bsw  (around ctl bks)
   tnav (tap-next tab (layer-toggle nav))
   tsym (tap-next tab (layer-toggle sym))
   NAV  (layer-toggle nav)
   SYM  (layer-toggle sym)
   '    (tap-next-release ' lctl)
+  cmd lalt
+  opt lmet
 )
 
 ;; ────────────────────────────────────────────────────────────────────────────
 
 (defsrc
+  `    1    2    3    4    5         6    7    8    9    0    -    =    bks
   tab  q    w    e    r    t         y    u    i    o    p    [    ]    \
   caps a    s    d    f    g         h    j    k    l    ;    '         ret
   lsft z    x    c    v    b         n    m    ,    .    /              rsft
@@ -29,33 +33,38 @@
 )
 
 (deflayer colemak-dh-ext
-  @tsym q    w    f    p    b         ]    j    l    u    y    ;    '    @c\
-  @NAV  a    r    s    t    g         [    m    n    e    i    o         ret
-  lsft  z    x    c    d    v         /    k    h    ,    .              rsft
-  lctl  lmet lalt                     spc                           @NAV rctl
+  _     _    _    _    _    _         _    _    _    _    _    _    _    _
+  _     q    w    f    p    b         XX   j    l    u    y    @NAV rsft @c\
+  lctl  a    r    s    t    g         XX   m    n    e    i    o         _   
+  _     z    x    c    d    v         @NAV k    h    ,    .              _   
+  @opt  @cmd @SYM                     spc                           @NAV _   
 )
 
 (deflayer nav
-  _    XX   XX   .    :    -         _    pgup home up   end  bks  _    _
-  _    1    2    3    4    5         _    pgdn left down rght ret       _
-  _    6    7    8    9    0         _    esc  tab  bks  XX             _
-  _    _    _                        _                             _    _
+  _     _    _    _    _    _         _    _    _    _    _    _    _    _
+  _     lctl @cmd tab  bks  bks       _    bks  home up   end  _    _    _
+  _     1    2    3    4    5         _    ret  left down rght _         _
+  _     6    7    8    9    0         _    esc  pgup pgdn XX             _
+  _     _    _                        _                             _    _
 )
+;; ret tab
 
 (deflayer sym
-  _    '    "    ^    ?    `         _    [    <    =    >    ]    _    _
-  _    !    @    #    $    %         _    {    \(   :    \)   }         _
-  _    ;    ~    |    &    \         _    /    *    -    +             \_
-  _    _    _                        _                             _    _
+  _     _    _    _    _    _         _    _    _    _    _    _    _    _
+  _     '    "    ^    ?    `         _    [    <    =    >    ]    _    _
+  _     !    @    #    $    %         _    {    \(   :    \)   }         _
+  _     ;    ~    |    &    \         _    /    *    -    +             \_
+  _     _    _                        _                             _    _
 )
 
 ;; ────────────────────────────────────────────────────────────────────────────
 
 (deflayer blank
-  _    _    _    _    _    _         _    _    _    _    _    _    _    _
-  _    _    _    _    _    _         _    _    _    _    _    _         _
-  _    _    _    _    _    _         _    _    _    _    _              _
-  _    _    _                        _         _    _
+  _     _    _    _    _    _         _    _    _    _    _    _    _    _
+  _     _    _    _    _    _         _    _    _    _    _    _    _    _
+  _     _    _    _    _    _         _    _    _    _    _    _         _
+  _     _    _    _    _    _         _    _    _    _    _              _
+  _     _    _                        _         _    _
 )
 
 ;; ────────────────────────────────────────────────────────────────────────────
