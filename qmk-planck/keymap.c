@@ -164,11 +164,11 @@ Chords      ┌────┬────┬────┬────┬─�
                                              └ ; ┄└ ' ┄└ - ┄┘
                                                   └┄┄┄┄  / ┄┘
 Chords      ┌────┬────┬────┬────┬────┐     ┌────┬────┬────┬────┬────┐
-with space  │    │    │    │    │    │     │    │    │    │    │    │
+with space  │    │    │    │    │    │     │ ⌃  │    │    │    │    │
             ├────┼────┼────┼────┼────┤     ├────┼────┼────┼────┼────┤
-            │    │    │    │    │    │     │ ⌃  │    │    │    │    │
+            │    │    │    │    │    │     │ ↵  │    │    │    │    │
             ├────┼────┼────┼────┼────┤     ├────┼────┼────┼────┼────┤
-            │    │    │    │    │    │     │ ⎋  │ ↹  │ ↵  │ ⌫  │    │
+            │    │    │    │    │    │     │ ⎋  │ ↹  │    │ ⌫  │    │
             └────┴────┴────┴────┴────┴─────┴────┴────┴────┴────┴────┘
 */
 
@@ -180,7 +180,7 @@ const uint16_t PROGMEM combo_2[] = {KC_K, KC_H, COMBO_END};
 const uint16_t PROGMEM combo_3[] = {KC_COMM, KC_DOT, COMBO_END};
 const uint16_t PROGMEM combo_4[] = {KC_SPC, KC_H, COMBO_END};
 const uint16_t PROGMEM combo_5[] = {KC_SPC, KC_K, COMBO_END};
-const uint16_t PROGMEM combo_6[] = {KC_SPC, KC_COMM, COMBO_END};
+const uint16_t PROGMEM combo_6[] = {KC_SPC, KC_J, COMBO_END};
 const uint16_t PROGMEM combo_7[] = {KC_SPC, KC_DOT, COMBO_END};
 const uint16_t PROGMEM combo_8[] = {KC_SPC, KC_M, COMBO_END};
 
@@ -191,9 +191,9 @@ combo_t key_combos[COMBO_COUNT] = {
   [CM_3] = COMBO(combo_3, KC_MINS),
   [CM_4] = COMBO(combo_4, KC_TAB),
   [CM_5] = COMBO(combo_5, KC_ESC),
-  [CM_6] = COMBO(combo_6, KC_ENT),
+  [CM_6] = COMBO(combo_6, KC_LCTL),
   [CM_7] = COMBO(combo_7, C(KC_BSPC)),
-  [CM_8] = COMBO(combo_8, KC_LCTL),
+  [CM_8] = COMBO(combo_8, KC_ENT),
 };
 
 // https://beta.docs.qmk.fm/using-qmk/software-features/tap_hold#ignore-mod-tap-interrupt
