@@ -10,7 +10,7 @@
 /* #define xx_SYM  TD(TD_SYM) */
 
 /* Layers */
-enum layers { _BASE = 0, _SYM, _NAV, _FUN, _MMM, _GAM, _LOC };
+enum layers { _BASE = 0, _PLU, _SYM, _NAV, _FUN, _MMM, _GAM, _LOC };
 
 /* Macros */
 enum custom_keycodes {
@@ -20,7 +20,7 @@ enum custom_keycodes {
 };
 
 /* Tap dance definitions */
-enum {
+enum tap_dance_keys {
   TD_CMD = 0,
   TD_SFT,
   TD_SYM,
@@ -30,7 +30,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = { /*
 
   ┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄
   Colemak   ┌────┬────┬────┬────┬────┐     ┌────┬────┬────┬────┬────┐
-  mod-DH    │ q  │ w  │ f  │ p  │ b  │     │ j  │ l  │ u  │ y  │ ⌫  │
+  mod-DH    │ q  │ w  │ f  │ p  │ b  │     │ j  │ l  │ u  │ y  │NAV⌫│
             ├────┼────┼────┼────┼────┤     ├────┼────┼────┼────┼────┤
             │ a  │ r  │ s  │ t  │ g  │     │ m  │ n  │ e  │ i  │ o  │
             ├────┼────┼────┼────┼────┤     ├────┼────┼────┼────┼────┤
@@ -42,10 +42,17 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = { /*
   */
 
   [0] = LAYOUT_planck_2x2u(
-    KC_Q,    KC_W,    KC_F,    KC_P,   KC_B, _____,   _____,  KC_J, KC_L,     KC_U,    KC_Y,    LT(_NAV,KC_ENT),
+    KC_Q,    KC_W,    KC_F,    KC_P,   KC_B, _____,   _____,  KC_J, KC_L,     KC_U,    KC_Y,    LT(_NAV,KC_BSPC),
     KC_A,    KC_R,    KC_S,    KC_T,   KC_G, _____,   _____,  KC_M, KC_N,     KC_E,    KC_I,    KC_O,
     KC_Z,    KC_X,    KC_C,    KC_D,   KC_V, _____,   _____,  KC_K, KC_H,     KC_COMM, KC_DOT,  LCTL_T(KC_ENT),
     KC_LCTL, KC_LGUI, xx_LCMD, xx_SYM, /**/  xx_LSFT, KC_SPC, /**/  MO(_NAV), KC_LGUI, MC_HAND, MC_MUTE
+  ),
+
+  [_PLU] = LAYOUT_planck_2x2u(
+    __v__, __v__, __v__, __v__, __v__, __v__, __v__, __v__, __v__, __v__, __v__, __v__,
+    __v__, __v__, __v__, __v__, __v__, __v__, __v__, __v__, __v__, __v__, __v__, __v__,
+    __v__, __v__, __v__, __v__, __v__, __v__, __v__, __v__, __v__, __v__, __v__, __v__,
+    __v__, __v__, __v__, __v__, /**/   __v__, __v__, /**/   __v__, __v__, __v__, __v__
   ), /*
 
   ┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄
@@ -68,25 +75,25 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = { /*
 
   ┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄
   Navigate  ┌────┬────┐────┬────┬────┐     ┌────┬────┏━━━━┓────┬────┐
-            │ ⌃  │ ⌥  │ ↹  │MMM │FUN │     │ ⌫  │home┃ ▲  ┃end │ ▓▓ │
-            └────┴────┘────┴────┼────┤     ├────┏━━━━┛────┗━━━━┓────┤
-            │ 1  │ 2  │ 3  │ 4  │ 5  │     │ ↵  ┃ ◀  │ ▼  │ ▶  ┃    │
+            │ ⌃  │ ⌥  │    │MMM │FUN │     │pg↑ │home┃ ▲  ┃end │ ▓▓ │
+            └────┴────┘────┼────┼────┤     ├────┏━━━━┛────┗━━━━┓────┤
+            │ 1  │ 2  │ 3  │ 4  │ 5  │     │pg↓ ┃ ◀  │ ▼  │ ▶  ┃ ↵  │
   ┌┄┄┄┄┐    ├────┼────┼────┼────┼────┤     ├────┗━━━━┷━━━━┷━━━━┛────┤
-  ┆NAV ┆ ┄› │ 6  │ 7  │ 8  │ 9  │ 0  │     │ ⎋  │pg↑ │pg↓ │    │ ⌃  │
+  ┆NAV ┆ ┄› │ 6  │ 7  │ 8  │ 9  │ 0  │     │ ⎋  │ ↹  │    │    │ ⌃  │
   └┄┄┄┄┘    └────┴────┴────┴────┴────┘──┬──└────┴────┴────┴────┴────┘
-                                        │   ↵   │    │ .  │
+                                        │       │    │ .  │
                                         └───────┴────┴────┘ */
 
   [_NAV] = LAYOUT_planck_2x2u(
-    KC_LCTL, KC_LGUI, KC_TAB, MO(_MMM), MO(_FUN), _____, _____,  KC_BSPC, KC_HOME, KC_UP,   KC_END,  __v__,
-    KC_1,    KC_2,    KC_3,   KC_4,     KC_5,     _____, _____,  KC_ENT,  KC_LEFT, KC_DOWN, KC_RGHT, KC_ENT,
-    KC_6,    KC_7,    KC_8,   KC_9,     KC_0,     _____, _____,  KC_ESC,  KC_PGUP, KC_PGDN, __v__,   KC_RCTL,
-    __v__,   __v__,   __v__,  __v__,    /**/      __v__, KC_ENT, /**/     __v__,   KC_DOT,  __v__,   __v__
+    KC_LCTL, KC_LGUI, _____,  MO(_MMM), MO(_FUN), _____, _____, KC_PGUP, KC_HOME, KC_UP,   KC_END,  __v__,
+    KC_1,    KC_2,    KC_3,   KC_4,     KC_5,     _____, _____, KC_PGDN, KC_LEFT, KC_DOWN, KC_RGHT, KC_ENT,
+    KC_6,    KC_7,    KC_8,   KC_9,     KC_0,     _____, _____, KC_ESC,  KC_TAB,  _____,   _____,   KC_RCTL,
+    __v__,   __v__,   __v__,  __v__,    /**/      __v__, __v__, /**/     __v__,   KC_DOT,  __v__,   __v__
   ), /*
 
   ┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄
   Function  ┏━━━━┓────┬────┬────┬────┐     ┌────┬────┬────┬────┬────┐
-            ┃rset┃rgb │hue⁻│hue⁺│cmbt│     │caps│    │    │    │ ▓▓ │
+            ┃rset┃rgb │hue⁻│hue⁺│ ▓▓ │     │caps│    │    │    │    │
             ┗━━━━┛────┼────┼────┼────┤     ├────┼────┼────┼────┼────┤
             │ f₁ │ f₂ │ f₃ │ f₄ │ f₅ │     │f₁₁ │f₁₂ │f₁₃ │f₁₄ │f₁₅ │
   ┌┄┄┄┄┐    ├────┼────┼────┼────┼────┤     ├────┼────┼────┼────┼────┤
@@ -159,14 +166,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = { /*
 Chords      ┌────┬────┬────┬────┬────┐     ┌────┬────┬────┬────┬────┐
             │ z  │ x  │ c  │ d  │ v  │     │ k  │ h  │ ,  │ .  │    │
             └────┴────┴────┴────┴────┴─────┴────┴────┴────┴────┴────┘
-                                             └ ; ┄└ ' ┄└ - ┄┘
+                                n            └ ; ┄└ ' ┄└ - ┄┘
                                                   └┄┄┄┄  / ┄┘
 Chords      ┌────┬────┬────┬────┬────┐     ┌────┬────┬────┬────┬────┐
-with space  │    │    │    │    │    │     │ ↹  │    │    │    │    │
+with space  │    │    │    │    │    │     │ ⌫  │    │    │    │    │
             ├────┼────┼────┼────┼────┤     ├────┼────┼────┼────┼────┤
             │    │    │    │    │    │     │ ↵  │    │    │    │    │
             ├────┼────┼────┼────┼────┤     ├────┼────┼────┼────┼────┤
-            │    │    │    │    │    │     │ ⎋  │ ⌃  │    │ ⌫  │    │
+            │    │    │    │    │    │     │ ⎋  │    │ ↵  │ ⌫  │    │
             └────┴────┴────┴────┴────┴─────┴────┴────┴────┴────┴────┘
 */
 
@@ -187,7 +194,7 @@ combo_t key_combos[COMBO_COUNT] = {
   [CM_1] = COMBO(combo_1, KC_QUOT),
   [CM_2] = COMBO(combo_2, KC_SCLN),
   [CM_3] = COMBO(combo_3, KC_MINS),
-  [CM_4] = COMBO(combo_4, KC_LCTL),
+  [CM_4] = COMBO(combo_4, KC_ENT),
   [CM_5] = COMBO(combo_5, KC_ESC),
   [CM_6] = COMBO(combo_6, KC_TAB),
   [CM_7] = COMBO(combo_7, C(KC_BSPC)),
