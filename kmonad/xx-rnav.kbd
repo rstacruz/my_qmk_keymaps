@@ -42,10 +42,10 @@
 
 (deflayer nav
   _     _    _    _    _    _         _    _    _    _    _    _    _    _
-  _     lctl @cmd tab  bks  bks       _    bks  home up   end  _    _    _
-  _     1    2    3    4    5         _    ret  left down rght _         _
-  _     6    7    8    9    0         _    esc  pgup pgdn XX             _
-  _     _    _                        _                             _    _
+  _     lctl @cmd tab  bks  bks       _    pgup home up   end  _    _    _
+  _     1    2    3    4    5         _    pgdn left down rght _         _
+  _     6    7    8    9    0         _    esc  bks  XX   XX             _
+  _     _    _                        ret                           _    _
 )
 ;; ret tab
 
