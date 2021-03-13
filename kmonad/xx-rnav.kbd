@@ -10,14 +10,15 @@
 ;; ────────────────────────────────────────────────────────────────────────────
 
 (defalias
-  c\   (tap-next \ lctl)
+  \    (tap-next \ lctl)
   sbs  (tap-next bks rsft)
   bsw  (around ctl bks)
   tnav (tap-next tab (layer-toggle nav))
+  ;    (tap-next ; (layer-toggle nav))
   tsym (tap-next tab (layer-toggle sym))
   NAV  (layer-toggle nav)
   SYM  (layer-toggle sym)
-  '    (tap-next-release ' lctl)
+  ces  (tap-next esc lctl)
   cmd lalt
   opt lmet
 )
@@ -33,10 +34,10 @@
 )
 
 (deflayer colemak-dh-ext
-  _     _    _    _    _    _         _    _    _    _    _    _    _    _
-  _     q    w    f    p    b         XX   j    l    u    y    @NAV @SYM @c\
-  lctl  a    r    s    t    g         XX   m    n    e    i    o         _   
-  _     z    x    c    d    v         @NAV k    h    ,    .              _   
+  `     1    2    3    4    5         6    7    8    9    0    -    =    bks
+  _     q    w    f    p    b         [    j    l    u    y    @;   '    @\
+  @ces  a    r    s    t    g         ]    m    n    e    i    o         _   
+  _     z    x    c    d    v         bks  k    h    ,    .              _   
   @opt  @cmd @SYM                     spc                           @NAV _   
 )
 
@@ -44,10 +45,9 @@
   _     _    _    _    _    _         _    _    _    _    _    _    _    _
   _     lctl @cmd tab  bks  bks       _    pgup home up   end  _    _    _
   _     1    2    3    4    5         _    pgdn left down rght _         _
-  _     6    7    8    9    0         _    esc  bks  XX   XX             _
+  _     6    7    8    9    0         _    esc  XX   XX   XX             _
   _     _    _                        ret                           _    _
 )
-;; ret tab
 
 (deflayer sym
   _     _    _    _    _    _         _    _    _    _    _    _    _    _
