@@ -9,6 +9,8 @@
 #define xx_SYM  MO(_SYM)
 /* #define xx_SYM  TD(TD_SYM) */
 
+#define DANCING_TERM 190
+
 /* Layers */
 enum layers { _BASE = 0, _PLU, _SYM, _NAV, _FUN, _MMM, _GAM, _GMX, _LOC };
 
@@ -37,8 +39,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = { /*
             │ z  │ x  │ c  │ d  │ v  │     │ k  │ h  │ ,  │ .  │ ↵ ⌃│
             └────┴────┼────┴────┴────┴──┬──┴────┴────┴────┼────┴────┘
                       │ ⌘  │SYM │   ⇧   │   ␣   │NAV │ ⌥  │
-                      └─┆──┴────┴─┆─────┴───────┴────┴────┘
-                        └ ⌥       └ ⌃     Double-tap
+                      └─┆──┴────┴───────┴───────┴────┴────┘
+                        └ ⌃               Double-tap
   */
 
   [0] = LAYOUT_planck_2x2u(
@@ -79,16 +81,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = { /*
             └────┴────┘────┼────┼────┤     ├────┏━━━━┛────┗━━━━┓────┤
             │ 1  │ 2  │ 3  │ 4  │ 5  │     │pg↓ ┃ ◀  │ ▼  │ ▶  ┃ ↵  │
   ┌┄┄┄┄┐    ├────┼────┼────┼────┼────┤     ├────┗━━━━┷━━━━┷━━━━┛────┤
-  ┆NAV ┆ ┄› │ 6  │ 7  │ 8  │ 9  │ 0  │     │ ⎋  │ ⌫  │    │    │ ⌃  │
+  ┆NAV ┆ ┄› │ 6  │ 7  │ 8  │ 9  │ 0  │     │ ⎋  │ ↹  │    │ .  │ ⌃  │
   └┄┄┄┄┘    └────┴────┴────┴────┴────┘──┬──└────┴────┴────┴────┴────┘
-                                        │   ↵   │ ▓▓ │ .  │
+                                        │   ↵   │ ▓▓ │    │
                                         └───────┴────┴────┘ */
-
   [_NAV] = LAYOUT_planck_2x2u(
     KC_LCTL, KC_LGUI, KC_TAB, MO(_MMM), MO(_FUN), _____, _____,  KC_PGUP, KC_HOME, KC_UP,   KC_END,  KC_DEL,
     KC_1,    KC_2,    KC_3,   KC_4,     KC_5,     _____, _____,  KC_PGDN, KC_LEFT, KC_DOWN, KC_RGHT, KC_ENT,
-    KC_6,    KC_7,    KC_8,   KC_9,     KC_0,     _____, _____,  KC_ESC,  KC_BSPC, _____,   _____,   KC_RCTL,
-    __v__,   __v__,   __v__,  __v__,    /**/      __v__, KC_ENT, /**/     __v__,   KC_DOT,  __v__,   __v__
+    KC_6,    KC_7,    KC_8,   KC_9,     KC_0,     _____, _____,  KC_ESC,  KC_TAB,  _____,   KC_DOT,  KC_RCTL,
+    __v__,   __v__,   __v__,  __v__,    /**/      __v__, KC_ENT, /**/     __v__,   __v__,   __v__,   __v__
   ), /*
 
   ┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄
@@ -119,6 +120,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = { /*
   └┄┄┄┄┘    └────┴────┴────┴────┴────┘──┬──└────┴────┴────┴────┴────┘
                            │rmb │       │
                            └────┴───────┘ */
+
   [_MMM] = LAYOUT_planck_2x2u(
     _____,    _____, MC_SHOT, __v__,      KC_MS_BTN1, _____, _____, KC_WH_U, RCTL(LSFT(KC_TAB)), KC_MS_U, RCTL(KC_TAB), KC_MS_BTN2,
     _____,    _____, _____,   _____,      DF(_GAM),   _____, _____, KC_WH_D, KC_MS_L,            KC_MS_D, KC_MS_R,      KC_BRIU,
@@ -293,8 +295,8 @@ void tap_dance_sym_up (qk_tap_dance_state_t *state, void *user_data) {
 	}
 }
 // Tap dance definitions
-qk_tap_dance_action_t tap_dance_actions[] = {
-  [TD_SFT] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, tap_dance_sft_down, tap_dance_sft_up),
-  [TD_CMD] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, tap_dance_cmd_down, tap_dance_cmd_up),
-  [TD_SYM] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, tap_dance_sym_down, tap_dance_sym_up),
+qk_tap_dance_action_t tap_dance_actions[] = { 
+  [TD_SFT] = ACTION_TAP_DANCE_FN_ADVANCED_TIME(NULL, tap_dance_sft_down, tap_dance_sft_up, DANCING_TERM),
+  [TD_CMD] = ACTION_TAP_DANCE_FN_ADVANCED_TIME(NULL, tap_dance_cmd_down, tap_dance_cmd_up, DANCING_TERM),
+  [TD_SYM] = ACTION_TAP_DANCE_FN_ADVANCED_TIME(NULL, tap_dance_sym_down, tap_dance_sym_up, DANCING_TERM),
 };
