@@ -6,7 +6,7 @@
 /* #define xx_LSFT KC_LSFT */
 #define xx_LSFT TD(TD_SFT)
 #define xx_LCMD TD(TD_CMD)
-#define xx_SYM  MO(_SYM)
+#define xx_SYM  OSL(_SYM)
 /* #define xx_SYM  TD(TD_SYM) */
 
 #define DANCING_TERM 190
@@ -44,10 +44,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = { /*
   */
 
   [0] = LAYOUT_planck_2x2u(
-    KC_Q,    KC_W,    KC_F,    KC_P,   KC_B, _____,         _____,  KC_J, KC_L,     KC_U,    KC_Y,    LT(_NAV,KC_BSPC),
-    KC_A,    KC_R,    KC_S,    KC_T,   KC_G, _____,         _____,  KC_M, KC_N,     KC_E,    KC_I,    KC_O,
-    KC_Z,    KC_X,    KC_C,    KC_D,   KC_V, _____,         _____,  KC_K, KC_H,     KC_COMM, KC_DOT,  LCTL_T(KC_ENT),
-    KC_LCTL, KC_LGUI, xx_LCMD, xx_SYM, /**/  OSM(MOD_LSFT), KC_SPC, /**/  MO(_NAV), KC_LGUI, MC_HAND, MC_MUTE
+    KC_Q,    KC_W,    KC_F,    KC_P,   KC_B, _____,   _____,  KC_J, KC_L,     KC_U,    KC_Y,    LT(_NAV,KC_BSPC),
+    KC_A,    KC_R,    KC_S,    KC_T,   KC_G, _____,   _____,  KC_M, KC_N,     KC_E,    KC_I,    KC_O,
+    KC_Z,    KC_X,    KC_C,    KC_D,   KC_V, _____,   _____,  KC_K, KC_H,     KC_COMM, KC_DOT,  LCTL_T(KC_ENT),
+    KC_LCTL, KC_LGUI, xx_LCMD, xx_SYM, /**/  xx_LSFT, KC_SPC, /**/  MO(_NAV), KC_LGUI, MC_HAND, MC_MUTE
   ),
 
   [_PLU] = LAYOUT_planck_2x2u(
