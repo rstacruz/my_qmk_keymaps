@@ -77,7 +77,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = { /*
 
   ┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄
   Navigate  ┌────┐────┬────┬────┬────┐     ┌────┬────┏━━━━┓────┬────┐
-            │ ⎋  │    │ ↹  │MMM │FUN │     │pg↑ │home┃ ▲  ┃end │ ⌦  │
+            │ ⎋  │    │ ↹  │MMM │FUN │     │pg↑ │home┃ ▲  ┃end │ ⌃  │
             └────┘────┼────┼────┼────┤     ├────┏━━━━┛────┗━━━━┓────┤
             │ 1  │ 2  │ 3  │ 4  │ 5  │     │pg↓ ┃ ◀  │ ▼  │ ▶  ┃ ↵  │
   ┌┄┄┄┄┐    ├────┼────┼────┼────┼────┤     ├────┗━━━━┷━━━━┷━━━━┛────┤
@@ -86,9 +86,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = { /*
                                         │   ↵   │ ▓▓ │    │
                                         └───────┴────┴────┘ */
   [_NAV] = LAYOUT_planck_2x2u(
-    KC_ESC,  __v__,  KC_TAB, MO(_MMM), MO(_FUN), _____, _____,  KC_PGUP, KC_HOME, KC_UP,   KC_END,  KC_DEL,
+    KC_ESC,  __v__,  KC_TAB, MO(_MMM), MO(_FUN), _____, _____,  KC_PGUP, KC_HOME, KC_UP,   KC_END,  KC_RCTL,
     KC_1,    KC_2,   KC_3,   KC_4,     KC_5,     _____, _____,  KC_PGDN, KC_LEFT, KC_DOWN, KC_RGHT, KC_ENT,
-    KC_6,    KC_7,   KC_8,   KC_9,     KC_0,     _____, _____,  KC_ESC,  KC_TAB,  _____,   KC_DOT,  KC_RCTL,
+    KC_6,    KC_7,   KC_8,   KC_9,     KC_0,     _____, _____,  KC_ESC,  KC_TAB,  _____,   KC_DOT,  KC_DEL,
     __v__,   __v__,  __v__,  __v__,    /**/      __v__, KC_ENT, /**/     KC_RCTL, __v__,   __v__,   __v__
   ), /*
 
@@ -188,7 +188,7 @@ with space  │    │    │    │    │    │     │    │    │    │ 
             ├────┼────┼────┼────┼────┤     ├────┼────┼────┼────┼────┤
             │    │    │    │    │    │     │    │    │    │    │    │
             ├────┼────┼────┼────┼────┤     ├────┼────┼────┼────┼────┤
-            │    │    │    │    │    │     │ ⎋  │ ↹  │ ↵  │ ⌫  │    │
+            │    │    │    │    │    │     │ ⎋  │ ↵  │ ⌃  │ ⌫  │    │
             └────┴────┴────┴────┴────┴─────┴────┴────┴────┴────┴────┘
 */
 
@@ -210,7 +210,7 @@ combo_t key_combos[COMBO_COUNT] = {
   [CM_3] = COMBO(combo_3, KC_MINS),
   [CM_4] = COMBO(combo_4, KC_ESC),
   [CM_5] = COMBO(combo_5, KC_TAB),
-  [CM_6] = COMBO(combo_6, KC_ENT),
+  [CM_6] = COMBO(combo_6, KC_LCTL),
   [CM_7] = COMBO(combo_7, C(KC_BSPC)),
 };
 

@@ -16,7 +16,7 @@
 #define IGNORE_MOD_TAP_INTERRUPT_PER_KEY
 
 /* #define TAPPING_TERM 190 */
-#define TAPPING_TERM 125
+#define TAPPING_TERM 100
 
 // Extra settings
 #define RETRO_TAPPING
