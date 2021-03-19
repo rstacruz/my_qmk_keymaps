@@ -7,6 +7,8 @@
 #define xx_LSFT TD(TD_SFT)
 #define xx_LCMD TD(TD_CMD)
 #define xx_SYM  MO(_SYM)
+#define xx_ESC  LCTL_T(KC_ESC)
+#define xx_Q    LCTL_T(KC_Q)
 /* #define xx_SYM  TD(TD_SYM) */
 
 #define DANCING_TERM 190
@@ -44,7 +46,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = { /*
   */
 
   [0] = LAYOUT_planck_2x2u(
-    KC_Q,    KC_W,    KC_F,    KC_P,   KC_B, _____,   _____,  KC_J, KC_L,     KC_U,    KC_Y,    LT(_NAV,KC_BSPC),
+    xx_Q,    KC_W,    KC_F,    KC_P,   KC_B, _____,   _____,  KC_J, KC_L,     KC_U,    KC_Y,    LT(_NAV,KC_BSPC),
     KC_A,    KC_R,    KC_S,    KC_T,   KC_G, _____,   _____,  KC_M, KC_N,     KC_E,    KC_I,    KC_O,
     KC_Z,    KC_X,    KC_C,    KC_D,   KC_V, _____,   _____,  KC_K, KC_H,     KC_COMM, KC_DOT,  LCTL_T(KC_ENT),
     KC_LCTL, KC_LGUI, xx_LCMD, xx_SYM, /**/  xx_LSFT, KC_SPC, /**/  MO(_NAV), KC_LGUI, MC_HAND, MC_MUTE
@@ -81,12 +83,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = { /*
             └────┘────┼────┼────┼────┤     ├────┏━━━━┛────┗━━━━┓────┤
             │ 1  │ 2  │ 3  │ 4  │ 5  │     │pg↓ ┃ ◀  │ ▼  │ ▶  ┃ ↵  │
   ┌┄┄┄┄┐    ├────┼────┼────┼────┼────┤     ├────┗━━━━┷━━━━┷━━━━┛────┤
-  ┆NAV ┆ ┄› │ 6  │ 7  │ 8  │ 9  │ 0  │     │ ⎋  │ ↹  │    │ .  │ ⌃  │
+  ┆NAV ┆ ┄› │ 6  │ 7  │ 8  │ 9  │ 0  │     │    │    │    │ .  │    │
   └┄┄┄┄┘    └────┴────┴────┴────┴────┘──┬──└────┴────┴────┴────┴────┘
                                         │   ↵   │ ▓▓ │    │
                                         └───────┴────┴────┘ */
   [_NAV] = LAYOUT_planck_2x2u(
-    LCTL_T(KC_ESC),  __v__,  KC_TAB, MO(_MMM), MO(_FUN), _____, _____,  KC_PGUP, KC_HOME, KC_UP,   KC_END,  KC_RCTL,
+    xx_ESC,  __v__,  KC_TAB, MO(_MMM), MO(_FUN), _____, _____,  KC_PGUP, KC_HOME, KC_UP,   KC_END,  KC_RCTL,
     KC_1,    KC_2,   KC_3,   KC_4,     KC_5,     _____, _____,  KC_PGDN, KC_LEFT, KC_DOWN, KC_RGHT, KC_ENT,
     KC_6,    KC_7,   KC_8,   KC_9,     KC_0,     _____, _____,  KC_ESC,  KC_TAB,  _____,   KC_DOT,  KC_DEL,
     __v__,   __v__,  __v__,  __v__,    /**/      __v__, KC_ENT, /**/     KC_RCTL, __v__,   __v__,   __v__
@@ -217,10 +219,19 @@ combo_t key_combos[COMBO_COUNT] = {
 // https://beta.docs.qmk.fm/using-qmk/software-features/tap_hold#ignore-mod-tap-interrupt
 bool get_ignore_mod_tap_interrupt(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
-    case MT(MOD_LCTL,KC_QUOT):
+    case xx_Q:
       return true;
     default:
       return false;
+  }
+}
+
+uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
+  switch (keycode) {
+    case xx_Q:
+      return TAPPING_TERM_LONG;
+    default:
+      return TAPPING_TERM;
   }
 }
 
