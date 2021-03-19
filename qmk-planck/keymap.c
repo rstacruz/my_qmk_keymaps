@@ -263,16 +263,16 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 void tap_dance_sft_down (qk_tap_dance_state_t *state, void *user_data) {
 	switch (state->count) {
 		case 1: register_code(KC_LSFT); break;
-		case 2: register_code(KC_LCTL); break;
-		case 3: register_code(KC_LSFT); register_code(KC_LCTL); break;
+		case 2: layer_on(_NAV); break;
+		case 3: register_code(KC_LSFT); layer_on(_NAV); break;
 	}
 }
 
 void tap_dance_sft_up (qk_tap_dance_state_t *state, void *user_data) {
 	switch (state->count) {
 		case 1: unregister_code(KC_LSFT); break;
-		case 2: unregister_code(KC_LCTL); break;
-		case 3: unregister_code(KC_LSFT); unregister_code(KC_LCTL); break;
+		case 2: layer_off(_NAV); break;
+		case 3: unregister_code(KC_LSFT); layer_off(_NAV); break;
 	}
 }
 
