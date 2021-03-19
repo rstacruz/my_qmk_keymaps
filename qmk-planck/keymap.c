@@ -6,7 +6,7 @@
 /* #define xx_LSFT KC_LSFT */
 #define xx_LSFT TD(TD_SFT)
 #define xx_LCMD TD(TD_CMD)
-#define xx_SYM  OSL(_SYM)
+#define xx_SYM  MO(_SYM)
 /* #define xx_SYM  TD(TD_SYM) */
 
 #define DANCING_TERM 190
