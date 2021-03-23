@@ -41,8 +41,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = { /*
             │ z  │ x  │ c  │ d  │ v  │     │ k  │ h  │ ,  │ .  │ ↵ ⌃│
             └────┴────┼────┴────┴────┴──┬──┴────┴────┴────┼────┴────┘
                       │ ⌘  │SYM │   ⇧   │   ␣   │NAV │ ⌥  │
-                      └─┆──┴────┴───────┴───────┴────┴────┘
-                        └ ⌥               Double-tap
+                      └─┆──┴────┴─┆─────┴───────┴────┴────┘
+                        └ ⌥       └ nav   Double-tap
   */
 
   [0] = LAYOUT_planck_2x2u(
