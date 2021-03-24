@@ -4,8 +4,10 @@
 
 #define xx_LOPT KC_LGUI
 /* #define xx_LSFT KC_LSFT */
-#define xx_LSFT TD(TD_SFT)
-#define xx_LCMD TD(TD_CMD)
+/* #define xx_LSFT TD(TD_SFT) */
+/* #define xx_LCMD TD(TD_CMD) */
+#define xx_LCMD KC_LALT
+#define xx_LSFT KC_LSFT
 #define xx_SYM  MO(_SYM)
 #define xx_ESC  LCTL_T(KC_ESC)
 #define xx_Q    LCTL_T(KC_Q)
@@ -34,16 +36,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = { /*
 
   ┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄
   Colemak   ┌────┬────┬────┬────┬────┐     ┌────┬────┬────┬────┬────┐
-  mod-DH    │ q  │ w  │ f  │ p  │ b  │     │ j  │ l  │ u  │ y  │NAV⌫│
+  mod-DH    │ q ⌃│ w  │ f  │ p  │ b  │     │ j  │ l  │ u  │ y  │NAV⌫│
             ├────┼────┼────┼────┼────┤     ├────┼────┼────┼────┼────┤
             │ a  │ r  │ s  │ t  │ g  │     │ m  │ n  │ e  │ i  │ o  │
             ├────┼────┼────┼────┼────┤     ├────┼────┼────┼────┼────┤
             │ z  │ x  │ c  │ d  │ v  │     │ k  │ h  │ ,  │ .  │ ↵ ⌃│
             └────┴────┼────┴────┴────┴──┬──┴────┴────┴────┼────┴────┘
                       │ ⌘  │SYM │   ⇧   │   ␣   │NAV │ ⌥  │
-                      └─┆──┴────┴─┆─────┴───────┴────┴────┘
-                        └ ⌥       └ nav   Double-tap
-  */
+                      └────┴────┴───────┴───────┴────┴────┘ */
 
   [0] = LAYOUT_planck_2x2u(
     xx_Q,    KC_W,    KC_F,    KC_P,   KC_B, _____,   _____,  KC_J, KC_L,     KC_U,    KC_Y,    LT(_NAV,KC_BSPC),
@@ -181,16 +181,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = { /*
 
 ┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄
 Chords      ┌────┬────┬────┬────┬────┐     ┌────┬────┬────┬────┬────┐
-            │ z  │ x  │ c  │ d  │ v  │     │ k  │ h  │ ,  │ .  │    │
+            │    │    │    │    │    │     │ k  │ h  │ ,  │ .  │    │
             └────┴────┴────┴────┴────┴─────┴────┴────┴────┴────┴────┘
                                              └ ; ┄└ ' ┄└ - ┄┘
                                                   └┄┄┄┄  / ┄┘
 Chords      ┌────┬────┬────┬────┬────┐     ┌────┬────┬────┬────┬────┐
-with space  │    │    │    │    │    │     │    │    │    │    │    │
-            ├────┼────┼────┼────┼────┤     ├────┼────┼────┼────┼────┤
-            │    │    │    │    │    │     │    │    │    │    │    │
-            ├────┼────┼────┼────┼────┤     ├────┼────┼────┼────┼────┤
-            │    │    │    │    │    │     │ ⎋  │ ↵  │ ⌃  │ ⌫  │    │
+with space  │    │    │    │    │    │     │ ⎋  │    │    │ ⌫  │    │
             └────┴────┴────┴────┴────┴─────┴────┴────┴────┴────┴────┘
 */
 
@@ -201,9 +197,7 @@ const uint16_t PROGMEM combo_1[] = {KC_H, KC_COMM, COMBO_END};
 const uint16_t PROGMEM combo_2[] = {KC_K, KC_H, COMBO_END};
 const uint16_t PROGMEM combo_3[] = {KC_COMM, KC_DOT, COMBO_END};
 const uint16_t PROGMEM combo_4[] = {KC_SPC, KC_K, COMBO_END};
-const uint16_t PROGMEM combo_5[] = {KC_SPC, KC_H, COMBO_END};
-const uint16_t PROGMEM combo_6[] = {KC_SPC, KC_COMM, COMBO_END};
-const uint16_t PROGMEM combo_7[] = {KC_SPC, KC_DOT, COMBO_END};
+const uint16_t PROGMEM combo_5[] = {KC_SPC, KC_DOT, COMBO_END};
 
 combo_t key_combos[COMBO_COUNT] = {
   [CM_0] = COMBO(combo_0, KC_SLSH),
@@ -211,9 +205,7 @@ combo_t key_combos[COMBO_COUNT] = {
   [CM_2] = COMBO(combo_2, KC_SCLN),
   [CM_3] = COMBO(combo_3, KC_MINS),
   [CM_4] = COMBO(combo_4, KC_ESC),
-  [CM_5] = COMBO(combo_5, KC_TAB),
-  [CM_6] = COMBO(combo_6, KC_LCTL),
-  [CM_7] = COMBO(combo_7, C(KC_BSPC)),
+  [CM_5] = COMBO(combo_5, C(KC_BSPC)),
 };
 
 // https://beta.docs.qmk.fm/using-qmk/software-features/tap_hold#ignore-mod-tap-interrupt
