@@ -10,7 +10,7 @@
 
 #define xx_LCMD KC_LALT
 #define xx_LSFT KC_LSFT
-#define xx_LOPT MT(MOD_LGUI,KC_ESC)
+#define xx_LOPT KC_LGUI
 #define xx_SYM  MO(_SYM)
 #define xx_ESC  LCTL_T(KC_ESC)
 #define xx_Q    LCTL_T(KC_Q)
@@ -77,12 +77,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = { /*
     KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC, _____,    _____, KC_LCBR, KC_LPRN, KC_COLN, KC_RPRN, KC_RCBR,
     KC_SCLN, KC_TILD, KC_PIPE, KC_AMPR, KC_BSLS, _____,    _____, KC_PSLS, KC_PAST, KC_PMNS, KC_PPLS, KC_UNDS,
     __v__,   __v__,   __v__,   __v__,   /**/     MO(_NAV), __v__, /**/     __v__,   __v__,   __v__,   __v__
-  ), /*
+  ), /*aorsitenarst 
 
   ┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄
-  Navigate  ┌────┐────┬────┬────┬────┐     ┌────┬────┏━━━━┓─── ┌────┐
-            │ ⎋ ⌃│ ⌥  │ ↹  │    │    │     │pg↑ │home┃ ▲  ┃end │FUN │
-            └────┘────┼────┼────┼────┤     ├────┏━━━━┛────┗━━━━┓────┘
+  Navigate  ┌────┬────┐────┬────┬────┐     ┌────┬────┏━━━━┓─── ┌────┐
+            │ ⌃  │ ⌥  │ ↹  │    │ ⎋  │     │pg↑ │home┃ ▲  ┃end │FUN │
+            └────┴────┘────┼────┼────┤     ├────┏━━━━┛────┗━━━━┓────┘
             │ 1  │ 2  │ 3  │ 4  │ 5  │     │pg↓ ┃ ◀  │ ▼  │ ▶  ┃ ↵  │
   ┌┄┄┄┄┐    ├────┼────┼────┼────┼────┤     ┌────┗━━━━┷━━━━┷━━━━┛────┤
   ┆NAV ┆ ┄› │ 6  │ 7  │ 8  │ 9  │ 0  │     │PAD │    │    │ .  │ ⌦  │
@@ -90,10 +90,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = { /*
                                         │   ↵   │ ▓▓ │    │
                                         └───────┴────┴────┘ */
   [_NAV] = LAYOUT_planck_2x2u(
-    xx_ESC, KC_LGUI, KC_TAB, _____, _____, _____, _____,  KC_PGUP,  KC_HOME,  KC_UP,   KC_END,  TT(_FUN),
-    KC_1,   KC_2,    KC_3,   KC_4,  KC_5,  _____, _____,  KC_PGDN,  KC_LEFT,  KC_DOWN, KC_RGHT, KC_ENT,
-    KC_6,   KC_7,    KC_8,   KC_9,  KC_0,  _____, _____,  MO(_MMM), KC_TAB,   _____,   KC_DOT,  KC_DEL,
-    __v__,  __v__,   __v__,  __v__, /**/   __v__, KC_ENT, /**/      MO(_FUN), __v__,   __v__,   __v__
+    KC_LCTL, KC_LGUI, KC_TAB, _____, KC_ESC, _____, _____,  KC_PGUP,  KC_HOME,  KC_UP,   KC_END,  TT(_FUN),
+    KC_1,    KC_2,    KC_3,   KC_4,  KC_5,   _____, _____,  KC_PGDN,  KC_LEFT,  KC_DOWN, KC_RGHT, KC_ENT,
+    KC_6,    KC_7,    KC_8,   KC_9,  KC_0,   _____, _____,  MO(_MMM), KC_TAB,   _____,   KC_DOT,  KC_DEL,
+    __v__,   __v__,   __v__,  __v__, /**/    __v__, KC_ENT, /**/      MO(_FUN), __v__,   __v__,   __v__
   ), /*
 
   ┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄
