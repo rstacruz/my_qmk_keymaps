@@ -1,17 +1,19 @@
 #include QMK_KEYBOARD_H
+
 #define __v__  KC_TRNS
 #define _____  KC_NO
 
-#define xx_LOPT KC_LGUI
 /* #define xx_LSFT KC_LSFT */
 /* #define xx_LSFT TD(TD_SFT) */
 /* #define xx_LCMD TD(TD_CMD) */
+/* #define xx_SYM  TD(TD_SYM) */
+
 #define xx_LCMD KC_LALT
 #define xx_LSFT KC_LSFT
+#define xx_LOPT MT(MOD_LGUI,KC_ESC)
 #define xx_SYM  MO(_SYM)
 #define xx_ESC  LCTL_T(KC_ESC)
 #define xx_Q    LCTL_T(KC_Q)
-/* #define xx_SYM  TD(TD_SYM) */
 
 #define DANCING_TERM 190
 
@@ -46,10 +48,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = { /*
                       └────┴────┴───────┴───────┴────┴────┘ */
 
   [0] = LAYOUT_planck_2x2u(
-    xx_Q,    KC_W,    KC_F,    KC_P,   KC_B, _____,   _____,  KC_J, KC_L,     KC_U,    KC_Y,    LT(_NAV,KC_BSPC),
-    KC_A,    KC_R,    KC_S,    KC_T,   KC_G, _____,   _____,  KC_M, KC_N,     KC_E,    KC_I,    KC_O,
-    KC_Z,    KC_X,    KC_C,    KC_D,   KC_V, _____,   _____,  KC_K, KC_H,     KC_COMM, KC_DOT,  LCTL_T(KC_ENT),
-    KC_LCTL, KC_LGUI, xx_LCMD, xx_SYM, /**/  xx_LSFT, KC_SPC, /**/  MO(_NAV), KC_LGUI, MC_HAND, MC_MUTE
+    xx_Q,  KC_W,  KC_F,    KC_P,   KC_B, _____,   _____,  KC_J, KC_L,     KC_U,    KC_Y,   LT(_NAV,KC_BSPC),
+    KC_A,  KC_R,  KC_S,    KC_T,   KC_G, _____,   _____,  KC_M, KC_N,     KC_E,    KC_I,   KC_O,
+    KC_Z,  KC_X,  KC_C,    KC_D,   KC_V, _____,   _____,  KC_K, KC_H,     KC_COMM, KC_DOT, LCTL_T(KC_ENT),
+    _____, _____, xx_LCMD, xx_SYM, /**/  xx_LSFT, KC_SPC, /**/  MO(_NAV), xx_LOPT, _____,  _____
   ),
 
   [_PLU] = LAYOUT_planck_2x2u(
@@ -118,16 +120,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = { /*
             ├────┼────┼────┼────┼────┤     ├────┼────┼────┼────┼────┤
             │GAM │    │    │    │    │     │ m  │f₁₃ │f₁₄ │f₁₅ │f₁₆ │
   ┌┄┄┄┄┐    ├────┼────┼────┼────┼────┤     ├────┼────┼────┼────┼────┤
-  ┆PAD ┆ ┄› │LOC │    │    │    │    │     │ ▓▓ │f₁₇ │f₁₈ │f₁₉ │f₂₀ │
+  ┆PAD ┆ ┄› │LOC │cmbt│caps│home│    │     │ ▓▓ │f₁₇ │f₁₈ │f₁₉ │f₂₀ │
   └┄┄┄┄┘    └────┴────┴────┴────┴────┘──┬──└────┴────┴────┴────┴────┘
                            │    │       │
                            └────┴───────┘ */
 
   [_MMM] = LAYOUT_planck_2x2u(
-    _____,    _____, _____, _____, _____, _____, _____, MC_MUTE, MC_HAND, _____,  _____,  _____,
-    DF(_GAM), _____, _____, _____, _____, _____, _____, MC_SHOT, KC_F13,  KC_F14, KC_F15, KC_F16,
-    DF(_LOC), _____, _____, _____, _____, _____, _____, _____,   KC_F17,  KC_F18, KC_F19, KC_F20,
-    __v__,    __v__, __v__,   __v__, /**/      _____, _____, /**/     __v__,   __v__,  __v__,  __v__
+    _____,    _____,   _____,   _____,       _____, _____, _____, MC_MUTE, MC_HAND, _____,  _____,  _____,
+    DF(_GAM), _____,   _____,   _____,       _____, _____, _____, MC_SHOT, KC_F13,  KC_F14, KC_F15, KC_F16,
+    DF(_LOC), CMB_TOG, KC_CAPS, KC_WWW_HOME, _____, _____, _____, _____,   KC_F17,  KC_F18, KC_F19, KC_F20,
+    __v__,    __v__,   __v__,   __v__,       /**/   _____, _____, /**/     __v__,   __v__,  __v__,  __v__
   ), /*
 
   ┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄
