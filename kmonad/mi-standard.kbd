@@ -14,7 +14,8 @@
   sbs  (tap-next bks rsft)
   bsw  (around ctl bks)
   tnav (tap-next tab (layer-toggle nav))
-  ;    (tap-next ; (layer-toggle nav))
+  ;    (tap-next ; lctl)
+  '    (tap-next ' (layer-toggle nav))
   tsym (tap-next tab (layer-toggle sym))
   NAV  (layer-toggle nav)
   SYM  (layer-toggle sym)
@@ -34,37 +35,37 @@
 )
 
 (deflayer colemak-dh-ext
-  `     1    2    3    4    5         6    7    8    9    0    -    =    bks
-  _     q    w    f    p    b         [    j    l    u    y    @;   '    @\
-  @ces  a    r    s    t    g         ]    m    n    e    i    o         _   
-  _     z    x    c    d    v         bks  k    h    ,    .              _   
-  @opt  @cmd @SYM                     spc                           @NAV _   
+  `     1    2    3    4    5        6    7    8    9    0    -    =    bks
+  _     q    w    f    p    b        j    l    u    y    @'   [    ]    @\
+  @ces  a    r    s    t    g        m    n    e    i    o    @;        _   
+  _     z    x    c    d    v        k    h    ,    .    /              _   
+  @opt  @cmd @SYM                    spc                           @NAV _   
 )
 
 (deflayer nav
-  _     _    _    _    _    _         _    _    _    _    _    _    _    _
-  _     lctl @cmd _    _    esc       _    pgup home up   end  XX   _    _
-  _     1    2    3    4    5         _    pgdn left down rght _         _
-  _     6    7    8    9    0         _    esc  XX   XX   XX             _
-  _     _    _                        ret                           XX   _
+  _     _    _    _    _    _        _    _    _    _    _    _    _    _
+  _     lctl @cmd _    _    esc      pgup home up   end  XX   _    _    _
+  _     1    2    3    4    5        pgdn left down rght _    _         _
+  _     6    7    8    9    0        esc  XX   XX   XX   _              _
+  _     _    _                       ret                           XX   _
 )
 
 (deflayer sym
-  _     _    _    _    _    _         _    _    _    _    _    _    _    _
-  _     '    "    ^    ?    `         _    [    <    =    >    ]    _    _
-  _     !    @    #    $    %         _    {    \(   :    \)   }         _
-  _     ;    ~    |    &    \         _    /    *    -    +             \_
-  _     _    _                        _                             _    _
+  _     _    _    _    _    _        _    _    _    _    _    _    _    _
+  _     '    "    ^    ?    `        [    <    =    >    ]    _    _    _
+  _     !    @    #    $    %        {    \(   :    \)   }    _         _
+  _     ;    ~    |    &    \        /    *    -    +    _             \_
+  _     _    _                       _                             _    _
 )
 
 ;; ────────────────────────────────────────────────────────────────────────────
 
 (deflayer blank
-  _     _    _    _    _    _         _    _    _    _    _    _    _    _
-  _     _    _    _    _    _         _    _    _    _    _    _    _    _
-  _     _    _    _    _    _         _    _    _    _    _    _         _
-  _     _    _    _    _    _         _    _    _    _    _              _
-  _     _    _                        _         _    _
+  _     _    _    _    _    _        _    _    _    _    _    _    _    _
+  _     _    _    _    _    _        _    _    _    _    _    _    _    _
+  _     _    _    _    _    _        _    _    _    _    _    _         _
+  _     _    _    _    _    _        _    _    _    _    _              _
+  _     _    _                       _         _    _
 )
 
 ;; ────────────────────────────────────────────────────────────────────────────
