@@ -44,10 +44,10 @@
 
 (deflayer nav
   _     _    _    _    _    _         _    _    _    _    _    _    _    _
-  _     lctl @cmd tab  XX   XX        pgup home up   end  _    _    _    _
+  _     lctl @cmd tab  XX   XX        pgup home up   end  XX   _    _    _
   _     1    2    3    4    5         pgdn left down rght _    _         _
   _     6    7    8    9    0         esc  XX   XX   XX   _              _
-  _     _    _                        ret                           _    _
+  _     _    _                        ret                           XX   _
 )
 
 (deflayer sym
