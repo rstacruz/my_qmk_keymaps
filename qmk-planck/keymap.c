@@ -1,7 +1,7 @@
 #include QMK_KEYBOARD_H
 
-#define __v__  KC_TRNS
-#define _____  KC_NO
+#define _v_  KC_TRNS
+#define ___  KC_NO
 
 /* #define xx_LSFT KC_LSFT */
 /* #define xx_LSFT TD(TD_SFT) */
@@ -15,10 +15,28 @@
 #define xx_ESC  LCTL_T(KC_ESC)
 #define xx_Q    LCTL_T(KC_Q)
 
+/* Tab variations */
+#define xx_CTAB RCTL(KC_TAB)
+#define xx_STAB RCTL(LSFT(KC_TAB))
+
 #define DANCING_TERM 190
 
+/* Layout */
+#define LAYOUT_36( \
+  a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, \
+  b1, b2, b3, b4, b5, b6, b7, b8, b9, b10, \
+  c1, c2, c3, c4, c5, c6, c7, c8, c9, c10, \
+  d1, d2, d3, d4, d5, d6 \
+) \
+  LAYOUT_planck_2x2u( \
+    a1,  a2,  a3, a4, a5,  ___, ___, a6,  a7, a8, a9,  a10, \
+    b1,  b2,  b3, b4, b5,  ___, ___, b6,  b7, b8, b9,  b10, \
+    c1,  c2,  c3, c4, c5,  ___, ___, c6,  c7, c8, c9,  c10, \
+    ___, ___, d1, d2, /**/ d3,  d4,  /**/ d5, d6, ___, ___  \
+  )
+
 /* Layers */
-enum layers { _BASE = 0, _PLU, _SYM, _NAV, _FUN, _MMM, _GAM, _GMX, _LOC };
+enum layers { _BASE = 0, _PLU, _SYM, _NAV, _FUN, _PAD, _GAM, _GMX, _LOC };
 
 /* Macros */
 enum custom_keycodes {
@@ -47,18 +65,18 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = { /*
                       │ ⌘  │SYM │   ⇧   │   ␣   │NAV │ ⌥  │
                       └────┴────┴───────┴───────┴────┴────┘ */
 
-  [0] = LAYOUT_planck_2x2u(
-    xx_Q,  KC_W,  KC_F,    KC_P,   KC_B, _____,   _____,  KC_J, KC_L,     KC_U,    KC_Y,   LT(_NAV,KC_BSPC),
-    KC_A,  KC_R,  KC_S,    KC_T,   KC_G, _____,   _____,  KC_M, KC_N,     KC_E,    KC_I,   KC_O,
-    KC_Z,  KC_X,  KC_C,    KC_D,   KC_V, _____,   _____,  KC_K, KC_H,     KC_COMM, KC_DOT, LCTL_T(KC_ENT),
-    _____, _____, xx_LCMD, xx_SYM, /**/  xx_LSFT, KC_SPC, /**/  MO(_NAV), xx_LOPT, _____,  _____
+  [0] = LAYOUT_36(
+    xx_Q, KC_W, KC_F,    KC_P,   KC_B,    /**/ KC_J,   KC_L,     KC_U,    KC_Y,   LT(_NAV,KC_BSPC),
+    KC_A, KC_R, KC_S,    KC_T,   KC_G,    /**/ KC_M,   KC_N,     KC_E,    KC_I,   KC_O,
+    KC_Z, KC_X, KC_C,    KC_D,   KC_V,    /**/ KC_K,   KC_H,     KC_COMM, KC_DOT, LCTL_T(KC_ENT),
+    /**/  /**/  xx_LCMD, xx_SYM, xx_LSFT, /**/ KC_SPC, MO(_NAV), xx_LOPT  /**/    /**/
   ),
 
-  [_PLU] = LAYOUT_planck_2x2u(
-    __v__, __v__, __v__, __v__, __v__, __v__, __v__, __v__, __v__, __v__, __v__, __v__,
-    __v__, __v__, __v__, __v__, __v__, __v__, __v__, __v__, __v__, __v__, __v__, __v__,
-    __v__, __v__, __v__, __v__, __v__, __v__, __v__, __v__, __v__, __v__, __v__, __v__,
-    __v__, __v__, __v__, __v__, /**/   __v__, __v__, /**/   __v__, __v__, __v__, __v__
+  [_PLU] = LAYOUT_36(
+    _v_, _v_, _v_, _v_, _v_, /**/ _v_, _v_, _v_, _v_, _v_,
+    _v_, _v_, _v_, _v_, _v_, /**/ _v_, _v_, _v_, _v_, _v_,
+    _v_, _v_, _v_, _v_, _v_, /**/ _v_, _v_, _v_, _v_, _v_,
+    /**/ /**/ _v_, _v_, _v_, /**/ _v_, _v_, _v_  /**/ /**/
   ), /*
 
   ┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄
@@ -72,29 +90,31 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = { /*
                       │    │ ▓▓ │ NAV   │
                       └────┴────┴───────┘ */
 
-  [_SYM] = LAYOUT_planck_2x2u(
-    KC_QUOT, KC_DQUO, KC_CIRC, KC_QUES, KC_GRV,  _____,    _____, KC_LBRC, KC_LT,   KC_EQL,  KC_GT,   KC_RBRC,
-    KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC, _____,    _____, KC_LCBR, KC_LPRN, KC_COLN, KC_RPRN, KC_RCBR,
-    KC_SCLN, KC_TILD, KC_PIPE, KC_AMPR, KC_BSLS, _____,    _____, KC_PSLS, KC_PAST, KC_PMNS, KC_PPLS, KC_UNDS,
-    __v__,   __v__,   __v__,   __v__,   /**/     MO(_NAV), __v__, /**/     __v__,   __v__,   __v__,   __v__
-  ), /*aorsitenarst 
+  [_SYM] = LAYOUT_36(
+    KC_QUOT, KC_DQUO, KC_CIRC, KC_QUES, KC_GRV,   /**/ KC_LBRC, KC_LT,   KC_EQL,  KC_GT,   KC_RBRC,
+    KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC,  /**/ KC_LCBR, KC_LPRN, KC_COLN, KC_RPRN, KC_RCBR,
+    KC_SCLN, KC_TILD, KC_PIPE, KC_AMPR, KC_BSLS,  /**/ KC_PSLS, KC_PAST, KC_PMNS, KC_PPLS, KC_UNDS,
+    /**/     /**/     _v_,   _v_,   MO(_NAV), /**/ _v_,   _v_,   _v_    /**/     /**/
+  ), /*
 
   ┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄
   Navigate  ┌────┬────┐────┬────┬────┐     ┌────┬────┏━━━━┓─── ┌────┐
-            │ ⌃  │ ⌥  │ ↹  │    │ ⎋  │     │pg↑ │home┃ ▲  ┃end │FUN │
+            │ ⌃  │ ⌥  │ ↹  │PAD │ ⌫  │     │pg↑ │home┃ ▲  ┃end │FUN │
             └────┴────┘────┼────┼────┤     ├────┏━━━━┛────┗━━━━┓────┘
             │ 1  │ 2  │ 3  │ 4  │ 5  │     │pg↓ ┃ ◀  │ ▼  │ ▶  ┃ ↵  │
   ┌┄┄┄┄┐    ├────┼────┼────┼────┼────┤     ┌────┗━━━━┷━━━━┷━━━━┛────┤
-  ┆NAV ┆ ┄› │ 6  │ 7  │ 8  │ 9  │ 0  │     │PAD │    │    │ .  │ ⌦  │
+  ┆NAV ┆ ┄› │ 6  │ 7  │ 8  │ 9  │ 0  │     │ ⎋  │    │    │ .  │ ⌦  │
   └┄┄┄┄┘    └────┴────┴────┴────┴────┘──┬──└────┘────┴────┴────┴────┘
                                         │   ↵   │ ▓▓ │    │
                                         └───────┴────┴────┘ */
-  [_NAV] = LAYOUT_planck_2x2u(
-    KC_LCTL, KC_LGUI, KC_TAB, _____, KC_ESC, _____, _____,  KC_PGUP,  KC_HOME,  KC_UP,   KC_END,  TT(_FUN),
-    KC_1,    KC_2,    KC_3,   KC_4,  KC_5,   _____, _____,  KC_PGDN,  KC_LEFT,  KC_DOWN, KC_RGHT, KC_ENT,
-    KC_6,    KC_7,    KC_8,   KC_9,  KC_0,   _____, _____,  MO(_MMM), KC_TAB,   _____,   KC_DOT,  KC_DEL,
-    __v__,   __v__,   __v__,  __v__, /**/    __v__, KC_ENT, /**/      MO(_FUN), __v__,   __v__,   __v__
+
+  [_NAV] = LAYOUT_36(
+    KC_LCTL, KC_LGUI, KC_TAB, MO(_PAD), C(KC_BSPC), /**/ KC_PGUP, KC_HOME,    KC_UP,   KC_END,  TT(_FUN),
+    KC_1,    KC_2,    KC_3,   KC_4,     KC_5,       /**/ KC_PGDN, KC_LEFT,    KC_DOWN, KC_RGHT, KC_ENT,
+    KC_6,    KC_7,    KC_8,   KC_9,     KC_0,       /**/ KC_ESC,  C(KC_BSPC), ___,   KC_DOT,  KC_DEL,
+    /**/     /**/     _v_,  _v_,    _v_,      /**/ KC_ENT,  MO(_FUN),   _v_    /**/     /**/
   ), /*
+        arstnars
 
   ┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄
   Function  ┏━━━━┓────┬────┬────┬────┐     ┌────┬────┏━━━━┓────┬────┐
@@ -107,11 +127,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = { /*
                            │    │       │  lmb  │    │    │
                            └────┴───────┴───────┴────┴────┘ */
 
-  [_FUN] = LAYOUT_planck_2x2u(
-    RESET,   KC_F11,  KC_F12, KC_MS_BTN2, KC_MS_BTN1, _____, _____,      KC_WH_U, RCTL(LSFT(KC_TAB)), KC_MS_U, RCTL(KC_TAB), TG(_FUN),
-    KC_F1,   KC_F2,   KC_F3,  KC_F4,      KC_F5,      _____, _____,      KC_WH_D, KC_MS_L,            KC_MS_D, KC_MS_R,      KC_BRIU,
-    KC_F6,   KC_F7,   KC_F8,  KC_F9,      KC_F10,     _____, _____,      KC_VOLD, KC_VOLU,            KC_MPLY, KC_MNXT,      KC_BRID,
-    LAG_SWP, LAG_NRM, __v__,  __v__,      /**/        __v__, KC_MS_BTN1, /**/     __v__,              __v__,   __v__,        __v__
+  [_FUN] = LAYOUT_36(
+    RESET, KC_F11, KC_F12, KC_MS_BTN2, KC_MS_BTN1, /**/ KC_WH_U,    xx_STAB, KC_MS_U, xx_CTAB, TG(_FUN),
+    KC_F1, KC_F2,  KC_F3,  KC_F4,      KC_F5,      /**/ KC_WH_D,    KC_MS_L, KC_MS_D, KC_MS_R, KC_BRIU,
+    KC_F6, KC_F7,  KC_F8,  KC_F9,      KC_F10,     /**/ KC_VOLD,    KC_VOLU, KC_MPLY, KC_MNXT, KC_BRID,
+    /**/   /**/    _v_,    _v_,        _v_,        /**/ KC_MS_BTN1, _v_,     _v_      /**/     /**/
   ), /*
 
   ┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄
@@ -125,11 +145,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = { /*
                            │    │       │
                            └────┴───────┘ */
 
-  [_MMM] = LAYOUT_planck_2x2u(
-    _____,    _____,   _____,   _____,       _____, _____, _____, MC_MUTE, MC_HAND, _____,  _____,  _____,
-    DF(_GAM), _____,   _____,   _____,       _____, _____, _____, MC_SHOT, KC_F13,  KC_F14, KC_F15, KC_F16,
-    DF(_LOC), CMB_TOG, KC_CAPS, KC_WWW_HOME, _____, _____, _____, _____,   KC_F17,  KC_F18, KC_F19, KC_F20,
-    __v__,    __v__,   __v__,   __v__,       /**/   _____, _____, /**/     __v__,   __v__,  __v__,  __v__
+  [_PAD] = LAYOUT_36(
+    ___,      ___,     ___,     ___,         ___, /**/ MC_MUTE, MC_HAND, ___,    ___,    ___,
+    DF(_GAM), ___,     ___,     ___,         ___, /**/ MC_SHOT, KC_F13,  KC_F14, KC_F15, KC_F16,
+    DF(_LOC), CMB_TOG, KC_CAPS, KC_WWW_HOME, ___, /**/ ___,     KC_F17,  KC_F18, KC_F19, KC_F20,
+    /**/      /**/     _v_,     _v_,         _v_, /**/ _v_,     _v_,     _v_     /**/    /**/
   ), /*
 
   ┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄
@@ -152,16 +172,17 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = { /*
             └────┴────┴────┴────┴────┴─────┴────┴────┴────┴────┴────┘ */
 
   [_GAM] = LAYOUT_planck_2x2u(
-      KC_TAB,  KC_Q,  KC_W,      KC_E, KC_R, _____,  _____,   KC_1, KC_4,      KC_T,    KC_Y,    KC_ESC,
-      KC_LSFT, KC_A,  KC_S,      KC_D, KC_F, _____,  _____,   KC_2, KC_5,      KC_J,    KC_UP,   KC_ENT,
-      KC_LCTL, KC_Z,  KC_X,      KC_C, KC_V, _____,  _____,   KC_3, KC_6,      KC_LEFT, KC_DOWN, KC_RGHT,
-      _____,   _____, OSL(_GMX), KC_B, /**/  KC_SPC, KC_LCTL, /**/  OSL(_GMX), DF(0),   _____,   _____
+    KC_TAB,  KC_Q, KC_W,      KC_E, KC_R, ___,    ___,     KC_1, KC_4,      KC_T,    KC_Y,    KC_ESC,
+    KC_LSFT, KC_A, KC_S,      KC_D, KC_F, ___,    ___,     KC_2, KC_5,      KC_J,    KC_UP,   KC_ENT,
+    KC_LCTL, KC_Z, KC_X,      KC_C, KC_V, ___,    ___,     KC_3, KC_6,      KC_LEFT, KC_DOWN, KC_RGHT,
+    ___,     ___,  OSL(_GMX), KC_B, /**/  KC_SPC, KC_LCTL, /**/  OSL(_GMX), DF(0),   ___,     ___
   ),
+
   [_GMX] = LAYOUT_planck_2x2u(
-    __v__, __v__, __v__, __v__, __v__, __v__, __v__, KC_T, KC_Y,  KC_U,    KC_I,   KC_O,
-    __v__, KC_1,  KC_2,  KC_3,  KC_4,  __v__, __v__, KC_G, KC_H,  KC_J,    KC_K,   KC_L,
-    __v__, KC_5,  KC_6,  KC_7,  KC_8,  __v__, __v__, KC_N, KC_M,  KC_COMM, KC_DOT, KC_P,
-    __v__, __v__, __v__, __v__, /**/   __v__, __v__, /**/  __v__, __v__,   __v__,  __v__
+    _v_, _v_,  _v_,  _v_,  _v_,  _v_, _v_, KC_T, KC_Y, KC_U,    KC_I,   KC_O,
+    _v_, KC_1, KC_2, KC_3, KC_4, _v_, _v_, KC_G, KC_H, KC_J,    KC_K,   KC_L,
+    _v_, KC_5, KC_6, KC_7, KC_8, _v_, _v_, KC_N, KC_M, KC_COMM, KC_DOT, KC_P,
+    _v_, _v_,  _v_,  _v_,  /**/  _v_, _v_, /**/  _v_,  _v_,     _v_,    _v_
   ), /*
 
   ┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄
@@ -174,10 +195,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = { /*
             └────┴────┴────┴────┴────┴─────┴────┴────┴────┴────┴────┘ */
 
   [_LOC] = LAYOUT_planck_2x2u(
-    _____, _____, _____, _____, _____, _____, _____, _____, _____, _____, _____, _____,
-    _____, _____, _____, _____, _____, _____, _____, _____, _____, _____, _____, _____,
-    _____, _____, _____, _____, _____, _____, _____, _____, _____, _____, _____, _____,
-    _____, _____, _____, _____, /**/   _____, _____, /**/   _____, DF(0), _____, _____
+    ___, ___, ___, ___, ___, ___, ___, ___, ___, ___,   ___, ___,
+    ___, ___, ___, ___, ___, ___, ___, ___, ___, ___,   ___, ___,
+    ___, ___, ___, ___, ___, ___, ___, ___, ___, ___,   ___, ___,
+    ___, ___, ___, ___, /**/ ___, ___, /**/ ___, DF(0), ___, ___
   )
 }; /*
 
