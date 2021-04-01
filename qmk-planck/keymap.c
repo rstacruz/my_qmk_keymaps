@@ -99,20 +99,20 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = { /*
 
   ┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄
   Navigate  ┌────┬────┐────┬────┬────┐     ┌────┬────┏━━━━┓─── ┌────┐
-            │ ⌃  │ ⌥  │ ↹  │PAD │ ⌫  │     │pg↑ │home┃ ▲  ┃end │FUN │
+            │ ⌃  │ ⌥  │ ↹  │ ⌫  │ ⎋  │     │pg↑ │home┃ ▲  ┃end │FUN │
             └────┴────┘────┼────┼────┤     ├────┏━━━━┛────┗━━━━┓────┘
             │ 1  │ 2  │ 3  │ 4  │ 5  │     │pg↓ ┃ ◀  │ ▼  │ ▶  ┃ ↵  │
   ┌┄┄┄┄┐    ├────┼────┼────┼────┼────┤     ┌────┗━━━━┷━━━━┷━━━━┛────┤
-  ┆NAV ┆ ┄› │ 6  │ 7  │ 8  │ 9  │ 0  │     │ ⎋  │    │    │ .  │ ⌦  │
+  ┆NAV ┆ ┄› │ 6  │ 7  │ 8  │ 9  │ 0  │     │PAD │    │    │ .  │ ⌦  │
   └┄┄┄┄┘    └────┴────┴────┴────┴────┘──┬──└────┘────┴────┴────┴────┘
                                         │   ↵   │ ▓▓ │    │
                                         └───────┴────┴────┘ */
 
   [_NAV] = LAYOUT_36(
-    KC_LCTL, KC_LGUI, KC_TAB, MO(_PAD), C(KC_BSPC), /**/ KC_PGUP, KC_HOME,    KC_UP,   KC_END,  TT(_FUN),
-    KC_1,    KC_2,    KC_3,   KC_4,     KC_5,       /**/ KC_PGDN, KC_LEFT,    KC_DOWN, KC_RGHT, KC_ENT,
-    KC_6,    KC_7,    KC_8,   KC_9,     KC_0,       /**/ KC_ESC,  C(KC_BSPC), ___,   KC_DOT,  KC_DEL,
-    /**/     /**/     _v_,  _v_,    _v_,      /**/ KC_ENT,  MO(_FUN),   _v_    /**/     /**/
+    KC_LCTL, KC_LGUI, KC_TAB, C(KC_BSPC), KC_ESC, /**/ KC_PGUP,  KC_HOME,  KC_UP,   KC_END,  TT(_FUN),
+    KC_1,    KC_2,    KC_3,   KC_4,       KC_5,   /**/ KC_PGDN,  KC_LEFT,  KC_DOWN, KC_RGHT, KC_ENT,
+    KC_6,    KC_7,    KC_8,   KC_9,       KC_0,   /**/ MO(_PAD), KC_ESC,   ___,     KC_DOT,  KC_DEL,
+    /**/     /**/     _v_,    _v_,        _v_,    /**/ KC_ENT,   MO(_FUN), _v_      /**/     /**/
   ), /*
         arstnars
 

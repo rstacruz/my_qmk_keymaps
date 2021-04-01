@@ -16,6 +16,8 @@
   NAV  (layer-toggle nav)
   SYM  (layer-toggle sym)
   ces  (tap-next esc lctl)
+  LOC  (layer-switch lock)
+  ULO  (layer-switch colemak-dh-ext)
   cmd  lalt
   opt  lmet
 )
@@ -41,7 +43,7 @@
 )
 
 (deflayer nav
-  _    _    _    _    _    _      _    _    _    _    _    _    _    _
+  _    _    _    _    _    _      _    _    _    _    _    _    _    @LOC
   _    _    _    _    _    _      _    _    _    _    _    _    _    _
   _    lctl @cmd tab  XX   XX     pgup home up   end  XX   XX   XX   _
   _    1    2    3    4    5      pgdn left down rght ret  XX        _
@@ -59,7 +61,7 @@
 )
 
 (deflayer lock
-  XX   XX   XX   XX   XX   XX     XX   XX   XX   XX   XX   XX   XX   XX
+  XX   XX   XX   XX   XX   XX     XX   XX   XX   XX   XX   XX   XX   @ULO
   XX   XX   XX   XX   XX   XX     XX   XX   XX   XX   XX   XX   XX   XX
   XX   XX   XX   XX   XX   XX     XX   XX   XX   XX   XX   XX   XX   XX
   XX   XX   XX   XX   XX   XX     XX   XX   XX   XX   XX   XX        XX
