@@ -3,23 +3,17 @@
 #define _v_  KC_TRNS
 #define ___  KC_NO
 
-/* #define xx_LSFT KC_LSFT */
-/* #define xx_LSFT TD(TD_SFT) */
-/* #define xx_LCMD TD(TD_CMD) */
-/* #define xx_SYM  TD(TD_SYM) */
-
+/* Modifier keys */
 #define xx_LCMD KC_LALT
 #define xx_LSFT KC_LSFT
 #define xx_LOPT KC_LGUI
-#define xx_SYM  MO(_SYM)
+#define xx_SYM  OSL(_SYM)
 #define xx_ESC  LCTL_T(KC_ESC)
 #define xx_Q    LCTL_T(KC_Q)
 
 /* Tab variations */
 #define xx_CTAB RCTL(KC_TAB)
 #define xx_STAB RCTL(LSFT(KC_TAB))
-
-#define DANCING_TERM 190
 
 /* Layout */
 #define LAYOUT_36( \
@@ -43,13 +37,6 @@ enum custom_keycodes {
   MC_MUTE = SAFE_RANGE,
   MC_HAND,
   MC_SHOT,
-};
-
-/* Tap dance definitions */
-enum tap_dance_keys {
-  TD_CMD = 0,
-  TD_SFT,
-  TD_SYM,
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = { /*
@@ -99,22 +86,21 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = { /*
 
   ┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄
   Navigate  ┌────┬────┐────┬────┬────┐     ┌────┬────┏━━━━┓─── ┌────┐
-            │ ⌃  │ ⌥  │ ↹  │ ⌫  │ ⎋  │     │pg↑ │home┃ ▲  ┃end │FUN │
+            │ ⌃  │ ⌥  │    │    │    │     │pg↑ │home┃ ▲  ┃end │FUN │
             └────┴────┘────┼────┼────┤     ├────┏━━━━┛────┗━━━━┓────┘
             │ 1  │ 2  │ 3  │ 4  │ 5  │     │pg↓ ┃ ◀  │ ▼  │ ▶  ┃ ↵  │
   ┌┄┄┄┄┐    ├────┼────┼────┼────┼────┤     ┌────┗━━━━┷━━━━┷━━━━┛────┤
-  ┆NAV ┆ ┄› │ 6  │ 7  │ 8  │ 9  │ 0  │     │PAD │    │    │ .  │ ⌦  │
+  ┆NAV ┆ ┄› │ 6  │ 7  │ 8  │ 9  │ 0  │     │PAD │ ⎋  │ ↹  │ .  │ ⌦  │
   └┄┄┄┄┘    └────┴────┴────┴────┴────┘──┬──└────┘────┴────┴────┴────┘
                                         │   ↵   │ ▓▓ │    │
                                         └───────┴────┴────┘ */
 
   [_NAV] = LAYOUT_36(
-    KC_LCTL, KC_LGUI, KC_TAB, C(KC_BSPC), KC_ESC, /**/ KC_PGUP,  KC_HOME,  KC_UP,   KC_END,  TT(_FUN),
-    KC_1,    KC_2,    KC_3,   KC_4,       KC_5,   /**/ KC_PGDN,  KC_LEFT,  KC_DOWN, KC_RGHT, KC_ENT,
-    KC_6,    KC_7,    KC_8,   KC_9,       KC_0,   /**/ MO(_PAD), KC_ESC,   ___,     KC_DOT,  KC_DEL,
-    /**/     /**/     _v_,    _v_,        _v_,    /**/ KC_ENT,   MO(_FUN), _v_      /**/     /**/
+    KC_LCTL, KC_LGUI, ___,  ___,  ___,  /**/ KC_PGUP,  KC_HOME,  KC_UP,   KC_END,  TT(_FUN),
+    KC_1,    KC_2,    KC_3, KC_4, KC_5, /**/ KC_PGDN,  KC_LEFT,  KC_DOWN, KC_RGHT, KC_ENT,
+    KC_6,    KC_7,    KC_8, KC_9, KC_0, /**/ MO(_PAD), KC_ESC,   KC_TAB,  KC_DOT,  KC_DEL,
+    /**/     /**/     _v_,  _v_,  _v_,  /**/ KC_ENT,   MO(_FUN), _v_      /**/     /**/
   ), /*
-        arstnars
 
   ┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄
   Function  ┏━━━━┓────┬────┬────┬────┐     ┌────┬────┏━━━━┓────┬────┐
@@ -207,7 +193,7 @@ Chords      ┌────┬────┬────┬────┬─�
             │    │    │    │    │    │     │ k  │ h  │ ,  │ .  │    │
             └────┴────┴────┴────┴────┴─────┴────┴────┴────┴────┴────┘
                                              └ ; ┄└ ' ┄└ - ┄┘
-                                                  └┄┄┄┄  / ┄┘
+                                                  └┄┄┄ c-a ┄┘
 Chords      ┌────┬────┬────┬────┬────┐     ┌────┬────┬────┬────┬────┐
 with space  │    │    │    │    │    │     │ ⎋  │    │    │ ⌫  │    │
             └────┴────┴────┴────┴────┴─────┴────┴────┴────┴────┴────┘
@@ -223,7 +209,7 @@ const uint16_t PROGMEM combo_4[] = {KC_SPC, KC_K, COMBO_END};
 const uint16_t PROGMEM combo_5[] = {KC_SPC, KC_DOT, COMBO_END};
 
 combo_t key_combos[COMBO_COUNT] = {
-  [CM_0] = COMBO(combo_0, KC_SLSH),
+  [CM_0] = COMBO(combo_0, C(KC_A)),
   [CM_1] = COMBO(combo_1, KC_QUOT),
   [CM_2] = COMBO(combo_2, KC_SCLN),
   [CM_3] = COMBO(combo_3, KC_MINS),
@@ -273,56 +259,4 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     break;
   }
   return true;
-};
-
-void tap_dance_sft_down (qk_tap_dance_state_t *state, void *user_data) {
-	switch (state->count) {
-		case 1: register_code(KC_LSFT); break;
-		case 2: layer_on(_NAV); break;
-		case 3: register_code(KC_LSFT); layer_on(_NAV); break;
-	}
-}
-
-void tap_dance_sft_up (qk_tap_dance_state_t *state, void *user_data) {
-	switch (state->count) {
-		case 1: unregister_code(KC_LSFT); break;
-		case 2: layer_off(_NAV); break;
-		case 3: unregister_code(KC_LSFT); layer_off(_NAV); break;
-	}
-}
-
-void tap_dance_cmd_down (qk_tap_dance_state_t *state, void *user_data) {
-	switch (state->count) {
-		case 1: register_code(KC_LALT); break;
-		case 2: register_code(KC_LGUI); break;
-		case 3: register_code(KC_LALT); register_code(KC_LGUI); break;
-	}
-}
-
-void tap_dance_cmd_up (qk_tap_dance_state_t *state, void *user_data) {
-	switch (state->count) {
-		case 1: unregister_code(KC_LALT); break;
-		case 2: unregister_code(KC_LGUI); break;
-		case 3: unregister_code(KC_LALT); unregister_code(KC_LGUI); break;
-	}
-}
-
-void tap_dance_sym_down (qk_tap_dance_state_t *state, void *user_data) {
-	switch (state->count) {
-		case 1: layer_on(_SYM); break;
-		case 2: layer_on(_NAV); break;
-	}
-}
-
-void tap_dance_sym_up (qk_tap_dance_state_t *state, void *user_data) {
-	switch (state->count) {
-		case 1: layer_off(_SYM); break;
-		case 2: layer_off(_NAV); break;
-	}
-}
-// Tap dance definitions
-qk_tap_dance_action_t tap_dance_actions[] = { 
-  [TD_SFT] = ACTION_TAP_DANCE_FN_ADVANCED_TIME(NULL, tap_dance_sft_down, tap_dance_sft_up, DANCING_TERM),
-  [TD_CMD] = ACTION_TAP_DANCE_FN_ADVANCED_TIME(NULL, tap_dance_cmd_down, tap_dance_cmd_up, DANCING_TERM),
-  [TD_SYM] = ACTION_TAP_DANCE_FN_ADVANCED_TIME(NULL, tap_dance_sym_down, tap_dance_sym_up, DANCING_TERM),
 };
