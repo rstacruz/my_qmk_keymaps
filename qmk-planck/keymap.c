@@ -108,21 +108,21 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = { /*
   ), /*
 
   ┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄
-  Function  ┏━━━━┓────┬────┬────┬────┐     ┌────┬────┏━━━━┓────┬────┐
-            ┃rset┃play│next│vol-│vol+│     │ w↑ │ S↹ ┃ ▲  ┃^ ↹ │scr+│
-            ┗━━━━┛────┌────┬────┬────┐     ├────┏━━━━┛────┗━━━━┓────┤
+  Function  ┌────┬────┬────┬────┬────┐     ┌────┬────┏━━━━┓────┬────┐
+            │ f1 │ f2 │ f3 │ f4 │ f5 │     │ w↑ │ S↹ ┃ ▲  ┃^ ↹ │scr+│
+            ├────┼────┌────┬────┬────┐     ├────┏━━━━┛────┗━━━━┓────┤
             │f11 │f12 │rmb │lmb │mmb │     │ w↓ ┃ ◀  │ ▼  │ ▶  ┃scr-│
   ┌┄┄┄┄┐    ├────┼────└────┴────┴────┘     ├────┗━━━━┷━━━━┷━━━━┛────┤
-  ┆FUN ┆ ┄› │ f1 │ f2 │ f3 │ f4 │ f5 │     │ f6 │ f7 │ f8 │ f9 │f10 │
+  ┆FUN ┆ ┄› │ f6 │ f7 │ f8 │ f9 │f10 │     │vol-│vol+┃play│next┃rset│
   └┄┄┄┄┘    └────┴────┴────┴────┴────┘──┬──└────┴────┴────┴────┴────┘
                       │    │    │       │       │ ▓▓ │    │
                       └────┴────┴───────┴───────┴────┴────┘ */
 
   [_FUN] = LAYOUT_36(
-    RESET,  KC_MPLY, KC_MNXT,    KC_VOLD,    KC_VOLU,    /**/ KC_WH_U, xx_STAB, KC_MS_U, xx_CTAB, KC_BRIU,
-    KC_F11, KC_F12,  KC_MS_BTN2, KC_MS_BTN1, KC_MS_BTN3, /**/ KC_WH_D, KC_MS_L, KC_MS_D, KC_MS_R, KC_BRID,
-    KC_F1,  KC_F2,   KC_F3,      KC_F4,      KC_F7,      /**/ KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,
-    /**/    /**/     _v_,        _v_,        _v_,        /**/ _v_,     _v_,     _v_      /**/     /**/
+    KC_F1,  KC_F2,  KC_F3,      KC_F4,      KC_F5,      /**/ KC_WH_U, xx_STAB, KC_MS_U, xx_CTAB, KC_BRIU,
+    KC_F11, KC_F12, KC_MS_BTN2, KC_MS_BTN1, KC_MS_BTN3, /**/ KC_WH_D, KC_MS_L, KC_MS_D, KC_MS_R, KC_BRID,
+    KC_F6,  KC_F7,  KC_F8,      KC_F9,      KC_F10,     /**/ KC_VOLD, KC_VOLU, KC_MPLY, KC_MNXT, RESET,
+    /**/    /**/    _v_,        _v_,        _v_,        /**/ _v_,     _v_,     _v_      /**/     /**/
   ), /*
 
   ┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄
