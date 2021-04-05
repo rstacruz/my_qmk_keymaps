@@ -8,7 +8,7 @@
 #define xx_LSFT KC_LSFT
 #define xx_LOPT KC_LGUI
 #define xx_SYM  MO(_SYM)
-#define xx_NAV  TD(TD_NAV)
+#define xx_NAV  MO(_NAV)
 #define xx_ENT  LCTL_T(KC_ENT)
 #define xx_Q    LCTL_T(KC_Q)
 
@@ -29,11 +29,6 @@
     c1,  c2,  c3, c4, c5,  ___, ___, c6,  c7, c8, c9,  c10, \
     ___, ___, d1, d2, /**/ d3,  d4,  /**/ d5, d6, ___, ___  \
   )
-
-
-/* Tap dance definitions */
-#define DANCING_TERM 190
-enum tap_dance_keys { TD_NAV };
 
 /* Layers */
 enum layers { _BASE = 0, _DHR, _SYM, _NAV, _FUN, _PAD, _GAM, _GMX, _LOC };
@@ -56,11 +51,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = { /*
             │ z  │ x  │ c  │ d  │ v  │     │ k  │ h  │ ,  │ .  │ ↵ ⌃│
             └────┴────┼────┴────┴────┴──┬──┴────┴────┴────┼────┴────┘
                       │ ⌘  │SYM │   ⇧   │   ␣   │NAV │ ⌥  │
-                      └────┴────┴───────┴───────┴┆───┴────┘
-                                  PAD (dbl-tap) ┄┘ */
+                      └────┴────┴───────┴───────┴────┴────┘ */
 
   [0] = LAYOUT_36(
-    xx_Q, KC_W, KC_F,    KC_P,   KC_B,    /**/ KC_J,   KC_L,   KC_U,    KC_Y,   LT(_NAV,KC_BSPC),
+    xx_Q, KC_W, KC_F,    KC_P,   KC_B,    /**/ KC_J,   KC_L,   KC_U,    KC_Y,   LT(_NAV,KC_BSPC), 
     KC_A, KC_R, KC_S,    KC_T,   KC_G,    /**/ KC_M,   KC_N,   KC_E,    KC_I,   KC_O,
     KC_Z, KC_X, KC_C,    KC_D,   KC_V,    /**/ KC_K,   KC_H,   KC_COMM, KC_DOT, xx_ENT,
     /**/  /**/  xx_LCMD, xx_SYM, xx_LSFT, /**/ KC_SPC, xx_NAV, xx_LOPT  /**/    /**/
@@ -103,14 +97,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = { /*
   ┌┄┄┄┄┐    ├────┼────┼────┼────┼────┤     ┌────┗━━━━┷━━━━┷━━━━┛────┤
   ┆NAV ┆ ┄› │ 6  │ 7  │ 8  │ 9  │ 0  │     │ ⎋  │ ca │ cb │ ↹  │ ⌦  │
   └┄┄┄┄┘    └────┴────┴────┴────┴────┘──┬──└────┘────┴────┴────┴────┘
-                                        │   ↵   │ ▓▓ │    │
+                                        │   ↵   │PAD │    │
                                         └───────┴────┴────┘ */
 
   [_NAV] = LAYOUT_36(
     KC_LCTL, KC_LGUI, KC_DOT, ___,  ___,  /**/ KC_PGUP, KC_HOME,  KC_UP,      KC_END,  TT(_FUN),
     KC_1,    KC_2,    KC_3,   KC_4, KC_5, /**/ KC_PGDN, KC_LEFT,  KC_DOWN,    KC_RGHT, KC_ENT,
     KC_6,    KC_7,    KC_8,   KC_9, KC_0, /**/ KC_ESC,  C(KC_A),  C(KC_BSPC), KC_TAB,  KC_DEL,
-    /**/     /**/     _v_,    _v_,  _v_,  /**/ KC_ENT,  MO(_FUN), _v_         /**/     /**/
+    /**/     /**/     _v_,    _v_,  _v_,  /**/ KC_ENT,  MO(_PAD), _v_         /**/     /**/
   ), /*
 
   ┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄
@@ -270,23 +264,4 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     break;
   }
   return true;
-};
-
-void tap_dance_nav_down (qk_tap_dance_state_t *state, void *user_data) {
-	switch (state->count) {
-		case 1: layer_on(_NAV); break;
-		case 2: layer_on(_PAD); break;
-	}
-}
-
-void tap_dance_nav_up (qk_tap_dance_state_t *state, void *user_data) {
-	switch (state->count) {
-		case 1: layer_off(_NAV); break;
-		case 2: layer_off(_PAD); break;
-	}
-}
-
-// Tap dance definitions
-qk_tap_dance_action_t tap_dance_actions[] = {
-  [TD_NAV] = ACTION_TAP_DANCE_FN_ADVANCED_TIME(NULL, tap_dance_nav_down, tap_dance_nav_up, DANCING_TERM),
 };
