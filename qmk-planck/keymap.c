@@ -91,38 +91,38 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = { /*
 
   ┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄
   Navigate  ┌────┬────┐────┬────┬────┐     ┌────┬────┏━━━━┓────┬────┐
-            │ ⌃  │ ⌥  │ ↹  │    │    │     │pg↑ │home┃ ▲  ┃end │^⌫  │
+            │ ⌃  │ ⌥  │ ↹  │ m  │ m  │     │pg↑ │home┃ ▲  ┃end │^⌫  │
             └────┴────┘────┼────┼────┤     ├────┏━━━━┛────┗━━━━┓────┤
             │ 1  │ 2  │ 3  │ 4  │ 5  │     │pg↓ ┃ ◀  │ ▼  │ ▶  ┃ ↵  │
   ┌┄┄┄┄┐    ├────┼────┼────┼────┼────┤     ├────┗━━━━┷━━━━┷━━━━┛────┤
-  ┆NAV ┆ ┄› │ 6  │ 7  │ 8  │ 9  │ 0  │     │ ⎋  │    │ ,  │ .  │ ⌦  │
+  ┆NAV ┆ ┄› │ 6  │ 7  │ 8  │ 9  │ 0  │     │ ⎋  │ ^a │ ,  │ .  │ ⌦  │
   └┄┄┄┄┘    └────┴────┴────┴────┴────┘──┬──└────┴────┴────┴────┴────┘
                       │    │PAD │       │   ↵   │ ▓▓ │    │
                       └────┴────┴───────┴───────┴────┴────┘ */
 
   [_NAV] = LAYOUT_36(
-    KC_LCTL, KC_LGUI, KC_TAB, ___,      ___,  /**/ KC_PGUP, KC_HOME,    KC_UP,   KC_END,  C(KC_BSPC),
-    KC_1,    KC_2,    KC_3,   KC_4,     KC_5, /**/ KC_PGDN, KC_LEFT,    KC_DOWN, KC_RGHT, KC_ENT,
-    KC_6,    KC_7,    KC_8,   KC_9,     KC_0, /**/ KC_ESC,  C(KC_BSPC), KC_COMM, KC_DOT,  KC_DEL,
-    /**/     /**/     _v_,    MO(_PAD), _v_,  /**/ KC_ENT,  MO(_PAD),   _v_      /**/     /**/
+    KC_LCTL, KC_LGUI, KC_TAB, MC_HAND,  MC_MUTE, /**/ KC_PGUP, KC_HOME,  KC_UP,   KC_END,  C(KC_BSPC),
+    KC_1,    KC_2,    KC_3,   KC_4,     KC_5,    /**/ KC_PGDN, KC_LEFT,  KC_DOWN, KC_RGHT, KC_ENT,
+    KC_6,    KC_7,    KC_8,   KC_9,     KC_0,    /**/ KC_ESC,  C(KC_A),  KC_COMM, KC_DOT,  KC_DEL,
+    /**/     /**/     _v_,    MO(_PAD), _v_,     /**/ KC_ENT,  MO(_PAD), _v_      /**/     /**/
   ), /*
 
   ┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄
-  Function  ┌────┬────┬────┬────┬────┐     ┌────┬────┏━━━━┓────┬────┐
-            │ f1 │ f2 │ f3 │ f4 │ f5 │     │ w↑ │ ⇧↹ ┃ ▲  ┃ ⇥  │scr+│
-            ├────┼────┏━━━━┯━━━━┯━━━━┓     ├────┏━━━━┛────┗━━━━┓────┤
-            │f11 │f12 ┃rmb │lmb │mmb ┃     │ w↓ ┃ ◀  │ ▼  │ ▶  ┃scr-│
-  ┌┄┄┄┄┐    ├────┼────┗━━━━┷━━━━┷━━━━┛     ├────┗━━━━┷━━━━┷━━━━┛────┤
+  Function  ┌────┬────┏━━━━┯━━━━┯━━━━┓     ┌────┬────┏━━━━┓────┬────┐
+            │f11 │f12 ┃rmb │lmb │mmb ┃     │ w↑ │ ⇧↹ ┃ ▲  ┃ ⇥  │scr+│
+            ├────┼────┗━━━━┷━━━━┷━━━━┛     ├────┏━━━━┛────┗━━━━┓────┤
+            │ f1 │ f2 │ f3 │ f4 │ f5 │     │ w↓ ┃ ◀  │ ▼  │ ▶  ┃scr-│
+  ┌┄┄┄┄┐    ├────┼────┼────┼────┼────┤     ├────┗━━━━┷━━━━┷━━━━┛────┤
   ┆FUN ┆ ┄› │ f6 │ f7 │ f8 │ f9 │f10 │     │vol-│vol+┃play│next┃rset│
   └┄┄┄┄┘    └────┴────┴────┴────┴────┘──┬──└────┴────┴────┴────┴────┘
                       │    │ ░░ │       │       │ ▓▓ │    │
                       └────┴────┴───────┴───────┴────┴────┘ */
 
   [_FUN] = LAYOUT_36(
-    KC_F1,  KC_F2,  KC_F3,      KC_F4,      KC_F5,      /**/ KC_WH_U, xx_STAB, KC_MS_U, xx_CTAB, KC_BRIU,
-    KC_F11, KC_F12, KC_MS_BTN2, KC_MS_BTN1, KC_MS_BTN3, /**/ KC_WH_D, KC_MS_L, KC_MS_D, KC_MS_R, KC_BRID,
+    KC_F11, KC_F12, KC_MS_BTN2, KC_MS_BTN1, KC_MS_BTN3, /**/ KC_WH_U, xx_STAB, KC_MS_U, xx_CTAB, KC_BRIU,
+    KC_F1,  KC_F2,  KC_F3,      KC_F4,      KC_F5,      /**/ KC_WH_D, KC_MS_L, KC_MS_D, KC_MS_R, KC_BRID,
     KC_F6,  KC_F7,  KC_F8,      KC_F9,      KC_F10,     /**/ KC_VOLD, KC_VOLU, KC_MPLY, KC_MNXT, RESET,
-    /**/    /**/    _v_,        _v_,        _v_,        /**/ _v_,     _v_,     _v_      /**/     /**/
+    /**/    /**/    _v_,        KC_MS_BTN1, _v_,        /**/ _v_,     _v_,     _v_      /**/     /**/
   ), /*
 
   ┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄

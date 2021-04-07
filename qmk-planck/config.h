@@ -17,7 +17,7 @@
 
 /* #define TAPPING_TERM 190 */
 #define TAPPING_TERM 130
-#define TAPPING_TERM_LONG 190
+#define TAPPING_TERM_LONG 135
 #define TAPPING_TERM_PER_KEY
 
 // Extra settings
