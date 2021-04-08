@@ -64,8 +64,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = { /*
   Alternate layer*/
 
   [_DHR] = LAYOUT_36(
-  // _v_, _v_,  _v_, _v_, _v_, /**/ KC_BSPC, _v_, _v_, _v_, LT(_NAV,KC_J),
-    _v_, _v_,  _v_, _v_, _v_, /**/ _v_,     _v_, _v_, _v_, _v_,
+    _v_, _v_,  _v_, _v_, _v_, /**/ KC_BSPC, _v_, _v_, _v_, LT(_NAV,KC_J),
     _v_, _v_,  _v_, _v_, _v_, /**/ _v_,     _v_, _v_, _v_, _v_,
     _v_, KC_K, _v_, _v_, _v_, /**/ xx_ENT,  _v_, _v_, _v_, KC_X,
     /**/ /**/  _v_, _v_, _v_, /**/ _v_,     _v_, _v_  /**/ /**/
@@ -91,11 +90,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = { /*
 
   ┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄
   Navigate  ┌────┬────┐────┬────┬────┐     ┌────┬────┏━━━━┓────┬────┐
-            │ ⌃  │ ⌥  │ ↹  │ m  │ m  │     │pg↑ │home┃ ▲  ┃end │    │
+            │ ⌃  │ ⌥  │ ↹  │ m  │ m  │     │pg↑ │home┃ ▲  ┃end │ ^⌫ │
             └────┴────┘────┼────┼────┤     ├────┏━━━━┛────┗━━━━┓────┤
             │ 1  │ 2  │ 3  │ 4  │ 5  │     │pg↓ ┃ ◀  │ ▼  │ ▶  ┃ ↵  │
   ┌┄┄┄┄┐    ├────┼────┼────┼────┼────┤     ├────┗━━━━┷━━━━┷━━━━┛────┤
-  ┆NAV ┆ ┄› │ 6  │ 7  │ 8  │ 9  │ 0  │     │ ⎋  │ ^⌫ │ ,  │ .  │ ⌦  │
+  ┆NAV ┆ ┄› │ 6  │ 7  │ 8  │ 9  │ 0  │     │ ⎋  │    │    │ .  │ ⌦  │
   └┄┄┄┄┘    └────┴────┴────┴────┴────┘──┬──└────┴────┴────┴────┴────┘
                       │    │PAD │       │   ↵   │ ▓▓ │    │
                       └────┴────┴───────┴───────┴────┴────┘ */
@@ -103,7 +102,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = { /*
   [_NAV] = LAYOUT_36(
     KC_LCTL, KC_LGUI, KC_TAB, MC_HAND,  MC_MUTE, /**/ KC_PGUP, KC_HOME,    KC_UP,   KC_END,  C(KC_BSPC),
     KC_1,    KC_2,    KC_3,   KC_4,     KC_5,    /**/ KC_PGDN, KC_LEFT,    KC_DOWN, KC_RGHT, KC_ENT,
-    KC_6,    KC_7,    KC_8,   KC_9,     KC_0,    /**/ KC_ESC,  C(KC_BSPC), KC_COMM, KC_DOT,  KC_DEL,
+    KC_6,    KC_7,    KC_8,   KC_9,     KC_0,    /**/ KC_ESC,  C(KC_BSPC), KC_ENT,  KC_DOT,  KC_DEL,
     /**/     /**/     _v_,    MO(_PAD), _v_,     /**/ KC_ENT,  MO(_PAD),   _v_      /**/     /**/
   ), /*
 
@@ -197,7 +196,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = { /*
 Chords      ┌────┬────┬────┬────┬────┐     ┌────┬────┬────┬────┬────┐
             │    │    │    │    │    │     │    │    │    │ y  │ bs │
             └────┴────┴────┴────┴────┘     └────┴────┴────┴────┴────┘
-                                            ┌  ↵  ┄┐
+                                                 ┌  ↵  ┄┐
             ┌────┬────┬────┬────┬────┐     ┌────┬────┬────┬────┬────┐
             │    │    │    │    │    │     │ k  │ h  │ ,  │ .  │    │
             └────┴────┴────┴────┴────┴─────┴────┴────┴────┴────┴────┘
@@ -208,7 +207,7 @@ with space  │    │    │    │    │    │     │ ⎋  │    │    �
 
 enum combos { CM_0, CM_1, CM_2, CM_3, CM_4, CM_5, CM_6, CM_7, CM_8, CM_9, CM_10, CM_11, CM_12 };
 
-const uint16_t PROGMEM combo_0[] = {KC_K, KC_H, COMBO_END};
+const uint16_t PROGMEM combo_0[] = {KC_H, KC_COMM, COMBO_END};
 const uint16_t PROGMEM combo_1[] = {KC_SPC, KC_K, COMBO_END};
 const uint16_t PROGMEM combo_2[] = {KC_SPC, KC_DOT, COMBO_END};
 
