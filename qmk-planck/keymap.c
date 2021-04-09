@@ -64,10 +64,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = { /*
   Alternate layer*/
 
   [_DHR] = LAYOUT_36(
-    _v_, _v_,  _v_, _v_, _v_, /**/ KC_BSPC, _v_, _v_, _v_, LT(_NAV,KC_J),
-    _v_, _v_,  _v_, _v_, _v_, /**/ _v_,     _v_, _v_, _v_, _v_,
-    _v_, KC_K, _v_, _v_, _v_, /**/ xx_ENT,  _v_, _v_, _v_, KC_X,
-    /**/ /**/  _v_, _v_, _v_, /**/ _v_,     _v_, _v_  /**/ /**/
+    _v_, _v_, _v_,                 _v_, _v_, /**/ _v_, _v_, _v_,                _v_, _v_,
+    _v_, _v_, _v_,                 _v_, _v_, /**/ _v_, _v_, _v_,                _v_, _v_,
+    _v_, _v_, _v_,                 _v_, _v_, /**/ _v_, _v_, _v_,                _v_, _v_,
+    /**/ /**/ MT(MOD_LALT,KC_ESC), _v_, _v_, /**/ _v_, _v_, MT(MOD_LGUI,KC_TAB) /**/ /**/
   ), /*
 
   ┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄
