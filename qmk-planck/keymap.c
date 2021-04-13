@@ -8,7 +8,7 @@
 #define xx_LSFT KC_LSFT
 #define xx_LOPT KC_LGUI
 #define xx_SYM  MO(_SYM)
-#define xx_NAV  TT(_NAV)
+#define xx_NAV  MO(_NAV)
 #define xx_ENT  LCTL_T(KC_ENT)
 #define xx_Q    LCTL_T(KC_Q)
 
