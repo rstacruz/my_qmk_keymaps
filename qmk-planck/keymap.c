@@ -60,7 +60,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = { /*
     x__Q, KC_W, KC_F,    KC_P,   KC_B,    /**/ KC_J,   KC_L,   KC_U,    KC_Y,   KC_BSPC,
     KC_A, KC_R, KC_S,    KC_T,   KC_G,    /**/ KC_M,   KC_N,   KC_E,    KC_I,   KC_O,
     KC_Z, KC_X, KC_C,    KC_D,   KC_V,    /**/ KC_K,   KC_H,   KC_COMM, KC_DOT, x__ENT,
-    /**/  /**/  x__CESC, x__SYM, x__LSFT, /**/ KC_SPC, x__NAV, x__OTAB  /**/    /**/
+    /**/  /**/  x__LCMD, x__SYM, x__LSFT, /**/ KC_SPC, x__NAV, x__LOPT  /**/    /**/
   ), /*
 
   ┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄
@@ -70,7 +70,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = { /*
     _v_, _v_, _v_,     _v_, _v_, /**/ _v_, _v_, _v_,    _v_, _v_,
     _v_, _v_, _v_,     _v_, _v_, /**/ _v_, _v_, _v_,    _v_, _v_,
     _v_, _v_, _v_,     _v_, _v_, /**/ _v_, _v_, _v_,    _v_, _v_,
-    /**/ /**/ x__LCMD, _v_, _v_, /**/ _v_, _v_, x__LOPT /**/ /**/
+    /**/ /**/ x__CESC, _v_, _v_, /**/ _v_, _v_, x__OTAB /**/ /**/
   ), /*
 
   ┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄
@@ -229,6 +229,9 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
     case x__Q:
       return TAPPING_TERM_LONG;
+    /* case x__CESC: */
+    /* case x__OTAB: */
+    /*   return 10; */
     default:
       return TAPPING_TERM;
   }
