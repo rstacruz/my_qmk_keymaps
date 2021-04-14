@@ -36,6 +36,7 @@
 (deflayer colemak-dh-ext
   _    _    _    _    _    _      _    _    _    _    _    _    _    _
   _    _    _    _    _    _      _    _    _    _    _    _    _    _
+
   _    q    w    f    p    b      j    l    u    y    @bs  _    _    @\
   @ces a    r    s    t    g      m    n    e    i    o    _         _   
   _    z    x    c    d    v      k    h    ,    .    _              _   
@@ -45,7 +46,7 @@
 (deflayer nav
   _    _    _    _    _    _      _    _    _    _    _    _    _    @LOC
   _    _    _    _    _    _      _    _    _    _    _    _    _    _
-  _    lctl @cmd tab  XX   XX     pgup home up   end  XX   XX   XX   _
+  _    lctl @cmd tab  bks  @bsw   pgup home up   end  XX   XX   XX   _
   _    1    2    3    4    5      pgdn left down rght ret  XX        _
   _    6    7    8    9    0      esc  bks  XX   XX   XX             _
   _    _    _                     ret       XX   _    _    _    _    _
@@ -56,7 +57,7 @@
   _    _    _    _    _    _      _    _    _    _    _    _    _    _
   _    '    "    ^    ?    `      [    <    =    >    ]    _    _    _
   _    !    @    #    $    %      {    \(   :    \)   }    _         _
-  _    ;    ~    |    &    \      /    *    -    +    \_             _
+  _    \    ~    |    &    ;      /    *    -    +    \_             _
   _    _    _                     _         _    _    _    _    _    _
 )
 
