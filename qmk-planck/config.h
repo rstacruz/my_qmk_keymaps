@@ -16,8 +16,8 @@
 #define IGNORE_MOD_TAP_INTERRUPT_PER_KEY
 
 /* #define TAPPING_TERM 190 */
-#define TAPPING_TERM 130
-#define TAPPING_TERM_LONG 190
+#define TAPPING_TERM 150
+#define TAPPING_TERM_LONG 135
 #define TAPPING_TERM_PER_KEY
 
 // Extra settings
@@ -51,5 +51,5 @@
  * Combo
  */
 
-#define COMBO_COUNT 6
+#define COMBO_COUNT 3
 #define COMBO_TERM 25
