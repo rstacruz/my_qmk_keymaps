@@ -40,7 +40,7 @@
   _    q    w    f    p    b      j    l    u    y    @bs  _    _    @\
   @ces a    r    s    t    g      m    n    e    i    o    _         _   
   _    z    x    c    d    v      k    h    ,    .    _              _   
-  @opt @cmd @SYM                  _         @NAV _    _    _    _    _
+  @opt @cmd @SYM                  _         @NAV @opt _    _    _    _
 )
 
 (deflayer nav
