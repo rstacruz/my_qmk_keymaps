@@ -53,3 +53,8 @@
 
 #define COMBO_COUNT 3
 #define COMBO_TERM 25
+
+#ifdef AUDIO_ENABLE
+  #define X_1UP E__NOTE(_E6), E__NOTE(_G6), E__NOTE(_E7), E__NOTE(_C7), E__NOTE(_D7), E__NOTE(_G7)
+  #define STARTUP_SONG SONG(X_1UP)
+#endif
