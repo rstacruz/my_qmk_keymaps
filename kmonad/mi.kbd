@@ -13,6 +13,8 @@
   \    (tap-next \ lctl)
   bsw  (around ctl bks)
   bs   (tap-next bks (layer-toggle nav))
+  tab  (tap-next tab (layer-toggle nav))
+  CRL  (layer-switch colemak-dh-curl)
   NAV  (layer-toggle nav)
   SYM  (layer-toggle sym)
   ces  (tap-next esc lctl)
@@ -36,15 +38,23 @@
 (deflayer colemak-dh-ext
   _    _    _    _    _    _      _    _    _    _    _    _    _    _
   _    _    _    _    _    _      _    _    _    _    _    _    _    _
-
-  _    q    w    f    p    b      j    l    u    y    @bs  _    _    @\
+  @tab q    w    f    p    b      j    l    u    y    @bs  _    _    @\
   @ces a    r    s    t    g      m    n    e    i    o    _         _   
   _    z    x    c    d    v      k    h    ,    .    _              _   
   @opt @cmd @SYM                  _         @NAV @opt _    _    _    _
 )
 
+(deflayer colemak-dh-curl
+  _    _    _    _    _    _      _    _    _    _    _    _    _    _
+  _    _    _    _    _    _      _    _    _    _    _    _    _    _
+  @tab q    w    f    p    b      j    l    u    y    @bs  _    _    @\
+  @ces a    r    s    t    g      m    n    e    i    o    _         _
+  _    x    c    d    v    z      k    h    ,    .    _              _   
+  @opt @cmd @SYM                  _         @NAV @opt _    _    _    _
+)
+
 (deflayer nav
-  _    _    _    _    _    _      _    _    _    _    _    _    caps @LOC
+  _    _    _    _    _    _      _    _    _    _    _    @CRL caps @LOC
   _    _    _    _    _    _      _    _    _    _    _    _    _    _
   _    lctl @cmd tab  bks  @bsw   pgup home up   end  XX   XX   XX   _
   _    1    2    3    4    5      pgdn left down rght ret  XX        _
