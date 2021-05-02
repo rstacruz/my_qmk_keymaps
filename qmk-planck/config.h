@@ -55,6 +55,8 @@
 #define COMBO_TERM 25
 
 #ifdef AUDIO_ENABLE
-  #define X_1UP E__NOTE(_E6), E__NOTE(_G6), E__NOTE(_E7), E__NOTE(_C7), E__NOTE(_D7), E__NOTE(_G7)
-  #define STARTUP_SONG SONG(X_1UP)
+  #define X_HI S__NOTE(_A4), S__NOTE(_E5)
+  #define X_BYE S__NOTE(_E5), S__NOTE(_A4)
+  #define STARTUP_SONG SONG(X_HI)
+  #define GOODBYE_SONG SONG(X_BYE)
 #endif
