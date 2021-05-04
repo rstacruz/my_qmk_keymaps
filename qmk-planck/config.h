@@ -56,7 +56,7 @@
 
 #ifdef AUDIO_ENABLE
   #define X_HI S__NOTE(_A4), S__NOTE(_E5)
-  #define X_BYE S__NOTE(_E5), S__NOTE(_A4)
+  #define X_BYE T__NOTE(_E5), T__NOTE(_EF5), T__NOTE(_D5), T__NOTE(_DF5), T__NOTE(_C5), T__NOTE(_B4), T__NOTE(_AF4), T__NOTE(_A4),
   #define STARTUP_SONG SONG(X_HI)
   #define GOODBYE_SONG SONG(X_BYE)
 #endif
