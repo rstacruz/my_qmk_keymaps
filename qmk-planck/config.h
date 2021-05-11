@@ -17,15 +17,15 @@
 
 /* #define TAPPING_TERM 190 */
 #define TAPPING_TERM 150
-#define TAPPING_TERM_LONG 135
+#define TAPPING_TERM_LONG 150
 #define TAPPING_TERM_PER_KEY
 
 // Extra settings
-#define RETRO_TAPPING
+// #define RETRO_TAPPING
 // #define TAPPING_FORCE_HOLD
 
 /*
- *  keys
+ * Mouse  keys
  * https://beta.docs.qmk.fm/using-qmk/advanced-keycodes/feature_mouse_keys
  */
 
