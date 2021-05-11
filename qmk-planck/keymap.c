@@ -228,18 +228,6 @@ bool get_ignore_mod_tap_interrupt(uint16_t keycode, keyrecord_t *record) {
   }
 }
 
-uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
-  switch (keycode) {
-    case x__Q:
-      return TAPPING_TERM_LONG;
-    /* case x__CESC: */
-    /* case x__OTAB: */
-    /*   return 10; */
-    default:
-      return TAPPING_TERM;
-  }
-}
-
 // Macro definitions
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
