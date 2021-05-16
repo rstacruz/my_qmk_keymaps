@@ -132,9 +132,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = { /*
   ┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄
                                          ┌┄ ⌥ gui-sft ⇧ ┄┄┄┄┄┐
   Hyper     ┌────┬────┬────┬────┬────┐   ┆ ┏━━━━┯━━━━┯━━━━┯━━┷━┓────┐
-            │ m  │ m  │ m  │caps│home│   ┆ ┃pg↑ │home│ ▲  │end ┃    │
+            │ m  │ m  │ m  │caps│home│   ┆ ┃pg↑ │home│ ▲  │end ┃mac │
             ┏━━━━┯━━━━┯━━━━┯━━━━┯━━━━┓   ┆ ┃────┼────┼────┼────┃────┤
-          ┌┄┨ 1  │ 2  │ 3  │ 4  │ 5  ┃   ┆ ┃pg↓ │ ◀  │ ▼  │ ▶  ┃    │
+          ┌┄┨ 1  │ 2  │ 3  │ 4  │ 5  ┃   ┆ ┃pg↓ │ ◀  │ ▼  │ ▶  ┃win │
   ┌┄┄┄┄┐  ┆ ┃────┼────┼────┼────┼────┃   ┆ ┃────┏━━━━┷━━━━┷━━━━┛────┤
   ┆PAD ┆› ├┄┃ 6  │ 7  │ 8  │ 9  │ 0  ┃   └┄┨esc ┃cmbt│ALT │LOC │GAM │
   └┄┄┄┄┘  ┆ ┗━━━━┷━━━━┷━━━━┷━━━━┷━━━━┛──┬──┗━━━━┛────┴────┴────┴────┘
@@ -142,8 +142,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = { /*
                       └────┴────┴───────┴───────┴────┴────┘ */
 
   [_PAD] = LAYOUT_36(
-    MC_MUTE, MC_HAND, MC_SHOT, KC_CAPS, KC_WWW_HOME, /**/ H(KC_PGUP), H(KC_HOME), H(KC_UP),   H(KC_END),  ___,
-    G(KC_1), G(KC_2), G(KC_3), G(KC_4), G(KC_5),     /**/ H(KC_PGDN), H(KC_LEFT), H(KC_DOWN), H(KC_RGHT), ___,
+    MC_MUTE, MC_HAND, MC_SHOT, KC_CAPS, KC_WWW_HOME, /**/ H(KC_PGUP), H(KC_HOME), H(KC_UP),   H(KC_END),  LAG_SWP,
+    G(KC_1), G(KC_2), G(KC_3), G(KC_4), G(KC_5),     /**/ H(KC_PGDN), H(KC_LEFT), H(KC_DOWN), H(KC_RGHT), LAG_NRM,
     G(KC_6), G(KC_7), G(KC_8), G(KC_9), G(KC_0),     /**/ H(KC_ESC),  CMB_TOG,    TG(_ALT),   DF(_LOC),   DF(_GAM),
     /**/     /**/     _v_,     _v_,     _v_,         /**/ _v_,        _v_,        _v_         /**/        /**/
   ), /*
