@@ -47,7 +47,7 @@
  * Combo
  */
 
-#define COMBO_COUNT 3
+#define COMBO_COUNT 4
 #define COMBO_TERM 25
 
 #ifdef AUDIO_ENABLE
