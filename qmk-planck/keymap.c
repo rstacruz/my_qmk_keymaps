@@ -75,13 +75,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = { /*
   └┄┄┄┄┘    └────┴────┴────┴────┴────┘──┬──└────┴────┴────┴────┴────┘
                       │    │ ▓▓ │ NAV   │       │FUN │    │
                       └────┴────┴───────┴───────┴────┴────┘
-  Function  ┌────┬───┄┏━━━━┯━━━━┯━━━━┓     ┌────┬───┄┏━━━━┓┄───┬────┐
-            │f11 │f12 ┃rmb │lmb │mmb ┃     │ w↑ │ ⇧↹ ┃ ▲  ┃ ⇥  │scr+│
-            ├────┼───┄┗━━━━┷━━━━┷━━━━┛     ├───┄┏━━━━┛────┗━━━━┓┄───┤
-            │ f1 │ f2 │ f3 │ f4 │ f5 │     │ w↓ ┃ ◀  │ ▼  │ ▶  ┃scr-│
-  ┌┄┄┄┄┐    ├────┼────┼────┼────┼────┤     ├───┄┗━━━━┷━━━━┷━━━━┛┄───┤
-  ┆FUN ┆ ┄› │ f6 │ f7 │ f8 │ f9 │f10 │     │vol-│vol+┃play│next┃rset│
-  └┄┄┄┄┘    └────┴────┴────┴────┴────┘──┬──└────┴────┴────┴────┴────┘
+  Function  ┌────┬────┬────┬───┄┏━━━━┓     ┌────┬───┄┏━━━━┓┄───┬────┐
+            │ f1 │ f2 │ f3 │ f4 ┃rmb ┃     │ w↑ │ ⇧↹ ┃ ▲  ┃ ⇥  │scr+│
+            ├────┼────┼────┼───┄┣━━━━┫     ├───┄┏━━━━┛────┗━━━━┓┄───┤
+            │ f5 │ f6 │ f7 │ f8 ┃lmb ┃     │ w↓ ┃ ◀  │ ▼  │ ▶  ┃scr-│
+  ┌┄┄┄┄┐    ├────┼────┼────┼───┄┣━━━━┫     ├───┄┗━━━━┷━━━━┷━━━━┛┄───┤
+  ┆FUN ┆ ┄› │ f9 │f10 │f11 │f12 ┃mmb ┃     │vol-│vol+┃play│next┃rset│
+  └┄┄┄┄┘    └────┴────┴────┴───┄┗━━━━┛──┬──└────┴────┴────┴────┴────┘
                       │    │ ░░ │       │       │ ▓▓ │    │
                       └────┴────┴───────┴───────┴────┴────┘
 */
@@ -127,10 +127,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = { /*
   Function */
 
   [_FUN] = LAYOUT_36(
-    KC_F11, KC_F12, KC_MS_BTN2, KC_MS_BTN1, KC_MS_BTN3, /**/ KC_WH_U, x__STAB,  KC_MS_U, x__CTAB, KC_BRIU,
-    KC_F1,  KC_F2,  KC_F3,      KC_F4,      KC_F5,      /**/ KC_WH_D, KC_MS_L,  KC_MS_D, KC_MS_R, KC_BRID,
-    KC_F6,  KC_F7,  KC_F8,      KC_F9,      KC_F10,     /**/ KC_VOLD, KC_VOLU,  KC_MPLY, KC_MNXT, RESET,
-    /**/    /**/    _v_,        KC_MS_BTN1, _v_,        /**/ _v_,     MO(_FUN), _v_      /**/     /**/
+    KC_F1, KC_F2,  KC_F3,  KC_F4,      KC_MS_BTN2, /**/ KC_WH_U, x__STAB,  KC_MS_U, x__CTAB, KC_BRIU,
+    KC_F5, KC_F6,  KC_F7,  KC_F8,      KC_MS_BTN1, /**/ KC_WH_D, KC_MS_L,  KC_MS_D, KC_MS_R, KC_BRID,
+    KC_F9, KC_F10, KC_F11, KC_F12,     KC_MS_BTN3, /**/ KC_VOLD, KC_VOLU,  KC_MPLY, KC_MNXT, RESET,
+    /**/   /**/    _v_,    KC_MS_BTN1, _v_,        /**/ _v_,     MO(_FUN), _v_      /**/     /**/
   ), /*
 
   ┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄
