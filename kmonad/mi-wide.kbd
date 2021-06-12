@@ -11,62 +11,72 @@
 
 (defalias
   \    (tap-next \ lctl)
-  sbs  (tap-next bks rsft)
   bsw  (around ctl bks)
-  tnav (tap-next tab (layer-toggle nav))
-  ;    (tap-next ; (layer-toggle nav))
-  tsym (tap-next tab (layer-toggle sym))
+  bs   (tap-next bks (layer-toggle nav))
   NAV  (layer-toggle nav)
   SYM  (layer-toggle sym)
   ces  (tap-next esc lctl)
-  cmd lalt
-  opt lmet
+  LOC  (layer-switch lock)
+  ULO  (layer-switch colemak-dh-ext)
+  cmd  lalt
+  opt  lmet
 )
 
-;; ────────────────────────────────────────────────────────────────────────────
+;; ───────────────────────────────────────────────────────────────────────
 
 (defsrc
-  `    1    2    3    4    5         6    7    8    9    0    -    =    bks
-  tab  q    w    e    r    t         y    u    i    o    p    [    ]    \
-  caps a    s    d    f    g         h    j    k    l    ;    '         ret
-  lsft z    x    c    v    b         n    m    ,    .    /              rsft
-  lctl lmet lalt                     spc                           ralt rctl
+  esc  f1   f2   f3   f4   f5     f6   f7   f8   f9   f10  f11  f12  del
+  `    1    2    3    4    5      6    7    8    9    0    -    =    bks
+  tab  q    w    e    r    t      y    u    i    o    p    [    ]    \
+  caps a    s    d    f    g      h    j    k    l    ;    '         ret
+  lsft z    x    c    v    b      n    m    ,    .    /              rsft
+  lctl lmet lalt                  spc       ralt rctl left up   down rght
 )
 
 (deflayer colemak-dh-ext
-  `     1    2    3    4    5         6    7    8    9    0    -    =    bks
-  _     q    w    f    p    b         [    j    l    u    y    @;   '    @\
-  @ces  a    r    s    t    g         ]    m    n    e    i    o         _   
-  _     z    x    c    d    v         bks  k    h    ,    .              _   
-  @opt  @cmd @SYM                     spc                           @NAV _   
+  _    _    _    _    _    _      _    _    _    _    _    _    _    _
+  _    _    _    _    _    _      _    _    _    _    _    _    _    _
+  _    q    w    f    p    b      XX   j    l    u    y    bks  XX   bks
+  @ces a    r    s    t    g      @NAV m    n    e    i    o         _   
+  _    z    x    c    d    v      XX   k    h    ,    .              _   
+  @opt @cmd @SYM                  _         @NAV @opt _    _    _    _
 )
 
 (deflayer nav
-  _     _    _    _    _    _         _    _    _    _    _    _    _    _
-  _     lctl @cmd tab  bks  bks       _    pgup home up   end  XX   _    _
-  _     1    2    3    4    5         _    pgdn left down rght _         _
-  _     6    7    8    9    0         _    esc  XX   XX   XX             _
-  _     _    _                        ret                           XX   _
+  _    _    _    _    _    _      _    _    _    _    _    _    caps @LOC
+  _    _    _    _    _    _      _    _    _    _    _    _    _    _
+  _    lctl @cmd tab  tab  @bsw   XX   pgup home up   end  XX   XX   _
+  _    1    2    3    4    5      XX   pgdn left down rght ret       _
+  _    6    7    8    9    0      XX   esc  tab  XX   XX             _
+  _    _    _                     ret       XX   _    _    _    _    _
 )
 
 (deflayer sym
-  _     _    _    _    _    _         _    _    _    _    _    _    _    _
-  _     '    "    ^    ?    `         _    [    <    =    >    ]    _    _
-  _     !    @    #    $    %         _    {    \(   :    \)   }         _
-  _     ;    ~    |    &    \         _    /    *    -    +             \_
-  _     _    _                        _                             _    _
+  _    _    _    _    _    _      _    _    _    _    _    _    _    _
+  _    _    _    _    _    _      _    _    _    _    _    _    _    _
+  _    '    "    ^    ?    `      _    [    <    =    >    ]    _    _
+  _    !    @    #    $    %      _    {    \(   :    \)   }         _
+  _    \    ~    |    &    ;      _    /    *    -    +             \_
+  _    _    _                     _         _    _    _    _    _    _
 )
 
-;; ────────────────────────────────────────────────────────────────────────────
-
+(deflayer lock
+  XX   XX   XX   XX   XX   XX     XX   XX   XX   XX   XX   XX   XX   @ULO
+  XX   XX   XX   XX   XX   XX     XX   XX   XX   XX   XX   XX   XX   XX
+  XX   XX   XX   XX   XX   XX     XX   XX   XX   XX   XX   XX   XX   XX
+  XX   XX   XX   XX   XX   XX     XX   XX   XX   XX   XX   XX        XX
+  XX   XX   XX   XX   XX   XX     XX   XX   XX   XX   XX             XX
+  XX   XX   XX                    XX        XX   XX   XX   XX   XX   XX
+)
 (deflayer blank
-  _     _    _    _    _    _         _    _    _    _    _    _    _    _
-  _     _    _    _    _    _         _    _    _    _    _    _    _    _
-  _     _    _    _    _    _         _    _    _    _    _    _         _
-  _     _    _    _    _    _         _    _    _    _    _              _
-  _     _    _                        _         _    _
+  _    _    _    _    _    _      _    _    _    _    _    _    _    _
+  _    _    _    _    _    _      _    _    _    _    _    _    _    _
+  _    _    _    _    _    _      _    _    _    _    _    _    _    _
+  _    _    _    _    _    _      _    _    _    _    _    _         _
+  _    _    _    _    _    _      _    _    _    _    _              _
+  _    _    _                     _         _    _    _    _    _    _
 )
 
-;; ────────────────────────────────────────────────────────────────────────────
+;; ───────────────────────────────────────────────────────────────────────
 ;; https://github.com/david-janssen/kmonad/blob/master/src/KMonad/Keyboard/Keycode.hs
 ;; vim: ft=lisp
