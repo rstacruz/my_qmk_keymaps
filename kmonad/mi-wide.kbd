@@ -13,7 +13,6 @@
   \    (tap-next \ lctl)
   bsw  (around ctl bks)
   bs   (tap-next bks (layer-toggle nav))
-  CRL  (layer-switch colemak-dh-curl)
   NAV  (layer-toggle nav)
   SYM  (layer-toggle sym)
   ces  (tap-next esc lctl)
@@ -37,36 +36,27 @@
 (deflayer colemak-dh-ext
   _    _    _    _    _    _      _    _    _    _    _    _    _    _
   _    _    _    _    _    _      _    _    _    _    _    _    _    _
-  _    q    w    f    p    b      j    l    u    y    bks  _    _    @\
-  @ces a    r    s    t    g      m    n    e    i    o    _         _   
-  _    z    x    c    d    v      k    h    ,    .    _              _   
-  @opt @cmd @SYM                  _         @NAV @opt _    _    _    _
-)
-
-(deflayer colemak-dh-curl
-  _    _    _    _    _    _      _    _    _    _    _    _    _    _
-  _    _    _    _    _    _      _    _    _    _    _    _    _    _
-  _    q    w    f    p    b      j    l    u    y    bks  _    _    @\
-  @ces a    r    s    t    g      m    n    e    i    o    _         _
-  _    x    c    d    v    z      k    h    ,    .    _              _   
+  _    q    w    f    p    b      XX   j    l    u    y    bks  XX   bks
+  @ces a    r    s    t    g      @NAV m    n    e    i    o         _   
+  _    z    x    c    d    v      XX   k    h    ,    .              _   
   @opt @cmd @SYM                  _         @NAV @opt _    _    _    _
 )
 
 (deflayer nav
-  _    _    _    _    _    _      _    _    _    _    _    @CRL caps @LOC
+  _    _    _    _    _    _      _    _    _    _    _    _    caps @LOC
   _    _    _    _    _    _      _    _    _    _    _    _    _    _
-  _    lctl @cmd tab  tab  @bsw   pgup home up   end  XX   XX   XX   _
-  _    1    2    3    4    5      pgdn left down rght ret  XX        _
-  _    6    7    8    9    0      esc  bks  XX   XX   XX             _
+  _    lctl @cmd tab  tab  @bsw   XX   pgup home up   end  XX   XX   _
+  _    1    2    3    4    5      XX   pgdn left down rght ret       _
+  _    6    7    8    9    0      XX   esc  tab  XX   XX             _
   _    _    _                     ret       XX   _    _    _    _    _
 )
 
 (deflayer sym
   _    _    _    _    _    _      _    _    _    _    _    _    _    _
   _    _    _    _    _    _      _    _    _    _    _    _    _    _
-  _    '    "    ^    ?    `      [    <    =    >    ]    _    _    _
-  _    !    @    #    $    %      {    \(   :    \)   }    _         _
-  _    \    ~    |    &    ;      /    *    -    +    \_             _
+  _    '    "    ^    ?    `      _    [    <    =    >    ]    _    _
+  _    !    @    #    $    %      _    {    \(   :    \)   }         _
+  _    \    ~    |    &    ;      _    /    *    -    +             \_
   _    _    _                     _         _    _    _    _    _    _
 )
 

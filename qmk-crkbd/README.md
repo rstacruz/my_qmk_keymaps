@@ -1,0 +1,1 @@
+- make crkbd:default:dfu
