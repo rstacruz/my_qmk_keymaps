@@ -90,7 +90,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = { /*
 
   ┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄
   Navigate  ┌────┬────┐┄───┬────┬────┐     ┌────┬───┄┏━━━━┓┄───┬────┐
-            │ ⌃  │ ⌥  │    │ ↹  │    │     │pg↑ │home┃ ▲  ┃end │ ^⌫ │
+            │ ⌃  │ ⌥  │    │ ↹  │Lmb │     │pg↑ │home┃ ▲  ┃end │ ^⌫ │
             └────┴────┘┄───┼────┼────┤     ├───┄┏━━━━┛────┗━━━━┓┄───┤
             │ 1  │ 2  │ 3  │ 4  │ 5  │     │pg↓ ┃ ◀  │ ▼  │ ▶  ┃ ↵  │
   ┌┄┄┄┄┐    ├────┼────┼────┼────┼────┤     ├───┄┗━━━━┷━━━━┷━━━━┛┄───┤
@@ -100,10 +100,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = { /*
                       └────┴────┴───────┴───────┴────┴────┘ */
 
   [_NAV] = LAYOUT_36(
-    KC_LCTL, KC_LGUI, KC_TAB, KC_TAB,   x__CBSP, /**/ KC_PGUP, KC_HOME,  KC_UP,   KC_END,  x__CBSP,
-    KC_1,    KC_2,    KC_3,   KC_4,     KC_5,    /**/ KC_PGDN, KC_LEFT,  KC_DOWN, KC_RGHT, KC_ENT,
-    KC_6,    KC_7,    KC_8,   KC_9,     KC_0,    /**/ KC_ESC,  KC_ENT,   MC_MUTE, KC_DOT,  KC_DEL,
-    /**/     /**/     _v_,    MO(_PAD), _v_,     /**/ _v_,     MO(_NAV), _v_      /**/     /**/
+    KC_LCTL, KC_LGUI, KC_TAB, KC_TAB,   MC_MS_BTN1, /**/ KC_PGUP, KC_HOME,  KC_UP,   KC_END,  x__CBSP,
+    KC_1,    KC_2,    KC_3,   KC_4,     KC_5,       /**/ KC_PGDN, KC_LEFT,  KC_DOWN, KC_RGHT, KC_ENT,
+    KC_6,    KC_7,    KC_8,   KC_9,     KC_0,       /**/ KC_ESC,  ___,      MC_MUTE, KC_DOT,  KC_DEL,
+    /**/     /**/     _v_,    MO(_PAD), _v_,        /**/ _v_,     MO(_NAV), _v_      /**/     /**/
   ), /*
 
   ┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄
@@ -112,7 +112,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = { /*
             ├────┼────┼────┼───┄┣━━━━┫     ├───┄┏━━━━┛────┗━━━━┓┄───┤
             │ f1 │ f2 │ f3 │ f4 ┃lmb ┃     │ w↓ ┃ ◀  │ ▼  │ ▶  ┃scr-│
   ┌┄┄┄┄┐    ├────┼────┼────┼───┄┣━━━━┫     ├───┄┗━━━━┷━━━━┷━━━━┛┄───┤
-  ┆FUN ┆ ┄› │ f5 │ f6 │ f7 │ f8 ┃mmb ┃     │vol-│vol+┃play│next┃rset│
+  ┆FUN ┆ ┄› │ f5 │ f6 │ f7 │ f8 ┃mmb ┃     │vol-│vol+│play│next│rset│
   └┄┄┄┄┘    └────┴────┴────┴───┄┗━━━━┛──┬──└────┴────┴────┴────┴────┘
                       │    │ ░░ │       │       │ ▓▓ │    │
                       └────┴────┴───────┴───────┴────┴────┘ */
