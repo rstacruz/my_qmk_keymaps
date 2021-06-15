@@ -78,32 +78,32 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = { /*
   ┌┄┄┄┄┐    ├────┼────┼────┼────┼────┤     ├────┼────┼────┼────┼────┤
   ┆SYM ┆ ┄› │ \  │ ~  │ |  │ &  │ ;  │ etc │ /  │ *  │ -  │ +  │ _  │ math
   └┄┄┄┄┘    └────┴────┴────┴────┴────┘──┬──└────┴────┴────┴────┴────┘
-                      │    │ ▓▓ │ NAV   │       │FUN │    │
+                      │    │ ▓▓ │ NAV   │       │PAD │    │
                       └────┴────┴───────┴───────┴────┴────┘ */
 
   [_SYM] = LAYOUT_36(
     KC_QUOT, KC_DQUO, KC_CIRC, KC_QUES, KC_GRV,   /**/ KC_LBRC, KC_LT,    KC_EQL,  KC_GT,   KC_RBRC,
     KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC,  /**/ KC_LCBR, KC_LPRN,  KC_COLN, KC_RPRN, KC_RCBR,
     KC_BSLS, KC_TILD, KC_PIPE, KC_AMPR, KC_SCLN,  /**/ KC_PSLS, KC_PAST,  KC_PMNS, KC_PPLS, KC_UNDS,
-    /**/     /**/     _v_,     _v_,     MO(_NAV), /**/ _v_,     MO(_FUN), _v_      /**/     /**/
+    /**/     /**/     _v_,     _v_,     MO(_NAV), /**/ _v_,     MO(_PAD), _v_      /**/     /**/
   ), /*
 
   ┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄
   Navigate  ┌────┬────┐┄───┬────┬────┐     ┌────┬───┄┏━━━━┓┄───┬────┐
-            │ ⌃  │ ⌥  │    │ ↹  │Lmb │     │pg↑ │home┃ ▲  ┃end │ ^⌫ │
+            │ ⌃  │ ⌥  │    │ ↹  │    │     │pg↑ │home┃ ▲  ┃end │ ^⌫ │
             └────┴────┘┄───┼────┼────┤     ├───┄┏━━━━┛────┗━━━━┓┄───┤
             │ 1  │ 2  │ 3  │ 4  │ 5  │     │pg↓ ┃ ◀  │ ▼  │ ▶  ┃ ↵  │
   ┌┄┄┄┄┐    ├────┼────┼────┼────┼────┤     ├───┄┗━━━━┷━━━━┷━━━━┛┄───┤
   ┆NAV ┆ ┄› │ 6  │ 7  │ 8  │ 9  │ 0  │     │ ⎋  │    │mute│ .  │ ⌦  │
   └┄┄┄┄┘    └────┴────┴────┴────┴────┘──┬──└────┴────┴────┴────┴────┘
-                      │    │PAD │       │       │ ▓▓ │    │
+                      │    │FUN │       │       │ ▓▓ │    │
                       └────┴────┴───────┴───────┴────┴────┘ */
 
   [_NAV] = LAYOUT_36(
-    KC_LCTL, KC_LGUI, KC_TAB, KC_TAB,   MC_MS_BTN1, /**/ KC_PGUP, KC_HOME,  KC_UP,   KC_END,  x__CBSP,
-    KC_1,    KC_2,    KC_3,   KC_4,     KC_5,       /**/ KC_PGDN, KC_LEFT,  KC_DOWN, KC_RGHT, KC_ENT,
-    KC_6,    KC_7,    KC_8,   KC_9,     KC_0,       /**/ KC_ESC,  ___,      MC_MUTE, KC_DOT,  KC_DEL,
-    /**/     /**/     _v_,    MO(_PAD), _v_,        /**/ _v_,     MO(_NAV), _v_      /**/     /**/
+    KC_LCTL, KC_LGUI, KC_TAB, KC_TAB,   ___,  /**/ KC_PGUP, KC_HOME, KC_UP,   KC_END,  x__CBSP,
+    KC_1,    KC_2,    KC_3,   KC_4,     KC_5, /**/ KC_PGDN, KC_LEFT, KC_DOWN, KC_RGHT, KC_ENT,
+    KC_6,    KC_7,    KC_8,   KC_9,     KC_0, /**/ KC_ESC,  ___,     MC_MUTE, KC_DOT,  KC_DEL,
+    /**/     /**/     _v_,    MO(_FUN), _v_,  /**/ _v_,     _v_,     _v_      /**/     /**/
   ), /*
 
   ┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄
@@ -114,7 +114,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = { /*
   ┌┄┄┄┄┐    ├────┼────┼────┼───┄┣━━━━┫     ├───┄┗━━━━┷━━━━┷━━━━┛┄───┤
   ┆FUN ┆ ┄› │ f5 │ f6 │ f7 │ f8 ┃mmb ┃     │vol-│vol+│play│next│rset│
   └┄┄┄┄┘    └────┴────┴────┴───┄┗━━━━┛──┬──└────┴────┴────┴────┴────┘
-                      │    │ ░░ │       │       │ ▓▓ │    │
+                      │    │ ▓▓ │       │       │ ░░ │    │
                       └────┴────┴───────┴───────┴────┴────┘ */
 
   [_FUN] = LAYOUT_36(
@@ -128,18 +128,18 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = { /*
                                          ┌┄ ⌥ gui-sft ⇧ ┄┄┄┄┄┐
   Hyper     ┌────┬────┬────┬────┬────┐   ┆ ┏━━━━┯━━━━┯━━━━┯━━┷━┓────┐
             │ m  │ m  │ m  │caps│home│   ┆ ┃pg↑ │home│ ▲  │end ┃mac │
-            ┏━━━━┯━━━━┯━━━━┯━━━━┯━━━━┓   ┆ ┃────┼────┼────┼────┃────┤
-          ┌┄┨ 1  │ 2  │ 3  │ 4  │ 5  ┃   ┆ ┃pg↓ │ ◀  │ ▼  │ ▶  ┃win │
-  ┌┄┄┄┄┐  ┆ ┃────┼────┼────┼────┼────┃   ┆ ┃────┏━━━━┷━━━━┷━━━━┛────┤
-  ┆PAD ┆› ├┄┃ 6  │ 7  │ 8  │ 9  │ 0  ┃   └┄┨esc ┃cmbt│ALT │LOC │GAM │
-  └┄┄┄┄┘  ┆ ┗━━━━┷━━━━┷━━━━┷━━━━┷━━━━┛──┬──┗━━━━┛────┴────┴────┴────┘
-          └┄ ⌥ gui    │    │ ▓▓ │       │       │ ░░ │    │
+            ├────┼────┼────┼────┼────┤   ┆ ┃────┼────┼────┼────┃────┤
+            │    │    │    │    │    │   ┆ ┃pg↓ │ ◀  │ ▼  │ ▶  ┃win │
+  ┌┄┄┄┄┐    ├────┼────┼────┼────┼────┤   ┆ ┃────┏━━━━┷━━━━┷━━━━┛────┤
+  ┆PAD ┆›   │    │    │    │    │    │   └┄┨esc ┃cmbt│ALT │LOC │GAM │
+  └┄┄┄┄┘    └────┴────┴────┴────┴────┴──┬──┗━━━━┛────┴────┴────┴────┘
+                      │    │ ░░ │       │       │ ▓▓ │    │
                       └────┴────┴───────┴───────┴────┴────┘ */
 
   [_PAD] = LAYOUT_36(
     MC_MUTE, MC_HAND, MC_SHOT, KC_CAPS, KC_WWW_HOME, /**/ H(KC_PGUP), H(KC_HOME), H(KC_UP),   H(KC_END),  LAG_SWP,
-    G(KC_1), G(KC_2), G(KC_3), G(KC_4), G(KC_5),     /**/ H(KC_PGDN), H(KC_LEFT), H(KC_DOWN), H(KC_RGHT), LAG_NRM,
-    G(KC_6), G(KC_7), G(KC_8), G(KC_9), G(KC_0),     /**/ H(KC_ESC),  CMB_TOG,    TG(_ALT),   DF(_LOC),   DF(_GAM),
+    ___,     ___,     ___,     ___,     ___,         /**/ H(KC_PGDN), H(KC_LEFT), H(KC_DOWN), H(KC_RGHT), LAG_NRM,
+    ___,     ___,     ___,     ___,     ___,         /**/ H(KC_ESC),  CMB_TOG,    TG(_ALT),   DF(_LOC),   DF(_GAM),
     /**/     /**/     _v_,     _v_,     _v_,         /**/ _v_,        _v_,        _v_         /**/        /**/
   ), /*
 
