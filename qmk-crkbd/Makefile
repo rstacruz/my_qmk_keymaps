@@ -25,6 +25,12 @@ compile: push
 flash: push
 	cd ${qmk_home} && ${make} ${keyboard_id}:${keymap_name}:flash
 
+split-right: push
+	cd ${qmk_home} && ${make} ${keyboard_id}:${keymap_name}:dfu-split-right
+
+split-left: push
+	cd ${qmk_home} && ${make} ${keyboard_id}:${keymap_name}:dfu-split-left
+
 ${qmk_home}/keyboards/${keyboard_path}/keymaps/${keymap_name}/%: ./%
 	cp $< $@
 

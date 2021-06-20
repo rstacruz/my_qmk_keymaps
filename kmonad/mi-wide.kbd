@@ -10,18 +10,21 @@
 ;; ────────────────────────────────────────────────────────────────────────────
 
 (defalias
-  \    (tap-next \ lctl)
-  bsw  (around ctl bks)
-  bs   (tap-next bks (layer-toggle nav))
   NAV  (layer-toggle nav)
   SYM  (layer-toggle sym)
+
   ces  (tap-next esc lctl)
-  LOC  (layer-switch lock)
-  ULO  (layer-switch colemak-dh-ext)
-  cta  (around ctl tab)
-  sta  (around sft (around ctl tab))
+  cen  (tap-next ret lctl)
+
+  bsw  (around lctl bks)
+  cta  (around lctl tab)
+  sta  (around lsft (around lctl tab))
+
   cmd  lalt
   opt  lmet
+
+  LOC  (layer-switch lock)
+  ULO  (layer-switch colemak-dh-ext)
 )
 
 ;; ───────────────────────────────────────────────────────────────────────
@@ -40,14 +43,14 @@
   _    _    _    _    _    _      _    _    _    _    _    _    _    _
   _    q    w    f    p    b      XX   j    l    u    y    bks  XX   bks
   @ces a    r    s    t    g      @NAV m    n    e    i    o         _   
-  _    z    x    c    d    v      XX   k    h    ,    .              _   
+  _    z    x    c    d    v      XX   k    h    ,    .              @cen
   @opt @cmd @SYM                  _         @NAV @opt _    _    _    _
 )
 
 (deflayer nav
   _    _    _    _    _    _      _    _    _    _    _    _    caps @LOC
   _    _    _    _    _    _      _    _    _    _    _    _    _    _
-  _    lctl @cmd tab  tab  @bsw   XX   pgup home up   end  XX   XX   _
+  _    lctl @cmd tab  tab  _      XX   pgup home up   end  @bsw XX   _
   _    1    2    3    4    5      XX   pgdn left down rght ret       _
   _    6    7    8    9    0      XX   esc  @sta XX   @cta           _
   _    _    _                     ret       XX   _    _    _    _    _
