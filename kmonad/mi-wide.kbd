@@ -18,6 +18,8 @@
   ces  (tap-next esc lctl)
   LOC  (layer-switch lock)
   ULO  (layer-switch colemak-dh-ext)
+  cta  (around ctl tab)
+  sta  (around sft (around ctl tab))
   cmd  lalt
   opt  lmet
 )
@@ -47,7 +49,7 @@
   _    _    _    _    _    _      _    _    _    _    _    _    _    _
   _    lctl @cmd tab  tab  @bsw   XX   pgup home up   end  XX   XX   _
   _    1    2    3    4    5      XX   pgdn left down rght ret       _
-  _    6    7    8    9    0      XX   esc  tab  XX   XX             _
+  _    6    7    8    9    0      XX   esc  @sta XX   @cta           _
   _    _    _                     ret       XX   _    _    _    _    _
 )
 
