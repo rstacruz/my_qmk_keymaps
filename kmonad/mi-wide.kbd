@@ -50,9 +50,9 @@
 (deflayer nav
   _    _    _    _    _    _      _    _    _    _    _    _    caps @LOC
   _    _    _    _    _    _      _    _    _    _    _    _    _    _
-  _    lctl @cmd tab  tab  _      XX   pgup home up   end  @bsw XX   _
+  _    lctl @cmd tab  tab  XX     XX   pgup home up   end  @bsw XX   _
   _    1    2    3    4    5      XX   pgdn left down rght ret       _
-  _    6    7    8    9    0      XX   esc  @sta XX   @cta           _
+  _    6    7    8    9    0      XX   esc  @sta @cta XX             _
   _    _    _                     ret       XX   _    _    _    _    _
 )
 

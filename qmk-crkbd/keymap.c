@@ -94,7 +94,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = { /*
             └────┴────┘┄───┼────┼────┤     ├───┄┏━━━━┛────┗━━━━┓┄───┤
             │ 1  │ 2  │ 3  │ 4  │ 5  │     │pg↓ ┃ ◀  │ ▼  │ ▶  ┃ ↵  │
   ┌┄┄┄┄┐    ├────┼────┼────┼────┼────┤     ├───┄┗━━━━┷━━━━┷━━━━┛┄───┤
-  ┆NAV ┆ ┄› │ 6  │ 7  │ 8  │ 9  │ 0  │     │ ⎋  │ ⇧↹ │ .  │ ⇥  │ ⌦  │
+  ┆NAV ┆ ┄› │ 6  │ 7  │ 8  │ 9  │ 0  │     │ ⎋  │ ⇧↹ │ ⇥  │ .  │ ⌦  │
   └┄┄┄┄┘    └────┴────┴────┴────┴────┘──┬──└───┄└────┴────┴────┘┄───┘
                       │    │PAD │       │       │ ▓▓ │    │
                       └────┴────┴───────┴───────┴────┴────┘ */
@@ -102,9 +102,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = { /*
   [_NAV] = LAYOUT_36(
     KC_LCTL, KC_LGUI, KC_TAB, KC_TAB,   KC_MS_BTN1, /**/ KC_PGUP, KC_HOME, KC_UP,   KC_END,  x__CBSP,
     KC_1,    KC_2,    KC_3,   KC_4,     KC_5,       /**/ KC_PGDN, KC_LEFT, KC_DOWN, KC_RGHT, KC_ENT,
-    KC_6,    KC_7,    KC_8,   KC_9,     KC_0,       /**/ KC_ESC,  x__STAB, KC_DOT,  x__CTAB, KC_DEL,
+    KC_6,    KC_7,    KC_8,   KC_9,     KC_0,       /**/ KC_ESC,  x__STAB, x__CTAB, KC_DOT,  KC_DEL,
     /**/     /**/     _v_,    MO(_PAD), _v_,        /**/ _v_,     _v_,     _v_      /**/     /**/
-  ), /*
+  ),         /*
 
   ┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄
   Function  ┌────┬────┬────┬───┄┏━━━━┓     ┌────┬───┄┏━━━━┓┄───┬────┐
@@ -117,12 +117,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = { /*
                       │    │ ░░ │       │       │ ▓▓ │    │
                       └────┴────┴───────┴───────┴────┴────┘ */
 
-  [_FUN] = LAYOUT_36(
-    KC_F9, KC_F10, KC_F11, KC_F12, KC_MS_BTN2, /**/ KC_WH_U, x__STAB,  KC_MS_U, x__CTAB, KC_BRIU,
-    KC_F1, KC_F2,  KC_F3,  KC_F4,  KC_MS_BTN1, /**/ KC_WH_D, KC_MS_L,  KC_MS_D, KC_MS_R, KC_BRID,
-    KC_F5, KC_F6,  KC_F7,  KC_F8,  KC_MS_BTN3, /**/ KC_VOLD, KC_VOLU,  KC_MPLY, KC_MNXT, RESET,
-    /**/   /**/    _v_,    _v_,    _v_,        /**/ _v_,     _v_,      _v_      /**/     /**/
-  ), /*
+  [_FUN]     = LAYOUT_36(
+    KC_F9,   KC_F10, KC_F11, KC_F12, KC_MS_BTN2, /**/ KC_WH_U, x__STAB,  KC_MS_U, x__CTAB, KC_BRIU,
+    KC_F1,   KC_F2,  KC_F3,  KC_F4,  KC_MS_BTN1, /**/ KC_WH_D, KC_MS_L,  KC_MS_D, KC_MS_R, KC_BRID,
+    KC_F5,   KC_F6,  KC_F7,  KC_F8,  KC_MS_BTN3, /**/ KC_VOLD, KC_VOLU,  KC_MPLY, KC_MNXT, RESET,
+    /**/     /**/    _v_,    _v_,    _v_,        /**/ _v_,     _v_,      _v_      /**/     /**/
+  ),         /*
 
   ┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄
   Numpad    ┌────┬────┬────┬────┬────┐     ┌────┬────┬────┐┄───┬────┐
@@ -135,7 +135,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = { /*
                       │    │ ▓▓ │       │    0  │spc │ .  │
                       └────┴────┴───────┴───────┴────┴────┘ */
 
-  [_PAD] = LAYOUT_36(
+  [_PAD]     = LAYOUT_36(
     ___,     ___, KC_F, ___,  KC_B,     /**/ KC_1, KC_2,   KC_3,  x__LCMD, KC_BSPC,
     KC_A,    ___, KC_E, ___,  ___,      /**/ KC_4, KC_5,   KC_6,  x__LOPT, KC_LCTL,
     MC_SHOT, ___, KC_C, KC_D, TG(_ALT), /**/ KC_7, KC_8,   KC_9,  ___,     ___,
