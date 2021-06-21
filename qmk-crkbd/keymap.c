@@ -22,7 +22,7 @@
 #define H(KEY) S(G(KEY))
 
 /* Layers */
-enum layers { _BASE = 0, _ALT, _SYM, _NAV, _FUN, _PAD, _GAM, _GMX, _LOC };
+enum layers { _BASE = 0, _ALT, _SYM, _NAV, _ANV, _FUN, _PAD, _GAM, _GMX, _LOC };
 
 /* Macros */
 enum custom_keycodes {
@@ -78,14 +78,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = { /*
   ┌┄┄┄┄┐    ├────┼────┼────┼────┼────┤     ├────┼────┼────┼────┼────┤
   ┆SYM ┆ ┄› │ \  │ ~  │ |  │ &  │ ;  │ etc │ /  │ *  │ -  │ +  │ _  │ math
   └┄┄┄┄┘    └────┴────┴────┴────┴────┘──┬──└────┴────┴────┴────┴────┘
-                      │    │ ▓▓ │ NAV   │       │FUN │    │
+                      │    │ ▓▓ │ ANV   │       │FUN │    │
                       └────┴────┴───────┴───────┴────┴────┘ */
 
   [_SYM] = LAYOUT_36(
     KC_QUOT, KC_DQUO, KC_CIRC, KC_QUES, KC_GRV,   /**/ KC_LBRC, KC_LT,    KC_EQL,  KC_GT,   KC_RBRC,
     KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC,  /**/ KC_LCBR, KC_LPRN,  KC_COLN, KC_RPRN, KC_RCBR,
     KC_BSLS, KC_TILD, KC_PIPE, KC_AMPR, KC_SCLN,  /**/ KC_PSLS, KC_PAST,  KC_PMNS, KC_PPLS, KC_UNDS,
-    /**/     /**/     _v_,     _v_,     MO(_NAV), /**/ _v_,     MO(_FUN), _v_      /**/     /**/
+    /**/     /**/     _v_,     _v_,     TG(_ANV), /**/ _v_,     MO(_FUN), _v_      /**/     /**/
   ), /*
 
   ┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄
@@ -104,7 +104,25 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = { /*
     KC_1,    KC_2,    KC_3,   KC_4,     KC_5,       /**/ KC_PGDN, KC_LEFT, KC_DOWN, KC_RGHT, KC_ENT,
     KC_6,    KC_7,    KC_8,   KC_9,     KC_0,       /**/ KC_ESC,  x__STAB, x__CTAB, KC_DOT,  KC_DEL,
     /**/     /**/     _v_,    MO(_PAD), _v_,        /**/ _v_,     _v_,     _v_      /**/     /**/
-  ),         /*
+  ), /*
+
+  ┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄
+  Altnav    ┌────┬───┄┏━━━━┓┄───┬────┐
+            │exit│home┃ ▲  ┃end │pg↑ │
+            ├───┄┏━━━━┛────┗━━━━┓┄───┤
+            │    ┃ ◀  │ ▼  │ ▶  ┃pg↓ │
+  ┌┄┄┄┄┐    ├───┄┗━━━━┷━━━━┷━━━━┛┄───┤
+  ┆ANV ┆ ┄› │    │    │    │ ‹‹ │ ›› │
+  └┄┄┄┄┘    └────┴────┴────┴────┴────┘──┐
+                      │    │    │ Lmb   │
+                      └────┴────┴───────┘ */
+
+  [_ANV] = LAYOUT_36(
+    TG(_ANV), KC_HOME, KC_UP,   KC_END,  KC_PGUP,    /**/ KC_PGUP, KC_HOME, KC_UP,   KC_END,  x__CBSP,
+    ___,      KC_LEFT, KC_DOWN, KC_RGHT, KC_PGDN,    /**/ KC_PGDN, KC_LEFT, KC_DOWN, KC_RGHT, KC_ENT,
+    ___,      ___,     ___,     x__STAB, x__CTAB,    /**/ KC_ESC,  x__STAB, x__CTAB, KC_DOT,  KC_DEL,
+    /**/      /**/     ___,     ___,     KC_MS_BTN1, /**/ _v_,     _v_,     _v_      /**/     /**/
+  ), /*
 
   ┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄
   Function  ┌────┬────┬────┬───┄┏━━━━┓     ┌────┬───┄┏━━━━┓┄───┬────┐
