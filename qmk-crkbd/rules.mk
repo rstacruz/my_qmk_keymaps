@@ -3,3 +3,4 @@ BOOTLOADER = atmel-dfu
 COMBO_ENABLE = yes
 DEBOUNCE_TYPE = sym_eager_pk
 EXTRAKEY_ENABLE = yes
+RGBLIGHT_ENABLE = yes
