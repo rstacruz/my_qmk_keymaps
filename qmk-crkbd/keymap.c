@@ -23,18 +23,20 @@
 
 /* Layers */
 enum layers {
-  _BASE = 0, _ALT, _SYM, _NAV, _ANV, _FUN, _PAD, _GAM, _GMX,
+  _BASE = 0, _ALT, _SYM, _NAV, _ANV, _FUN, _PAD, _GAM, _GMX, _LOC
 #ifdef ARTSEY_MODE
-  _AR_BAS, _AR_NAV, _AR_NUM
+  , _AR_BAS, _AR_NAV, _AR_NUM
 #endif
-  _LOC
 };
 
 /* Macros */
 enum custom_keycodes {
   MC_MUTE = SAFE_RANGE,
   MC_HAND,
-  MC_SHOT,
+  MC_SHOT
+#ifdef ARTSEY_MODE
+  , ART_A, ART_R, ART_T, ART_S, ART_E, ART_Y, ART_I, ART_O
+#endif
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -122,18 +124,18 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                       │    │    │ Lmb   │
                       └────┴────┴───────┘ */
 
+#ifndef ARTSEY_MODE
   [_ANV] = LAYOUT_36(
     TG(_ANV), KC_HOME, KC_UP,   KC_END,  KC_PGUP,    /**/ KC_PGUP, KC_HOME, KC_UP,   KC_END,  x__CBSP,
     ___,      KC_LEFT, KC_DOWN, KC_RGHT, KC_PGDN,    /**/ KC_PGDN, KC_LEFT, KC_DOWN, KC_RGHT, KC_ENT,
     ___,      ___,     ___,     x__STAB, x__CTAB,    /**/ KC_ESC,  x__STAB, x__CTAB, KC_DOT,  KC_DEL,
     /**/      /**/     ___,     ___,     KC_MS_BTN1, /**/ _v_,     _v_,     _v_      /**/     /**/
   ),
-
-#ifdef ARTSEY_MODE
-  [_AR_BAS] = LAYOUT_36(
+#else
+  [_ANV] = LAYOUT_36(
     MO(_AR_NUM), ART_S, ART_T, ART_R,       ART_A,  /**/ ___, ___, ___, ___, ___,
     ___,         ART_O, ART_I, ART_Y,       ART_E,  /**/ ___, ___, ___, ___, ___,
-    TG(_AR_BAS), ___,   ___,   ___,         ___,    /**/ ___, ___, ___, ___, ___,
+    TG(_ANV),    ___,   ___,   ___,         ___,    /**/ ___, ___, ___, ___, ___,
     /**/         /**/   ___,   MO(_AR_NAV), KC_SPC, /**/ ___, ___, ___  /**/ /**/
   ),
   [_AR_NAV] = LAYOUT_36(
@@ -234,8 +236,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ___, ___, ___, ___, ___, ___, ___, ___,  ___, ___,
     /**/ /**/ ___, ___, ___, ___, ___, DF(0) /**/ /**/
   )
-}; /*
-
+};
+/*
 ┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄
                                                   ┌┄┄┄┄┄┄ ⎋ ┄┐
 Chords                                      ┌┄⎋ ┄┐┌┄↵  ┐┌┄'  ┐
@@ -268,6 +270,10 @@ bool get_ignore_mod_tap_interrupt(uint16_t keycode, keyrecord_t *record) {
   }
 }
 
+#define ART_PRESS_KEY(KEY) \
+  if (record->event.pressed) { add_key(KEY); send_keyboard_report(); } \
+  else { del_key(KEY); send_keyboard_report(); }
+
 // Macro definitions
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
@@ -280,6 +286,16 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   case MC_SHOT: // MacOS: take screenshot
     if (record->event.pressed) { SEND_STRING(SS_LSFT(SS_LCTL(SS_LALT("4")))); }
     break;
+#ifdef ARTSEY_MODE
+  case ART_A: ART_PRESS_KEY(KC_A) break;
+  case ART_R: ART_PRESS_KEY(KC_R) break;
+  case ART_T: ART_PRESS_KEY(KC_T) break;
+  case ART_S: ART_PRESS_KEY(KC_S) break;
+  case ART_E: ART_PRESS_KEY(KC_E) break;
+  case ART_Y: ART_PRESS_KEY(KC_Y) break;
+  case ART_I: ART_PRESS_KEY(KC_I) break;
+  case ART_O: ART_PRESS_KEY(KC_O) break;
+#endif
   }
   return true;
 };

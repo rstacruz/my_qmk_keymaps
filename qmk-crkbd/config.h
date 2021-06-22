@@ -88,3 +88,5 @@
   )
 #define EE_HANDS
 #endif
+
+#define ARTSEY_MODE
