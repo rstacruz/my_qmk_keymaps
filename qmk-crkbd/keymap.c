@@ -246,19 +246,23 @@ Chords                                      ┌┄⎋ ┄┐┌┄↵  ┐┌┄
             └────┴────┴────┴────┴────┴─────┴────┴────┴────┴────┴────┘
 */
 
-enum combos { CM_0, CM_1, CM_2, CM_3, CM_4, CM_5, CM_6, CM_7, CM_8, CM_9, CM_10, CM_11, CM_12 };
+#ifdef ARTSEY_MODE
+enum combos { CM_J, CM_N, CM_F, CM_C };
 
-const uint16_t PROGMEM combo_0[] = {KC_H, KC_COMM, COMBO_END};
-const uint16_t PROGMEM combo_1[] = {KC_H, KC_K, COMBO_END};
-const uint16_t PROGMEM combo_2[] = {KC_COMM, KC_DOT, COMBO_END};
-const uint16_t PROGMEM combo_3[] = {KC_H, KC_DOT, COMBO_END};
+const uint16_t PROGMEM combo_J[] = {ART_T, ART_S, COMBO_END};
+const uint16_t PROGMEM combo_N[] = {ART_I, ART_O, COMBO_END};
+const uint16_t PROGMEM combo_F[] = {ART_A, ART_R, COMBO_END};
+const uint16_t PROGMEM combo_C[] = {ART_E, ART_Y, COMBO_END};
 
 combo_t key_combos[COMBO_COUNT] = {
-  [CM_0] = COMBO(combo_0, KC_ENT),
-  [CM_1] = COMBO(combo_1, KC_ESC),
-  [CM_2] = COMBO(combo_2, KC_QUOT),
-  [CM_3] = COMBO(combo_3, x__CBSP),
+  [CM_J] = COMBO(combo_J, KC_J),
+  [CM_N] = COMBO(combo_N, KC_N),
+  [CM_F] = COMBO(combo_F, KC_F),
+  [CM_C] = COMBO(combo_C, KC_C),
 };
+#else
+combo_t key_combos[COMBO_COUNT] = {}
+#endif
 
 // https://beta.docs.qmk.fm/using-qmk/software-features/tap_hold#ignore-mod-tap-interrupt
 bool get_ignore_mod_tap_interrupt(uint16_t keycode, keyrecord_t *record) {
