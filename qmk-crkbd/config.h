@@ -66,6 +66,6 @@
 #endif
 
 /* Artsey combos */
-/* #define ARTSEY_MODE */
+#define ARTSEY_ENABLED
 /* #define COMBO_COUNT 4 */
 /* #define COMBO_TERM 100 */

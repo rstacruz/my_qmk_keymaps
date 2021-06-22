@@ -21,10 +21,16 @@
 
 #define H(KEY) S(G(KEY))
 
+#ifdef ARTSEY_ENABLED
+#define ART_TOG TG(_AR_BAS)
+#else
+#define ART_TOG KC_TRNS
+#endif
+
 /* Layers */
 enum layers {
   _BASE = 0, _ALT, _SYM, _NAV, _ANV, _FUN, _PAD, _GAM, _GMX, _LOC
-#ifdef ARTSEY_MODE
+#ifdef ARTSEY_ENABLED
   , _AR_BAS, _AR_NAV, _AR_NUM
 #endif
 };
@@ -34,7 +40,7 @@ enum custom_keycodes {
   MC_MUTE = SAFE_RANGE,
   MC_HAND,
   MC_SHOT
-#ifdef ARTSEY_MODE
+#ifdef ARTSEY_ENABLED
   , ART_A, ART_R, ART_T, ART_S, ART_E, ART_Y, ART_I, ART_O
 #endif
 };
@@ -103,14 +109,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ┌┄┄┄┄┐    ├────┼────┼────┼────┼────┤     ├───┄┗━━━━┷━━━━┷━━━━┛┄───┤
   ┆NAV ┆ ┄› │ 6  │ 7  │ 8  │ 9  │ 0  │     │ ⎋  │ ‹‹ │ ›› │ .  │ ⌦  │
   └┄┄┄┄┘    └────┴────┴────┴────┴────┘──┬──└───┄└────┴────┴────┘┄───┘
-                      │    │PAD │       │       │ ▓▓ │    │
+                      │    │PAD │       │       │ ▓▓ │ART │
                       └────┴────┴───────┴───────┴────┴────┘ */
 
   [_NAV] = LAYOUT_36(
     KC_LCTL, KC_LGUI, KC_TAB, KC_TAB,   KC_MS_BTN1, /**/ KC_PGUP, KC_HOME, KC_UP,   KC_END,  x__CBSP,
     KC_1,    KC_2,    KC_3,   KC_4,     KC_5,       /**/ KC_PGDN, KC_LEFT, KC_DOWN, KC_RGHT, KC_ENT,
     KC_6,    KC_7,    KC_8,   KC_9,     KC_0,       /**/ KC_ESC,  x__STAB, x__CTAB, KC_DOT,  KC_DEL,
-    /**/     /**/     _v_,    MO(_PAD), _v_,        /**/ _v_,     _v_,     _v_      /**/     /**/
+    /**/     /**/     _v_,    MO(_PAD), _v_,        /**/ _v_,     _v_,     ART_TOG /**/     /**/
   ),
   /*
   ┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄
@@ -124,19 +130,19 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                       │    │    │ ▓▓    │       │    │    │
                       └────┴────┴───────┴───────┴────┴────┘ */
 
-#ifndef ARTSEY_MODE
   [_ANV] = LAYOUT_36(
     ___, KC_HOME, KC_UP,   KC_END,  KC_PGUP,    /**/ KC_PGUP, KC_HOME, KC_UP,   KC_END,  x__CBSP,
     ___, KC_LEFT, KC_DOWN, KC_RGHT, KC_PGDN,    /**/ KC_PGDN, KC_LEFT, KC_DOWN, KC_RGHT, KC_ENT,
     ___, ___,     ___,     x__STAB, x__CTAB,    /**/ KC_ESC,  x__STAB, x__CTAB, KC_DOT,  KC_DEL,
     /**/ /**/     ___,     ___,     KC_MS_BTN1, /**/ _v_,     _v_,     _v_      /**/     /**/
   ),
-#else
-  [_ANV] = LAYOUT_36(
-    MO(_AR_NUM), ART_S, ART_T, ART_R,       ART_A,  /**/ ___, ___, ___, ___, ___,
-    ___,         ART_O, ART_I, ART_Y,       ART_E,  /**/ ___, ___, ___, ___, ___,
-    TG(_ANV),    ___,   ___,   ___,         ___,    /**/ ___, ___, ___, ___, ___,
-    /**/         /**/   ___,   MO(_AR_NAV), KC_SPC, /**/ ___, ___, ___  /**/ /**/
+
+#ifdef ARTSEY_ENABLED
+  [_AR_BAS] = LAYOUT_36(
+    ART_S, ART_T, ART_R, ART_A,       MO(_AR_NUM),         /**/ ___, ___, ___,        ___, ___,
+    ART_O, ART_I, ART_Y, ART_E,       ___,                 /**/ ___, ___, ___,        ___, ___,
+    ___,   ___,   ___,   ___,         ___,                 /**/ ___, ___, ___,        ___, ___,
+    /**/   /**/   ___,   MO(_AR_NAV), MT(MOD_LSFT,KC_SPC), /**/ ___, ___, TG(_AR_BAS) /**/ /**/
   ),
   [_AR_NAV] = LAYOUT_36(
     ___, KC_HOME, KC_UP,   KC_END,  KC_PGUP, /**/ ___, ___, ___, ___, ___,
@@ -145,10 +151,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     /**/ /**/     ___,     ___,     ___,     /**/ ___, ___, ___  /**/ /**/
   ),
   [_AR_NUM] = LAYOUT_36(
-    ___, ___, KC_1, KC_2, KC_3, /**/ ___, ___, ___, ___, ___,
-    ___, ___, KC_4, KC_5, KC_6, /**/ ___, ___, ___, ___, ___,
-    ___, ___, KC_7, KC_8, KC_9, /**/ ___, ___, ___, ___, ___,
-    /**/ /**/ ___,  ___,  KC_0, /**/ ___, ___, ___  /**/ /**/
+    KC_1, KC_2, KC_3, KC_4, ___, /**/ ___, ___, ___, ___, ___,
+    KC_5, KC_6, KC_7, KC_8, ___, /**/ ___, ___, ___, ___, ___,
+    KC_9, KC_0, ___,  ___,  ___, /**/ ___, ___, ___, ___, ___,
+    /**/  /**/  ___,  ___,  ___, /**/ ___, ___, ___  /**/ /**/
   ),
 #endif
   /*
@@ -239,7 +245,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 };
 /* ┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄ */
 
-#ifdef ARTSEY_MODE
+#ifdef ARTSEY_ENABLED
+#ifdef COMBO_TERM
 enum combos { CM_J, CM_N, CM_F, CM_C };
 
 const uint16_t PROGMEM combo_J[] = {ART_T, ART_S, COMBO_END};
@@ -253,6 +260,7 @@ combo_t key_combos[COMBO_COUNT] = {
   [CM_F] = COMBO(combo_F, KC_F),
   [CM_C] = COMBO(combo_C, KC_C),
 };
+#endif
 #endif
 
 // https://beta.docs.qmk.fm/using-qmk/software-features/tap_hold#ignore-mod-tap-interrupt
@@ -281,7 +289,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   case MC_SHOT: // MacOS: take screenshot
     if (record->event.pressed) { SEND_STRING(SS_LSFT(SS_LCTL(SS_LALT("4")))); }
     break;
-#ifdef ARTSEY_MODE
+#ifdef ARTSEY_ENABLED
   case ART_A: ART_PRESS_KEY(KC_A) break;
   case ART_R: ART_PRESS_KEY(KC_R) break;
   case ART_T: ART_PRESS_KEY(KC_T) break;
