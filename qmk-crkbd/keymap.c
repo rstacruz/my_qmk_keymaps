@@ -22,7 +22,13 @@
 #define H(KEY) S(G(KEY))
 
 /* Layers */
-enum layers { _BASE = 0, _ALT, _SYM, _NAV, _ANV, _FUN, _PAD, _GAM, _GMX, _LOC };
+enum layers {
+  _BASE = 0, _ALT, _SYM, _NAV, _ANV, _FUN, _PAD, _GAM, _GMX,
+#ifdef ARTSEY_MODE
+  _AR_BAS, _AR_NAV, _AR_NUM
+#endif
+  _LOC
+};
 
 /* Macros */
 enum custom_keycodes {
@@ -31,8 +37,8 @@ enum custom_keycodes {
   MC_SHOT,
 };
 
-const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = { /*
-
+const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
+  /*
   ┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄
   Colemak   ┌────┬────┬────┬────┬────┐     ┌────┬────┬────┬────┬────┐
   mod-DH    │ q ⌃│ w  │ f  │ p  │ b  │     │ j  │ l  │ u  │ y  │ ⌫  │
@@ -42,16 +48,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = { /*
             │ z  │ x  │ c  │ d  │ v  │     │ k  │ h  │ ,  │ .  │ ↵ ⌃│
             └────┴────┼────┴────┴────┴──┬──┴────┴────┴────┼────┴────┘
                       │ ⌘  │SYM │   ⇧   │   ␣   │NAV │ ⌥  │
-                      └────┴────┴───────┴───────┴────┴────┘ 
-*/
+                      └────┴────┴───────┴───────┴────┴────┘ */
 
   [0] = LAYOUT_36(
     x__Q, KC_W, KC_F,    KC_P,   KC_B,    /**/ KC_J,   KC_L,   KC_U,    KC_Y,   KC_BSPC,
     KC_A, KC_R, KC_S,    KC_T,   KC_G,    /**/ KC_M,   KC_N,   KC_E,    KC_I,   KC_O,
     KC_Z, KC_X, KC_C,    KC_D,   KC_V,    /**/ KC_K,   KC_H,   KC_COMM, KC_DOT, x__ENT,
     /**/  /**/  x__LCMD, x__SYM, x__LSFT, /**/ KC_SPC, x__NAV, x__LOPT  /**/    /**/
-  ), /*
-
+  ),
+  /*
   ┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄
   Alternate ┌────┬────┬────┬────┬────┐     ┌────┬────┬────┬────┬────┐
   layer     │ q ⌃│ w  │ e  │ r  │ t  │     │ y  │ u  │ i  │ o  │ p  │
@@ -68,8 +73,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = { /*
     KC_A, KC_S, KC_D, KC_F, KC_G, /**/ KC_H, KC_J, KC_K,    KC_L,   KC_BSPC,
     KC_Z, KC_X, KC_C, KC_V, KC_B, /**/ KC_N, KC_M, KC_COMM, KC_DOT, x__ENT,
     /**/  /**/  _v_,  _v_,  _v_,  /**/ _v_,  _v_,  _v_      /**/    /**/
-  ), /*
-
+  ),
+  /*
   ┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄
   Symbols   ┌────┬────┬────┬────┬────┐     ┌────┬────┬────┬────┬────┐
             │ '  │ "  │ ^  │ ?  │ `  │ quo │ [  │ <  │ =  │ >  │ ]  │ brace
@@ -86,8 +91,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = { /*
     KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC,  /**/ KC_LCBR, KC_LPRN,  KC_COLN, KC_RPRN, KC_RCBR,
     KC_BSLS, KC_TILD, KC_PIPE, KC_AMPR, KC_SCLN,  /**/ KC_PSLS, KC_PAST,  KC_PMNS, KC_PPLS, KC_UNDS,
     /**/     /**/     _v_,     _v_,     TG(_ANV), /**/ _v_,     MO(_FUN), _v_      /**/     /**/
-  ), /*
-
+  ),
+  /*
   ┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄
   Navigate  ┌────┬────┐┄───┬────┬────┐     ┌────┬───┄┏━━━━┓┄───┬────┐
             │ ⌃  │ ⌥  │    │ ↹  │    │     │pg↑ │home┃ ▲  ┃end │ ^⌫ │
@@ -104,8 +109,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = { /*
     KC_1,    KC_2,    KC_3,   KC_4,     KC_5,       /**/ KC_PGDN, KC_LEFT, KC_DOWN, KC_RGHT, KC_ENT,
     KC_6,    KC_7,    KC_8,   KC_9,     KC_0,       /**/ KC_ESC,  x__STAB, x__CTAB, KC_DOT,  KC_DEL,
     /**/     /**/     _v_,    MO(_PAD), _v_,        /**/ _v_,     _v_,     _v_      /**/     /**/
-  ), /*
-
+  ),
+  /*
   ┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄
   Altnav    ┌────┬───┄┏━━━━┓┄───┬────┐
             │exit│home┃ ▲  ┃end │pg↑ │
@@ -122,8 +127,29 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = { /*
     ___,      KC_LEFT, KC_DOWN, KC_RGHT, KC_PGDN,    /**/ KC_PGDN, KC_LEFT, KC_DOWN, KC_RGHT, KC_ENT,
     ___,      ___,     ___,     x__STAB, x__CTAB,    /**/ KC_ESC,  x__STAB, x__CTAB, KC_DOT,  KC_DEL,
     /**/      /**/     ___,     ___,     KC_MS_BTN1, /**/ _v_,     _v_,     _v_      /**/     /**/
-  ), /*
+  ),
 
+#ifdef ARTSEY_MODE
+  [_AR_BAS] = LAYOUT_36(
+    MO(_AR_NUM), ART_S, ART_T, ART_R,       ART_A,  /**/ ___, ___, ___, ___, ___,
+    ___,         ART_O, ART_I, ART_Y,       ART_E,  /**/ ___, ___, ___, ___, ___,
+    TG(_AR_BAS), ___,   ___,   ___,         ___,    /**/ ___, ___, ___, ___, ___,
+    /**/         /**/   ___,   MO(_AR_NAV), KC_SPC, /**/ ___, ___, ___  /**/ /**/
+  ),
+  [_AR_NAV] = LAYOUT_36(
+    ___, KC_HOME, KC_UP,   KC_END,  KC_PGUP, /**/ ___, ___, ___, ___, ___,
+    ___, KC_LEFT, KC_DOWN, KC_RGHT, KC_PGDN, /**/ ___, ___, ___, ___, ___,
+    ___, ___,     ___,     x__STAB, x__CTAB, /**/ ___, ___, ___, ___, ___,
+    /**/ /**/     ___,     ___,     ___,     /**/ ___, ___, ___  /**/ /**/
+  ),
+  [_AR_NUM] = LAYOUT_36(
+    ___, ___, KC_1, KC_2, KC_3, /**/ ___, ___, ___, ___, ___,
+    ___, ___, KC_4, KC_5, KC_6, /**/ ___, ___, ___, ___, ___,
+    ___, ___, KC_7, KC_8, KC_9, /**/ ___, ___, ___, ___, ___,
+    /**/ /**/ ___,  ___,  KC_0, /**/ ___, ___, ___  /**/ /**/
+  ),
+#endif
+  /*
   ┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄
   Function  ┌────┬────┬────┬───┄┏━━━━┓     ┌────┬───┄┏━━━━┓┄───┬────┐
             │ f9 │f10 │f11 │f12 ┃rmb ┃     │ w↑ │ ⇧↹ ┃ ▲  ┃ ⇥  │scr+│
@@ -245,23 +271,14 @@ bool get_ignore_mod_tap_interrupt(uint16_t keycode, keyrecord_t *record) {
 // Macro definitions
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
-  case MC_MUTE:
-    if (record->event.pressed) {
-      // Zoom: mute or unmute
-      SEND_STRING(SS_LSFT(SS_LALT("a")));
-    }
+  case MC_MUTE: // Zoom: mute or unmute
+    if (record->event.pressed) { SEND_STRING(SS_LSFT(SS_LALT("a"))); }
     break;
-  case MC_HAND:
-    if (record->event.pressed) {
-      // Zoom: raise hand
-      SEND_STRING(SS_LSFT(SS_LALT("y")));
-    }
+  case MC_HAND: // Zoom: raise hand
+    if (record->event.pressed) { SEND_STRING(SS_LSFT(SS_LALT("y"))); }
     break;
-  case MC_SHOT:
-    if (record->event.pressed) {
-      // MacOS: take screenshot
-      SEND_STRING(SS_LSFT(SS_LCTL(SS_LALT("4"))));
-    }
+  case MC_SHOT: // MacOS: take screenshot
+    if (record->event.pressed) { SEND_STRING(SS_LSFT(SS_LCTL(SS_LALT("4")))); }
     break;
   }
   return true;
