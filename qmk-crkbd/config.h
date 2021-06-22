@@ -8,17 +8,10 @@
 #define PERMISSIVE_HOLD
 #define TAPPING_TOGGLE 2
 #define ONESHOT_TIMEOUT 750
-#define DYNAMIC_KEYMAP_LAYER_COUNT 7 // For via
 
 // For hold-tap mods
-// #define TAPPING_TERM 200
-// #define IGNORE_MOD_TAP_INTERRUPT
 #define IGNORE_MOD_TAP_INTERRUPT_PER_KEY
 #define TAPPING_TERM 150
-
-// Extra settings
-// #define RETRO_TAPPING
-// #define TAPPING_FORCE_HOLD
 
 /* Mouse keys */
 #undef MOUSEKEY_DELAY
