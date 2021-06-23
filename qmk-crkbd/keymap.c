@@ -1,25 +1,18 @@
 #include QMK_KEYBOARD_H
 
-#define _v_  KC_TRNS
-#define ___  KC_NO
-
-/* Modifier keys */
-#define x__LCMD KC_LALT
-#define x__LSFT KC_LSFT
-#define x__LOPT KC_LGUI
-#define x__OTAB MT(MOD_LGUI,KC_TAB) /* opt/gui | tab */
-#define x__CESC MT(MOD_LALT,KC_ESC) /* cmd/alt | esc */
-#define x__SYM  MO(_SYM)
-#define x__NAV  MO(_NAV)
-#define x__ENT  LCTL_T(KC_ENT)  /* ctrl | enter */
-#define x__Q    LCTL_T(KC_Q)    /* ctrl | q */
-#define x__CBSP C(KC_BSPC) /* Delete word */
-
-/* Tab variations */
-#define x__CTAB RCTL(KC_TAB)
-#define x__STAB RCTL(LSFT(KC_TAB))
-
-#define H(KEY) S(G(KEY))
+#define _v_     KC_TRNS
+#define ___     KC_NO
+#define x__LCMD KC_LALT            /* cmd(mac) or alt(win) */
+#define x__LOPT KC_LGUI            /* opt(mac) or gui(win) */
+#define x__ENT  LCTL_T(KC_ENT)     /* ctrl(hold) or enter(tap) */
+#define x__Q    LCTL_T(KC_Q)       /* ctrl(hold) or q(tap) */
+#define x__CBSP C(KC_BSPC)         /* Delete word */
+#define x__LMB  KC_MS_BTN1         /* Left mouse button */
+#define x__RMB  KC_MS_BTN2         /* Right mouse button */
+#define x__MMB  KC_MS_BTN3         /* Mid mouse button */
+#define x__CTAB RCTL(KC_TAB)       /* Next tab */
+#define x__STAB RCTL(LSFT(KC_TAB)) /* Previous tab */
+#define H(KEY)  S(G(KEY))          /* kinda-hyper */
 
 /* Layers */
 enum layers {
@@ -47,10 +40,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                       └────┴────┴───────┴───────┴────┴────┘ */
 
   [0] = LAYOUT_36(
-    x__Q, KC_W, KC_F,    KC_P,   KC_B,    /**/ KC_J,   KC_L,   KC_U,    KC_Y,   KC_BSPC,
-    KC_A, KC_R, KC_S,    KC_T,   KC_G,    /**/ KC_M,   KC_N,   KC_E,    KC_I,   KC_O,
-    KC_Z, KC_X, KC_C,    KC_D,   KC_V,    /**/ KC_K,   KC_H,   KC_COMM, KC_DOT, x__ENT,
-    /**/  /**/  x__LCMD, x__SYM, x__LSFT, /**/ KC_SPC, x__NAV, x__LOPT  /**/    /**/
+    x__Q, KC_W, KC_F,    KC_P,     KC_B,    /**/ KC_J,   KC_L,     KC_U,    KC_Y,   KC_BSPC,
+    KC_A, KC_R, KC_S,    KC_T,     KC_G,    /**/ KC_M,   KC_N,     KC_E,    KC_I,   KC_O,
+    KC_Z, KC_X, KC_C,    KC_D,     KC_V,    /**/ KC_K,   KC_H,     KC_COMM, KC_DOT, x__ENT,
+    /**/  /**/  x__LCMD, MO(_SYM), KC_LSFT, /**/ KC_SPC, MO(_NAV), x__LOPT  /**/    /**/
   ),
   /*
   ┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄
@@ -115,20 +108,20 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ┌┄┄┄┄┐    ├───┄┗━━━━┷━━━━┷━━━━┛┄───┤     ├───┄┗━━━━┷━━━━┷━━━━┛┄───┤
   ┆ANV ┆ ┄› │    │    │    │ ‹‹ │ ›› │     │ ⎋  │ ‹‹ │ ›› │ .  │ ⌦  │
   └┄┄┄┄┘    └────┴────┴────┴────┴────┘──┬──└───┄└────┴────┴────┘┄───┘
-                      │    │    │ ▓▓    │       │    │    │
+                      │    │Lmb │ ▓▓    │       │    │    │
                       └────┴────┴───────┴───────┴────┴────┘ */
 
   [_ANV] = LAYOUT_36(
-    ___, KC_HOME, KC_UP,   KC_END,  KC_PGUP,    /**/ KC_PGUP, KC_HOME, KC_UP,   KC_END,  x__CBSP,
-    ___, KC_LEFT, KC_DOWN, KC_RGHT, KC_PGDN,    /**/ KC_PGDN, KC_LEFT, KC_DOWN, KC_RGHT, KC_ENT,
-    ___, ___,     ___,     x__STAB, x__CTAB,    /**/ KC_ESC,  x__STAB, x__CTAB, KC_DOT,  KC_DEL,
-    /**/ /**/     ___,     ___,     KC_MS_BTN1, /**/ _v_,     _v_,     _v_      /**/     /**/
+    ___, KC_HOME, KC_UP,   KC_END,     KC_PGUP, /**/ KC_PGUP, KC_HOME, KC_UP,   KC_END,  x__CBSP,
+    ___, KC_LEFT, KC_DOWN, KC_RGHT,    KC_PGDN, /**/ KC_PGDN, KC_LEFT, KC_DOWN, KC_RGHT, KC_ENT,
+    ___, ___,     ___,     x__STAB,    x__CTAB, /**/ KC_ESC,  x__STAB, x__CTAB, KC_DOT,  KC_DEL,
+    /**/ /**/     ___,     KC_MS_BTN1, ___,     /**/ _v_,     _v_,     _v_      /**/     /**/
   ),
 
   /*
   ┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄
   Function  ┌────┬────┬────┬───┄┏━━━━┓     ┌────┬───┄┏━━━━┓┄───┬────┐
-            │ f9 │f10 │f11 │f12 ┃rmb ┃     │ w↑ │ ⇧↹ ┃ ▲  ┃ ⇥  │scr+│
+            │ f9 │f10 │f11 │f12 ┃rmb ┃     │ w↑ │lmb ┃ ▲  ┃rmb │scr+│
             ├────┼────┼────┼───┄┣━━━━┫     ├───┄┏━━━━┛────┗━━━━┓┄───┤
             │ f1 │ f2 │ f3 │ f4 ┃lmb ┃     │ w↓ ┃ ◀  │ ▼  │ ▶  ┃scr-│
   ┌┄┄┄┄┐    ├────┼────┼────┼───┄┣━━━━┫     ├───┄┗━━━━┷━━━━┷━━━━┛┄───┤
@@ -138,9 +131,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                       └────┴────┴───────┴───────┴────┴────┘ */
 
   [_FUN]     = LAYOUT_36(
-    KC_F9,   KC_F10, KC_F11, KC_F12, KC_MS_BTN2, /**/ KC_WH_U, x__STAB,  KC_MS_U, x__CTAB, KC_BRIU,
-    KC_F1,   KC_F2,  KC_F3,  KC_F4,  KC_MS_BTN1, /**/ KC_WH_D, KC_MS_L,  KC_MS_D, KC_MS_R, KC_BRID,
-    KC_F5,   KC_F6,  KC_F7,  KC_F8,  KC_MS_BTN3, /**/ KC_VOLD, KC_VOLU,  KC_MPLY, KC_MNXT, RESET,
+    KC_F9,   KC_F10, KC_F11, KC_F12, x__RMB, /**/ KC_WH_U, x__LMB,  KC_MS_U, x__RMB, KC_BRIU,
+    KC_F1,   KC_F2,  KC_F3,  KC_F4,  x__LMB, /**/ KC_WH_D, KC_MS_L,  KC_MS_D, KC_MS_R, KC_BRID,
+    KC_F5,   KC_F6,  KC_F7,  KC_F8,  x__MMB, /**/ KC_VOLD, KC_VOLU,  KC_MPLY, KC_MNXT, RESET,
     /**/     /**/    _v_,    _v_,    _v_,        /**/ _v_,     _v_,      _v_      /**/     /**/
   ),
   /*
