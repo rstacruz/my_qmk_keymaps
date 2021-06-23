@@ -64,8 +64,3 @@
   )
 #define EE_HANDS
 #endif
-
-/* Artsey combos */
-#define ARTSEY_ENABLED
-/* #define COMBO_COUNT 4 */
-/* #define COMBO_TERM 100 */

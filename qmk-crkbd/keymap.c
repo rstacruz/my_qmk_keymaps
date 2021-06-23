@@ -21,18 +21,9 @@
 
 #define H(KEY) S(G(KEY))
 
-#ifdef ARTSEY_ENABLED
-#define ART_TOG TG(_AR_BAS)
-#else
-#define ART_TOG KC_TRNS
-#endif
-
 /* Layers */
 enum layers {
   _BASE = 0, _ALT, _SYM, _NAV, _ANV, _FUN, _PAD, _GAM, _GMX, _LOC
-#ifdef ARTSEY_ENABLED
-  , _AR_BAS, _AR_NAV, _AR_NUM
-#endif
 };
 
 /* Macros */
@@ -40,9 +31,6 @@ enum custom_keycodes {
   MC_MUTE = SAFE_RANGE,
   MC_HAND,
   MC_SHOT
-#ifdef ARTSEY_ENABLED
-  , ART_A, ART_R, ART_T, ART_S, ART_E, ART_Y, ART_I, ART_O
-#endif
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -103,7 +91,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   /*
   ┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄
   Navigate  ┌────┬────┐┄───┬────┬────┐     ┌────┬───┄┏━━━━┓┄───┬────┐
-            │ ⌃  │ ⌥  │    │ ↹  │ART │     │pg↑ │home┃ ▲  ┃end │ ^⌫ │
+            │ ⌃  │ ⌥  │    │ ↹  │    │     │pg↑ │home┃ ▲  ┃end │ ^⌫ │
             └────┴────┘┄───┼────┼────┤     ├───┄┏━━━━┛────┗━━━━┓┄───┤
             │ 1  │ 2  │ 3  │ 4  │ 5  │     │pg↓ ┃ ◀  │ ▼  │ ▶  ┃ ↵  │
   ┌┄┄┄┄┐    ├────┼────┼────┼────┼────┤     ├───┄┗━━━━┷━━━━┷━━━━┛┄───┤
@@ -113,10 +101,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                       └────┴────┴───────┴───────┴────┴────┘ */
 
   [_NAV] = LAYOUT_36(
-    KC_LCTL, KC_LGUI, KC_TAB, KC_TAB,   ART_TOG, /**/ KC_PGUP, KC_HOME, KC_UP,   KC_END,  x__CBSP,
-    KC_1,    KC_2,    KC_3,   KC_4,     KC_5,       /**/ KC_PGDN, KC_LEFT, KC_DOWN, KC_RGHT, KC_ENT,
-    KC_6,    KC_7,    KC_8,   KC_9,     KC_0,       /**/ KC_ESC,  x__STAB, x__CTAB, KC_DOT,  KC_DEL,
-    /**/     /**/     _v_,    MO(_PAD), _v_,        /**/ _v_,     _v_,     _v_ /**/     /**/
+    KC_LCTL, KC_LGUI, KC_TAB, KC_TAB,   _v_,  /**/ KC_PGUP, KC_HOME, KC_UP,   KC_END,  x__CBSP,
+    KC_1,    KC_2,    KC_3,   KC_4,     KC_5, /**/ KC_PGDN, KC_LEFT, KC_DOWN, KC_RGHT, KC_ENT,
+    KC_6,    KC_7,    KC_8,   KC_9,     KC_0, /**/ KC_ESC,  x__STAB, x__CTAB, KC_DOT,  KC_DEL,
+    /**/     /**/     _v_,    MO(_PAD), _v_,  /**/ _v_,     _v_,     _v_      /**/     /**/
   ),
   /*
   ┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄
@@ -137,26 +125,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     /**/ /**/     ___,     ___,     KC_MS_BTN1, /**/ _v_,     _v_,     _v_      /**/     /**/
   ),
 
-#ifdef ARTSEY_ENABLED
-  [_AR_BAS] = LAYOUT_36(
-    ART_S, ART_T, ART_R, ART_A,       MO(_AR_NUM),         /**/ ___, ___, ___,        ___, ___,
-    ART_O, ART_I, ART_Y, ART_E,       ___,                 /**/ ___, ___, ___,        ___, ___,
-    ___,   ___,   ___,   ___,         ___,                 /**/ ___, ___, ___,        ___, ___,
-    /**/   /**/   ___,   MO(_AR_NAV), MT(MOD_LSFT,KC_SPC), /**/ ___, ___, TG(_AR_BAS) /**/ /**/
-  ),
-  [_AR_NAV] = LAYOUT_36(
-    ___, KC_HOME, KC_UP,   KC_END,  KC_PGUP, /**/ ___, ___, ___, ___, ___,
-    ___, KC_LEFT, KC_DOWN, KC_RGHT, KC_PGDN, /**/ ___, ___, ___, ___, ___,
-    ___, ___,     ___,     x__STAB, x__CTAB, /**/ ___, ___, ___, ___, ___,
-    /**/ /**/     ___,     ___,     ___,     /**/ ___, ___, ___  /**/ /**/
-  ),
-  [_AR_NUM] = LAYOUT_36(
-    KC_1, KC_2, KC_3, KC_4, ___, /**/ ___, ___, ___, ___, ___,
-    KC_5, KC_6, KC_7, KC_8, ___, /**/ ___, ___, ___, ___, ___,
-    KC_9, KC_0, ___,  ___,  ___, /**/ ___, ___, ___, ___, ___,
-    /**/  /**/  ___,  ___,  ___, /**/ ___, ___, ___  /**/ /**/
-  ),
-#endif
   /*
   ┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄
   Function  ┌────┬────┬────┬───┄┏━━━━┓     ┌────┬───┄┏━━━━┓┄───┬────┐
@@ -174,8 +142,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_F1,   KC_F2,  KC_F3,  KC_F4,  KC_MS_BTN1, /**/ KC_WH_D, KC_MS_L,  KC_MS_D, KC_MS_R, KC_BRID,
     KC_F5,   KC_F6,  KC_F7,  KC_F8,  KC_MS_BTN3, /**/ KC_VOLD, KC_VOLU,  KC_MPLY, KC_MNXT, RESET,
     /**/     /**/    _v_,    _v_,    _v_,        /**/ _v_,     _v_,      _v_      /**/     /**/
-  ),         /*
-
+  ),
+  /*
   ┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄
   Numpad    ┌────┬────┬────┬────┬────┐     ┌────┬────┬────┐┄───┬────┐
             │    │    │    │    │    │     │ 1  │ 2  │ 3  │ ⌘  │ ⌫  │
@@ -192,8 +160,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     RGB_TOG, RGB_HUI, RGB_SAI, RGB_VAI, ___, /**/ KC_4, KC_5,   KC_6,  x__LOPT, KC_LCTL,
     RGB_MOD, RGB_HUD, RGB_SAD, RGB_VAD, ___, /**/ KC_7, KC_8,   KC_9,  ___,     MC_SHOT,
     /**/     /**/     _v_,     _v_,     _v_, /**/ KC_0, KC_SPC, KC_DOT /**/     /**/
-  ), /*
-
+  ),
+  /*
   ┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄
   Gaming    ┌───┄┌────┬────┬────┬────┐     ┌────┬────┐┄───┬────┬────┐
   mode      │ ↹  │ q  │ w  │ e  │ r  │     │ 1  │ 4  │ t  │ y  │ ⎋  │
@@ -225,8 +193,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _v_, KC_1, KC_2, KC_3, KC_4, /**/ KC_G, KC_H, KC_J,    KC_K,   KC_L,
     _v_, KC_5, KC_6, KC_7, KC_8, /**/ KC_N, KC_M, KC_COMM, KC_DOT, KC_P,
     /**/ /**/  _v_,  _v_,  _v_,  /**/ _v_,  _v_,  _v_      /**/    /**/
-  ), /*
-
+  ),
+  /*
   ┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄
   Blank     ┌────┬────┬────┬────┬────┐     ┌────┬────┬────┬────┬────┐
             │    │    │    │    │    │     │    │    │    │    │    │
@@ -273,10 +241,6 @@ bool get_ignore_mod_tap_interrupt(uint16_t keycode, keyrecord_t *record) {
   }
 }
 
-#define ART_PRESS_KEY(KEY) \
-  if (record->event.pressed) { add_key(KEY); send_keyboard_report(); } \
-  else { del_key(KEY); send_keyboard_report(); }
-
 // Macro definitions
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
@@ -289,16 +253,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   case MC_SHOT: // MacOS: take screenshot
     if (record->event.pressed) { SEND_STRING(SS_LSFT(SS_LCTL(SS_LALT("4")))); }
     break;
-#ifdef ARTSEY_ENABLED
-  case ART_A: ART_PRESS_KEY(KC_A) break;
-  case ART_R: ART_PRESS_KEY(KC_R) break;
-  case ART_T: ART_PRESS_KEY(KC_T) break;
-  case ART_S: ART_PRESS_KEY(KC_S) break;
-  case ART_E: ART_PRESS_KEY(KC_E) break;
-  case ART_Y: ART_PRESS_KEY(KC_Y) break;
-  case ART_I: ART_PRESS_KEY(KC_I) break;
-  case ART_O: ART_PRESS_KEY(KC_O) break;
-#endif
   }
   return true;
 };
