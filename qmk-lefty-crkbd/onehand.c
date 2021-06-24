@@ -5,56 +5,60 @@
 #define DEF_COMBO_TARGET_KC(A,B,TARGET) \
   COMBO(combo_ ## A ## B, KC_ ## TARGET)
 
-DEF_COMBO_INPUT_KC(O, I); /* o o . . | . . . . */
-DEF_COMBO_INPUT_KC(I, E); /* . o o . | . . . . */
-DEF_COMBO_INPUT_KC(E, N); /* . . o o | . . . . */
-DEF_COMBO_INPUT_KC(O, N); /* o . . o | . . . . */
-DEF_COMBO_INPUT_KC(O, E); /* o . o . | . . . . */
-DEF_COMBO_INPUT_KC(I, N); /* . o . o | . . . . */
-DEF_COMBO_INPUT_KC(A, R); /* . . . . | o o . . */
-DEF_COMBO_INPUT_KC(R, S); /* . . . . | . o o . */
-DEF_COMBO_INPUT_KC(S, T); /* . . . . | . . o o */
-DEF_COMBO_INPUT_KC(A, T); /* . . . . | o . . o */
-DEF_COMBO_INPUT_KC(A, S); /* . . . . | o . o . */
-DEF_COMBO_INPUT_KC(R, T); /* . . . . | . o . o */
-DEF_COMBO_INPUT_KC(I, A); /* . o . . | o . . . */
-DEF_COMBO_INPUT_KC(E, R); /* . . o . | . o . . */
-DEF_COMBO_INPUT_KC(N, S); /* . . . o | . . o . */
-DEF_COMBO_INPUT_KC(O, R); /* o . . . | . o . . */
-DEF_COMBO_INPUT_KC(I, S); /* . o . . | . . o . */
-DEF_COMBO_INPUT_KC(E, T); /* . . o . | . . . o */
-DEF_COMBO_INPUT_KC(O, S); /* o . . . | . . o . */
-DEF_COMBO_INPUT_KC(I, T); /* . o . . | . . . o */
-DEF_COMBO_INPUT_KC(E, A); /* . . o . | o . . . */
-DEF_COMBO_INPUT_KC(N, R); /* . . . o | . o . . */
-DEF_COMBO_INPUT_KC(O, T); /* o . . . | . . . o */
-DEF_COMBO_INPUT_KC(A, N); /* . . . o | o . . . */
+DEF_COMBO_INPUT_KC(O, I); /* o i . . | . . . . */
+DEF_COMBO_INPUT_KC(O, E); /* o . e . | . . . . */
+DEF_COMBO_INPUT_KC(O, N); /* o . . n | . . . . */
+DEF_COMBO_INPUT_KC(O, A); /* o . . . | a . . . (!) */
+DEF_COMBO_INPUT_KC(O, R); /* o . . . | . r . . */
+DEF_COMBO_INPUT_KC(O, S); /* o . . . | . . s . */
+DEF_COMBO_INPUT_KC(O, T); /* o . . . | . . . t */
+DEF_COMBO_INPUT_KC(I, E); /* . i e . | . . . . */
+DEF_COMBO_INPUT_KC(I, N); /* . i . n | . . . . */
+DEF_COMBO_INPUT_KC(I, A); /* . i . . | a . . . */
+DEF_COMBO_INPUT_KC(I, R); /* . i . . | . r . . (!) */
+DEF_COMBO_INPUT_KC(I, S); /* . i . . | . . s . */
+DEF_COMBO_INPUT_KC(I, T); /* . i . . | . . . t */
+DEF_COMBO_INPUT_KC(E, N); /* . . e n | . . . . */
+DEF_COMBO_INPUT_KC(E, A); /* . . e . | a . . . */
+DEF_COMBO_INPUT_KC(E, R); /* . . e . | . r . . */
+DEF_COMBO_INPUT_KC(E, S); /* . . e . | . . s . (!) */
+DEF_COMBO_INPUT_KC(E, T); /* . . e . | . . . t */
+DEF_COMBO_INPUT_KC(N, A); /* . . . n | a . . . */
+DEF_COMBO_INPUT_KC(N, R); /* . . . n | . r . . */
+DEF_COMBO_INPUT_KC(N, S); /* . . . n | . . s . */
+DEF_COMBO_INPUT_KC(N, T); /* . . . n | . . . t (!) */
+DEF_COMBO_INPUT_KC(A, R); /* . . . . | a r . . */
+DEF_COMBO_INPUT_KC(A, S); /* . . . . | a . s . */
+DEF_COMBO_INPUT_KC(A, T); /* . . . . | a . . t */
+DEF_COMBO_INPUT_KC(R, S); /* . . . . | . r s . */
+DEF_COMBO_INPUT_KC(R, T); /* . . . . | . r . t */
+DEF_COMBO_INPUT_KC(S, T); /* . . . . | . . s t */
 
 combo_t key_combos[COMBO_COUNT] = {
-  DEF_COMBO_TARGET_KC(O, I, F),    /* o o . . | . . . . */
-  DEF_COMBO_TARGET_KC(I, E, U),    /* . o o . | . . . . */
-  DEF_COMBO_TARGET_KC(E, N, C),    /* . . o o | . . . . */
-  DEF_COMBO_TARGET_KC(O, N, ENT),  /* o . . o | . . . . */
-  DEF_COMBO_TARGET_KC(O, E, Z),    /* o . o . | . . . . */
-  DEF_COMBO_TARGET_KC(I, N, J),    /* . o . o | . . . . */
-  DEF_COMBO_TARGET_KC(A, R, W),    /* . . . . | o o . . */
-  DEF_COMBO_TARGET_KC(R, S, H),    /* . . . . | . o o . */
-  DEF_COMBO_TARGET_KC(S, T, D),    /* . . . . | . . o o */
-  DEF_COMBO_TARGET_KC(A, T, SPC),  /* . . . . | o . . o */
-  DEF_COMBO_TARGET_KC(A, S, Q),    /* . . . . | o . o . */
-  DEF_COMBO_TARGET_KC(R, T, K),    /* . . . . | . o . o */
-  DEF_COMBO_TARGET_KC(I, A, B),    /* . o . . | o . . . */
-  DEF_COMBO_TARGET_KC(E, R, G),    /* . . o . | . o . . */
-  DEF_COMBO_TARGET_KC(N, S, Y),    /* . . . o | . . o . */
-  DEF_COMBO_TARGET_KC(O, R, V),    /* o . . . | . o . . */
-  DEF_COMBO_TARGET_KC(I, S, M),    /* . o . . | . . o . */
-  DEF_COMBO_TARGET_KC(E, T, L),    /* . . o . | . . . o */
-  DEF_COMBO_TARGET_KC(O, S, COMM), /* o . . . | . . o . */
-  DEF_COMBO_TARGET_KC(I, T, P),    /* . o . . | . . . o */
-  DEF_COMBO_TARGET_KC(E, A, LSFT), /* . . o . | o . . . */
-  DEF_COMBO_TARGET_KC(N, R, QUOT), /* . . . o | . . . o */
-  DEF_COMBO_TARGET_KC(O, T, BSPC), /* o . . . | . . . o */
-  DEF_COMBO_TARGET_KC(A, N, DOT),  /* . . . o | o . . . */
+  DEF_COMBO_TARGET_KC(O, I, F),    /* o i . . | . . . . */
+  DEF_COMBO_TARGET_KC(O, E, Z),    /* o . e . | . . . . */
+  DEF_COMBO_TARGET_KC(O, N, ENT),  /* o . . n | . . . . */
+  DEF_COMBO_TARGET_KC(O, R, V),    /* o . . . | . r . . */
+  DEF_COMBO_TARGET_KC(O, S, COMM), /* o . . . | . . s . */
+  DEF_COMBO_TARGET_KC(O, T, BSPC), /* o . . . | . . . t */
+  DEF_COMBO_TARGET_KC(I, E, U),    /* . i e . | . . . . */
+  DEF_COMBO_TARGET_KC(I, N, J),    /* . i . n | . . . . */
+  DEF_COMBO_TARGET_KC(I, A, B),    /* . i . . | a . . . */
+  DEF_COMBO_TARGET_KC(I, S, M),    /* . i . . | . . s . */
+  DEF_COMBO_TARGET_KC(I, T, P),    /* . i . . | . . . t */
+  DEF_COMBO_TARGET_KC(E, N, C),    /* . . e n | . . . . */
+  DEF_COMBO_TARGET_KC(E, A, LSFT), /* . . e . | a . . . */
+  DEF_COMBO_TARGET_KC(E, R, G),    /* . . e . | . r . . */
+  DEF_COMBO_TARGET_KC(E, T, L),    /* . . e . | . . . t */
+  DEF_COMBO_TARGET_KC(N, A, DOT),  /* . . . n | a . . . */
+  DEF_COMBO_TARGET_KC(N, R, QUOT), /* . . . n | . r . . */
+  DEF_COMBO_TARGET_KC(N, S, Y),    /* . . . n | . . s . */
+  DEF_COMBO_TARGET_KC(A, R, W),    /* . . . . | a r . . */
+  DEF_COMBO_TARGET_KC(A, S, Q),    /* . . . . | a . s . */
+  DEF_COMBO_TARGET_KC(A, T, SPC),  /* . . . . | a . . t */
+  DEF_COMBO_TARGET_KC(R, S, H),    /* . . . . | . r s . */
+  DEF_COMBO_TARGET_KC(R, T, K),    /* . . . . | . r . t */
+  DEF_COMBO_TARGET_KC(S, T, D),    /* . . . . | . . s t */
 };
 
 void keyboard_post_init_user(void) {
