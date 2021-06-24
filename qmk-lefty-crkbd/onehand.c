@@ -44,12 +44,12 @@ combo_t key_combos[COMBO_COUNT] = {
   DEF_COMBO_TARGET_KC(O, R, V),       /* o . . . | . r . . */
   DEF_COMBO_TARGET_KC(O, S, COMM),    /* o . . . | . . s . */
   DEF_COMBO_TARGET_KC(O, T, BSPC),    /* o . . . | . . . t */
-  DEF_COMBO_TARGET_KC(I, E, U),       /* . i e . | . . . . */
+  DEF_COMBO_TARGET_KC(I, E, C),       /* . i e . | . . . . */
   DEF_COMBO_TARGET_KC(I, N, J),       /* . i . n | . . . . */
   DEF_COMBO_TARGET_KC(I, A, B),       /* . i . . | a . . . */
   DEF_COMBO_TARGET_KC(I, S, M),       /* . i . . | . . s . */
   DEF_COMBO_TARGET_KC(I, T, P),       /* . i . . | . . . t */
-  DEF_COMBO_TARGET_KC(E, N, C),       /* . . e n | . . . . */
+  DEF_COMBO_TARGET_KC(E, N, U),       /* . . e n | . . . . */
   DEF_COMBO_TARGET_KC(E, A, LSFT),    /* . . e . | a . . . */
   DEF_COMBO_TARGET_KC(E, R, G),       /* . . e . | . r . . */
   DEF_COMBO_TARGET_KC(E, T, L),       /* . . e . | . . . t */
@@ -58,9 +58,9 @@ combo_t key_combos[COMBO_COUNT] = {
   DEF_COMBO_TARGET_KC(A, R, W),       /* . . . . | a r . . */
   DEF_COMBO_TARGET_KC(A, S, Q),       /* . . . . | a . s . */
   DEF_COMBO_TARGET_KC(A, T, SPC),     /* . . . . | a . . t */
-  DEF_COMBO_TARGET_KC(R, S, H),       /* . . . . | . r s . */
+  DEF_COMBO_TARGET_KC(R, S, D),       /* . . . . | . r s . */
   DEF_COMBO_TARGET_KC(R, T, K),       /* . . . . | . r . t */
-  DEF_COMBO_TARGET_KC(S, T, D),       /* . . . . | . . s t */
+  DEF_COMBO_TARGET_KC(S, T, H),       /* . . . . | . . s t */
 };
 
 void keyboard_post_init_user(void) {
