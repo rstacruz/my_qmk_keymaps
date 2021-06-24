@@ -25,7 +25,8 @@ enum layers {
 enum custom_keycodes {
   MC_MUTE = SAFE_RANGE,
   MC_HAND,
-  MC_SHOT
+  MC_SHOT,
+  ONEHAND_KEYCODES
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -192,7 +193,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   /*
   ┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄
   Onehand   ┌────┬────┬────┬────┬────┐     ┌────┬────┬────┬────┬────┐
-            │ o  │ i  │ e  │ n  │Lmb │     │    │    │    │    │cmb │
+            │ o  │ i  │ e  │ n  │ ⌫  │     │    │    │    │    │cmb │
             ├────┼────┼────┼────┼────┤     ├────┼────┼────┼────┼────┤
             │ a  │ r  │ s  │ t  │ ↵  │     │    │    │    │    │    │
             ├────┼────┼────┼────┼────┤     ├────┼────┼────┼────┼────┤
@@ -202,16 +203,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                       └────┴────┴───────┴───────┴────┴────┘ */
 
   [_RE_BAS] = LAYOUT_36(
-    KC_O,          KC_I,          KC_E,          KC_N,          x__LMB, /**/ ___, ___, ___,  ___, CMB_TOG,
-    KC_A,          KC_R,          KC_S,          KC_T,          KC_ENT, /**/ ___, ___, ___,  ___, ___,
-    OSM(MOD_LCTL), OSM(MOD_LGUI), OSM(MOD_LALT), OSM(MOD_LSFT), KC_TAB, /**/ ___, ___, ___,  ___, ___,
-    /**/           /**/           ___,           MO(_RE_NAV),   KC_SPC, /**/ ___, ___, DF(0) /**/ /**/
+    KC_O,          KC_I,          KC_E,          KC_N,          KC_BSPC, /**/ ___, ___, ___,  ___, CMB_TOG,
+    KC_A,          KC_R,          KC_S,          KC_T,          KC_ENT,  /**/ ___, ___, ___,  ___, ___,
+    OSM(MOD_LCTL), OSM(MOD_LGUI), OSM(MOD_LALT), OSM(MOD_LSFT), KC_TAB,  /**/ ___, ___, ___,  ___, ___,
+    /**/           /**/           ___,           MO(_RE_NAV),   KC_SPC,  /**/ ___, ___, DF(0) /**/ /**/
   ),
   [_RE_NAV] = LAYOUT_36(
-    ___, ___, ___, ___, ___, /**/ ___, ___, ___,  ___, ___,
-    ___, ___, ___, ___, ___, /**/ ___, ___, ___,  ___, ___,
-    ___, ___, ___, ___, ___, /**/ ___, ___, ___,  ___, ___,
-    /**/ /**/ ___, ___, ___, /**/ ___, ___, DF(0) /**/ /**/
+    ___, KC_PGUP, KC_UP,   KC_PGDN, _v_, /**/ ___, ___, ___,  ___, ___,
+    ___, KC_LEFT, KC_DOWN, KC_RGHT, _v_, /**/ ___, ___, ___,  ___, ___,
+    _v_, _v_,     _v_,     _v_,     _v_, /**/ ___, ___, ___,  ___, ___,
+    /**/ /**/     _v_,     _v_,     _v_, /**/ ___, ___, DF(0) /**/ /**/
   ),
   /*
   ┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄
@@ -255,5 +256,5 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     if (record->event.pressed) { SEND_STRING(SS_LSFT(SS_LCTL(SS_LALT("4")))); }
     break;
   }
-  return true;
+  return onehand_process_record_user(keycode, record);
 };
