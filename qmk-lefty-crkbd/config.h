@@ -65,5 +65,5 @@
 #define EE_HANDS
 #endif
 
-#define COMBO_TERM 30
+#define COMBO_TERM 40
 #define COMBO_COUNT 24
