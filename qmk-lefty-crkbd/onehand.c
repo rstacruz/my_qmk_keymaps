@@ -5,8 +5,6 @@
 #define DEF_COMBO_TARGET_KC(A,B,TARGET) \
   COMBO(combo_ ## A ## B, KC_ ## TARGET)
 
-#define ONEHAND_KEYCODES
-
 DEF_COMBO_INPUT_KC(O, I); /* o o . . | . . . . */
 DEF_COMBO_INPUT_KC(I, E); /* . o o . | . . . . */
 DEF_COMBO_INPUT_KC(E, N); /* . . o o | . . . . */
@@ -50,26 +48,35 @@ combo_t key_combos[COMBO_COUNT] = {
   DEF_COMBO_TARGET_KC(N, S, Y),    /* . . . o | . . o . */
   DEF_COMBO_TARGET_KC(O, R, V),    /* o . . . | . o . . */
   DEF_COMBO_TARGET_KC(I, S, M),    /* . o . . | . . o . */
-  DEF_COMBO_TARGET_KC(E, T, P),    /* . . o . | . . . o */
+  DEF_COMBO_TARGET_KC(E, T, L),    /* . . o . | . . . o */
   DEF_COMBO_TARGET_KC(O, S, COMM), /* o . . . | . . o . */
-  DEF_COMBO_TARGET_KC(I, T, L),    /* . o . . | . . . o */
+  DEF_COMBO_TARGET_KC(I, T, P),    /* . o . . | . . . o */
   DEF_COMBO_TARGET_KC(E, A, LSFT), /* . . o . | o . . . */
-  DEF_COMBO_TARGET_KC(N, R, BSPC), /* . . . o | . . . o */
+  DEF_COMBO_TARGET_KC(N, R, QUOT), /* . . . o | . . . o */
   DEF_COMBO_TARGET_KC(O, T, BSPC), /* o . . . | . . . o */
   DEF_COMBO_TARGET_KC(A, N, DOT),  /* . . . o | o . . . */
 };
 
 void keyboard_post_init_user(void) {
-combo_disable();
+  combo_disable();
 }
 #endif
 
 bool onehand_process_record_user(uint16_t keycode, keyrecord_t *record) {
-  /* switch (keycode) { */
-  /* case MC_SHOT: // MacOS: take screenshot */
-  /*   if (record->event.pressed) { SEND_STRING(SS_LSFT(SS_LCTL(SS_LALT("4")))); } */
-  /*   break; */
-  /* } */
+  switch (keycode) {
+  case OH_ON: // enable
+    if (record->event.pressed) {
+      layer_on(_OH_BAS);
+      combo_enable();
+    }
+    break;
+  case OH_OFF: // disable
+    if (record->event.pressed) {
+      layer_off(_OH_BAS);
+      combo_disable();
+    }
+    break;
+  }
   return true;
 }
 

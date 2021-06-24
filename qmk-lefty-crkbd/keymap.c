@@ -1,5 +1,4 @@
 #include QMK_KEYBOARD_H
-#include "onehand.c"
 
 #define _v_     KC_TRNS
 #define ___     KC_NO
@@ -18,7 +17,7 @@
 /* Layers */
 enum layers {
   _BASE = 0, _ALT, _SYM, _NAV, _ANV, _FUN, _PAD, _GAM, _GMX, _LOC,
-  _RE_BAS, _RE_NAV
+  _OH_BAS, _OH_NAV
 };
 
 /* Macros */
@@ -26,8 +25,11 @@ enum custom_keycodes {
   MC_MUTE = SAFE_RANGE,
   MC_HAND,
   MC_SHOT,
-  ONEHAND_KEYCODES
+  OH_ON,
+  OH_OFF
 };
+
+#include "onehand.c"
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   /*
@@ -134,10 +136,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                       └────┴────┴───────┴───────┴────┴────┘ */
 
   [_FUN]     = LAYOUT_36(
-    KC_F9, KC_F10, KC_F11, KC_F12, x__RMB, /**/ KC_WH_U, x__LMB,  KC_MS_U,    x__RMB,  KC_BRIU,
-    KC_F1, KC_F2,  KC_F3,  KC_F4,  x__LMB, /**/ KC_WH_D, KC_MS_L, KC_MS_D,    KC_MS_R, KC_BRID,
-    KC_F5, KC_F6,  KC_F7,  KC_F8,  x__MMB, /**/ KC_VOLD, KC_VOLU, KC_MPLY,    KC_MNXT, RESET,
-    /**/   /**/    _v_,    _v_,    _v_,    /**/ _v_,     _v_,     DF(_RE_BAS) /**/     /**/
+    KC_F9, KC_F10, KC_F11, KC_F12, x__RMB, /**/ KC_WH_U, x__LMB,  KC_MS_U, x__RMB,  KC_BRIU,
+    KC_F1, KC_F2,  KC_F3,  KC_F4,  x__LMB, /**/ KC_WH_D, KC_MS_L, KC_MS_D, KC_MS_R, KC_BRID,
+    KC_F5, KC_F6,  KC_F7,  KC_F8,  x__MMB, /**/ KC_VOLD, KC_VOLU, KC_MPLY, KC_MNXT, RESET,
+    /**/   /**/    _v_,    _v_,    _v_,    /**/ _v_,     _v_,     OH_ON    /**/     /**/
   ),
   /*
   ┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄
@@ -199,20 +201,31 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
             ├────┼────┼────┼────┼────┤     ├────┼────┼────┼────┼────┤
             │ctl │gui │alt │sft │ ↹  │     │    │    │    │    │    │
             └────┴────┴────┴────┴────┴─────┴────┴────┴────┴────┴────┘
-                      │    │NAV │ ␣     │       │    │    │
+                      │Lmb │NAV │ ␣     │       │    │    │
                       └────┴────┴───────┴───────┴────┴────┘ */
 
-  [_RE_BAS] = LAYOUT_36(
-    KC_O,          KC_I,          KC_E,          KC_N,          KC_BSPC, /**/ ___, ___, ___,  ___, CMB_TOG,
-    KC_A,          KC_R,          KC_S,          KC_T,          KC_ENT,  /**/ ___, ___, ___,  ___, ___,
-    OSM(MOD_LCTL), OSM(MOD_LGUI), OSM(MOD_LALT), OSM(MOD_LSFT), KC_TAB,  /**/ ___, ___, ___,  ___, ___,
-    /**/           /**/           ___,           MO(_RE_NAV),   KC_SPC,  /**/ ___, ___, DF(0) /**/ /**/
+  [_OH_BAS] = LAYOUT_36(
+    KC_O,          KC_I,          KC_E,          KC_N,          KC_BSPC, /**/ ___, ___, ___,   ___, CMB_TOG,
+    KC_A,          KC_R,          KC_S,          KC_T,          KC_ENT,  /**/ ___, ___, ___,   ___, ___,
+    OSM(MOD_LCTL), OSM(MOD_LGUI), OSM(MOD_LALT), OSM(MOD_LSFT), KC_TAB,  /**/ ___, ___, ___,   ___, ___,
+    /**/           /**/           x__LMB,        MO(_OH_NAV),   KC_SPC,  /**/ ___, ___, OH_OFF /**/ /**/
   ),
-  [_RE_NAV] = LAYOUT_36(
-    ___, KC_PGUP, KC_UP,   KC_PGDN, _v_, /**/ ___, ___, ___,  ___, ___,
-    ___, KC_LEFT, KC_DOWN, KC_RGHT, _v_, /**/ ___, ___, ___,  ___, ___,
-    _v_, _v_,     _v_,     _v_,     _v_, /**/ ___, ___, ___,  ___, ___,
-    /**/ /**/     _v_,     _v_,     _v_, /**/ ___, ___, DF(0) /**/ /**/
+  /*
+  ┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄
+  Onehand   ┌────┬────┬────┬────┬────┐     ┌────┬────┬────┬────┬────┐
+  nav       │    │ p↑ │ ▲  │ p↓ │ ⌫  │     │    │    │    │    │cmb │
+            ├────┼────┼────┼────┼────┤     ├────┼────┼────┼────┼────┤
+            │    │ ◀  │ ▼  │ ▶  │ ↵  │     │    │    │    │    │    │
+            ├────┼────┼────┼────┼────┤     ├────┼────┼────┼────┼────┤
+            │ctl │gui │alt │sft │ ↹  │     │    │    │    │    │    │
+            └────┴────┴────┴────┴────┴─────┴────┴────┴────┴────┴────┘
+                      │    │NAV │ ␣     │       │    │    │
+                      └────┴────┴───────┴───────┴────┴────┘ */
+  [_OH_NAV] = LAYOUT_36(
+    ___, KC_PGUP, KC_UP,   KC_PGDN, _v_, /**/ _v_, _v_, _v_,  _v_, _v_,
+    ___, KC_LEFT, KC_DOWN, KC_RGHT, _v_, /**/ _v_, _v_, _v_,  _v_, _v_,
+    _v_, _v_,     _v_,     _v_,     _v_, /**/ _v_, _v_, _v_,  _v_, _v_,
+    /**/ /**/     _v_,     _v_,     _v_, /**/ _v_, _v_, _v_ /**/ /**/
   ),
   /*
   ┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄
