@@ -38,6 +38,8 @@ DEF_COMBO_INPUT_KC(S, T); /* . . . . | . . s t */
 
 combo_t key_combos[COMBO_COUNT] = {
   COMBO_ACTION(combo_NA),             /* . . . n | a . . . */
+  COMBO_ACTION(combo_NT),             /* . . . n | . . . t */
+  COMBO_ACTION(combo_OA),             /* o . . . | a . . . */
   DEF_COMBO_TARGET_KC(O, I, F),       /* o i . . | . . . . */
   DEF_COMBO_TARGET_KC(O, E, Z),       /* o . e . | . . . . */
   DEF_COMBO_TARGET_KC(O, N, DOT),     /* o . . n | . . . . */
@@ -64,6 +66,7 @@ combo_t key_combos[COMBO_COUNT] = {
 };
 
 void keyboard_post_init_user(void) {
+  // Disable combos on startup
   combo_disable();
 }
 #endif
@@ -74,6 +77,7 @@ bool onehand_process_record_user(uint16_t keycode, keyrecord_t *record) {
       if (record->event.pressed) {
         layer_on(_OH_BAS);
         combo_enable();
+        rgblight_enable();
       }
       return false;
       break;
@@ -81,6 +85,7 @@ bool onehand_process_record_user(uint16_t keycode, keyrecord_t *record) {
       if (record->event.pressed) {
         layer_off(_OH_BAS);
         combo_disable();
+        rgblight_disable();
       }
       return false;
       break;
@@ -90,12 +95,21 @@ bool onehand_process_record_user(uint16_t keycode, keyrecord_t *record) {
 
 void process_combo_event(uint16_t combo_index, bool pressed) {
   switch(combo_index) {
-    case 0:
+    case 0: // Leader
       if (pressed) {
+        layer_on(_OH_LEA);
         set_oneshot_layer(_OH_LEA, ONESHOT_START);
-      } else {
-        clear_oneshot_layer_state(ONESHOT_PRESSED);
+      // } else {
+        // clear_oneshot_layer_state(ONESHOT_PRESSED);
+        // ^-- with this, it stops working
+        // ^-- without this, it works but the layer is stuck
       }
+      break;
+    case 1: // Nav
+      if (pressed) { layer_on(_OH_NAV); }
+      break;
+    case 2: // Num
+      if (pressed) { layer_on(_OH_NUM); }
       break;
   }
 }
