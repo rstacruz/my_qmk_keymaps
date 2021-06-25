@@ -47,7 +47,7 @@ combo_t key_combos[COMBO_COUNT] = {
   DEF_COMBO_TARGET_KC(O, E, Z),       /* o . e . | . . . . */
   DEF_COMBO_TARGET_KC(O, N, DOT),     /* o . . n | . . . . */
   DEF_COMBO_TARGET_KC(O, R, V),       /* o . . . | . r . . */
-  DEF_COMBO_TARGET_KC(O, S, COMM),    /* o . . . | . . s . */
+  DEF_COMBO_TARGET_KC(O, S, X),       /* o . . . | . . s . */
   DEF_COMBO_TARGET_KC(O, T, BSPC),    /* o . . . | . . . t */
   DEF_COMBO_TARGET_KC(I, E, C),       /* . i e . | . . . . */
   DEF_COMBO_TARGET_KC(I, N, J),       /* . i . n | . . . . */
