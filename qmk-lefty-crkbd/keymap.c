@@ -25,6 +25,8 @@ enum custom_keycodes {
   MC_MUTE = SAFE_RANGE,
   MC_HAND,
   MC_SHOT,
+  x__COMQ,
+  x__DOTU,
   OH_ON,
   OH_OFF,
   OH_LEAD
@@ -39,16 +41,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
             ├────┼────┼────┼────┼────┤     ├────┼────┼────┼────┼────┤
             │ a  │ r  │ s  │ t  │ g  │     │ m  │ n  │ e  │ i  │ o  │
             ├────┼────┼────┼────┼────┤     ├────┼────┼────┼────┼────┤
-            │ z  │ x  │ c  │ d  │ v  │     │ k  │ h  │ ,  │ .  │ ↵ ⌃│
+            │ z  │ x  │ c  │ d  │ v  │     │ k  │ h  │ ,? │ ._ │ ↵ ⌃│
             └────┴────┼────┴────┴────┴──┬──┴────┴────┴────┼────┴────┘
                       │ ⌘  │SYM │   ⇧   │   ␣   │NAV │ ⌥  │
                       └────┴────┴───────┴───────┴────┴────┘ */
 
   [0] = LAYOUT_36(
-    x__Q, KC_W, KC_F,    KC_P,     KC_B,    /**/ KC_J,   KC_L,     KC_U,    KC_Y,   KC_BSPC,
-    KC_A, KC_R, KC_S,    KC_T,     KC_G,    /**/ KC_M,   KC_N,     KC_E,    KC_I,   KC_O,
-    KC_Z, KC_X, KC_C,    KC_D,     KC_V,    /**/ KC_K,   KC_H,     KC_COMM, KC_DOT, x__ENT,
-    /**/  /**/  x__LCMD, MO(_SYM), KC_LSFT, /**/ KC_SPC, MO(_NAV), x__LOPT  /**/    /**/
+    x__Q, KC_W, KC_F,    KC_P,     KC_B,    /**/ KC_J,   KC_L,     KC_U,    KC_Y,    KC_BSPC,
+    KC_A, KC_R, KC_S,    KC_T,     KC_G,    /**/ KC_M,   KC_N,     KC_E,    KC_I,    KC_O,
+    KC_Z, KC_X, KC_C,    KC_D,     KC_V,    /**/ KC_K,   KC_H,     x__COMQ, x__DOTU, x__ENT,
+    /**/  /**/  x__LCMD, MO(_SYM), KC_LSFT, /**/ KC_SPC, MO(_NAV), x__LOPT  /**/     /**/
   ),
 
   /* ┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄
@@ -283,6 +285,8 @@ bool get_ignore_mod_tap_interrupt(uint16_t keycode, keyrecord_t *record) {
   }
 }
 
+#define MODS_SHIFT_MASK (MOD_BIT(KC_LSHIFT)|MOD_BIT(KC_RSHIFT))
+
 // Macro definitions
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
@@ -295,6 +299,36 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   case MC_SHOT: // MacOS: take screenshot
     if (record->event.pressed) { SEND_STRING(SS_LSFT(SS_LCTL(SS_LALT("4")))); }
     break;
+  case x__DOTU: // dot
+    if (record->event.pressed) {
+      if (get_mods() & MODS_SHIFT_MASK) {
+        add_key(KC_MINS); send_keyboard_report();
+      } else {
+        add_key(KC_DOT); send_keyboard_report();
+      }
+    } else {
+      if (get_mods() & MODS_SHIFT_MASK) {
+        del_key(KC_MINS); send_keyboard_report();
+      } else {
+        del_key(KC_DOT); send_keyboard_report();
+      }
+    }
+    return false;
+  case x__COMQ: // comma
+    if (record->event.pressed) {
+      if (get_mods() & MODS_SHIFT_MASK) {
+        add_key(KC_SLSH); send_keyboard_report();
+      } else {
+        add_key(KC_COMM); send_keyboard_report();
+      }
+    } else {
+      if (get_mods() & MODS_SHIFT_MASK) {
+        del_key(KC_SLSH); send_keyboard_report();
+      } else {
+        del_key(KC_COMM); send_keyboard_report();
+      }
+    }
+    return false;
   }
   return onehand_process_record_user(keycode, record);
 };
