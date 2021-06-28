@@ -67,3 +67,5 @@
 
 #define COMBO_TERM 40
 #define COMBO_COUNT 29
+
+#define DEBOUNCE 10
