@@ -32,7 +32,7 @@
 /* Layers */
 enum layers {
   _BASE = 0, _ALT, _SYM, _NAV, _ANV, _FUN, _PAD, _GAM, _GMX, _LOC,
-  _OH_BAS, _OH_NAV, _OH_LEA, _OH_NUM
+  _OH_BAS, _OH_NAV, _OH_MOD, _OH_NUM
 };
 
 /* Macros */
@@ -44,7 +44,6 @@ enum custom_keycodes {
   x__DOTQ,
   OH_ON,
   OH_OFF,
-  OH_LEAD
 };
 
 #include "onehand.c"
@@ -211,9 +210,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
             │esc │    │ent │exit│
             └────┴────┴────┴────┘ */
 
-  [_OH_LEA] = LAYOUT_onehand_8(
+  [_OH_MOD] = LAYOUT_onehand_8(
     OSM(MOD_LCTL), OSM(MOD_LGUI), OSM(MOD_LALT), OSM(MOD_LSFT),
-    KC_ESC,        ___,           KC_ENT,        TG(_OH_LEA)
+    KC_ESC,        ___,           KC_ENT,        TG(_OH_MOD)
   ),
 
   /* ┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄

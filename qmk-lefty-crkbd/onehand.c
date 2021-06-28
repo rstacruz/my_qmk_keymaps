@@ -40,9 +40,10 @@ DEF_COMBO_INPUT_KC(PGUP, UP);
 DEF_COMBO_INPUT_KC(UP, PGDN);
 
 combo_t key_combos[COMBO_COUNT] = {
-  COMBO_ACTION(combo_N_A),            /* . . . n | a . . . */
-  COMBO_ACTION(combo_N_T),            /* . . . n | . . . t */
-  COMBO_ACTION(combo_O_A),            /* o . . . | a . . . */
+  COMBO_ACTION(combo_N_A),            /* . . . n | a . . . - shift */
+  COMBO_ACTION(combo_N_R),            /* . . . n | . r . . - mod */
+  COMBO_ACTION(combo_N_T),            /* . . . n | . . . t - nav */
+  COMBO_ACTION(combo_O_A),            /* o . . . | a . . . - num */
   DEF_COMBO_TARGET_KC(O, I, F),       /* o i . . | . . . . */
   DEF_COMBO_TARGET_KC(O, E, Z),       /* o . e . | . . . . */
   DEF_COMBO_TARGET_KC(O, N, DOT),     /* o . . n | . . . . */
@@ -55,10 +56,9 @@ combo_t key_combos[COMBO_COUNT] = {
   DEF_COMBO_TARGET_KC(I, S, M),       /* . i . . | . . s . */
   DEF_COMBO_TARGET_KC(I, T, P),       /* . i . . | . . . t */
   DEF_COMBO_TARGET_KC(E, N, U),       /* . . e n | . . . . */
-  DEF_COMBO_TARGET_KC(E, A, LSFT),    /* . . e . | a . . . */
+  DEF_COMBO_TARGET_KC(E, A, QUOT),    /* . . e . | a . . . */
   DEF_COMBO_TARGET_KC(E, R, G),       /* . . e . | . r . . */
   DEF_COMBO_TARGET_KC(E, T, L),       /* . . e . | . . . t */
-  DEF_COMBO_TARGET_KC(N, R, QUOT),    /* . . . n | . r . . */
   DEF_COMBO_TARGET_KC(N, S, Y),       /* . . . n | . . s . */
   DEF_COMBO_TARGET_KC(A, R, W),       /* . . . . | a r . . */
   DEF_COMBO_TARGET_KC(A, S, Q),       /* . . . . | a . s . */
@@ -91,7 +91,7 @@ bool onehand_process_record_user(uint16_t keycode, keyrecord_t *record) {
     case OH_OFF: // disable
       if (record->event.pressed) {
         layer_off(_OH_BAS);
-        layer_off(_OH_LEA);
+        layer_off(_OH_MOD);
         layer_off(_OH_NAV);
         layer_off(_OH_NUM);
         combo_disable();
@@ -105,21 +105,27 @@ bool onehand_process_record_user(uint16_t keycode, keyrecord_t *record) {
 
 void process_combo_event(uint16_t combo_index, bool pressed) {
   switch(combo_index) {
-    case 0: // Leader
-      if (pressed) {
-        layer_on(_OH_LEA);
-        set_oneshot_layer(_OH_LEA, ONESHOT_START);
+    case 0: // Shift
+      if (pressed) { set_oneshot_mods(MOD_LSFT); }
+      break;
+    case 1: // Mod
+      if (pressed) { layer_on(_OH_MOD); }
+      break;
+    case 2: // Nav
+      if (pressed) { layer_on(_OH_NAV); }
+      break;
+    case 3: // Num
+      if (pressed) { layer_on(_OH_NUM); }
+      break;
+    /* case 999: // Leader */
+      /* if (pressed) { */
+      /*   layer_on(_OH_LEA); */
+      /*   set_oneshot_layer(_OH_LEA, ONESHOT_START); */
       // } else {
         // clear_oneshot_layer_state(ONESHOT_PRESSED);
         // ^-- with this, it stops working
         // ^-- without this, it works but the layer is stuck
-      }
-      break;
-    case 1: // Nav
-      if (pressed) { layer_on(_OH_NAV); }
-      break;
-    case 2: // Num
-      if (pressed) { layer_on(_OH_NUM); }
-      break;
+      /* } */
+      /* break; */
   }
 }
