@@ -41,14 +41,13 @@ DEF_COMBO_INPUT_KC(UP, PGDN);
 
 combo_t key_combos[COMBO_COUNT] = {
   COMBO_ACTION(combo_N_A),            /* . . . n | a . . . - shift */
-  COMBO_ACTION(combo_N_R),            /* . . . n | . r . . - mod */
+  COMBO_ACTION(combo_O_N),            /* o . . n | . . . . - mod */
   COMBO_ACTION(combo_N_T),            /* . . . n | . . . t - nav */
   COMBO_ACTION(combo_O_A),            /* o . . . | a . . . - num */
   DEF_COMBO_TARGET_KC(O, I, F),       /* o i . . | . . . . */
   DEF_COMBO_TARGET_KC(O, E, Z),       /* o . e . | . . . . */
-  DEF_COMBO_TARGET_KC(O, N, DOT),     /* o . . n | . . . . */
-  DEF_COMBO_TARGET_KC(O, R, V),       /* o . . . | . r . . */
-  DEF_COMBO_TARGET_KC(O, S, X),       /* o . . . | . . s . */
+  DEF_COMBO_TARGET_KC(O, R, X),       /* o . . . | . r . . */
+  DEF_COMBO_TARGET_KC(O, S, V),       /* o . . . | . . s . */
   DEF_COMBO_TARGET_KC(O, T, BSPC),    /* o . . . | . . . t */
   DEF_COMBO_TARGET_KC(I, E, C),       /* . i e . | . . . . */
   DEF_COMBO_TARGET_KC(I, N, J),       /* . i . n | . . . . */
@@ -59,6 +58,7 @@ combo_t key_combos[COMBO_COUNT] = {
   DEF_COMBO_TARGET_KC(E, A, QUOT),    /* . . e . | a . . . */
   DEF_COMBO_TARGET_KC(E, R, G),       /* . . e . | . r . . */
   DEF_COMBO_TARGET_KC(E, T, L),       /* . . e . | . . . t */
+  DEF_COMBO_TARGET_KC(N, R, DOT),     /* . . . n | . r . . */
   DEF_COMBO_TARGET_KC(N, S, Y),       /* . . . n | . . s . */
   DEF_COMBO_TARGET_KC(A, R, W),       /* . . . . | a r . . */
   DEF_COMBO_TARGET_KC(A, S, Q),       /* . . . . | a . s . */
