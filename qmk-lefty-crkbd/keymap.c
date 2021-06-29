@@ -26,7 +26,7 @@
  LAYOUT_onehand_12( \
     k1,            k2,            k3,            k4,           \
     k5,            k6,            k7,            k8,           \
-    OSM(MOD_LCTL), OSM(MOD_LGUI), OSM(MOD_LALT), OSM(MOD_LSFT) \
+    OSM(MOD_LSFT), OSM(MOD_LGUI), OSM(MOD_LALT), OSM(MOD_LCTL) \
  )
 
 /* Layers */
@@ -211,7 +211,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
             └────┴────┴────┴────┘ */
 
   [_OH_MOD] = LAYOUT_onehand_8(
-    OSM(MOD_LCTL), OSM(MOD_LGUI), OSM(MOD_LALT), OSM(MOD_LSFT),
+    OSM(MOD_LSFT), OSM(MOD_LGUI), OSM(MOD_LALT), OSM(MOD_LCTL),
     KC_ESC,        ___,           KC_ENT,        TG(_OH_MOD)
   ),
 

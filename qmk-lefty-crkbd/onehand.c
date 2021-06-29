@@ -1,3 +1,14 @@
+/* base/adjacents:   triplet:      knight:         diags:         sides:
+ * ┌── f ─ c ─ u ──┐ ┌───────────┐ ┌────────────┐ ┌ q ─ x ─ l ──┐ ┌─────────┐
+ * │ o   i   e   n │ │ g ┄┄ ┄┄ m │ │ k ┄┄┐┌┄┄ . │ │  ╲   ╲   ╲  │ │ ┄┄mod┄┄ │
+ * │ a   r   s   t │ │ v ┄┄ ┄┄ y │ │ ' ┄┄┘└┄┄ p │ │ ╱   ╱   ╱   │ │ ┄┄spc┄┄ │
+ * └── w ─ d ─ h ──┘ └───────────┘ └────────────┘ └ b ─ z ─ j ──┘ └─────────┘
+ * mod:               nav:             num:
+ * ┌────────────────┐ ┌──────hm─en───┐ ┌─────────────┐
+ * │ ⇧   ⌥   ⌘   ⌃  │ │ ‹‹  p↑ ▲  p↓ │ │ ‹‹ 1  2  3  │
+ * │ esc tab ent ‹‹ │ │     ◀  ▼  ▶  │ │ 0  4  5  6  │
+ * └───────bks──────┘ └──────────────┘ └───7──8──9───┘ */
+
 #ifdef COMBO_TERM
 
 #define DEF_COMBO_INPUT_KC(A,B) \
@@ -115,26 +126,12 @@ bool onehand_process_record_user(uint16_t keycode, keyrecord_t *record) {
 void process_combo_event(uint16_t combo_index, bool pressed) {
   switch(combo_index) {
     case 0: // Shift
-      if (pressed) { set_oneshot_mods(MOD_LSFT); }
-      break;
+      if (pressed) { set_oneshot_mods(MOD_LSFT); } break;
     case 1: // Mod
-      if (pressed) { layer_on(_OH_MOD); }
-      break;
+      if (pressed) { layer_on(_OH_MOD); } break;
     case 2: // Nav
-      if (pressed) { layer_on(_OH_NAV); }
-      break;
+      if (pressed) { layer_on(_OH_NAV); } break;
     case 3: // Num
-      if (pressed) { layer_on(_OH_NUM); }
-      break;
-    /* case 999: // Leader */
-      /* if (pressed) { */
-      /*   layer_on(_OH_LEA); */
-      /*   set_oneshot_layer(_OH_LEA, ONESHOT_START); */
-      // } else {
-        // clear_oneshot_layer_state(ONESHOT_PRESSED);
-        // ^-- with this, it stops working
-        // ^-- without this, it works but the layer is stuck
-      /* } */
-      /* break; */
+      if (pressed) { layer_on(_OH_NUM); } break;
   }
 }
