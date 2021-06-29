@@ -69,8 +69,8 @@ combo_t key_combos[COMBO_COUNT] = {
   DEF_COMBO_TARGET_KC(E, R, Z),       /* . . e . | . r . . */
   DEF_COMBO_TARGET_KC(N, S, J),       /* . . . n | . . s . */
   /* Diagonals, downward */
-  DEF_COMBO_TARGET_KC(O, R, X),       /* o . . . | . r . . */
-  DEF_COMBO_TARGET_KC(I, S, Q),       /* . i . . | . . s . */
+  DEF_COMBO_TARGET_KC(O, R, Q),       /* o . . . | . r . . */
+  DEF_COMBO_TARGET_KC(I, S, X),       /* . i . . | . . s . */
   DEF_COMBO_TARGET_KC(E, T, L),       /* . . e . | . . . t */
   /* Wide diagonals */
   DEF_COMBO_TARGET_KC(O, T, BSPC),    /* o . . . | . . . t */
