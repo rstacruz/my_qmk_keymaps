@@ -16,17 +16,17 @@
 
 #define LAYOUT_onehand_12(k1, k2, k3, k4, k5, k6, k7, k8, k9, ka, kb, kc) \
  LAYOUT_36( \
-    k1,  k2,  k3,     k4,          KC_BSPC, /**/ ___,    k4,     k3,    k2,  k1,  \
-    k5,  k6,  k7,     k8,          KC_ENT,  /**/ ___,    k8,     k7,    k6,  k5,  \
-    k9,  ka,  kb,     kc,          KC_TAB,  /**/ OH_OFF, kc,     kb,    ka,  k9,  \
-    /**/ /**/ OH_OFF, MO(_OH_NAV), KC_SPC,  /**/ KC_SPC, OH_OFF, OH_OFF /**/ /**/ \
+    k1,  k2,  k3,     k4,          KC_BSPC,             /**/ ___,    k4,     k3,    k2,  k1,  \
+    k5,  k6,  k7,     k8,          KC_ENT,              /**/ ___,    k8,     k7,    k6,  k5,  \
+    k9,  ka,  kb,     kc,          KC_TAB,              /**/ OH_OFF, kc,     kb,    ka,  k9,  \
+    /**/ /**/ OH_OFF, MO(_OH_NAV), MT(MOD_LSFT,KC_SPC), /**/ KC_SPC, OH_OFF, OH_OFF /**/ /**/ \
   )
 
 #define LAYOUT_onehand_8(k1, k2, k3, k4, k5, k6, k7, k8) \
  LAYOUT_onehand_12( \
     k1,            k2,            k3,            k4,           \
     k5,            k6,            k7,            k8,           \
-    OSM(MOD_LGUI), OSM(MOD_LALT), OSM(MOD_LCTL), OSM(MOD_LSFT) \
+    OSM(MOD_LCTL), OSM(MOD_LGUI), OSM(MOD_LALT), OSM(MOD_LSFT) \
  )
 
 /* Layers */

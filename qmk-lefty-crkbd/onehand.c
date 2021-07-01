@@ -1,8 +1,8 @@
 /*
  * LEFT HAND         triplet:      knight:         diags:         sides:
  * ┌── f ─ c ─ u ──┐ ┌───────────┐ ┌────────────┐ ┌ q ─ x ─ l ──┐ ┌─────────┐
- * │ o   i   e   n │ │ g ┄┄ ┄┄ m │ │ k ┄┄┐┌┄┄ . │ │  ╲   ╲   ╲  │ │ ┄┄mod┄┄ │
- * │ a   r   s   t │ │ v ┄┄ ┄┄ y │ │ ' ┄┄┘└┄┄ p │ │ ╱   ╱   ╱   │ │ ┄┄spc┄┄ │
+ * │ o   i   e   n │ │ g ┄┄ ┄┄ m │ │ k ┄┄┐┌┄┄ ' │ │  ╲   ╲   ╲  │ │ ┄┄mod┄┄ │
+ * │ a   r   s   t │ │ v ┄┄ ┄┄ y │ │ . ┄┄┘└┄┄ p │ │ ╱   ╱   ╱   │ │ ┄┄spc┄┄ │
  * └── w ─ d ─ h ──┘ └───────────┘ └────────────┘ └ b ─ z ─ j ──┘ └─────────┘
  * mod:               nav:             num:
  * ┌────────────────┐ ┌──────hm─en───┐ ┌─────────────┐
@@ -79,8 +79,8 @@ combo_t key_combos[COMBO_COUNT] = {
   /* Knights */
   DEF_COMBO_TARGET_KC(O, S, K),       /* o . . . | . . s . */
   DEF_COMBO_TARGET_KC(I, T, P),       /* . i . . | . . . t */
-  DEF_COMBO_TARGET_KC(E, A, QUOT),    /* . . e . | a . . . */
-  DEF_COMBO_TARGET_KC(N, R, DOT),     /* . . . n | . r . . */
+  DEF_COMBO_TARGET_KC(E, A, DOT),     /* . . e . | a . . . */
+  DEF_COMBO_TARGET_KC(N, R, QUOT),    /* . . . n | . r . . */
   /* Four-wides */
   DEF_COMBO_TARGET_KC(A, T, SPC),     /* . . . . | a . . t */
   /* Diagonals, upward */
