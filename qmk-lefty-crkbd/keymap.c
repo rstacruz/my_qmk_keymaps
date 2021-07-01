@@ -19,14 +19,14 @@
     k1,  k2,  k3,     k4,          KC_BSPC, /**/ ___,    k4,     k3,    k2,  k1,  \
     k5,  k6,  k7,     k8,          KC_ENT,  /**/ ___,    k8,     k7,    k6,  k5,  \
     k9,  ka,  kb,     kc,          KC_TAB,  /**/ OH_OFF, kc,     kb,    ka,  k9,  \
-    /**/ /**/ x__LMB, MO(_OH_NAV), KC_SPC,  /**/ KC_SPC, OH_OFF, OH_OFF /**/ /**/ \
+    /**/ /**/ OH_OFF, MO(_OH_NAV), KC_SPC,  /**/ KC_SPC, OH_OFF, OH_OFF /**/ /**/ \
   )
 
 #define LAYOUT_onehand_8(k1, k2, k3, k4, k5, k6, k7, k8) \
  LAYOUT_onehand_12( \
     k1,            k2,            k3,            k4,           \
     k5,            k6,            k7,            k8,           \
-    OSM(MOD_LSFT), OSM(MOD_LGUI), OSM(MOD_LALT), OSM(MOD_LCTL) \
+    OSM(MOD_LGUI), OSM(MOD_LALT), OSM(MOD_LCTL), OSM(MOD_LSFT) \
  )
 
 /* Layers */
@@ -125,18 +125,18 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   Altnav    ┌────┬───┄┏━━━━┓┄───┬────┐     ┌────┬───┄┏━━━━┓┄───┬────┐
             │exit│home┃ ▲  ┃end │pg↑ │     │pg↑ │home┃ ▲  ┃end │ ^⌫ │
             ├───┄┏━━━━┛────┗━━━━┓┄───┤     ├───┄┏━━━━┛────┗━━━━┓┄───┤
-            │    ┃ ◀  │ ▼  │ ▶  ┃pg↓ │     │pg↓ ┃ ◀  │ ▼  │ ▶  ┃ ↵  │
+            │ 1H ┃ ◀  │ ▼  │ ▶  ┃pg↓ │     │pg↓ ┃ ◀  │ ▼  │ ▶  ┃ ↵  │
   ┌┄┄┄┄┐    ├───┄┗━━━━┷━━━━┷━━━━┛┄───┤     ├───┄┗━━━━┷━━━━┷━━━━┛┄───┤
   ┆ANV ┆ ┄› │    │    │    │ ‹‹ │ ›› │     │ ⎋  │ ‹‹ │ ›› │ .  │ ⌦  │
   └┄┄┄┄┘    └────┴────┴────┴────┴────┘──┬──└───┄└────┴────┴────┘┄───┘
-                      │    │ 1h │ ▓▓    │       │    │    │
+                      │    │    │ ▓▓    │       │    │    │
                       └────┴────┴───────┴───────┴────┴────┘ */
 
   [_ANV] = LAYOUT_36(
-    ___, KC_HOME, KC_UP,   KC_END,  KC_PGUP, /**/ KC_PGUP, KC_HOME, KC_UP,   KC_END,  x__CBSP,
-    ___, KC_LEFT, KC_DOWN, KC_RGHT, KC_PGDN, /**/ KC_PGDN, KC_LEFT, KC_DOWN, KC_RGHT, KC_ENT,
-    ___, ___,     ___,     x__STAB, x__CTAB, /**/ KC_ESC,  x__STAB, x__CTAB, KC_DOT,  KC_DEL,
-    /**/ /**/     ___,     OH_ON,   ___,     /**/ _v_,     _v_,     _v_      /**/     /**/
+    ___,   KC_HOME, KC_UP,   KC_END,  KC_PGUP, /**/ KC_PGUP, KC_HOME, KC_UP,   KC_END,  x__CBSP,
+    OH_ON, KC_LEFT, KC_DOWN, KC_RGHT, KC_PGDN, /**/ KC_PGDN, KC_LEFT, KC_DOWN, KC_RGHT, KC_ENT,
+    ___,   ___,     ___,     x__STAB, x__CTAB, /**/ KC_ESC,  x__STAB, x__CTAB, KC_DOT,  KC_DEL,
+    /**/   /**/     ___,     ___,     ___,     /**/ _v_,     _v_,     _v_      /**/     /**/
   ),
 
   /* ┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄
