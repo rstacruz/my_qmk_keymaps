@@ -58,12 +58,16 @@ DEF_COMBO_INPUT_KC(ENT, TAB);
 DEF_COMBO_INPUT_KC(PGUP, UP);
 DEF_COMBO_INPUT_KC(UP, PGDN);
 
+const uint16_t PROGMEM combo_A_R_S[] = {KC_A, KC_R, KC_S, COMBO_END};
+
 combo_t key_combos[COMBO_COUNT] = {
   /* Actions */
   COMBO_ACTION(combo_N_A),            /* . . . n | a . . . - shift */
   COMBO_ACTION(combo_O_N),            /* o . . n | . . . . - mod */
   COMBO_ACTION(combo_N_T),            /* . . . n | . . . t - nav */
   COMBO_ACTION(combo_O_A),            /* o . . . | a . . . - num */
+  /* Specials */
+  COMBO(combo_A_R_S, KC_SPC),
   /* Adjacents */
   DEF_COMBO_TARGET_KC(O, I, F),       /* o i . . | . . . . */
   DEF_COMBO_TARGET_KC(I, E, C),       /* . i e . | . . . . */
