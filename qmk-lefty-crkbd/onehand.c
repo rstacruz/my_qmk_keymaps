@@ -21,8 +21,12 @@
 
 #define DEF_COMBO_INPUT_KC(A,B) \
   const uint16_t PROGMEM combo_ ## A ## _ ## B[] = {KC_ ## A, KC_ ## B, COMBO_END}
+#define DEF_COMBO_INPUT_3KC(A,B,C) \
+  const uint16_t PROGMEM combo_ ## A ## _ ## B ## _ ## C[] = {KC_ ## A, KC_ ## B, KC_ ## C, COMBO_END}
 #define DEF_COMBO_TARGET_KC(A,B,TARGET) \
   COMBO(combo_ ## A ## _ ## B, KC_ ## TARGET)
+#define DEF_COMBO_TARGET_3KC(A,B,C,TARGET) \
+  COMBO(combo_ ## A ## _ ## B ## _ ## C, KC_ ## TARGET)
 #define DEF_COMBO_TARGET_xx(A,B,TARGET) \
   COMBO(combo_ ## A ## _ ## B, TARGET)
 
@@ -54,11 +58,13 @@ DEF_COMBO_INPUT_KC(A, T); /* . . . . | a . . t */
 DEF_COMBO_INPUT_KC(R, S); /* . . . . | . r s . */
 DEF_COMBO_INPUT_KC(R, T); /* . . . . | . r . t */
 DEF_COMBO_INPUT_KC(S, T); /* . . . . | . . s t */
+DEF_COMBO_INPUT_3KC(O, I, E); /* o i e . | . . . . */
+DEF_COMBO_INPUT_3KC(I, E, N); /* . i e n | . . . . */
+DEF_COMBO_INPUT_3KC(A, R, S); /* . . . . | a r s . */
+DEF_COMBO_INPUT_3KC(R, S, T); /* . . . . | . r s t */
 DEF_COMBO_INPUT_KC(ENT, TAB);
 DEF_COMBO_INPUT_KC(PGUP, UP);
 DEF_COMBO_INPUT_KC(UP, PGDN);
-
-const uint16_t PROGMEM combo_A_R_S[] = {KC_A, KC_R, KC_S, COMBO_END};
 
 combo_t key_combos[COMBO_COUNT] = {
   /* Actions */
@@ -66,8 +72,11 @@ combo_t key_combos[COMBO_COUNT] = {
   COMBO_ACTION(combo_O_N),            /* o . . n | . . . . - mod */
   COMBO_ACTION(combo_N_T),            /* . . . n | . . . t - nav */
   COMBO_ACTION(combo_O_A),            /* o . . . | a . . . - num */
-  /* Specials */
-  COMBO(combo_A_R_S, KC_SPC),
+  /* Triplets */
+  DEF_COMBO_TARGET_3KC(O, I, E, W),   /* o i e . | . . . . */
+  DEF_COMBO_TARGET_3KC(I, E, N, F),   /* . i e n | . . . . */
+  DEF_COMBO_TARGET_3KC(A, R, S, B),   /* . . . . | a r s . */
+  DEF_COMBO_TARGET_3KC(R, S, T, G),   /* . . . . | . r s t */
   /* Adjacents */
   DEF_COMBO_TARGET_KC(O, I, F),       /* o i . . | . . . . */
   DEF_COMBO_TARGET_KC(I, E, C),       /* . i e . | . . . . */
@@ -75,7 +84,7 @@ combo_t key_combos[COMBO_COUNT] = {
   DEF_COMBO_TARGET_KC(A, R, W),       /* . . . . | a r . . */
   DEF_COMBO_TARGET_KC(R, S, D),       /* . . . . | . r s . */
   DEF_COMBO_TARGET_KC(S, T, H),       /* . . . . | . . s t */
-  /* Triplets */
+  /* Skip-hops */
   DEF_COMBO_TARGET_KC(O, E, G),       /* o . e . | . . . . */
   DEF_COMBO_TARGET_KC(I, N, M),       /* . i . n | . . . . */
   DEF_COMBO_TARGET_KC(A, S, V),       /* . . . . | a . s . */
