@@ -69,14 +69,14 @@ DEF_COMBO_INPUT_KC(UP, PGDN);
 combo_t key_combos[COMBO_COUNT] = {
   /* Actions */
   COMBO_ACTION(combo_N_A),            /* . . . n | a . . . - shift */
-  COMBO_ACTION(combo_O_N),            /* o . . n | . . . . - mod */
+  COMBO_ACTION(combo_O_N),            /* o . . n | . . . . - mod -- ?? */
   COMBO_ACTION(combo_N_T),            /* . . . n | . . . t - nav */
   COMBO_ACTION(combo_O_A),            /* o . . . | a . . . - num */
   /* Triplets */
-  DEF_COMBO_TARGET_3KC(O, I, E, W),   /* o i e . | . . . . */
-  DEF_COMBO_TARGET_3KC(I, E, N, F),   /* . i e n | . . . . */
-  DEF_COMBO_TARGET_3KC(A, R, S, B),   /* . . . . | a r s . */
-  DEF_COMBO_TARGET_3KC(R, S, T, G),   /* . . . . | . r s t */
+  DEF_COMBO_TARGET_3KC(O, I, E, W),    /* o i e . | . . . . */
+  DEF_COMBO_TARGET_3KC(I, E, N, BSPC), /* . i e n | . . . . */
+  DEF_COMBO_TARGET_3KC(A, R, S, B),    /* . . . . | a r s . */
+  DEF_COMBO_TARGET_3KC(R, S, T, SPC),  /* . . . . | . r s t */
   /* Adjacents */
   DEF_COMBO_TARGET_KC(O, I, F),       /* o i . . | . . . . */
   DEF_COMBO_TARGET_KC(I, E, C),       /* . i e . | . . . . */
@@ -95,7 +95,7 @@ combo_t key_combos[COMBO_COUNT] = {
   DEF_COMBO_TARGET_KC(E, A, DOT),     /* . . e . | a . . . */
   DEF_COMBO_TARGET_KC(N, R, QUOT),    /* . . . n | . r . . */
   /* Four-wides */
-  DEF_COMBO_TARGET_KC(A, T, SPC),     /* . . . . | a . . t */
+  DEF_COMBO_TARGET_KC(A, T, SPC),     /* . . . . | a . . t -- ?? */
   /* Diagonals, upward */
   DEF_COMBO_TARGET_KC(I, A, B),       /* . i . . | a . . . */
   DEF_COMBO_TARGET_KC(E, R, Z),       /* . . e . | . r . . */
@@ -105,7 +105,7 @@ combo_t key_combos[COMBO_COUNT] = {
   DEF_COMBO_TARGET_KC(I, S, X),       /* . i . . | . . s . */
   DEF_COMBO_TARGET_KC(E, T, L),       /* . . e . | . . . t */
   /* Wide diagonals */
-  DEF_COMBO_TARGET_KC(O, T, BSPC),    /* o . . . | . . . t */
+  DEF_COMBO_TARGET_KC(O, T, BSPC),    /* o . . . | . . . t -- ?? */
   /* Navs */
   DEF_COMBO_TARGET_KC(ENT, TAB, ESC),
   DEF_COMBO_TARGET_KC(PGUP, UP, HOME),
