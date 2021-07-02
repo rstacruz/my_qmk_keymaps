@@ -1,20 +1,20 @@
 /*
- * LEFT HAND         triplet:      knight:         diags:         sides:
- * ┌── f ─ c ─ u ──┐ ┌───────────┐ ┌────────────┐ ┌ q ─ x ─ l ──┐ ┌─────────┐
- * │ o   i   e   n │ │ g ┄┄ ┄┄ m │ │ k ┄┄┐┌┄┄ ' │ │  ╲   ╲   ╲  │ │ ┄┄mod┄┄ │
- * │ a   r   s   t │ │ v ┄┄ ┄┄ y │ │ . ┄┄┘└┄┄ p │ │ ╱   ╱   ╱   │ │ ┄┄spc┄┄ │
- * └── w ─ d ─ h ──┘ └───────────┘ └────────────┘ └ b ─ z ─ j ──┘ └─────────┘
- * mod:               nav:             num:
- * ┌────────────────┐ ┌──────hm─en───┐ ┌─────────────┐
- * │ ⇧   ⌥   ⌘   ⌃  │ │ ‹‹  p↑ ▲  p↓ │ │ ‹‹ 1  2  3  │
- * │ esc tab ent ‹‹ │ │     ◀  ▼  ▶  │ │ 0  4  5  6  │
- * └───────bks──────┘ └──────────────┘ └───7──8──9───┘
- *
- * RIGHT HAND        triplet:      knight:         diags:         sides:
- * ┌── u ─ c ─ f ──┐ ┌───────────┐ ┌────────────┐ ┌─ l ─ x ─ q ─┐ ┌─────────┐
- * │ n   e   i   o │ │ m ┄┄ ┄┄ g │ │ . ┄┄┐┌┄┄ k │ │   ╱   ╱   ╱ │ │ ┄┄mod┄┄ │
- * │ t   s   r   a │ │ y ┄┄ ┄┄ v │ │ p ┄┄┘└┄┄ ' │ │  ╲   ╲   ╲  │ │ ┄┄spc┄┄ │
- * └── h ─ d ─ w ──┘ └───────────┘ └────────────┘ └─ j ─ z ─ b ─┘ └─────────┘
+  Left hand
+  base/adjacents:   skip-hops:    knight:         diags:        
+  ┌── j ─ c ─ u ──┐ ┌───────────┐ ┌────────────┐ ┌ q ─ x ─ l ──┐
+  │ o   i   e   n │ │mod┄┄ ┄┄ w │ │ ' ┄┄┐┌┄┄ f │ │  ╲   ╲   ╲  │
+  │ a   r   s   t │ │ v ┄┄ ┄┄ m │ │ . ┄┄┘└┄┄ p │ │ ╱   ╱   ╱   │
+  └── k ─ d ─ h ──┘ └───────────┘ └────────────┘ └ z ─ b ─ y ──┘
+  sides:      long-diag:
+  ┌─────────┐ ┌───────────┐
+  │ ┄┄ g ┄┄ │ │ bks ┄┄┄┄┐ │
+  │ ┄┄spc┄┄ │ │ sft ┄┄┄┄┘ │
+  └─────────┘ └───────────┘
+  mod:               nav:             num:
+  ┌────────────────┐ ┌──────hm─en───┐ ┌─────────────┐
+  │ ⇧   ⌥   ⌘   ⌃  │ │ ‹‹  p↑ ▲  p↓ │ │ ‹‹ 1  2  3  │
+  │ esc tab ent ‹‹ │ │     ◀  ▼  ▶  │ │ 0  4  5  6  │
+  └───────bks──────┘ └──────────────┘ └───7──8──9───┘
  */
 
 #ifdef COMBO_TERM
@@ -69,42 +69,44 @@ DEF_COMBO_INPUT_KC(UP, PGDN);
 combo_t key_combos[COMBO_COUNT] = {
   /* Actions */
   COMBO_ACTION(combo_N_A),            /* . . . n | a . . . - shift */
-  COMBO_ACTION(combo_O_N),            /* o . . n | . . . . - mod -- ?? */
+  COMBO_ACTION(combo_O_E),            /* o . e . | . . . . - mod */
   COMBO_ACTION(combo_N_T),            /* . . . n | . . . t - nav */
   COMBO_ACTION(combo_O_A),            /* o . . . | a . . . - num */
   /* Triplets */
-  DEF_COMBO_TARGET_3KC(O, I, E, W),    /* o i e . | . . . . */
-  DEF_COMBO_TARGET_3KC(I, E, N, BSPC), /* . i e n | . . . . */
-  DEF_COMBO_TARGET_3KC(A, R, S, B),    /* . . . . | a r s . */
-  DEF_COMBO_TARGET_3KC(R, S, T, SPC),  /* . . . . | . r s t */
+  DEF_COMBO_TARGET_3KC(O, I, E, W),    /* o i e . | . . . . - (*) */
+  DEF_COMBO_TARGET_3KC(I, E, N, BSPC), /* . i e n | . . . . - (*) */
+  DEF_COMBO_TARGET_3KC(A, R, S, B),    /* . . . . | a r s . - (*) */
+  DEF_COMBO_TARGET_3KC(R, S, T, SPC),  /* . . . . | . r s t - (*) */
   /* Adjacents */
-  DEF_COMBO_TARGET_KC(O, I, F),       /* o i . . | . . . . */
+  DEF_COMBO_TARGET_KC(O, I, J),       /* o i . . | . . . . */
   DEF_COMBO_TARGET_KC(I, E, C),       /* . i e . | . . . . */
   DEF_COMBO_TARGET_KC(E, N, U),       /* . . e n | . . . . */
-  DEF_COMBO_TARGET_KC(A, R, W),       /* . . . . | a r . . */
+  DEF_COMBO_TARGET_KC(A, R, K),       /* . . . . | a r . . */
   DEF_COMBO_TARGET_KC(R, S, D),       /* . . . . | . r s . */
   DEF_COMBO_TARGET_KC(S, T, H),       /* . . . . | . . s t */
   /* Skip-hops */
-  DEF_COMBO_TARGET_KC(O, E, G),       /* o . e . | . . . . */
-  DEF_COMBO_TARGET_KC(I, N, M),       /* . i . n | . . . . */
+  // DEF_COMBO_TARGET_KC(O, E, G),    /* o . e . | . . . . */
+  DEF_COMBO_TARGET_KC(I, N, W),       /* . i . n | . . . . */
   DEF_COMBO_TARGET_KC(A, S, V),       /* . . . . | a . s . */
-  DEF_COMBO_TARGET_KC(R, T, Y),       /* . . . . | . r . t */
+  DEF_COMBO_TARGET_KC(R, T, M),       /* . . . . | . r . t */
   /* Knights */
-  DEF_COMBO_TARGET_KC(O, S, K),       /* o . . . | . . s . */
+  DEF_COMBO_TARGET_KC(O, S, QUOT),    /* o . . . | . . s . */
   DEF_COMBO_TARGET_KC(I, T, P),       /* . i . . | . . . t */
   DEF_COMBO_TARGET_KC(E, A, DOT),     /* . . e . | a . . . */
-  DEF_COMBO_TARGET_KC(N, R, QUOT),    /* . . . n | . r . . */
+  DEF_COMBO_TARGET_KC(N, R, F),       /* . . . n | . r . . */
   /* Four-wides */
-  DEF_COMBO_TARGET_KC(A, T, SPC),     /* . . . . | a . . t -- ?? */
+  DEF_COMBO_TARGET_KC(O, N, G),       /* o . . n | . . . . */
+  DEF_COMBO_TARGET_KC(A, T, SPC),     /* . . . . | a . . t */
   /* Diagonals, upward */
-  DEF_COMBO_TARGET_KC(I, A, B),       /* . i . . | a . . . */
-  DEF_COMBO_TARGET_KC(E, R, Z),       /* . . e . | . r . . */
-  DEF_COMBO_TARGET_KC(N, S, J),       /* . . . n | . . s . */
+  DEF_COMBO_TARGET_KC(I, A, Z),       /* . i . . | a . . . */
+  DEF_COMBO_TARGET_KC(E, R, B),       /* . . e . | . r . . */
+  DEF_COMBO_TARGET_KC(N, S, Y),       /* . . . n | . . s . */
   /* Diagonals, downward */
   DEF_COMBO_TARGET_KC(O, R, Q),       /* o . . . | . r . . */
   DEF_COMBO_TARGET_KC(I, S, X),       /* . i . . | . . s . */
   DEF_COMBO_TARGET_KC(E, T, L),       /* . . e . | . . . t */
   /* Wide diagonals */
+  // DEF_COMBO_TARGET_KC(N, A, NO),   /* . . . n | a . . . */
   DEF_COMBO_TARGET_KC(O, T, BSPC),    /* o . . . | . . . t -- ?? */
   /* Navs */
   DEF_COMBO_TARGET_KC(ENT, TAB, ESC),
