@@ -12,16 +12,22 @@
 (defalias
   NAV  (layer-toggle nav)
   SYM  (layer-toggle sym)
+  FUN  (layer-toggle fun)
 
   ces  (tap-next esc lctl)
   cen  (tap-next ret lctl)
 
   bsw  (around lctl bks)
-  cta  (around lctl tab)
-  sta  (around lsft (around lctl tab))
+  tab+ (around lctl tab)
+  tab- (around lsft (around lctl tab))
 
   cmd  lalt
   opt  lmet
+
+  v-   VolumeDown
+  v+   VolumeUp
+  mpl  play
+  mpn  nextsong
 
   LOC  (layer-switch lock)
   ULO  (layer-switch colemak-dh-ext)
@@ -30,56 +36,65 @@
 ;; ───────────────────────────────────────────────────────────────────────
 
 (defsrc
-  esc  f1   f2   f3   f4   f5     f6   f7   f8   f9   f10  f11  f12  del
-  `    1    2    3    4    5      6    7    8    9    0    -    =    bks
-  tab  q    w    e    r    t      y    u    i    o    p    [    ]    \
-  caps a    s    d    f    g      h    j    k    l    ;    '         ret
-  lsft z    x    c    v    b      n    m    ,    .    /              rsft
-  lctl lmet lalt                  spc       ralt rctl left up   down rght
+  esc   f1    f2    f3    f4    f5      f6    f7    f8    f9    f10   f11   f12  del
+  `     1     2     3     4     5       6     7     8     9     0     -     =    bks
+  tab   q     w     e     r     t       y     u     i     o     p     [     ]    \
+  caps  a     s     d     f     g       h     j     k     l     ;     '          ret
+  lsft  z     x     c     v     b       n     m     ,     .     /                rsft
+  lctl  lmet  lalt                      spc         ralt  rctl  left  up    down rght
 )
 
 (deflayer colemak-dh-ext
-  _    _    _    _    _    _      _    _    _    _    _    _    _    _
-  _    _    _    _    _    _      _    _    _    _    _    _    _    _
-  _    q    w    f    p    b      XX   j    l    u    y    bks  XX   bks
-  @ces a    r    s    t    g      @NAV m    n    e    i    o         _   
-  _    z    x    c    d    v      XX   k    h    ,    .              @cen
-  @opt @cmd @SYM                  _         @NAV @opt _    _    _    _
+  _     _     _     _     _     _       _     _     _     _     _     _     _     _
+  _     _     _     _     _     _       _     _     _     _     _     _     _     _
+  _     q     w     f     p     b       XX    j     l     u     y     bks   '     bks
+  @ces  a     r     s     t     g       @NAV  m     n     e     i     o           _   
+  _     z     x     c     d     v       XX    k     h     ,     .                 _
+  @opt  @cmd  @SYM                      _           @NAV  @opt  _     _     _     _
 )
 
 (deflayer nav
-  _    _    _    _    _    _      _    _    _    _    _    _    caps _
-  _    _    _    _    _    _      _    _    _    _    _    _    _    _
-  _    lctl @cmd tab  tab  XX     XX   pgup home up   end  @bsw XX   _
-  _    1    2    3    4    5      XX   pgdn left down rght ret       _
-  _    6    7    8    9    0      XX   esc  @sta @cta XX             _
-  _    _    _                     ret       XX   _    _    _    _    @LOC
+  _     _     _     _     _     _       _     _     _     _     _     _     caps  _
+  _     _     _     _     _     _       _     _     _     _     _     _     _     _
+  _     lctl  @cmd  tab   tab   XX      XX    pgup  home  up    end   @bsw  XX    _
+  _     1     2     3     4     5       XX    pgdn  left  down  rght  ret         _
+  _     6     7     8     9     0       XX    esc   @tab- @tab+ XX                del
+  _     _     _                         _           _     _     _     _     _     @LOC
 )
 
 (deflayer sym
-  _    _    _    _    _    _      _    _    _    _    _    _    _    _
-  _    _    _    _    _    _      _    _    _    _    _    _    _    _
-  _    '    "    ^    ?    `      _    [    <    =    >    ]    _    _
-  _    !    @    #    $    %      _    {    \(   :    \)   }         _
-  _    \    ~    |    &    ;      _    /    *    -    +             \_
-  _    _    _                     _         _    _    _    _    _    _
+  _     _     _     _     _     _       _     _     _     _     _     _     _     _
+  _     _     _     _     _     _       _     _     _     _     _     _     _     _
+  _     '     "     ^     ?     `       _     [     <     =     >     ]     _     _
+  _     !     @     #     $     %       _     {     \(    :     \)    }           _
+  _     \     ~     |     &     ;       _     /     *     -     +                \_
+  _     _     _                         _           @FUN  _     _     _     _     _
+)
+
+(deflayer fun
+  _     _     _     _     _     _       _     _     _     _     _     _     caps  _
+  _     _     _     _     _     _       _     _     _     _     _     _     _     _
+  _     f9    f10   f11   f12   XX      XX    XX    XX    XX    XX    XX    XX    _
+  _     f1    f2    f3    f4    XX      XX    XX    XX    XX    XX    XX          _
+  _     f5    f6    f7    f8    XX      XX    @v-   @v+   @mpl  @mpn              _
+  _     _     _                         XX          XX    _     _     _     _     _
 )
 
 (deflayer lock
-  XX   XX   XX   XX   XX   @ULO   XX   XX   XX   XX   XX   XX   XX   XX
-  XX   XX   XX   XX   XX   XX     XX   XX   XX   XX   XX   XX   XX   XX
-  XX   XX   XX   XX   XX   XX     XX   XX   XX   XX   XX   XX   XX   XX
-  XX   XX   XX   XX   XX   XX     XX   XX   XX   XX   XX   XX        XX
-  XX   XX   XX   XX   XX   XX     XX   XX   XX   XX   XX             XX
-  XX   XX   XX                    XX        XX   XX   XX   XX   XX   XX
+  XX    XX    XX    XX    XX    @ULO    XX    XX    XX    XX    XX    XX    XX    XX
+  XX    XX    XX    XX    XX    XX      XX    XX    XX    XX    XX    XX    XX    XX
+  XX    XX    XX    XX    XX    XX      XX    XX    XX    XX    XX    XX    XX    XX
+  XX    XX    XX    XX    XX    XX      XX    XX    XX    XX    XX    XX          XX
+  XX    XX    XX    XX    XX    XX      XX    XX    XX    XX    XX                XX
+  XX    XX    XX                        XX          XX    XX    XX    XX    XX    XX
 )
 (deflayer blank
-  _    _    _    _    _    _      _    _    _    _    _    _    _    _
-  _    _    _    _    _    _      _    _    _    _    _    _    _    _
-  _    _    _    _    _    _      _    _    _    _    _    _    _    _
-  _    _    _    _    _    _      _    _    _    _    _    _         _
-  _    _    _    _    _    _      _    _    _    _    _              _
-  _    _    _                     _         _    _    _    _    _    _
+  _     _     _     _     _     _       _     _     _     _     _     _     _     _
+  _     _     _     _     _     _       _     _     _     _     _     _     _     _
+  _     _     _     _     _     _       _     _     _     _     _     _     _     _
+  _     _     _     _     _     _       _     _     _     _     _     _           _
+  _     _     _     _     _     _       _     _     _     _     _                 _
+  _     _     _                         _           _     _     _     _     _     _
 )
 
 ;; ───────────────────────────────────────────────────────────────────────
