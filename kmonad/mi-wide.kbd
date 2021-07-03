@@ -13,11 +13,13 @@
   NAV  (layer-toggle nav)
   SYM  (layer-toggle sym)
   FUN  (layer-toggle fun)
+  LOC  (layer-switch lock)
+  ULO  (layer-switch colemak-dh-ext)
 
-  ces  (tap-next esc lctl)
-  cen  (tap-next ret lctl)
-
-  bsw  (around lctl bks)
+  cesc (tap-next esc lctl)
+  ntab (tap-next tab (layer-toggle nav))
+92
+  cbsp (around lctl bks)
   tab+ (around lctl tab)
   tab- (around lsft (around lctl tab))
 
@@ -28,9 +30,6 @@
   v+   VolumeUp
   mpl  play
   mpn  nextsong
-
-  LOC  (layer-switch lock)
-  ULO  (layer-switch colemak-dh-ext)
 )
 
 ;; ───────────────────────────────────────────────────────────────────────
@@ -47,8 +46,8 @@
 (deflayer colemak-dh-ext
   _     _     _     _     _     _       _     _     _     _     _     _     _     _
   _     _     _     _     _     _       _     _     _     _     _     _     _     _
-  _     q     w     f     p     b       XX    j     l     u     y     bks   '     bks
-  @ces  a     r     s     t     g       @NAV  m     n     e     i     o           _   
+  @ntab q     w     f     p     b       XX    j     l     u     y     bks   '     bks
+  @cesc a     r     s     t     g       @NAV  m     n     e     i     o           _   
   _     z     x     c     d     v       XX    k     h     ,     .                 _
   @opt  @cmd  @SYM                      _           @NAV  @opt  _     _     _     _
 )
@@ -56,7 +55,7 @@
 (deflayer nav
   _     _     _     _     _     _       _     _     _     _     _     _     caps  _
   _     _     _     _     _     _       _     _     _     _     _     _     _     _
-  _     lctl  @cmd  tab   tab   XX      XX    pgup  home  up    end   @bsw  XX    _
+  _     lctl  @cmd  tab   tab   XX      XX    pgup  home  up    end   @cbsp XX    _
   _     1     2     3     4     5       XX    pgdn  left  down  rght  ret         _
   _     6     7     8     9     0       XX    esc   @tab- @tab+ XX                del
   _     _     _                         _           _     _     _     _     _     @LOC
