@@ -18,7 +18,7 @@
 
   cesc (tap-next esc lctl)
   ntab (tap-next tab (layer-toggle nav))
-92
+
   cbsp (around lctl bks)
   tab+ (around lctl tab)
   tab- (around lsft (around lctl tab))
@@ -58,7 +58,7 @@
   _     lctl  @cmd  tab   tab   XX      XX    pgup  home  up    end   @cbsp XX    _
   _     1     2     3     4     5       XX    pgdn  left  down  rght  ret         _
   _     6     7     8     9     0       XX    esc   @tab- @tab+ XX                del
-  _     _     _                         _           _     _     _     _     _     @LOC
+  _     _     _                         ent         _     _     _     _     _     @LOC
 )
 
 (deflayer sym
