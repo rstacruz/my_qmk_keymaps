@@ -1,9 +1,15 @@
 (defcfg
+ ;; Linux
   input  (device-file "/dev/input/by-path/platform-i8042-serio-0-event-kbd")
   output (uinput-sink
      "KMonad keyboard"
      "/usr/bin/sleep 1 && /usr/bin/setxkbmap -option compose:ralt")
   cmp-seq ralt
+
+  ;; MacOS
+  ;;dnhdhdndnm input  (iokit-name "Apple Internal Keyboard / Trackpad")
+  ;; output (kext)
+
   fallthrough true
 )
 
@@ -20,19 +26,24 @@
   ntab (tap-next tab (layer-toggle nav))
 
   cbsp (around lctl bks)
+  stab (around lsft tab)
   tab+ (around lctl tab)
   tab- (around lsft (around lctl tab))
 
+  ;; Windows and Linux
   cmd  lalt
   opt  lmet
 
+  ;; MacOS
+  ;; cmd  lmet
+  ;; opt  lalt
+
+  ;; Media
   v-   VolumeDown
   v+   VolumeUp
   mpl  play
   mpn  nextsong
 )
-
-;; ───────────────────────────────────────────────────────────────────────
 
 (defsrc
   esc   f1    f2    f3    f4    f5      f6    f7    f8    f9    f10   f11   f12  del
@@ -43,6 +54,18 @@
   lctl  lmet  lalt                      spc         ralt  rctl  left  up    down rght
 )
 
+;; ┌────┬────┬────┬────┬────┬────┬────┬────┬────┬────┬────┬────┬────┬──────┐
+;; │ ·  │ ·  │ ·  │ ·  │ ·  │ ·  │ ·  │ ·  │ ·  │ ·  │ ·  │ ·  │ ·  │    · │
+;; ├────┴┬───┴┬───┴┬───┴┬───┴┬───┴┬───┴┬───┴┬───┴┬───┴┬───┴┬───┴┬───┴┬─────┤
+;; │ ↹   │ q  │ w  │ f  │ p  │ b  │ ·  │ j  │ l  │ u  │ y  │ ⌫  │ '  │   · │
+;; ├─────┴┬───┴┬───┴┬───┴┬───┴┬───┴┬───┴┬───┴┬───┴┬───┴┬───┴┬───┴┬───┴─────┤
+;; │ ⌃    │ a  │ r  │ s  │ t  │ g  │ ·  │ m  │ n  │ e  │ i  │ o  │ ·     · │
+;; ├──────┴─┬──┴─┬──┴─┬──┴─┬──┴─┬──┴─┬──┴─┬──┴─┬──┴─┬──┴─┬──┴─┬──┴─────────┤
+;; │ ⇧      │ z  │ x  │ c  │ d  │ v  │ ·  │ k  │ h  │ ,  │ .  │ ·   ·    · │
+;; ├─────┬──┴──┬─┴───┬┴────┴────┴────┴────┴────┴───┬┴────┼────┴┬─────┬─────┤
+;; │ ⌥   │ ⌘   │ SYM │                             │ NAV │ ·   │ ·   │ ·   │
+;; └─────┴─────┴─────┴─────────────────────────────┴─────┴─────┴─────┴─────┘
+
 (deflayer colemak-dh-ext
   _     _     _     _     _     _       _     _     _     _     _     _     _     _
   _     _     _     _     _     _       _     _     _     _     _     _     _     _
@@ -52,10 +75,22 @@
   @opt  @cmd  @SYM                      _           @NAV  @opt  _     _     _     _
 )
 
+;; ┌────┬────┬────┬────┬────┬────┬────┬────┬────┬────┬────┬────┬────┬──────┐
+;; │ ·  │ ·  │ ·  │ ·  │ ·  │ ·  │ ·  │ ·  │ ·  │ ·  │ ·  │ ·  │ ·  │    · │
+;; ├────┴┬───┴┬───┴┬───┴┬───┴┬───┴┬───┴┬───┴┬───┴┬───┴┬───┴┬───┴┬───┴┬─────┤
+;; │ ·   │    │    │ ⇧↹ │ ↹  │    │ ·  │ p↑ │hom │ ▲  │end │ ^⌫ │ ·  │   · │
+;; ├─────┴┬───┴┬───┴┬───┴┬───┴┬───┴┬───┴┬───┴┬───┴┬───┴┬───┴┬───┴┬───┴─────┤
+;; │ ·    │ 1  │ 2  │ 3  │ 4  │ 5  │ ·  │ p↓ │ ◀  │ ▼  │ ▶  │ ↵  │ ·     · │
+;; ├──────┴─┬──┴─┬──┴─┬──┴─┬──┴─┬──┴─┬──┴─┬──┴─┬──┴─┬──┴─┬──┴─┬──┴─────────┤
+;; │ ·    · │ 6  │ 7  │ 8  │ 9  │ 0  │ ·  │esc │ ‹  │ ›  │    │ ⌦          │
+;; ├─────┬──┴──┬─┴───┬┴────┴────┴────┴────┴────┴───┬┴────┼────┴┬─────┬─────┤
+;; │ ·   │ ·   │ ·   │                             │ ███ │ ·   │ ·   │ ·   │
+;; └─────┴─────┴─────┴─────────────────────────────┴─────┴─────┴─────┴─────┘
+
 (deflayer nav
   _     _     _     _     _     _       _     _     _     _     _     _     caps  _
   _     _     _     _     _     _       _     _     _     _     _     _     _     _
-  _     lctl  @cmd  tab   tab   XX      XX    pgup  home  up    end   @cbsp XX    _
+  _     lctl  @cmd  @stab tab   XX      XX    pgup  home  up    end   @cbsp XX    _
   _     1     2     3     4     5       XX    pgdn  left  down  rght  ret         _
   _     6     7     8     9     0       XX    esc   @tab- @tab+ XX                del
   _     _     _                         ent         _     _     _     _     _     @LOC
