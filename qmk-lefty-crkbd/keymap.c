@@ -123,20 +123,20 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   /* ┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄
   Altnav    ┌────┬───┄┏━━━━┓┄───┬────┐     ┌────┬───┄┏━━━━┓┄───┬────┐
-            │exit│home┃ ▲  ┃end │pg↑ │     │pg↑ │home┃ ▲  ┃end │ ^⌫ │
+            │exit│home┃ ▲  ┃end │ w↑ │     │ p↑ │home┃ ▲  ┃end │ ^⌫ │
             ├───┄┏━━━━┛────┗━━━━┓┄───┤     ├───┄┏━━━━┛────┗━━━━┓┄───┤
-            │ 1H ┃ ◀  │ ▼  │ ▶  ┃pg↓ │     │pg↓ ┃ ◀  │ ▼  │ ▶  ┃ ↵  │
+            │ 1H ┃ ◀  │ ▼  │ ▶  ┃ w↓ │     │ p↓ ┃ ◀  │ ▼  │ ▶  ┃ ↵  │
   ┌┄┄┄┄┐    ├───┄┗━━━━┷━━━━┷━━━━┛┄───┤     ├───┄┗━━━━┷━━━━┷━━━━┛┄───┤
-  ┆ANV ┆ ┄› │    │    │    │ ‹‹ │ ›› │     │ ⎋  │ ‹‹ │ ›› │ .  │ ⌦  │
+  ┆ANV ┆ ┄› │ m  │ m  │ ‹‹ │ ›› │Mmb │     │ ⎋  │ ‹‹ │ ›› │ .  │ ⌦  │
   └┄┄┄┄┘    └────┴────┴────┴────┴────┘──┬──└───┄└────┴────┴────┘┄───┘
-                      │    │    │ ▓▓    │       │    │    │
+                      │Rmb │Lmb │ ▓▓    │       │    │    │
                       └────┴────┴───────┴───────┴────┴────┘ */
 
   [_ANV] = LAYOUT_36(
-    ___,   KC_HOME, KC_UP,   KC_END,  KC_PGUP, /**/ KC_PGUP, KC_HOME, KC_UP,   KC_END,  x__CBSP,
-    OH_ON, KC_LEFT, KC_DOWN, KC_RGHT, KC_PGDN, /**/ KC_PGDN, KC_LEFT, KC_DOWN, KC_RGHT, KC_ENT,
-    ___,   ___,     ___,     x__STAB, x__CTAB, /**/ KC_ESC,  x__STAB, x__CTAB, KC_DOT,  KC_DEL,
-    /**/   /**/     ___,     ___,     ___,     /**/ _v_,     _v_,     _v_      /**/     /**/
+    ___,     KC_HOME, KC_UP,   KC_END,  KC_WH_U, /**/ KC_PGUP, KC_HOME, KC_UP,   KC_END,  x__CBSP,
+    OH_ON,   KC_LEFT, KC_DOWN, KC_RGHT, KC_WH_D, /**/ KC_PGDN, KC_LEFT, KC_DOWN, KC_RGHT, KC_ENT,
+    MC_MUTE, MC_HAND, x__STAB, x__CTAB, x__MMB,  /**/ KC_ESC,  x__STAB, x__CTAB, KC_DOT,  KC_DEL,
+    /**/     /**/     x__RMB,  x__LMB,  ___,     /**/ _v_,     ___,     ___      /**/     /**/
   ),
 
   /* ┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄
