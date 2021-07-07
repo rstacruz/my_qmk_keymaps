@@ -106,16 +106,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
             ├───┄┏━━━━┛────┗━━━━┓┄───┤     ├───┄┏━━━━┛────┗━━━━┓┄───┤
             │    ┃ ◀  │ ▼  │ ▶  ┃pg↓ │     │pg↓ ┃ ◀  │ ▼  │ ▶  ┃ ↵  │
   ┌┄┄┄┄┐    ├───┄┗━━━━┷━━━━┷━━━━┛┄───┤     ├───┄┗━━━━┷━━━━┷━━━━┛┄───┤
-  ┆ANV ┆ ┄› │    │    │    │ ‹‹ │ ›› │     │ ⎋  │ ‹‹ │ ›› │ .  │ ⌦  │
+  ┆ANV ┆ ┄› │    │    │ ‹‹ │ ›› │Lmb │     │ ⎋  │ ‹‹ │ ›› │ .  │ ⌦  │
   └┄┄┄┄┘    └────┴────┴────┴────┴────┘──┬──└───┄└────┴────┴────┘┄───┘
-                      │    │Lmb │ ▓▓    │       │    │    │
+                      │    │    │ ▓▓    │       │    │    │
                       └────┴────┴───────┴───────┴────┴────┘ */
 
   [_ANV] = LAYOUT_36(
-    ___, KC_HOME, KC_UP,   KC_END,     KC_PGUP, /**/ KC_PGUP, KC_HOME, KC_UP,   KC_END,  x__CBSP,
-    ___, KC_LEFT, KC_DOWN, KC_RGHT,    KC_PGDN, /**/ KC_PGDN, KC_LEFT, KC_DOWN, KC_RGHT, KC_ENT,
-    ___, ___,     ___,     x__STAB,    x__CTAB, /**/ KC_ESC,  x__STAB, x__CTAB, KC_DOT,  KC_DEL,
-    /**/ /**/     ___,     KC_MS_BTN1, ___,     /**/ _v_,     _v_,     _v_      /**/     /**/
+    ___, KC_HOME, KC_UP,   KC_END,  KC_PGUP, /**/ KC_PGUP, KC_HOME, KC_UP,   KC_END,  x__CBSP,
+    ___, KC_LEFT, KC_DOWN, KC_RGHT, KC_PGDN, /**/ KC_PGDN, KC_LEFT, KC_DOWN, KC_RGHT, KC_ENT,
+    ___, ___,     x__STAB, x__CTAB, x__LMB,  /**/ KC_ESC,  x__STAB, x__CTAB, KC_DOT,  KC_DEL,
+    /**/ /**/     ___,     ___,     ___,     /**/ _v_,     _v_,     _v_      /**/     /**/
   ),
 
   /*
