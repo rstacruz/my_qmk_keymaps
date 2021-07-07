@@ -18,8 +18,8 @@
  LAYOUT_36( \
     k1,  k2,  k3,     k4,          KC_BSPC,             /**/ ___,    k4,     k3,    k2,  k1,  \
     k5,  k6,  k7,     k8,          KC_ENT,              /**/ ___,    k8,     k7,    k6,  k5,  \
-    k9,  ka,  kb,     kc,          KC_TAB,              /**/ OH_OFF, kc,     kb,    ka,  k9,  \
-    /**/ /**/ OH_OFF, MO(_OH_NAV), MT(MOD_LSFT,KC_SPC), /**/ KC_SPC, OH_OFF, OH_OFF /**/ /**/ \
+    k9,  ka,  kb,     kc,          KC_TAB,              /**/ ___,    kc,     kb,    ka,  k9,  \
+    /**/ /**/ x__LMB, MO(_OH_NAV), MT(MOD_LSFT,KC_SPC), /**/ OH_OFF, OH_OFF, OH_OFF /**/ /**/ \
   )
 
 #define LAYOUT_onehand_8(k1, k2, k3, k4, k5, k6, k7, k8) \
