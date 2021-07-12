@@ -44,13 +44,13 @@ push: \
 	mkdir \
 	${qmk_home}/keyboards/${keyboard_path}/keymaps/${keymap_name}/config.h \
 	${qmk_home}/keyboards/${keyboard_path}/keymaps/${keymap_name}/rules.mk \
-	${qmk_home}/keyboards/${keyboard_path}/keymaps/${keymap_name}/onehand.c \
+	${qmk_home}/keyboards/${keyboard_path}/keymaps/${keymap_name}/onehand_combos.c \
 	${qmk_home}/keyboards/${keyboard_path}/keymaps/${keymap_name}/keymap.c \
-	${qmk_home}/keyboards/${keyboard_path}/keymaps/${keymap_name}/game.c \
+	${qmk_home}/keyboards/${keyboard_path}/keymaps/${keymap_name}/game_layers.h \
 	${qmk_home}/quantum/process_keycode/process_combo.c
 
 # Don't delete these intermediate files
-.PRECIOUS: %/keymap.c %/onehand.c
+.PRECIOUS: %/keymap.c %/onehand_combos.c %/game_layers.h
 
 c: compile
 f: flash
