@@ -17,10 +17,10 @@
             └────┴────┴────┴────┴────┴─────┴────┴────┴────┴────┴────┘ */
 
 #define GAM_LAYER LAYOUT_36( \
-  KC_Q, KC_W, KC_E,    KC_R,      KC_TAB,  /**/ KC_Y, ___,     KC_UP,   ___,     KC_ESC, \
-  KC_A, KC_S, KC_D,    KC_F,      KC_LSFT, /**/ KC_P, KC_LEFT, KC_DOWN, KC_RGHT, KC_ENT, \
-  KC_1, KC_2, KC_3,    KC_4,      KC_LCTL, /**/ ___,  ___,     ___,     ___,     DF(0),  \
-  /**/  /**/  KC_LALT, OSL(_GMX), KC_SPC,  /**/ ___,  ___,     DF(0)    /**/     /**/    \
+  KC_Q, KC_W, KC_E,    KC_R,      KC_TAB,  /**/ KC_Y, ___,     KC_UP,   ___,     KC_ESC,  \
+  KC_A, KC_S, KC_D,    KC_F,      KC_LSFT, /**/ KC_P, KC_LEFT, KC_DOWN, KC_RGHT, KC_ENT,  \
+  KC_1, KC_2, KC_3,    KC_4,      KC_LCTL, /**/ ___,  ___,     ___,     ___,     GAM_OFF, \
+  /**/  /**/  KC_LALT, OSL(_GMX), KC_SPC,  /**/ ___,  ___,     ___      /**/     /**/     \
 )
 
 #define GMX_LAYER LAYOUT_36( \
