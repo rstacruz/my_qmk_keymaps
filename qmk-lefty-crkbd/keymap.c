@@ -124,25 +124,25 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   /* ┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄
   Altnav    ┌────┬────┬────┬────┬────┐     ┌────┬────┬────┬────┬────┐
-            │    │home│ ▲  │end │ w↑ │     │ p↑ │home│ ▲  │end │ ^⌫ │
+            │ m  │home│ ▲  │end │ w↑ │     │ p↑ │home│ ▲  │end │ ^⌫ │
             ├────┼────┼────┼────┼────┤     ├────┼────┼────┼────┼────┤
             │ 1h │ ◀  │ ▼  │ ▶  │ w↓ │     │ p↓ │ ◀  │ ▼  │ ▶  │ ↵  │
   ┌┄┄┄┄┐    ├────┼────┼────┼────┼────┤     ├────┼────┼────┼────┼────┤
-  ┆ANV ┆ ┄› │    │    │ ‹‹ │ ›› │ L  │     │ ⎋  │ ‹‹ │ ›› │ .  │ ⌦  │
+  ┆ANV ┆ ┄› │ m  │    │ M  │ R  │ L  │     │ ⎋  │ ‹‹ │ ›› │ .  │ ⌦  │
   └┄┄┄┄┘    └────┴────┴────┴────┴────┴──┬──┴────┴────┴────┴────┴────┘
-                      │ M  │ R  │ ▓▓    │       │    │    │
+                      │ ‹‹ │ ›› │ ▓▓    │       │    │    │
                       └────┴────┴───────┴───────┴────┴────┘ */
 
   [_ANV] = LAYOUT_36(
-    ___,   KC_HOME, KC_UP,   KC_END,  KC_WH_U, /**/ KC_PGUP, KC_HOME, KC_UP,   KC_END,  x__CBSP,
-    OH_ON, KC_LEFT, KC_DOWN, KC_RGHT, KC_WH_D, /**/ KC_PGDN, KC_LEFT, KC_DOWN, KC_RGHT, KC_ENT,
-    ___,   ___,     x__STAB, x__CTAB, x__LMB,  /**/ KC_ESC,  x__STAB, x__CTAB, KC_DOT,  KC_DEL,
-    /**/   /**/     x__MMB,  x__RMB,  ___,     /**/ _v_,     ___,     ___      /**/     /**/
+    MC_MUTE, KC_HOME, KC_UP,   KC_END,  KC_WH_U, /**/ KC_PGUP, KC_HOME, KC_UP,   KC_END,  x__CBSP,
+    OH_ON,   KC_LEFT, KC_DOWN, KC_RGHT, KC_WH_D, /**/ KC_PGDN, KC_LEFT, KC_DOWN, KC_RGHT, KC_ENT,
+    MC_HAND, ___,     x__MMB,  x__RMB,  x__LMB,  /**/ KC_ESC,  x__STAB, x__CTAB, KC_DOT,  KC_DEL,
+    /**/     /**/     x__STAB, x__CTAB, ___,     /**/ _v_,     ___,     ___      /**/     /**/
   ),
 
   /* ┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄
   Function  ┌────┬────┬────┬────┬────┐     ┌────┬────┬────┬────┬────┐
-  Numpad    │f11 │f12 │ m  │ m  │ m  │     │ 1  │ 2  │ 3  │ ⌘  │ ⌫  │
+  Numpad    │f11 │f12 │    │ m  │    │     │ 1  │ 2  │ 3  │ ⌘  │ ⌫  │
             ├────┼────┼────┼────┼────┤     ├────┼────┼────┼────┼────┤
             │ f1 │ f2 │ f3 │ f4 │ f5 │     │ 4  │ 5  │ 6  │ ⌥  │ ^  │
   ┌┄┄┄┄┐    ├────┼────┼────┼────┼────┤     ├────┼────┼────┼────┼────┤
@@ -152,10 +152,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                       └────┴────┴───────┴───────┴────┴────┘ */
 
   [_FUN] = LAYOUT_36(
-    KC_F11, KC_F12, MC_MUTE, MC_HAND, MC_SHOT, /**/ KC_1, KC_2, KC_3,  x__LCMD, KC_BSPC,
-    KC_F1,  KC_F2,  KC_F3,   KC_F4,   KC_F5,   /**/ KC_4, KC_5, KC_6,  x__LOPT, KC_LCTL,
-    KC_F6,  KC_F7,  KC_F8,   KC_F9,   KC_F10,  /**/ KC_7, KC_8, KC_9,  ___,     RESET,
-    /**/    /**/    _v_,     _v_,     _v_,     /**/ KC_0, _v_,  KC_DOT /**/     /**/
+    KC_F11, KC_F12, ___,   MC_HAND, ___,    /**/ KC_1, KC_2, KC_3,  x__LCMD, KC_BSPC,
+    KC_F1,  KC_F2,  KC_F3, KC_F4,   KC_F5,  /**/ KC_4, KC_5, KC_6,  x__LOPT, KC_LCTL,
+    KC_F6,  KC_F7,  KC_F8, KC_F9,   KC_F10, /**/ KC_7, KC_8, KC_9,  ___,     RESET,
+    /**/    /**/    _v_,   _v_,     _v_,    /**/ KC_0, _v_,  KC_DOT /**/     /**/
   ),
 
   /* ┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄
