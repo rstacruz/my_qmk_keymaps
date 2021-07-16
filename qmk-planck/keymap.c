@@ -1,1 +1,1 @@
-../qmk-crkbd/keymap.c
+../qmk-lefty-crkbd/keymap.c

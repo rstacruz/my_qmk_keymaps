@@ -2,9 +2,9 @@
 # qmk_home := ${HOME}/qmk_firmware
 qmk_home := $(shell qmk config user.qmk_home | cut -d= -f2)
 
-keymap_name   := rsta
-keyboard_path := crkbd
-keyboard_id   := crkbd
+keymap_name   ?= rsta
+keyboard_path ?= crkbd
+keyboard_id   ?= crkbd
 
 # Set `use_docker=1` to use Docker for building
 ifeq (${use_docker},1)

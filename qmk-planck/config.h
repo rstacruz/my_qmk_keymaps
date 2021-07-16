@@ -1,1 +1,1 @@
-../qmk-crkbd/config.h
+../qmk-lefty-crkbd/config.h
