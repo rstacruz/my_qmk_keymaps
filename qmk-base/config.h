@@ -67,5 +67,6 @@
 #define EE_HANDS
 #endif
 
+/* Combo settings */
 #define COMBO_TERM 40
 #define COMBO_COUNT 33
