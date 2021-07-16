@@ -2,9 +2,10 @@
 # qmk_home := ${HOME}/qmk_firmware
 qmk_home := $(shell qmk config user.qmk_home | cut -d= -f2)
 
-keymap_name   := rsta_artsey
-keyboard_path := crkbd
-keyboard_id   := crkbd
+keymap_name   ?= rsta
+keyboard_path ?= crkbd
+keyboard_id   ?= crkbd
+base_path ?= ../qmk-base
 
 # Set `use_docker=1` to use Docker for building
 ifeq (${use_docker},1)
@@ -31,7 +32,13 @@ split-right: push
 split-left: push
 	cd ${qmk_home} && ${make} ${keyboard_id}:${keymap_name}:dfu-split-left
 
-${qmk_home}/keyboards/${keyboard_path}/keymaps/${keymap_name}/%: ./%
+${qmk_home}/keyboards/${keyboard_path}/keymaps/${keymap_name}/rules.mk: ./rules.mk
+	cp $< $@
+
+${qmk_home}/keyboards/${keyboard_path}/keymaps/${keymap_name}/%: ${base_path}/%
+	cp $< $@
+
+${qmk_home}/quantum/process_keycode/process_combo.c: ${base_path}/process_combo.c
 	cp $< $@
 
 mkdir:
@@ -41,16 +48,13 @@ push: \
 	mkdir \
 	${qmk_home}/keyboards/${keyboard_path}/keymaps/${keymap_name}/config.h \
 	${qmk_home}/keyboards/${keyboard_path}/keymaps/${keymap_name}/rules.mk \
+	${qmk_home}/keyboards/${keyboard_path}/keymaps/${keymap_name}/onehand_combos.c \
 	${qmk_home}/keyboards/${keyboard_path}/keymaps/${keymap_name}/keymap.c \
-	${qmk_home}/keyboards/${keyboard_path}/keymaps/${keymap_name}/artsey.c \
-	${qmk_home}/keyboards/${keyboard_path}/keymaps/${keymap_name}/artsey.h \
-	${qmk_home}/keyboards/${keyboard_path}/keymaps/${keymap_name}/artsey_basic.def \
-	${qmk_home}/keyboards/${keyboard_path}/keymaps/${keymap_name}/combos.def \
-	${qmk_home}/keyboards/${keyboard_path}/keymaps/${keymap_name}/keymap_combo.h \
-	${qmk_home}/keyboards/${keyboard_path}/keymaps/${keymap_name}/macros.c
+	${qmk_home}/keyboards/${keyboard_path}/keymaps/${keymap_name}/game_layers.h \
+	${qmk_home}/quantum/process_keycode/process_combo.c
 
 # Don't delete these intermediate files
-.PRECIOUS: %/keymap.c
+.PRECIOUS: %/keymap.c %/onehand_combos.c %/game_layers.h
 
 c: compile
 f: flash
