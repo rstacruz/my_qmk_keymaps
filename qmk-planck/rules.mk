@@ -1,5 +1,5 @@
 # VIA_ENABLE = yes
 LTO_ENABLE = yes
-COMBO_ENABLE = yes
+COMBO_ENABLE = no
 AUDIO_ENABLE = yes
 # TAP_DANCE_ENABLE = yes

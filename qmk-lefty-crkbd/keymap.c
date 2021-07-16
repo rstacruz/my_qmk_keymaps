@@ -48,7 +48,10 @@ enum custom_keycodes {
   GAM_OFF,
 };
 
+#ifdef COMBO_ENABLE
 #include "onehand_combos.c"
+#endif
+
 #include "game_layers.h"
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -324,5 +327,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     return false;
     break;
   }
+#ifdef COMBO_ENABLE
   return onehand_process_record_user(keycode, record);
+#else
+  return true;
+#endif
 };
