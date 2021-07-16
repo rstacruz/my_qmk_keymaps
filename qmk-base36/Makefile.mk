@@ -5,7 +5,7 @@ qmk_home := $(shell qmk config user.qmk_home | cut -d= -f2)
 keymap_name   ?= rsta
 keyboard_path ?= crkbd
 keyboard_id   ?= crkbd
-base_path ?= ../qmk-base
+base_path ?= ../qmk-base36
 
 # Set `use_docker=1` to use Docker for building
 ifeq (${use_docker},1)
