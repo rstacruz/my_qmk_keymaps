@@ -39,7 +39,8 @@ ${qmk_home}/keyboards/${keyboard_path}/keymaps/${keymap_name}/%: ${base_path}/%
 	cp $< $@
 
 ${qmk_home}/quantum/process_keycode/process_combo.c: ${base_path}/process_combo.c
-	cp $< $@
+	@# doesn't seem to be working right now?
+	# cp $< $@
 
 mkdir:
 	@mkdir -p ${qmk_home}/keyboards/${keyboard_path}/keymaps/${keymap_name}
