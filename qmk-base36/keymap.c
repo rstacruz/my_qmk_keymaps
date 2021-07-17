@@ -43,6 +43,14 @@ enum custom_keycodes {
     /**/ /**/ x__LMB, MO(_OH_NAV), MT(MOD_LSFT,KC_SPC), /**/ OH_OFF, OH_OFF, OH_OFF /**/ /**/ \
   )
 
+#define LAYOUT_onehand_10(k1, k2, k3, k4, k5, k6, k7, k8, k9, ka) \
+ LAYOUT_36( \
+    k1,  k2,  k3,  k4,  k5,  /**/ ___, ___, ___, ___, ___,
+    k6,  k7,  k8,  k9,  ka,  /**/ ___, ___, ___, ___, ___,
+    ___, ___, ___, ___, ___, /**/ ___, ___, ___, ___, ___,
+    /**/ /**/ ___, ___, ___, /**/ OH_OFF, ___, ___
+  )
+
 #define LAYOUT_onehand_8(k1, k2, k3, k4, k5, k6, k7, k8) \
  LAYOUT_onehand_12( \
     k1,            k2,            k3,            k4,           \
@@ -203,50 +211,44 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      ┖───── ┌────┬────┬────┬────┬────┐
             │ o  │ i  │ e  │ n  │ ⌫  │
             ├────┼────┼────┼────┼────┤
-            │ a  │ r  │ s  │ t  │ ↵  │┄┐
-            ├────┼────┼────┼────┼────┤ ┆ ⎋ 
-            │ctl │gui │alt │sft │ ↹  │┄┘
-            └────┴────┴────┴────┴────┴─┐ ┌──────┐
-                      │Lmb │NAV │ ␣    │ │ exit │
-                      └────┴────┴──────┘ └──────┘ */
+            │ a  │ r  │ s  │ t  │MOD │
+            └────┴────┴────┴────┴────┘ (right space to exit) */
 
-  [_OH_BAS] = LAYOUT_onehand_8(
-    KC_O, KC_I, KC_E, KC_N,
-    KC_A, KC_R, KC_S, KC_T
+  [_OH_BAS] = LAYOUT_onehand_10(
+    KC_O, KC_I, KC_E, KC_N, KC_BSPC,
+    KC_A, KC_R, KC_S, KC_T, MO(_OH_MOD)
   ),
 
   /*
-  Onehand   ┌────┬────┬────┬────┐
-  nav       │exit│ p↑ │ ▲  │ p↓ │
-            ├────┼────┼────┼────┤
-            │    │ ◀  │ ▼  │ ▶  │
-            └────┴────┴────┴────┘ */
+  Onehand   ┌────┬────┬────┬────┬────┐
+  mod       │NAV │ ⌃  │ ⌥  │ ⌘  │NUM │
+            ├────┼────┼────┼────┼────┤
+            │ ⇧  │tab │ent │esc │ ░░ │
+            └────┴────┴────┴────┴────┘ */
 
-  [_OH_NAV] = LAYOUT_onehand_8(
-    TG(_OH_NAV), KC_PGUP, KC_UP,   KC_PGDN,
-    ___,         KC_LEFT, KC_DOWN, KC_RGHT
+  [_OH_MOD] = LAYOUT_onehand_10(
+    MO(_OH_NAV),   OSM(MOD_LGUI), OSM(MOD_LALT), OSM(MOD_LCTL), TG(_OH_NUM),
+    OSM(MOD_LSFT), KC_TAB,        KC_ENT,        KC_ESC,        ___
   ),
 
   /*
-  Onehand   ┌────┬────┬────┬────┐
-  leader    │ ⌃  │ ⌥  │ ⌘  │ ⇧  │
-            ├────┼────┼────┼────┤
-            │esc │    │ent │exit│
-            └────┴────┴────┴────┘ */
+  Onehand   ┌────┬────┬────┬────┬────┐
+  nav       │ ░░ │ p↑ │ ▲  │ p↓ │    │
+            ├────┼────┼────┼────┼────┤
+            │    │ ◀  │ ▼  │ ▶  │    │
+            └────┴────┴────┴────┴────┘ */
 
-  [_OH_MOD] = LAYOUT_onehand_8(
-    OSM(MOD_LSFT), OSM(MOD_LGUI), OSM(MOD_LALT), OSM(MOD_LCTL),
-    KC_ESC,        ___,           KC_ENT,        TG(_OH_MOD)
+  [_OH_NAV] = LAYOUT_onehand_10(
+    TG(_OH_NAV), KC_PGUP, KC_UP,   KC_PGDN, _v_,
+    ___,         KC_LEFT, KC_DOWN, KC_RGHT, _v_
   ),
 
   /*
-  Onehand   ┌────┬────┬────┬────┐
-  numbers   │exit│ 1  │ 2  │ 3  │
-            ├────┼────┼────┼────┤
-            │ 0  │ 4  │ 5  │ 6  │
-            ├────┼────┼────┼────┤
-            │    │ 7  │ 8  │ 9  │
-            └────┴────┴────┴────┘ */
+  Onehand   ┌────┬────┬────┬────┬────┐
+  numbers   │ 1  │ 2  │ 3  │ 4  │ 5  │
+            ├────┼────┼────┼────┼────┤
+            │ 6  │ 7  │ 8  │ 9  │ 0  │
+            └────┴──exit───┴────┴────┘ */
 
   [_OH_NUM] = LAYOUT_onehand_12(
     TG(_OH_NUM), KC_1, KC_2, KC_3,
