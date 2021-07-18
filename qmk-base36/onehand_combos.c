@@ -71,10 +71,10 @@ combo_t key_combos[COMBO_COUNT] = {
   /* Knights */
   DEF_COMBO_TARGET_KC(O, S, Q),       /* o . . . | . . s . */
   DEF_COMBO_TARGET_KC(I, T, P),       /* . i . . | . . . t */
-  DEF_COMBO_TARGET_KC(E, A, DOT),     /* . . e . | a . . . */
+  DEF_COMBO_TARGET_KC(E, A, G),       /* . . e . | a . . . */
   DEF_COMBO_TARGET_KC(N, R, F),       /* . . . n | . r . . */
   /* Four-wides */
-  DEF_COMBO_TARGET_KC(O, N, G),       /* o . . n | . . . . */
+  DEF_COMBO_TARGET_KC(O, N, DOT),     /* o . . n | . . . . */
   DEF_COMBO_TARGET_KC(A, T, SPC),     /* . . . . | a . . t */
   /* Diagonals, upward */
   DEF_COMBO_TARGET_KC(I, A, QUOT),    /* . i . . | a . . . */
@@ -119,6 +119,15 @@ bool onehand_process_record_user(uint16_t keycode, keyrecord_t *record) {
         layer_off(_OH_NUM);
         combo_disable();
         rgblight_disable_noeeprom();
+      }
+      return false;
+      break;
+    case OH_SHFT:
+      if (record->event.pressed) {
+        set_oneshot_mods(MOD_LSFT);
+        register_code(KC_LSFT);
+      } else {
+        unregister_code(KC_LSFT);
       }
       return false;
       break;
