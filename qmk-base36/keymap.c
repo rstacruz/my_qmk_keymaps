@@ -208,12 +208,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   Onehand   ┌────┬────┬────┬────┬────┐
   mod       │NAV │ ⌃  │ ⌥  │ ⌘  │NUM │
             ├────┼────┼────┼────┼────┤
-            │ ⇧  │tab │ent │esc │ ░░ │
+            │ ⇧  │esc │ent │tab │ ░░ │
             └────┴────┴────┴────┴────┘ */
 
   [_OH_MOD] = LAYOUT_onehand_10(
     MO(_OH_NAV),   OSM(MOD_LGUI), OSM(MOD_LALT), OSM(MOD_LCTL), TG(_OH_NUM),
-    OSM(MOD_LSFT), KC_TAB,        KC_ENT,        KC_ESC,        ___
+    OSM(MOD_LSFT), KC_ESC,        KC_ENT,        KC_TAB,        ___
   ),
 
   /*
