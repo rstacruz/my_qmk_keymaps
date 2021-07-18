@@ -35,12 +35,12 @@ enum custom_keycodes {
 // ┃ Layout aliases ∴
 // ┖──┄
 
-#define LAYOUT_onehand_10(k1, k2, k3, k4, k5, k6, k7, k8, k9, ka) \
+#define LAYOUT_onehand_15(k1, k2, k3, k4, k5, k6, k7, k8, k9, ka, kb, kc, kd, ke, kf) \
  LAYOUT_36( \
-    k1,  k2,  k3,  k4,  k5,  /**/ ___, ___, ___, ___, ___, \
-    k6,  k7,  k8,  k9,  ka,  /**/ ___, ___, ___, ___, ___, \
-    ___, ___, ___, ___, ___, /**/ ___, ___, ___, ___, ___, \
-    /**/ /**/ ___, ___, ___, /**/ OH_OFF, ___, ___ \
+    k1,  k2,  k3,  k4,  k5,  /**/ ___,    ___, ___, ___, ___, \
+    k6,  k7,  k8,  k9,  ka,  /**/ ___,    ___, ___, ___, ___, \
+    kb,  kc,  kd,  ke,  kf,  /**/ ___,    ___, ___, ___, ___, \
+    /**/ /**/ ___, ___, ___, /**/ OH_OFF, ___, ___  \
   )
 
 // ┎──────────────────────────────────────────────────────────────────────
@@ -197,11 +197,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
             │ o  │ i  │ e  │ n  │ ⌫  │
             ├────┼────┼────┼────┼────┤
             │ a  │ r  │ s  │ t  │MOD │
-            └────┴────┴────┴────┴────┘ (right space to exit) */
+            ├────┼────┼────┼────┤    │ (right space
+            │    │    │    │    │    │  to exit)
+            └────┴────┴────┴────┴────┘ */
 
-  [_OH_BAS] = LAYOUT_onehand_10(
+  [_OH_BAS] = LAYOUT_onehand_15(
     KC_O, KC_I, KC_E, KC_N, KC_BSPC,
-    KC_A, KC_R, KC_S, KC_T, MO(_OH_MOD)
+    KC_A, KC_R, KC_S, KC_T, MO(_OH_MOD),
+    ___, ___, ___, ___, ___
   ),
 
   /*
@@ -209,11 +212,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   mod       │NAV │ ⌃  │ ⌥  │ ⌘  │NUM │
             ├────┼────┼────┼────┼────┤
             │ ⇧  │esc │ent │tab │ ░░ │
+            ├────┼────┼────┼────┤    │
+            │    │    │    │    │    │
             └────┴────┴────┴────┴────┘ */
 
-  [_OH_MOD] = LAYOUT_onehand_10(
+  [_OH_MOD] = LAYOUT_onehand_15(
     MO(_OH_NAV),   OSM(MOD_LGUI), OSM(MOD_LALT), OSM(MOD_LCTL), TG(_OH_NUM),
-    OSM(MOD_LSFT), KC_ESC,        KC_ENT,        KC_TAB,        ___
+    OSM(MOD_LSFT), KC_ESC,        KC_ENT,        KC_TAB,        ___,
+    _v_,           _v_,           _v_,           _v_,           _v_
   ),
 
   /*
@@ -221,11 +227,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   nav       │ ░░ │ p↑ │ ▲  │ p↓ │    │
             ├────┼────┼────┼────┼────┤
             │    │ ◀  │ ▼  │ ▶  │    │
+            ├────┼────┼────┼────┤    │
+            │    │    │    │    │    │
             └────┴────┴────┴────┴────┘ */
 
-  [_OH_NAV] = LAYOUT_onehand_10(
+  [_OH_NAV] = LAYOUT_onehand_15(
     TG(_OH_NAV), KC_PGUP, KC_UP,   KC_PGDN, _v_,
-    ___,         KC_LEFT, KC_DOWN, KC_RGHT, _v_
+    ___,         KC_LEFT, KC_DOWN, KC_RGHT, _v_,
+    _v_,         _v_,     _v_,     _v_,     _v_
   ),
 
   /*
@@ -233,11 +242,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   numbers   │ 1  │ 2  │ 3  │ 4  │ 5  │
             ├────┼────┼────┼────┼────┤
             │ 6  │ 7  │ 8  │ 9  │ 0  │
-            └────┴──exit───┴────┴────┘ */
+            ├────┼────┼────┼────┤    │
+            │    │    │    │    │    │
+            └────┴────┴────┴────┴────┘ */
 
-  [_OH_NUM] = LAYOUT_onehand_10(
+  [_OH_NUM] = LAYOUT_onehand_15(
     KC_1, KC_2, KC_3, KC_4, KC_5,
-    KC_6, KC_7, KC_8, KC_9, KC_0
+    KC_6, KC_7, KC_8, KC_9, KC_0,
+    _v_,  _v_,  _v_,  _v_,  _v_
   ),
 
   /* ┎─────────────────────────────────────────────────────────────┄
