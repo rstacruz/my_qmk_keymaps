@@ -7,7 +7,7 @@
 #define FORCE_NKRO
 #define PERMISSIVE_HOLD
 #define TAPPING_TOGGLE 2
-#define ONESHOT_TIMEOUT 750
+#define ONESHOT_TIMEOUT 2000
 
 // For hold-tap mods
 #define IGNORE_MOD_TAP_INTERRUPT_PER_KEY

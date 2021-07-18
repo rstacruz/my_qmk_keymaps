@@ -27,7 +27,10 @@ enum custom_keycodes {
   x__DOTQ,
   OH_ON,
   OH_OFF,
-  OH_SHFT,
+  OH_LCTL,
+  OH_LALT,
+  OH_LGUI,
+  OH_LSFT,
   GAM_ON,
   GAM_OFF,
 };
@@ -204,9 +207,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   /* Onehand: Mod */
   [_OH_MOD] = LAYOUT_onehand_15(
-    OSM(MOD_LCTL), OSM(MOD_LGUI), OSM(MOD_LALT), KC_TAB, ___,
-    OSM(MOD_LSFT), KC_ESC,        KC_ENT,        ___,    ___,
-    _v_,           _v_,           _v_,           _v_,    _v_
+    OH_LCTL, OH_LGUI, OH_LALT, KC_TAB, ___,
+    OH_LSFT, KC_ESC,  KC_ENT,  ___,    ___,
+    _v_,     _v_,     _v_,     _v_,    _v_
   ),
 
   /* Onehand: Nav */

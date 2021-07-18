@@ -122,10 +122,33 @@ bool onehand_process_record_user(uint16_t keycode, keyrecord_t *record) {
       }
       return false;
       break;
-    case OH_SHFT:
+    case OH_LCTL:
       if (record->event.pressed) {
-        set_oneshot_mods(MOD_LSFT);
-        register_code(KC_LSFT);
+        set_oneshot_mods(MOD_LCTL); register_code(KC_LCTL);
+      } else {
+        unregister_code(KC_LCTL);
+      }
+      return false;
+      break;
+    case OH_LGUI:
+      if (record->event.pressed) {
+        set_oneshot_mods(MOD_LGUI); register_code(KC_LGUI);
+      } else {
+        unregister_code(KC_LGUI);
+      }
+      return false;
+      break;
+    case OH_LALT:
+      if (record->event.pressed) {
+        set_oneshot_mods(MOD_LALT); register_code(KC_LALT);
+      } else {
+        unregister_code(KC_LALT);
+      }
+      return false;
+      break;
+    case OH_LSFT:
+      if (record->event.pressed) {
+        set_oneshot_mods(MOD_LSFT); register_code(KC_LSFT);
       } else {
         unregister_code(KC_LSFT);
       }
