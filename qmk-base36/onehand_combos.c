@@ -64,12 +64,12 @@ combo_t key_combos[COMBO_COUNT] = {
   DEF_COMBO_TARGET_KC(R, S, D),       /* . . . . | . r s . */
   DEF_COMBO_TARGET_KC(S, T, H),       /* . . . . | . . s t */
   /* Skip-hops */
-  // DEF_COMBO_TARGET_KC(O, E, G),    /* o . e . | . . . . */
+  DEF_COMBO_TARGET_KC(O, E, Z),       /* o . e . | . . . . */
   DEF_COMBO_TARGET_KC(I, N, W),       /* . i . n | . . . . */
   DEF_COMBO_TARGET_KC(A, S, V),       /* . . . . | a . s . */
   DEF_COMBO_TARGET_KC(R, T, M),       /* . . . . | . r . t */
   /* Knights */
-  DEF_COMBO_TARGET_KC(O, S, QUOT),    /* o . . . | . . s . */
+  DEF_COMBO_TARGET_KC(O, S, Q),       /* o . . . | . . s . */
   DEF_COMBO_TARGET_KC(I, T, P),       /* . i . . | . . . t */
   DEF_COMBO_TARGET_KC(E, A, DOT),     /* . . e . | a . . . */
   DEF_COMBO_TARGET_KC(N, R, F),       /* . . . n | . r . . */
@@ -77,11 +77,11 @@ combo_t key_combos[COMBO_COUNT] = {
   DEF_COMBO_TARGET_KC(O, N, G),       /* o . . n | . . . . */
   DEF_COMBO_TARGET_KC(A, T, SPC),     /* . . . . | a . . t */
   /* Diagonals, upward */
-  DEF_COMBO_TARGET_KC(I, A, Z),       /* . i . . | a . . . */
+  DEF_COMBO_TARGET_KC(I, A, QUOT),    /* . i . . | a . . . */
   DEF_COMBO_TARGET_KC(E, R, B),       /* . . e . | . r . . */
   DEF_COMBO_TARGET_KC(N, S, Y),       /* . . . n | . . s . */
   /* Diagonals, downward */
-  DEF_COMBO_TARGET_KC(O, R, Q),       /* o . . . | . r . . */
+  DEF_COMBO_TARGET_KC(O, R, COMM),    /* o . . . | . r . . */
   DEF_COMBO_TARGET_KC(I, S, X),       /* . i . . | . . s . */
   DEF_COMBO_TARGET_KC(E, T, L),       /* . . e . | . . . t */
   /* Wide diagonals */
