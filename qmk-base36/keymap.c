@@ -193,63 +193,34 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   /* ┎─────────────────────────────────────────────────────────────┄
      ┃ Onehand ∴
-     ┖───── ┌────┬────┬────┬────┬────┐
-            │ o  │ i  │ e  │ n  │NAV │
-            ├────┼────┼────┼────┼────┤
-            │ a  │ r  │ s  │ t  │MOD │
-            ├────┼────┼────┼────┼────┤ (right space
-            │    │    │    │ ⌫  │NUM │ to exit)
-            └────┴────┴────┴────┴────┘ */
+     ┖───── */
 
   [_OH_BAS] = LAYOUT_onehand_15(
-    KC_O, KC_I, KC_E, KC_N,    MO(_OH_NAV),
-    KC_A, KC_R, KC_S, KC_T,    MO(_OH_MOD),
-    ___,  ___,  ___,  KC_BSPC, MO(_OH_NUM)
+    KC_O,        KC_I, KC_E,    KC_N,   MO(_OH_NAV),
+    KC_A,        KC_R, KC_S,    KC_T,   MO(_OH_MOD),
+    MO(_OH_NUM), ___,  KC_BSPC, KC_SPC, ___
   ),
 
-  /*
-  Onehand   ┌────┬────┬────┬────┬────┐
-  mod       │ ⌃  │ ⌥  │ ⌘  │tab │    │
-            ├────┼────┼────┼────┼────┤
-            │ ⇧  │esc │ent │    │ ▓▓ │
-            ├────┼────┼────┼────┼────┤
-            │    │    │    │    │    │
-            └────┴────┴────┴────┴────┘ */
-
+  /* Onehand: Mod */
   [_OH_MOD] = LAYOUT_onehand_15(
     OSM(MOD_LCTL), OSM(MOD_LGUI), OSM(MOD_LALT), KC_TAB, ___,
     OSM(MOD_LSFT), KC_ESC,        KC_ENT,        ___,    ___,
     _v_,           _v_,           _v_,           _v_,    _v_
   ),
 
-  /*
-  Onehand   ┌────┬────┬────┬────┬────┐
-  nav       │    │ p↑ │ ▲  │ p↓ │ ▓▓ │
-            ├────┼────┼────┼────┼────┤
-            │    │ ◀  │ ▼  │ ▶  │    │
-            ├────┼────┼────┼────┼────┤
-            │    │    │    │    │    │
-            └────┴────┴────┴────┴────┘ */
-
+  /* Onehand: Nav */
   [_OH_NAV] = LAYOUT_onehand_15(
     TG(_OH_NAV), KC_PGUP, KC_UP,   KC_PGDN, _v_,
     ___,         KC_LEFT, KC_DOWN, KC_RGHT, _v_,
     _v_,         _v_,     _v_,     _v_,     _v_
   ),
 
-  /*
-  Onehand   ┌────┬────┬────┬────┬────┐
-  numbers   │    │ 7  │ 8  │ 9  │    │
-            ├────┼────┼────┼────┼────┤
-            │    │ 4  │ 5  │ 6  │    │
-            ├────┼────┼────┼────┼────┤
-            │ 0  │ 1  │ 2  │ 3  │ ▓▓ │
-            └────┴────┴────┴────┴────┘ */
+  /* Onehand: numbers */
 
   [_OH_NUM] = LAYOUT_onehand_15(
-    ___,  KC_7, KC_8, KC_9, ___,
+    ___,  KC_1, KC_2, KC_3, ___,
     ___,  KC_4, KC_5, KC_6, ___,
-    KC_0, KC_1, KC_2, KC_3, ___
+    ___,  KC_7, KC_8, KC_9, KC_0
   ),
 
   /* ┎─────────────────────────────────────────────────────────────┄
