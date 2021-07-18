@@ -194,40 +194,40 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   /* ┎─────────────────────────────────────────────────────────────┄
      ┃ Onehand ∴
      ┖───── ┌────┬────┬────┬────┬────┐
-            │ o  │ i  │ e  │ n  │ ⌫  │
+            │ o  │ i  │ e  │ n  │NAV │
             ├────┼────┼────┼────┼────┤
             │ a  │ r  │ s  │ t  │MOD │
-            ├────┼────┼────┼────┤    │ (right space
-            │    │    │    │    │    │  to exit)
+            ├────┼────┼────┼────┼────┤ (right space
+            │    │    │    │ ⌫  │NUM │ to exit)
             └────┴────┴────┴────┴────┘ */
 
   [_OH_BAS] = LAYOUT_onehand_15(
-    KC_O, KC_I, KC_E, KC_N, KC_BSPC,
-    KC_A, KC_R, KC_S, KC_T, MO(_OH_MOD),
-    ___, ___, ___, ___, ___
+    KC_O, KC_I, KC_E, KC_N,    MO(_OH_NAV),
+    KC_A, KC_R, KC_S, KC_T,    MO(_OH_MOD),
+    ___,  ___,  ___,  KC_BSPC, MO(_OH_NUM)
   ),
 
   /*
   Onehand   ┌────┬────┬────┬────┬────┐
-  mod       │NAV │ ⌃  │ ⌥  │ ⌘  │NUM │
+  mod       │ ⌃  │ ⌥  │ ⌘  │tab │    │
             ├────┼────┼────┼────┼────┤
-            │ ⇧  │esc │ent │tab │ ░░ │
-            ├────┼────┼────┼────┤    │
+            │ ⇧  │esc │ent │    │ ▓▓ │
+            ├────┼────┼────┼────┼────┤
             │    │    │    │    │    │
             └────┴────┴────┴────┴────┘ */
 
   [_OH_MOD] = LAYOUT_onehand_15(
-    MO(_OH_NAV),   OSM(MOD_LGUI), OSM(MOD_LALT), OSM(MOD_LCTL), TG(_OH_NUM),
-    OSM(MOD_LSFT), KC_ESC,        KC_ENT,        KC_TAB,        ___,
-    _v_,           _v_,           _v_,           _v_,           _v_
+    OSM(MOD_LCTL), OSM(MOD_LGUI), OSM(MOD_LALT), KC_TAB, ___,
+    OSM(MOD_LSFT), KC_ESC,        KC_ENT,        ___,    ___,
+    _v_,           _v_,           _v_,           _v_,    _v_
   ),
 
   /*
   Onehand   ┌────┬────┬────┬────┬────┐
-  nav       │ ░░ │ p↑ │ ▲  │ p↓ │    │
+  nav       │    │ p↑ │ ▲  │ p↓ │ ▓▓ │
             ├────┼────┼────┼────┼────┤
             │    │ ◀  │ ▼  │ ▶  │    │
-            ├────┼────┼────┼────┤    │
+            ├────┼────┼────┼────┼────┤
             │    │    │    │    │    │
             └────┴────┴────┴────┴────┘ */
 
@@ -239,17 +239,17 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   /*
   Onehand   ┌────┬────┬────┬────┬────┐
-  numbers   │ 1  │ 2  │ 3  │ 4  │ 5  │
+  numbers   │    │ 7  │ 8  │ 9  │    │
             ├────┼────┼────┼────┼────┤
-            │ 6  │ 7  │ 8  │ 9  │ 0  │
-            ├────┼────┼────┼────┤    │
-            │    │    │    │    │    │
+            │    │ 4  │ 5  │ 6  │    │
+            ├────┼────┼────┼────┼────┤
+            │ 0  │ 1  │ 2  │ 3  │ ▓▓ │
             └────┴────┴────┴────┴────┘ */
 
   [_OH_NUM] = LAYOUT_onehand_15(
-    KC_1, KC_2, KC_3, KC_4, KC_5,
-    KC_6, KC_7, KC_8, KC_9, KC_0,
-    _v_,  _v_,  _v_,  _v_,  _v_
+    ___,  KC_7, KC_8, KC_9, ___,
+    ___,  KC_4, KC_5, KC_6, ___,
+    KC_0, KC_1, KC_2, KC_3, ___
   ),
 
   /* ┎─────────────────────────────────────────────────────────────┄
