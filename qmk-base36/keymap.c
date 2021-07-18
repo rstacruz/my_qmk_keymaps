@@ -200,15 +200,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      ┖───── */
 
   [_OH_BAS] = LAYOUT_onehand_15(
-    KC_O,        KC_I, KC_E, KC_N,   LT(_OH_NAV,KC_BSPC),
-    KC_A,        KC_R, KC_S, KC_T,   MO(_OH_MOD),
-    MO(_OH_NUM), ___,  ___,  KC_SPC, ___
+    KC_O,        KC_I, KC_E,   KC_N, LT(_OH_NAV,KC_BSPC),
+    KC_A,        KC_R, KC_S,   KC_T, MO(_OH_MOD),
+    MO(_OH_NUM), ___,  KC_SPC, ___,  ___
   ),
 
   /* Onehand: Mod */
   [_OH_MOD] = LAYOUT_onehand_15(
-    OH_LCTL, OH_LGUI, OH_LALT, KC_TAB, ___,
-    OH_LSFT, KC_ESC,  KC_ENT,  ___,    ___,
+    OH_LCTL, OH_LGUI, OH_LALT, ___,    ___,
+    OH_LSFT, KC_ESC,  KC_ENT,  KC_TAB, ___,
     _v_,     _v_,     _v_,     _v_,    _v_
   ),
 
