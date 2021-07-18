@@ -2,14 +2,14 @@
   Left hand
   base/adjacents:   skip-hops:    knight:         diags:        
   ┌── j ─ c ─ u ──┐ ┌───────────┐ ┌────────────┐ ┌ q ─ x ─ l ──┐
-  │ o   i   e   n │ │mod┄┄ ┄┄ w │ │ ' ┄┄┐┌┄┄ f │ │  ╲   ╲   ╲  │
+  │ o   i   e   n │ │   ┄┄ ┄┄ w │ │ ' ┄┄┐┌┄┄ f │ │  ╲   ╲   ╲  │
   │ a   r   s   t │ │ v ┄┄ ┄┄ m │ │ . ┄┄┘└┄┄ p │ │ ╱   ╱   ╱   │
   └── k ─ d ─ h ──┘ └───────────┘ └────────────┘ └ z ─ b ─ y ──┘
-  sides:      long-diag:
-  ┌─────────┐ ┌───────────┐
-  │ ┄┄ g ┄┄ │ │ bks ┄┄┄┄┐ │
-  │ ┄┄spc┄┄ │ │ sft ┄┄┄┄┘ │
-  └─────────┘ └───────────┘
+sides:      long-diag:      verts: (nothing)
+  ┌─────────┐ ┌───────────┐ ┌─────────────┐
+  │ ┄┄ g ┄┄ │ │ bks ┄┄┄┄┐ │ │ ┆  ┆  ┆  ┆  │
+  │ ┄┄spc┄┄ │ │ sft ┄┄┄┄┘ │ │ ┆  ┆  ┆  ┆  │
+  └─────────┘ └───────────┘ └─────────────┘
   mod:               nav:             num:
   ┌────────────────┐ ┌──────hm─en───┐ ┌─────────────┐
   │ ⇧   ⌥   ⌘   ⌃  │ │ ‹‹  p↑ ▲  p↓ │ │ ‹‹ 1  2  3  │
@@ -65,13 +65,11 @@ DEF_COMBO_INPUT_3KC(R, S, T); /* . . . . | . r s t */
 DEF_COMBO_INPUT_KC(ENT, TAB);
 DEF_COMBO_INPUT_KC(PGUP, UP);
 DEF_COMBO_INPUT_KC(UP, PGDN);
+DEF_COMBO_INPUT_KC(7, 8);
 
 combo_t key_combos[COMBO_COUNT] = {
   /* Actions */
   COMBO_ACTION(combo_N_A),            /* . . . n | a . . . - shift */
-  COMBO_ACTION(combo_O_E),            /* o . e . | . . . . - mod */
-  COMBO_ACTION(combo_N_T),            /* . . . n | . . . t - nav */
-  COMBO_ACTION(combo_O_A),            /* o . . . | a . . . - num */
   /* Triplets */
   DEF_COMBO_TARGET_3KC(O, I, E, W),    /* o i e . | . . . . - (*) */
   DEF_COMBO_TARGET_3KC(I, E, N, BSPC), /* . i e n | . . . . - (*) */
@@ -112,6 +110,7 @@ combo_t key_combos[COMBO_COUNT] = {
   DEF_COMBO_TARGET_KC(ENT, TAB, ESC),
   DEF_COMBO_TARGET_KC(PGUP, UP, HOME),
   DEF_COMBO_TARGET_KC(UP, PGDN, END),
+  DEF_COMBO_TARGET_xx(7, 8, TG(_OH_NUM)),
 };
 
 void keyboard_post_init_user(void) {
@@ -150,11 +149,5 @@ void process_combo_event(uint16_t combo_index, bool pressed) {
   switch(combo_index) {
     case 0: // Shift
       if (pressed) { set_oneshot_mods(MOD_LSFT); } break;
-    case 1: // Mod
-      if (pressed) { layer_on(_OH_MOD); } break;
-    case 2: // Nav
-      if (pressed) { layer_on(_OH_NAV); } break;
-    case 3: // Num
-      if (pressed) { layer_on(_OH_NUM); } break;
   }
 }
