@@ -20,7 +20,8 @@
   SYM  (layer-toggle sym)
   FUN  (layer-toggle fun)
   LOC  (layer-switch lock)
-  ULO  (layer-switch colemak-dh-ext)
+  GAM  (layer-switch game)
+  UNLO (layer-switch colemak-dh-ext)
 
   cesc (tap-next esc lctl)
   ntab (tap-next tab (layer-toggle nav))
@@ -54,38 +55,14 @@
   lctl  lmet  lalt                      spc         ralt  rctl  left  up    down rght
 )
 
-;; ┌────┬────┬────┬────┬────┬────┬────┬────┬────┬────┬────┬────┬────┬──────┐
-;; │ ·  │ ·  │ ·  │ ·  │ ·  │ ·  │ ·  │ ·  │ ·  │ ·  │ ·  │ ·  │ ·  │    · │
-;; ├────┴┬───┴┬───┴┬───┴┬───┴┬───┴┬───┴┬───┴┬───┴┬───┴┬───┴┬───┴┬───┴┬─────┤
-;; │ ↹   │ q  │ w  │ f  │ p  │ b  │ ·  │ j  │ l  │ u  │ y  │ ⌫  │ '  │   ⌃ │
-;; ├─────┴┬───┴┬───┴┬───┴┬───┴┬───┴┬───┴┬───┴┬───┴┬───┴┬───┴┬───┴┬───┴─────┤
-;; │ ⌃    │ a  │ r  │ s  │ t  │ g  │ ·  │ m  │ n  │ e  │ i  │ o  │ ·     · │
-;; ├──────┴─┬──┴─┬──┴─┬──┴─┬──┴─┬──┴─┬──┴─┬──┴─┬──┴─┬──┴─┬──┴─┬──┴─────────┤
-;; │ ⇧      │ z  │ x  │ c  │ d  │ v  │ ·  │ k  │ h  │ ,  │ .  │ ·   ·    · │
-;; ├─────┬──┴──┬─┴───┬┴────┴────┴────┴────┴────┴───┬┴────┼────┴┬─────┬─────┤
-;; │ ⌥   │ ⌘   │ SYM │                             │ NAV │ ·   │ ·   │ ·   │
-;; └─────┴─────┴─────┴─────────────────────────────┴─────┴─────┴─────┴─────┘
-
 (deflayer colemak-dh-ext
   _     _     _     _     _     _       _     _     _     _     _     _     _     _
   _     _     _     _     _     _       _     _     _     _     _     _     _     _
-  @ntab q     w     f     p     b       XX    j     l     u     y     bks   '     lctl
+  @ntab q     w     f     p     b       XX    j     l     u     y     bks   '     _
   @cesc a     r     s     t     g       @NAV  m     n     e     i     o           _   
-  _     z     x     c     d     v       XX    k     h     ,     .                 _
+  _     z     x     c     d     v       XX    k     h     ,     .                 rctl
   @opt  @cmd  @SYM                      _           @NAV  @opt  _     _     _     _
 )
-
-;; ┌────┬────┬────┬────┬────┬────┬────┬────┬────┬────┬────┬────┬────┬──────┐
-;; │ ·  │ ·  │ ·  │ ·  │ ·  │ ·  │ ·  │ ·  │ ·  │ ·  │ ·  │ ·  │ ·  │    · │
-;; ├────┴┬───┴┬───┴┬───┴┬───┴┬───┴┬───┴┬───┴┬───┴┬───┴┬───┴┬───┴┬───┴┬─────┤
-;; │ ·   │    │    │ ⇧↹ │ ↹  │    │ ·  │ p↑ │hom │ ▲  │end │ ^⌫ │ ·  │   · │
-;; ├─────┴┬───┴┬───┴┬───┴┬───┴┬───┴┬───┴┬───┴┬───┴┬───┴┬───┴┬───┴┬───┴─────┤
-;; │ ·    │ 1  │ 2  │ 3  │ 4  │ 5  │ ·  │ p↓ │ ◀  │ ▼  │ ▶  │ ↵  │ ·     · │
-;; ├──────┴─┬──┴─┬──┴─┬──┴─┬──┴─┬──┴─┬──┴─┬──┴─┬──┴─┬──┴─┬──┴─┬──┴─────────┤
-;; │ ·    · │ 6  │ 7  │ 8  │ 9  │ 0  │ ·  │esc │ ‹  │ ›  │    │ ⌦          │
-;; ├─────┬──┴──┬─┴───┬┴────┴────┴────┴────┴────┴───┬┴────┼────┴┬─────┬─────┤
-;; │ ·   │ ·   │ ·   │                             │ ███ │ ·   │ ·   │ ·   │
-;; └─────┴─────┴─────┴─────────────────────────────┴─────┴─────┴─────┴─────┘
 
 (deflayer nav
   _     _     _     _     _     _       _     _     _     _     _     _     caps  _
@@ -93,7 +70,16 @@
   _     lctl  @cmd  @stab tab   XX      XX    pgup  home  up    end   @cbsp XX    _
   _     1     2     3     4     5       XX    pgdn  left  down  rght  ret         _
   _     6     7     8     9     0       XX    esc   @tab- @tab+ XX                del
-  _     _     _                         ent         _     _     _     _     _     @LOC
+  _     _     _                         ent         _     _     _     _     @GAM  @LOC
+)
+
+(deflayer game
+  _     _     _     _     _     _       @UNLO _     _     _     _     _     _     _
+  _     _     _     _     _     _       _     _     _     _     _     _     _     _
+  _     _     _     _     _     _       _     _     _     _     _     _     _     _
+  lctl  _     _     _     _     _       _     _     _     _     _     _           _
+  _     _     _     _     _     _       _     _     _     _     _                 _
+  _     _     _                         _           _     _     _     _     _     _
 )
 
 (deflayer sym
@@ -115,7 +101,7 @@
 )
 
 (deflayer lock
-  XX    XX    XX    XX    XX    @ULO    XX    XX    XX    XX    XX    XX    XX    XX
+  XX    XX    XX    XX    XX    @UNLO   @UNLO XX    XX    XX    XX    XX    XX    XX
   XX    XX    XX    XX    XX    XX      XX    XX    XX    XX    XX    XX    XX    XX
   XX    XX    XX    XX    XX    XX      XX    XX    XX    XX    XX    XX    XX    XX
   XX    XX    XX    XX    XX    XX      XX    XX    XX    XX    XX    XX          XX
