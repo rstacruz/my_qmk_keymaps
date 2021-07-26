@@ -4,22 +4,22 @@
   k01, k02, k03, k04, k05, k06, k07, k08, k09, k10, \
   k11, k12, k13, k14, k15, k16, k17, k18) \
 LAYOUT_36( \
-  k01, k02, k03, k04, k05, /**/ ___, ___, ___, ___, ___, \
-  k06, k07, k08, k09, k10, /**/ ___, ___, ___, ___, ___, \
-  k11, k12, k13, k14, k15, /**/ ___, ___, ___, ___, ___, \
-  /**/ /**/ k16, k17, k18, /**/ ___, ___, ___  \
+  k01, k02, k03, k04, k05, /**/ ___,    ___, ___, ___, ___, \
+  k06, k07, k08, k09, k10, /**/ ___,    ___, ___, ___, ___, \
+  k11, k12, k13, k14, k15, /**/ ___,    ___, ___, ___, ___, \
+  /**/ /**/ k16, k17, k18, /**/ HM_OFF, ___, ___  \
 )
 
 #define HM_BASE_LAYOUT LAYOUT_halfmak_18( \
-  KC_O,    KC_I, KC_E, KC_N, KC_BSPC, \
-  KC_A,    KC_R, KC_S, KC_T, KC_U,    \
-  KC_BSPC, KC_M, KC_G, KC_H, KC_D,    \
-  MO(HM_NUM), MO(HM_NAV), LT(HM_FLIP,KC_SPC))
+  KC_O,         KC_I, KC_E, KC_N, KC_U,    \
+  KC_A,         KC_R, KC_S, KC_T, KC_D,    \
+  OSL(HM_FLIP), KC_M, KC_G, KC_H, KC_BSPC, \
+  MO(HM_NUM), LT(HM_NAV,KC_SPC), LT(HM_FLIP,KC_SPC) )
 
 #define HM_FLIP_LAYOUT LAYOUT_halfmak_18( \
-  KC_Q, KC_W, KC_F, KC_V, ___, \
-  KC_P, KC_B, KC_L, KC_Y, KC_J, \
-  ___,  KC_X, KC_C, KC_K, KC_Z, \
+  KC_Q, KC_W, KC_F, KC_V, KC_Z,    \
+  KC_B, KC_P, KC_L, KC_Y, KC_J,    \
+  ___,  KC_X, KC_C, KC_K, os_LSFT, \
   _v_,  _v_,  _v_)
 
 #define HM_NAV_LAYOUT LAYOUT_halfmak_18( \
@@ -45,7 +45,7 @@ bool hm_process_record_user(uint16_t keycode, keyrecord_t *record) {
       if (record->event.pressed) {
         layer_on(HM_BASE);
         rgblight_enable_noeeprom();
-        rgblight_sethsv_noeeprom(HSV_PURPLE);
+        rgblight_sethsv_noeeprom(191, 255, 50);
       }
       return false;
       break;

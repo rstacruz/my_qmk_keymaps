@@ -253,7 +253,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     if (record->event.pressed) {
       layer_on(_GAM);
       rgblight_enable_noeeprom();
-      rgblight_sethsv_noeeprom(HSV_GREEN);
+      rgblight_sethsv_noeeprom(11, 176, 64);
     }
     return false;
     break;
