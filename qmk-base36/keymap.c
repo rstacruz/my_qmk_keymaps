@@ -25,12 +25,6 @@ enum custom_keycodes {
   MC_SHOT,
   x__COMU,
   x__DOTQ,
-  OH_ON,
-  OH_OFF,
-  OH_LCTL,
-  OH_LALT,
-  OH_LGUI,
-  OH_LSFT,
   GAM_ON,
   GAM_OFF,
 };
@@ -41,12 +35,8 @@ enum custom_keycodes {
 
 enum layers {
   _BASE = 0, _ALT, _SYM, _NAV, _FUN, _PAD, _GAM, _GMX, _LOC,
-  _OH_BAS, _OH_NAV, _OH_MOD, _OH_NUM
 };
 
-#ifdef COMBO_ENABLE
-// #include "onehand_combos.c"
-#endif
 #include "game_layers.h"
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {

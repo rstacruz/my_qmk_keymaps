@@ -22,6 +22,14 @@ Add custom keycodes in keymap.c:
 
     #include "onehand_combos.c"
 
+Add to process_record_user in keymap.c:
+
+    bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+      ...
+      // replace `return true;` with:
+      return onehand_process_record_user(keycode, record);
+    };
+
 ...then bind `OH_ON` to a key
 */
 
