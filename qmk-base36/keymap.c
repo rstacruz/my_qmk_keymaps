@@ -27,6 +27,8 @@ enum custom_keycodes {
   x__DOTQ,
   GAM_ON,
   GAM_OFF,
+  HM_ON, HM_OFF,
+  os_LCTL, os_LALT, os_LGUI, os_LSFT
 };
 
 // ┎──────────────────────────────────────────────────────────────────────
@@ -35,8 +37,10 @@ enum custom_keycodes {
 
 enum layers {
   _BASE = 0, _ALT, _SYM, _NAV, _FUN, _PAD, _GAM, _GMX, _LOC,
+  HM_BASE, HM_FLIP, HM_NAV, HM_NUM, HM_SYM1, HM_SYM2
 };
 
+#include "halfmak.c"
 #include "game_layers.h"
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -94,7 +98,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_QUOT, KC_DQUO, KC_CIRC, KC_QUES, KC_GRV,   /**/ KC_LBRC, KC_LT,    KC_EQL,  KC_GT,   KC_RBRC,
     KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC,  /**/ KC_LCBR, KC_LPRN,  KC_COLN, KC_RPRN, KC_RCBR,
     KC_BSLS, KC_TILD, KC_PIPE, KC_AMPR, KC_SCLN,  /**/ KC_SLSH, KC_ASTR,  KC_MINS, KC_PLUS, KC_UNDS,
-    /**/     /**/     _v_,     _v_,     OH_ON,    /**/ _v_,     MO(_FUN), _v_      /**/     /**/
+    /**/     /**/     _v_,     _v_,     HM_ON,    /**/ _v_,     MO(_FUN), _v_      /**/     /**/
   ),
 
   /* ┎─────────────────────────────────────────────────────────────┄
@@ -158,11 +162,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      ┃ Onehand, game ∴
      ┖───── */
 
-  #ifdef ONEHAND_ENABLED
-  [_OH_BAS] = OH_BAS_LAYOUT,
-  [_OH_MOD] = OH_MOD_LAYOUT,
-  [_OH_NAV] = OH_NAV_LAYOUT,
-  [_OH_NUM] = OH_NUM_LAYOUT,
+  #ifdef HALFMAK_ENABLE
+  [HM_BASE] = HM_BASE_LAYOUT,
+  [HM_FLIP] = HM_FLIP_LAYOUT,
+  [HM_NAV] = HM_NAV_LAYOUT,
+  [HM_NUM] = HM_NUM_LAYOUT,
   #endif
 
   [_GAM] = GAM_LAYER,
@@ -261,11 +265,12 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     return false;
     break;
   }
-#ifdef ONEHAND_ENABLED
-  return onehand_process_record_user(keycode, record);
-#else
-  return true;
-#endif
+
+  #ifdef HALFMAK_ENABLE
+    return hm_process_record_user(keycode, record);
+  #else
+    return true;
+  #endif
 };
 
 // vim:fdm=marker:fmr=∴,┎

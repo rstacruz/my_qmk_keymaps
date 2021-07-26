@@ -46,10 +46,11 @@ push: \
 	${qmk_home}/keyboards/${keyboard_path}/keymaps/${keymap_name}/config.h \
 	${qmk_home}/keyboards/${keyboard_path}/keymaps/${keymap_name}/rules.mk \
 	${qmk_home}/keyboards/${keyboard_path}/keymaps/${keymap_name}/keymap.c \
-	${qmk_home}/keyboards/${keyboard_path}/keymaps/${keymap_name}/game_layers.h
+	${qmk_home}/keyboards/${keyboard_path}/keymaps/${keymap_name}/game_layers.h \
+	${qmk_home}/keyboards/${keyboard_path}/keymaps/${keymap_name}/halfmak.c
 
 # Don't delete these intermediate files
-.PRECIOUS: %/keymap.c %/game_layers.h
+.PRECIOUS: %/keymap.c %/game_layers.h %/halfmak.c
 
 c: compile
 f: flash

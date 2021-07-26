@@ -1,5 +1,7 @@
+#define HALFMAK_ENABLE
+
 #define LAYOUT_halfmak_18( \
-  k01, k02, k03, k04, k05, k06, k07, k08, k09, \
+  k01, k02, k03, k04, k05, k06, k07, k08, k09, k10, \
   k11, k12, k13, k14, k15, k16, k17, k18) \
 LAYOUT_36( \
   k01, k02, k03, k04, k05, /**/ ___, ___, ___, ___, ___, \
@@ -9,26 +11,54 @@ LAYOUT_36( \
 )
 
 #define HM_BASE_LAYOUT LAYOUT_halfmak_18( \
-  KC_O,    KC_I, KC_E, KC_N, OSM(MOD_LSFT), \
-  KC_A,    KC_R, KC_S, KC_T, KC_U,          \
-  KC_BSPC, KC_M, KC_G, KC_D, KC_H,          \
-  ___, OSL(HM_FLIP), KC_SPC)
+  KC_O,    KC_I, KC_E, KC_N, KC_BSPC, \
+  KC_A,    KC_R, KC_S, KC_T, KC_U,    \
+  KC_BSPC, KC_M, KC_G, KC_H, KC_D,    \
+  MO(HM_NUM), MO(HM_NAV), LT(HM_FLIP,KC_SPC))
 
 #define HM_FLIP_LAYOUT LAYOUT_halfmak_18( \
-  KC_Z, KC_P, KC_F, KC_W, KC_Q, \
-  ___,  KC_B, KC_L, KC_Y, KC_J, \
-  ___,  KC_X, KC_C, KC_K, KC_V, \
+  KC_Q, KC_W, KC_F, KC_V, ___, \
+  KC_P, KC_B, KC_L, KC_Y, KC_J, \
+  ___,  KC_X, KC_C, KC_K, KC_Z, \
   _v_,  _v_,  _v_)
 
-#define HM_NAV LAYOUT_halfmak_18( \
-  os_LCTL, KC_PGUP, KC_UP,   KC_PGDN, ___, \
-  os_LALT, KC_LEFT, KC_DOWN, KC_RGHT, ___, \
-  os_LGUI, KC_ESC,  KC_ENT,  KC_TAB,  ___, \
+#define HM_NAV_LAYOUT LAYOUT_halfmak_18( \
+  KC_LCTL, KC_PGUP, KC_UP,   KC_PGDN, KC_TAB, \
+  KC_ENT,  KC_LEFT, KC_DOWN, KC_RGHT, KC_ESC, \
+  ___,     ___,     ___,     ___,     ___,    \
   _v_,  _v_,  _v_)
 
-#define HM_NUM /* TODO */
-#define HM_SYM1 /* TODO */
-#define HM_SYM2 /* TODO */
+#define HM_NUM_LAYOUT LAYOUT_halfmak_18( \
+  os_LCTL, os_LGUI, os_LALT, ___,  os_LSFT, \
+  KC_1,    KC_2,    KC_3,    KC_4, KC_5,    \
+  KC_6,    KC_7,    KC_8,    KC_9, KC_0,    \
+  _v_,  _v_,  _v_)
+
+#define HM_SYM1_LAYOUT /* TODO */
+#define HM_SYM2_LAYOUT /* TODO */
+
+bool oneshotmods_process_record_user(uint16_t keycode, keyrecord_t *record);
+
+bool hm_process_record_user(uint16_t keycode, keyrecord_t *record) {
+  switch (keycode) {
+    case HM_ON: // enable
+      if (record->event.pressed) {
+        layer_on(HM_BASE);
+        rgblight_enable_noeeprom();
+        rgblight_sethsv_noeeprom(HSV_PURPLE);
+      }
+      return false;
+      break;
+    case HM_OFF: // disable
+      if (record->event.pressed) {
+        layer_off(HM_BASE);
+        rgblight_disable_noeeprom();
+      }
+      return false;
+      break;
+  }
+  return oneshotmods_process_record_user(keycode, record);
+}
 
 bool oneshotmods_process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
