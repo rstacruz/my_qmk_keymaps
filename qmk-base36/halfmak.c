@@ -29,3 +29,41 @@ LAYOUT_36( \
 #define HM_NUM /* TODO */
 #define HM_SYM1 /* TODO */
 #define HM_SYM2 /* TODO */
+
+bool oneshotmods_process_record_user(uint16_t keycode, keyrecord_t *record) {
+  switch (keycode) {
+    case os_LCTL:
+      if (record->event.pressed) {
+        set_oneshot_mods(MOD_LCTL); register_code(KC_LCTL);
+      } else {
+        unregister_code(KC_LCTL);
+      }
+      return false;
+      break;
+    case os_LGUI:
+      if (record->event.pressed) {
+        set_oneshot_mods(MOD_LGUI); register_code(KC_LGUI);
+      } else {
+        unregister_code(KC_LGUI);
+      }
+      return false;
+      break;
+    case os_LALT:
+      if (record->event.pressed) {
+        set_oneshot_mods(MOD_LALT); register_code(KC_LALT);
+      } else {
+        unregister_code(KC_LALT);
+      }
+      return false;
+      break;
+    case os_LSFT:
+      if (record->event.pressed) {
+        set_oneshot_mods(MOD_LSFT); register_code(KC_LSFT);
+      } else {
+        unregister_code(KC_LSFT);
+      }
+      return false;
+      break;
+  }
+  return true;
+}
