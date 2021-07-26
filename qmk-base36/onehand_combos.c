@@ -1,4 +1,42 @@
+
+/*
+Put this in config.h:
+
+    #define COMBO_TERM 40
+    #define COMBO_COUNT 32
+
+In rules.mk:
+
+    COMBO_ENABLE = true
+
+Add custom keycodes in keymap.c:
+
+    enum custom_keycodes {
+      ... = SAFE_RANGE,
+      OH_ON, OH_OFF, OH_LCTL, OH_LALT, OH_LGUI, OH_LSFT,
+    };
+    enum layers {
+      ...
+      _OH_BAS, _OH_NAV, _OH_MOD, _OH_NUM
+    };
+
+    #include "onehand_combos.c"
+
+...then bind `OH_ON` to a key
+*/
+
 #ifdef COMBO_TERM
+
+#ifndef LAYOUT_onehand_15
+#define LAYOUT_onehand_15(k1, k2, k3, k4, k5, k6, k7, k8, k9, ka, kb, kc, kd, ke, kf) \
+ LAYOUT_36( \
+    k1,  k2,  k3,  k4,  k5,     /**/ ___,    ___, ___, ___, ___, \
+    k6,  k7,  k8,  k9,  ka,     /**/ ___,    ___, ___, ___, ___, \
+    kb,  kc,  kd,  ke,  kf,     /**/ ___,    ___, ___, ___, ___, \
+    /**/ /**/ ___, ___, OH_OFF, /**/ OH_OFF, ___, ___  \
+  )
+#endif
+
 #define ONEHAND_ENABLED
 
 /* Onehand: base */

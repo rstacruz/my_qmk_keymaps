@@ -36,18 +36,6 @@ enum custom_keycodes {
 };
 
 // ┎──────────────────────────────────────────────────────────────────────
-// ┃ Layout aliases ∴
-// ┖──┄
-
-#define LAYOUT_onehand_15(k1, k2, k3, k4, k5, k6, k7, k8, k9, ka, kb, kc, kd, ke, kf) \
- LAYOUT_36( \
-    k1,  k2,  k3,  k4,  k5,     /**/ ___,    ___, ___, ___, ___, \
-    k6,  k7,  k8,  k9,  ka,     /**/ ___,    ___, ___, ___, ___, \
-    kb,  kc,  kd,  ke,  kf,     /**/ ___,    ___, ___, ___, ___, \
-    /**/ /**/ ___, ___, OH_OFF, /**/ OH_OFF, ___, ___  \
-  )
-
-// ┎──────────────────────────────────────────────────────────────────────
 // ┖─┒ Layers ∴
 //   ┖──┄
 
@@ -57,7 +45,7 @@ enum layers {
 };
 
 #ifdef COMBO_ENABLE
-#include "onehand_combos.c"
+// #include "onehand_combos.c"
 #endif
 #include "game_layers.h"
 
