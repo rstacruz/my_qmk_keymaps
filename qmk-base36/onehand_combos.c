@@ -1,4 +1,33 @@
 #ifdef COMBO_TERM
+#define ONEHAND_ENABLED
+
+/* Onehand: base */
+#define OH_BAS_LAYOUT LAYOUT_onehand_15( \
+  KC_O, KC_I, KC_E,   KC_N, LT(_OH_NAV,KC_BSPC), \
+  KC_A, KC_R, KC_S,   KC_T, MO(_OH_MOD),         \
+  ___,  ___,  KC_SPC, ___,  MO(_OH_NUM)          \
+)
+
+/* Onehand: mod */
+#define OH_MOD_LAYOUT LAYOUT_onehand_15( \
+  OH_LCTL, OH_LGUI, OH_LALT, ___,    ___, \
+  OH_LSFT, KC_ESC,  KC_ENT,  KC_TAB, ___, \
+  _v_,     _v_,     _v_,     _v_,    _v_ \
+)
+
+/* Onehand: Nav */
+#define OH_NAV_LAYOUT LAYOUT_onehand_15( \
+  TG(_OH_NAV), KC_PGUP, KC_UP,   KC_PGDN, _v_, \
+  ___,         KC_LEFT, KC_DOWN, KC_RGHT, _v_, \
+  _v_,         _v_,     _v_,     _v_,     _v_ \
+)
+
+/* Onehand: number */
+#define OH_NUM_LAYOUT LAYOUT_onehand_15( \
+  ___,  KC_7, KC_8, KC_9, ___, \
+  ___,  KC_4, KC_5, KC_6, ___, \
+  KC_0, KC_1, KC_2, KC_3, ___ \
+)
 
 #define DEF_COMBO_INPUT_KC(A,B) \
   const uint16_t PROGMEM combo_ ## A ## _ ## B[] = {KC_ ## A, KC_ ## B, COMBO_END}

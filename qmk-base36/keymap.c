@@ -177,40 +177,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
 
   /* ┎─────────────────────────────────────────────────────────────┄
-     ┃ Onehand ∴
+     ┃ Onehand, game ∴
      ┖───── */
 
-  [_OH_BAS] = LAYOUT_onehand_15(
-    KC_O,   KC_I, KC_E,   KC_N, LT(_OH_NAV,KC_BSPC),
-    KC_A,   KC_R, KC_S,   KC_T, MO(_OH_MOD),
-    ___,    ___,  KC_SPC, ___,  MO(_OH_NUM)
-  ),
+  #ifdef ONEHAND_ENABLED
+  [_OH_BAS] = OH_BAS_LAYOUT,
+  [_OH_MOD] = OH_MOD_LAYOUT,
+  [_OH_NAV] = OH_NAV_LAYOUT,
+  [_OH_NUM] = OH_NUM_LAYOUT,
+  #endif
 
-  /* Onehand: Mod */
-  [_OH_MOD] = LAYOUT_onehand_15(
-    OH_LCTL, OH_LGUI, OH_LALT, ___,    ___,
-    OH_LSFT, KC_ESC,  KC_ENT,  KC_TAB, ___,
-    _v_,     _v_,     _v_,     _v_,    _v_
-  ),
-
-  /* Onehand: Nav */
-  [_OH_NAV] = LAYOUT_onehand_15(
-    TG(_OH_NAV), KC_PGUP, KC_UP,   KC_PGDN, _v_,
-    ___,         KC_LEFT, KC_DOWN, KC_RGHT, _v_,
-    _v_,         _v_,     _v_,     _v_,     _v_
-  ),
-
-  /* Onehand: numbers */
-
-  [_OH_NUM] = LAYOUT_onehand_15(
-    ___,  KC_7, KC_8, KC_9, ___,
-    ___,  KC_4, KC_5, KC_6, ___,
-    KC_0, KC_1, KC_2, KC_3, ___
-  ),
-
-  /* ┎─────────────────────────────────────────────────────────────┄
-     ┃ Game ∴
-     ┖─── */
   [_GAM] = GAM_LAYER,
   [_GMX] = GMX_LAYER,
 
@@ -307,7 +283,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     return false;
     break;
   }
-#ifdef COMBO_ENABLE
+#ifdef ONEHAND_ENABLED
   return onehand_process_record_user(keycode, record);
 #else
   return true;
