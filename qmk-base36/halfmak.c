@@ -10,16 +10,22 @@ LAYOUT_36( \
   /**/ /**/ k16, k17, k18, /**/ HM_OFF, ___, ___  \
 )
 
+/* ┌───────────┐ ┌───────────┐ ┌───────────┐
+ * │ o i e n d │ │ q w f v z │ │   ↓ ▲ ↑ ⇥ │
+ * │ a r s t d │ │ b p y l j │ │ ↵ ◀ ▼ ▶ ⎋ │
+ * │ ⌫ m g ▲ h │ │ ↑ k c ▼ x │ │           │
+ * └───────────┘ └───────────┘ └───────────┘  */
+
 #define HM_BASE_LAYOUT LAYOUT_halfmak_18( \
-  KC_O,         KC_I, KC_E, KC_N, KC_U,    \
-  KC_A,         KC_R, KC_S, KC_T, KC_D,    \
-  OSL(HM_FLIP), KC_M, KC_G, KC_H, KC_BSPC, \
-  MO(HM_NUM), LT(HM_NAV,KC_SPC), LT(HM_FLIP,KC_SPC) )
+  KC_O,    KC_I, KC_E, KC_N,         KC_U, \
+  KC_A,    KC_R, KC_S, KC_T,         KC_D, \
+  KC_BSPC, KC_M, KC_G, OSL(HM_FLIP), KC_H, \
+  MO(HM_NUM), LT(HM_NAV,KC_BSPC), KC_SPC )
 
 #define HM_FLIP_LAYOUT LAYOUT_halfmak_18( \
-  KC_Q, KC_W, KC_F, KC_V, KC_Z,    \
-  KC_B, KC_P, KC_Y, KC_L, KC_J,    \
-  ___,  KC_X, KC_C, KC_K, os_LSFT, \
+  KC_Q,    KC_W, KC_F, KC_V, KC_Z, \
+  KC_B,    KC_P, KC_Y, KC_L, KC_J, \
+  os_LSFT, KC_K, KC_C, KC_K, KC_X, \
   _v_,  _v_,  _v_)
 
 #define HM_NAV_LAYOUT LAYOUT_halfmak_18( \
