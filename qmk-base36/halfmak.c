@@ -1,9 +1,9 @@
 #define HALFMAK_ENABLE
 
 /* ┌ base ─────┐ ┌ flip ───▲─┐ ┌ nav ──────┐ ┌ num ──────┐
- * │ o i e n u │ │ q w f v j │ │ ⎋ ↓ ▲ ↑ ⇥ │ │   ⌥ ⌘ ^ ↑ │
+ * │ o i e n u │ │ q w f v z │ │ ⎋ ↓ ▲ ↑ ⇥ │ │   ⌥ ⌘ ^ ↑ │
  * │ a r s t ▲ │ │ p b l y ₂ │ │ ↵ ◀ ▼ ▶ ₁ │ │ 1 2 3 4 5 │
- * │ g m d h ⌫ │ │ ↑ k c x z │ │ ‹ ⌥ ⌘ ^ ↑ │ │ 6 7 8 9 0 │
+ * │ g m d h ⌫ │ │ ↑ k c x j │ │ ‹ ⌥ ⌘ ^ ↑ │ │ 6 7 8 9 0 │
  * ├───┬───┬───┤ └───────────┘ └───────────┘ └───────────┘
  * │num│nav│ ␣ │ ┌ sym ────₁─┐ ┌ brc ────₂─┐
  * └───┴───┴───┘ │ ; : " '   │ │ ` ~ { }   │
@@ -29,9 +29,9 @@ LAYOUT_36( \
   MO(HM_NUM), MO(HM_NAV), KC_SPC )
 
 #define HM_FLIP_LAYOUT LAYOUT_halfmak_18( \
-  KC_Q,    KC_W, KC_F, KC_V, KC_J,        \
+  KC_Q,    KC_W, KC_F, KC_V, KC_Z,        \
   KC_P,    KC_B, KC_L, KC_Y, OSL(HM_SYM2), \
-  os_LSFT, KC_K, KC_C, KC_X, KC_Z,        \
+  os_LSFT, KC_K, KC_C, KC_X, KC_J,        \
   _v_,  _v_,  _v_)
 
 #define HM_NAV_LAYOUT LAYOUT_halfmak_18( \
