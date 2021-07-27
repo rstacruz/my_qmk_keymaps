@@ -11,17 +11,17 @@ LAYOUT_36( \
 )
 
 /* ┌ base ─────┐ ┌ flip ─────┐ ┌ nav ──────┐ ┌ num ──────┐
- * │ o i e n m │ │ q w f v j │ │   ↓ ▲ ↑ ⎋ │ │ ^ ⌥ ⌘   ↑ │
+ * │ o i e n u │ │ q w f v j │ │   ↓ ▲ ↑ ⎋ │ │ ^ ⌥ ⌘   ↑ │
  * │ a r s t ▲ │ │ p b y l ▲ │ │ ↵ ◀ ▼ ▶ ⇥ │ │ 1 2 3 4 5 │
- * │ g d u h ⌫ │ │ ↑ k c x z │ │ ‹         │ │ 6 7 8 9 0 │
+ * │ g m d h ⌫ │ │ ↑ k c x z │ │ ‹         │ │ 6 7 8 9 0 │
  * ├───┬───┬───┤ └───────────┘ └───────────┘ └───────────┘
  * │num│nav│ ␣ │
  * └───┴───┴───┘ */
 
 #define HM_BASE_LAYOUT LAYOUT_halfmak_18( \
-  KC_O, KC_I, KC_E, KC_N, KC_M,         \
+  KC_O, KC_I, KC_E, KC_N, KC_U,         \
   KC_A, KC_R, KC_S, KC_T, OSL(HM_FLIP), \
-  KC_G, KC_D, KC_U, KC_H, KC_BSPC,      \
+  KC_G, KC_M, KC_D, KC_H, KC_BSPC,      \
   MO(HM_NUM), LT(HM_NAV,KC_BSPC), KC_SPC )
 
 #define HM_FLIP_LAYOUT LAYOUT_halfmak_18( \
