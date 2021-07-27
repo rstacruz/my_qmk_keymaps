@@ -18,7 +18,7 @@ LAYOUT_36( \
 
 #define HM_FLIP_LAYOUT LAYOUT_halfmak_18( \
   KC_Q, KC_W, KC_F, KC_V, KC_Z,    \
-  KC_B, KC_P, KC_L, KC_Y, KC_J,    \
+  KC_B, KC_P, KC_Y, KC_L, KC_J,    \
   ___,  KC_X, KC_C, KC_K, os_LSFT, \
   _v_,  _v_,  _v_)
 
