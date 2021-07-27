@@ -26,7 +26,7 @@ LAYOUT_36( \
   KC_O, KC_I, KC_E, KC_N, KC_U,         \
   KC_A, KC_R, KC_S, KC_T, OSL(HM_FLIP), \
   KC_G, KC_M, KC_D, KC_H, KC_BSPC,      \
-  MO(HM_NUM), OSL(HM_NAV), KC_SPC )
+  MO(HM_NUM), MO(HM_NAV), KC_SPC )
 
 #define HM_FLIP_LAYOUT LAYOUT_halfmak_18( \
   KC_Q,    KC_W, KC_F, KC_V, KC_J,        \
