@@ -4,19 +4,8 @@
 #define HM_HSV_COLOR 191, 255, 50
 #endif
 
-/* ┌ base ─────┐ ┌ flip ───▲─┐ ┌ nav ──────┐ ┌ num ──────┐
- * │ o i e n u │ │ q w f v j │ │   ↓ ▲ ↑ ⎋ │ │ ‹         │
- * │ a r s t ▲ │ │ p b l y   │ │ ↹ ◀ ▼ ▶ ↵ │ │ 1 2 3 4 5 │
- * │⌫  m g h d │ │ ↑ k c x z │ │   ⌥ ⌘ ^ ↹ │ │ 6 7 8 9 0 │
- * ├───┬───┬───┤ └───────────┘ └───────────┘ └───────────┘
- * │num│nav│ ␣↑│ ┌ sym ────₁─┐ ┌ brc ────₂─┐
- * └───┴───┴───┘ │   : " ' / │ │   ` { } ~ │
- *               │   - , . = │ │ | < ( ) > │
- *               │   + ! ? _ │ │   \ [ ] ; │
- *               └───────────┘ └───────────┘ */
-
 #define FROG_MODE
-/* frog mode
+/* frogpad-like layout
 ┌ base ──────────┐ ┌ flip ────── ▲ ─┐
 │ f↔ d  n  i  g  │ │    j  m  k  q  │
 │ s▲ t  h  e  o  │ │ ▲  y  l  p ⌫   │
@@ -48,55 +37,41 @@ LAYOUT_36( \
 #define HM_BSPC LT(HM_SYM1,KC_BSPC)
 #define HM_SPC MT(MOD_LSFT,KC_SPC)
 
-#ifdef FROG_MODE
-  #define HM_BASE_LAYOUT LAYOUT_halfmak_18( \
-    LT(HM_NAV,KC_F),  KC_D, KC_N, KC_I, KC_G, \
-    LT(HM_FLIP,KC_S), KC_T, KC_H, KC_E, KC_O, \
-    LT(HM_SYM1,KC_C), KC_W, KC_R, KC_A, KC_U, \
-    HM_OFF, MO(HM_NUM), HM_SPC )
+#define HM_BASE_LAYOUT LAYOUT_halfmak_18( \
+  LT(HM_NAV,KC_F),  KC_D,       KC_N,  KC_I, KC_G, \
+  LT(HM_FLIP,KC_S), KC_T,       KC_H,  KC_E, KC_O, \
+  LT(HM_SYM1,KC_C), KC_W,       KC_R,  KC_A, KC_U, \
+  KC_LCTL,          MO(HM_NUM), HM_SPC )
 
-  #define HM_FLIP_LAYOUT LAYOUT_halfmak_18( \
-    ___, KC_J, KC_M, KC_K, KC_Q,    \
-    ___, KC_Y, KC_L, KC_P, KC_BSPC, \
-    ___, KC_X, KC_V, KC_B, KC_Z,    \
-    _v_,  _v_,  _v_)
-#else
-  #define HM_BASE_LAYOUT LAYOUT_halfmak_18( \
-    KC_O,    KC_I, KC_E, KC_N, KC_U,         \
-    KC_A,    KC_R, KC_S, KC_T, OSL(HM_FLIP), \
-    HM_BSPC, KC_M, KC_G, KC_H, KC_D,         \
-    MO(HM_NUM), MO(HM_NAV), HM_SPC )
-
-  #define HM_FLIP_LAYOUT LAYOUT_halfmak_18( \
-    KC_Q,    KC_W, KC_F, KC_V, KC_J,        \
-    KC_B,    KC_P, KC_L, KC_Y, OSL(HM_SYM2), \
-    os_LSFT, KC_K, KC_C, KC_X, KC_Z,        \
-    _v_,  _v_,  _v_)
-#endif
+#define HM_FLIP_LAYOUT LAYOUT_halfmak_18( \
+  ___,     KC_J, KC_M,    KC_K,    KC_Q,    \
+  ___,     KC_Y, KC_L,    KC_P,    KC_BSPC, \
+  KC_LCTL, KC_X, KC_V,    KC_B,    KC_Z,    \
+  /**/     /**/  KC_LALT, KC_LGUI, _v_      )
 
 #define HM_NAV_LAYOUT LAYOUT_halfmak_18( \
   ___, KC_PGUP, KC_UP,   KC_PGDN, KC_ESC, \
   ___, KC_LEFT, KC_DOWN, KC_RGHT, KC_ENT, \
-  ___, os_LGUI, os_LALT, os_LCTL, KC_TAB, \
-  _v_,  _v_,  _v_)
+  ___, ___,     ___,     ___,     KC_TAB, \
+  /**/ /**/     _v_,     _v_,     _v_     )
 
 #define HM_NUM_LAYOUT LAYOUT_halfmak_18( \
   HM_OFF, ___,  ___,  ___,  ___,  \
   KC_1,   KC_2, KC_3, KC_4, KC_5, \
   KC_6,   KC_7, KC_8, KC_9, KC_0, \
-  _v_,  _v_,  _v_)
+  /**/    /**/  _v_,  _v_,  _v_   )
 
 #define HM_SYM1_LAYOUT LAYOUT_halfmak_18( \
-  ___, KC_COLN, KC_DQUO, KC_QUOT, KC_SLSH, \
-  ___, KC_MINS, KC_COMM, KC_DOT,  KC_EQL,  \
-  ___, KC_PLUS, KC_EXLM, KC_QUES, KC_UNDS, \
-  _v_,  _v_,  MO(HM_SYM2))
+  ___, KC_COLN, KC_DQUO, KC_QUOT, KC_SLSH,    \
+  ___, KC_MINS, KC_COMM, KC_DOT,  KC_EQL,     \
+  ___, KC_PLUS, KC_EXLM, KC_QUES, KC_UNDS,    \
+  /**/ /**/     _v_,     _v_,     MO(HM_SYM2) )
 
 #define HM_SYM2_LAYOUT LAYOUT_halfmak_18( \
   ___,     KC_GRV,  KC_LCBR, KC_RCBR, KC_TILD, \
   KC_PIPE, KC_LT,   KC_LPRN, KC_RPRN, KC_GT,   \
   ___,     KC_BSLS, KC_LBRC, KC_RBRC, KC_SCLN, \
-  _v_,  _v_,  _v_)
+  /**/     /**/     _v_,     _v_,     _v_      )
 
 bool oneshotmods_process_record_user(uint16_t keycode, keyrecord_t *record);
 
