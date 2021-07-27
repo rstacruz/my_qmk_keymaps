@@ -10,28 +10,30 @@ LAYOUT_36( \
   /**/ /**/ k16, k17, k18, /**/ HM_OFF, ___, ___  \
 )
 
-/* ┌───────────┐ ┌───────────┐ ┌───────────┐
- * │ o i e n d │ │ q w f v z │ │   ↓ ▲ ↑ ⇥ │
- * │ a r s t d │ │ b p y l j │ │ ↵ ◀ ▼ ▶ ⎋ │
- * │ ⌫ m g ▲ h │ │ ↑ k c ▼ x │ │           │
- * └───────────┘ └───────────┘ └───────────┘  */
+/* ┌ base ─────┐ ┌ flip ─────┐ ┌ nav ──────┐ ┌ num ──────┐
+ * │ o i e n m │ │ q w f v j │ │   ↓ ▲ ↑ ⎋ │ │ ^ ⌥ ⌘   ↑ │
+ * │ a r s t ▲ │ │ p b y l ▲ │ │ ↵ ◀ ▼ ▶ ⇥ │ │ 1 2 3 4 5 │
+ * │ g d u h ⌫ │ │ ↑ k c x z │ │ ‹         │ │ 6 7 8 9 0 │
+ * ├───┬───┬───┤ └───────────┘ └───────────┘ └───────────┘
+ * │num│nav│ ␣ │
+ * └───┴───┴───┘ */
 
 #define HM_BASE_LAYOUT LAYOUT_halfmak_18( \
-  KC_O,    KC_I, KC_E, KC_N,         KC_U, \
-  KC_A,    KC_R, KC_S, KC_T,         KC_D, \
-  KC_BSPC, KC_M, KC_G, OSL(HM_FLIP), KC_H, \
+  KC_O, KC_I, KC_E, KC_N, KC_M,         \
+  KC_A, KC_R, KC_S, KC_T, OSL(HM_FLIP), \
+  KC_G, KC_D, KC_U, KC_H, KC_BSPC,      \
   MO(HM_NUM), LT(HM_NAV,KC_BSPC), KC_SPC )
 
 #define HM_FLIP_LAYOUT LAYOUT_halfmak_18( \
-  KC_Q,    KC_W, KC_F, KC_V, KC_Z, \
-  KC_B,    KC_P, KC_Y, KC_L, KC_J, \
-  os_LSFT, KC_K, KC_C, KC_K, KC_X, \
+  KC_Q,    KC_W, KC_F, KC_V, KC_J,    \
+  KC_P,    KC_B, KC_Y, KC_L, os_LSFT, \
+  os_LSFT, KC_K, KC_C, KC_X, KC_Z,    \
   _v_,  _v_,  _v_)
 
 #define HM_NAV_LAYOUT LAYOUT_halfmak_18( \
-  KC_LCTL, KC_PGUP, KC_UP,   KC_PGDN, KC_TAB, \
-  KC_ENT,  KC_LEFT, KC_DOWN, KC_RGHT, KC_ESC, \
-  ___,     ___,     ___,     ___,     ___,    \
+  KC_LCTL, KC_PGUP, KC_UP,   KC_PGDN, KC_ESC, \
+  KC_ENT,  KC_LEFT, KC_DOWN, KC_RGHT, KC_TAB, \
+  HM_OFF,  ___,     ___,     ___,     ___,    \
   _v_,  _v_,  _v_)
 
 #define HM_NUM_LAYOUT LAYOUT_halfmak_18( \
