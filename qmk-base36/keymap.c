@@ -167,6 +167,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [HM_FLIP] = HM_FLIP_LAYOUT,
   [HM_NAV] = HM_NAV_LAYOUT,
   [HM_NUM] = HM_NUM_LAYOUT,
+  [HM_SYM1] = HM_SYM1_LAYOUT,
+  [HM_SYM2] = HM_SYM2_LAYOUT,
   #endif
 
   [_GAM] = GAM_LAYER,

@@ -1,5 +1,17 @@
 #define HALFMAK_ENABLE
 
+/* ┌ base ─────┐ ┌ flip ───▲─┐ ┌ nav ──────┐ ┌ num ──────┐
+ * │ o i e n u │ │ q w f v j │ │ ⎋ ↓ ▲ ↑ ⇥ │ │   ⌥ ⌘ ^ ↑ │
+ * │ a r s t ▲ │ │ p b y l ₁ │ │ ↵ ◀ ▼ ▶ ₂ │ │ 1 2 3 4 5 │
+ * │ g m d h ⌫ │ │ ↑ k c x z │ │ ‹         │ │ 6 7 8 9 0 │
+ * ├───┬───┬───┤ └───────────┘ └───────────┘ └───────────┘
+ * │num│nav│ ␣ │ ┌ sym ────₁─┐ ┌ brc ────₂─┐
+ * └───┴───┴───┘ │ ; : " '   │ │ ` ~ { }   │
+ *               │ - = , .   │ │ < > ( )   │
+ *               │ _ + ! ?   │ │ \ | [ ]   │
+ *               └───────────┘ └───────────┘ */
+
+
 #define LAYOUT_halfmak_18( \
   k01, k02, k03, k04, k05, k06, k07, k08, k09, k10, \
   k11, k12, k13, k14, k15, k16, k17, k18) \
@@ -10,40 +22,41 @@ LAYOUT_36( \
   /**/ /**/ k16, k17, k18, /**/ HM_OFF, ___, ___  \
 )
 
-/* ┌ base ─────┐ ┌ flip ─────┐ ┌ nav ──────┐ ┌ num ──────┐
- * │ o i e n u │ │ q w f v j │ │   ↓ ▲ ↑ ⎋ │ │ ^ ⌥ ⌘   ↑ │
- * │ a r s t ▲ │ │ p b y l ▲ │ │ ↵ ◀ ▼ ▶ ⇥ │ │ 1 2 3 4 5 │
- * │ g m d h ⌫ │ │ ↑ k c x z │ │ ‹         │ │ 6 7 8 9 0 │
- * ├───┬───┬───┤ └───────────┘ └───────────┘ └───────────┘
- * │num│nav│ ␣ │
- * └───┴───┴───┘ */
-
 #define HM_BASE_LAYOUT LAYOUT_halfmak_18( \
   KC_O, KC_I, KC_E, KC_N, KC_U,         \
   KC_A, KC_R, KC_S, KC_T, OSL(HM_FLIP), \
   KC_G, KC_M, KC_D, KC_H, KC_BSPC,      \
-  MO(HM_NUM), LT(HM_NAV,KC_BSPC), KC_SPC )
+  MO(HM_NUM), MO(HM_NAV), KC_SPC )
 
 #define HM_FLIP_LAYOUT LAYOUT_halfmak_18( \
-  KC_Q,    KC_W, KC_F, KC_V, KC_J,    \
-  KC_P,    KC_B, KC_Y, KC_L, os_LSFT, \
-  os_LSFT, KC_K, KC_C, KC_X, KC_Z,    \
+  KC_Q,    KC_W, KC_F, KC_V, KC_J,         \
+  KC_P,    KC_B, KC_Y, KC_L, OSL(HM_SYM2), \
+  os_LSFT, KC_K, KC_C, KC_X, KC_Z,         \
   _v_,  _v_,  _v_)
 
 #define HM_NAV_LAYOUT LAYOUT_halfmak_18( \
-  KC_LCTL, KC_PGUP, KC_UP,   KC_PGDN, KC_ESC, \
-  KC_ENT,  KC_LEFT, KC_DOWN, KC_RGHT, KC_TAB, \
-  HM_OFF,  ___,     ___,     ___,     ___,    \
+  KC_ESC, KC_PGUP, KC_UP,   KC_PGDN, KC_TAB,       \
+  KC_ENT, KC_LEFT, KC_DOWN, KC_RGHT, OSL(HM_SYM1), \
+  HM_OFF, ___,     ___,     ___,     ___,          \
   _v_,  _v_,  _v_)
 
 #define HM_NUM_LAYOUT LAYOUT_halfmak_18( \
-  os_LCTL, os_LGUI, os_LALT, ___,  os_LSFT, \
-  KC_1,    KC_2,    KC_3,    KC_4, KC_5,    \
-  KC_6,    KC_7,    KC_8,    KC_9, KC_0,    \
+  ___,  os_LGUI, os_LALT, os_LCTL, os_LSFT, \
+  KC_1, KC_2,    KC_3,    KC_4,    KC_5,    \
+  KC_6, KC_7,    KC_8,    KC_9,    KC_0,    \
   _v_,  _v_,  _v_)
 
-#define HM_SYM1_LAYOUT /* TODO */
-#define HM_SYM2_LAYOUT /* TODO */
+#define HM_SYM1_LAYOUT LAYOUT_halfmak_18( \
+  KC_SCLN, KC_COLN, KC_DQUO, KC_QUOT, ___, \
+  KC_MINS, KC_EQL,  KC_COMM, KC_DOT,  ___, \
+  KC_UNDS, KC_PLUS, KC_EXLM, KC_QUES, ___, \
+  _v_,  _v_,  _v_)
+
+#define HM_SYM2_LAYOUT LAYOUT_halfmak_18( \
+  KC_GRV,  KC_TILD, KC_LCBR, KC_RCBR, ___, \
+  KC_LT,   KC_GT,   KC_LPRN, KC_RPRN, ___, \
+  KC_BSLS, KC_PIPE, KC_LBRC, KC_RBRC, ___, \
+  _v_,  _v_,  _v_)
 
 bool oneshotmods_process_record_user(uint16_t keycode, keyrecord_t *record);
 
