@@ -1,5 +1,9 @@
 #define HALFMAK_ENABLE
 
+#ifndef HM_HSV_COLOR
+#define HM_HSV_COLOR 191, 255, 50
+#endif
+
 /* ┌ base ─────┐ ┌ flip ───▲─┐ ┌ nav ──────┐ ┌ num ──────┐
  * │ o i e n u │ │ q w f v j │ │   ↓ ▲ ↑ ⎋ │ │ ‹         │
  * │ a r s t ▲ │ │ p b l y   │ │ ↹ ◀ ▼ ▶ ↵ │ │ 1 2 3 4 5 │
@@ -69,7 +73,7 @@ bool hm_process_record_user(uint16_t keycode, keyrecord_t *record) {
       if (record->event.pressed) {
         layer_on(HM_BASE);
         rgblight_enable_noeeprom();
-        rgblight_sethsv_noeeprom(191, 255, 50);
+        rgblight_sethsv_noeeprom(HM_HSV_COLOR);
       }
       return false;
       break;
