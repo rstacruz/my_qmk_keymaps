@@ -267,7 +267,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     break;
   }
 
-  #ifdef HALFMAK_ENABLE
+  #ifdef FROGPAD_ENABLE
     return hm_process_record_user(keycode, record);
   #else
     return true;

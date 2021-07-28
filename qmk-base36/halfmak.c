@@ -4,14 +4,13 @@
 #define FF_HSV_COLOR 191, 255, 50
 #endif
 
-#define FROG_MODE
 /* frogpad-like layout
 ┌ base ──────────┐ ┌ flip ────── ▲ ─┐
-│ f↔ d  n  i  g  │ │    j  m  k  q  │
-│ s▲ t  h  e  o  │ │ ▲  y  l  p ⌫   │
-│ c∴ w  r  a  u  │ │    x  v  b  z  │
+│ f↔ d  n  i  g  │ │    j  k  m  q  │
+│ s▲ t  h  e  o  │ │ ▲  y  p  l ⌫   │
+│ c∴ w  r  a  u  │ │ ^  x  b  v  z  │
 └────┬───┬───┬───┤ └────┬───┬───┬───┤
-     │ex │₁₂₃│ ␣↑│      │   │   │ ↑ │
+     │ctl│₁₂₃│ ␣↑│      │ ⌘ │ ⌥ │ ↑ │
      └───┴───┴───┘      └───┴───┴───┘
 ┌ nav ─────── ↔ ─┐ ┌ 123 ─────── ₁ ─┐
 │ ↔  p↑ ▲  p↓ ⎋  │ │                │
@@ -44,9 +43,9 @@ LAYOUT_36( \
   KC_LCTL,          MO(FF_NUM), FF_SPC )
 
 #define FF_FLIP_LAYOUT LAYOUT_frogpad_18( \
-  ___,     KC_J, KC_M,    KC_K,    KC_Q,    \
-  ___,     KC_Y, KC_L,    KC_P,    KC_BSPC, \
-  KC_LCTL, KC_X, KC_V,    KC_B,    KC_Z,    \
+  ___,     KC_J, KC_K,    KC_M,    KC_Q,    \
+  ___,     KC_Y, KC_P,    KC_L,    KC_BSPC, \
+  KC_LCTL, KC_X, KC_B,    KC_V,    KC_Z,    \
   /**/     /**/  KC_LALT, KC_LGUI, _v_      )
 
 #define FF_NAV_LAYOUT LAYOUT_frogpad_18( \
