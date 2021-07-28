@@ -36,7 +36,7 @@ enum custom_keycodes {
 
 enum layers {
   _BASE = 0, _ALT, _SYM, _NAV, _FUN, _PAD, _GAM, _GMX, _LOC,
-  FF_BASE, FF_FLIP, FF_NAV, FF_NUM, FF_SYM1, FF_SYM2
+  FF_BASE, FF_FLIP, FF_NAV, FF_NUM, FF_SYM
 };
 
 #include "halfmak.c"
@@ -161,13 +161,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      ┃ Onehand, game ∴
      ┖───── */
 
-  #ifdef FROGPAD_ENABLE
+  #ifdef FROGFIVE_ENABLE
   [FF_BASE] = FF_BASE_LAYOUT,
   [FF_FLIP] = FF_FLIP_LAYOUT,
   [FF_NAV]  = FF_NAV_LAYOUT,
   [FF_NUM]  = FF_NUM_LAYOUT,
-  [FF_SYM1] = FF_SYM1_LAYOUT,
-  [FF_SYM2] = FF_SYM2_LAYOUT,
+  [FF_SYM]  = FF_SYM_LAYOUT,
   #endif
 
   [_GAM] = GAM_LAYER,
@@ -267,7 +266,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     break;
   }
 
-  #ifdef FROGPAD_ENABLE
+  #ifdef FROGFIVE_ENABLE
     return hm_process_record_user(keycode, record);
   #else
     return true;
