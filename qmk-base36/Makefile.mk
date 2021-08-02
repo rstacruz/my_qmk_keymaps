@@ -38,10 +38,6 @@ ${qmk_home}/keyboards/${keyboard_path}/keymaps/${keymap_name}/rules.mk: ./rules.
 ${qmk_home}/keyboards/${keyboard_path}/keymaps/${keymap_name}/%: ${base_path}/%
 	cp $< $@
 
-${qmk_home}/quantum/process_keycode/process_combo.c: ${base_path}/process_combo.c
-	@# doesn't seem to be working right now?
-	# cp $< $@
-
 mkdir:
 	@mkdir -p ${qmk_home}/keyboards/${keyboard_path}/keymaps/${keymap_name}
 
@@ -49,13 +45,12 @@ push: \
 	mkdir \
 	${qmk_home}/keyboards/${keyboard_path}/keymaps/${keymap_name}/config.h \
 	${qmk_home}/keyboards/${keyboard_path}/keymaps/${keymap_name}/rules.mk \
-	${qmk_home}/keyboards/${keyboard_path}/keymaps/${keymap_name}/onehand_combos.c \
 	${qmk_home}/keyboards/${keyboard_path}/keymaps/${keymap_name}/keymap.c \
 	${qmk_home}/keyboards/${keyboard_path}/keymaps/${keymap_name}/game_layers.h \
-	${qmk_home}/quantum/process_keycode/process_combo.c
+	${qmk_home}/keyboards/${keyboard_path}/keymaps/${keymap_name}/halfmak.c
 
 # Don't delete these intermediate files
-.PRECIOUS: %/keymap.c %/onehand_combos.c %/game_layers.h
+.PRECIOUS: %/keymap.c %/game_layers.h %/halfmak.c
 
 c: compile
 f: flash

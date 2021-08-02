@@ -1,4 +1,79 @@
+
+/*
+Put this in config.h:
+
+    #define COMBO_TERM 40
+    #define COMBO_COUNT 32
+
+In rules.mk:
+
+    COMBO_ENABLE = true
+
+Add custom keycodes in keymap.c:
+
+    enum custom_keycodes {
+      ... = SAFE_RANGE,
+      OH_ON, OH_OFF, OH_LCTL, OH_LALT, OH_LGUI, OH_LSFT,
+    };
+    enum layers {
+      ...
+      _OH_BAS, _OH_NAV, _OH_MOD, _OH_NUM
+    };
+
+    #include "onehand_combos.c"
+
+Add to process_record_user in keymap.c:
+
+    bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+      ...
+      // replace `return true;` with:
+      return onehand_process_record_user(keycode, record);
+    };
+
+...then bind `OH_ON` to a key
+*/
+
 #ifdef COMBO_TERM
+
+#ifndef LAYOUT_onehand_15
+#define LAYOUT_onehand_15(k1, k2, k3, k4, k5, k6, k7, k8, k9, ka, kb, kc, kd, ke, kf) \
+ LAYOUT_36( \
+    k1,  k2,  k3,  k4,  k5,     /**/ ___,    ___, ___, ___, ___, \
+    k6,  k7,  k8,  k9,  ka,     /**/ ___,    ___, ___, ___, ___, \
+    kb,  kc,  kd,  ke,  kf,     /**/ ___,    ___, ___, ___, ___, \
+    /**/ /**/ ___, ___, OH_OFF, /**/ OH_OFF, ___, ___  \
+  )
+#endif
+
+#define ONEHAND_ENABLED
+
+/* Onehand: base */
+#define OH_BAS_LAYOUT LAYOUT_onehand_15( \
+  KC_O, KC_I, KC_E,   KC_N, LT(_OH_NAV,KC_BSPC), \
+  KC_A, KC_R, KC_S,   KC_T, MO(_OH_MOD),         \
+  ___,  ___,  KC_SPC, ___,  MO(_OH_NUM)          \
+)
+
+/* Onehand: mod */
+#define OH_MOD_LAYOUT LAYOUT_onehand_15( \
+  OH_LCTL, OH_LGUI, OH_LALT, ___,    ___, \
+  OH_LSFT, KC_ESC,  KC_ENT,  KC_TAB, ___, \
+  _v_,     _v_,     _v_,     _v_,    _v_ \
+)
+
+/* Onehand: Nav */
+#define OH_NAV_LAYOUT LAYOUT_onehand_15( \
+  TG(_OH_NAV), KC_PGUP, KC_UP,   KC_PGDN, _v_, \
+  ___,         KC_LEFT, KC_DOWN, KC_RGHT, _v_, \
+  _v_,         _v_,     _v_,     _v_,     _v_ \
+)
+
+/* Onehand: number */
+#define OH_NUM_LAYOUT LAYOUT_onehand_15( \
+  ___,  KC_7, KC_8, KC_9, ___, \
+  ___,  KC_4, KC_5, KC_6, ___, \
+  KC_0, KC_1, KC_2, KC_3, ___ \
+)
 
 #define DEF_COMBO_INPUT_KC(A,B) \
   const uint16_t PROGMEM combo_ ## A ## _ ## B[] = {KC_ ## A, KC_ ## B, COMBO_END}

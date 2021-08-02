@@ -6,8 +6,9 @@
 #pragma once
 #define FORCE_NKRO
 #define PERMISSIVE_HOLD
+#define TAPPING_FORCE_HOLD /* allow tap then hold (eg, a a+r) */
 #define TAPPING_TOGGLE 2
-#define ONESHOT_TIMEOUT 2000
+#define ONESHOT_TIMEOUT 500
 
 // For hold-tap mods
 #define IGNORE_MOD_TAP_INTERRUPT_PER_KEY
@@ -37,6 +38,7 @@
 
 /* Layout */
 #ifdef KEYBOARD_planck
+#define HM_HSV_COLOR 191, 255, 255
 #define LAYOUT_36( \
   a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, \
   b1, b2, b3, b4, b5, b6, b7, b8, b9, b10, \
@@ -68,5 +70,5 @@
 #endif
 
 /* Combo settings */
-#define COMBO_TERM 40
-#define COMBO_COUNT 32
+/* #define COMBO_TERM 40 */
+/* #define COMBO_COUNT 32 */

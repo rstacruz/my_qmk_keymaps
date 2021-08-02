@@ -25,40 +25,22 @@ enum custom_keycodes {
   MC_SHOT,
   x__COMU,
   x__DOTQ,
-  OH_ON,
-  OH_OFF,
-  OH_LCTL,
-  OH_LALT,
-  OH_LGUI,
-  OH_LSFT,
   GAM_ON,
   GAM_OFF,
+  FV_ON, FV_OFF,
+  FV_LSFT, FV_LCTL, FV_LGUI, FV_LALT
 };
-
-// ┎──────────────────────────────────────────────────────────────────────
-// ┃ Layout aliases ∴
-// ┖──┄
-
-#define LAYOUT_onehand_15(k1, k2, k3, k4, k5, k6, k7, k8, k9, ka, kb, kc, kd, ke, kf) \
- LAYOUT_36( \
-    k1,  k2,  k3,  k4,  k5,  /**/ ___,    ___, ___, ___, ___, \
-    k6,  k7,  k8,  k9,  ka,  /**/ ___,    ___, ___, ___, ___, \
-    kb,  kc,  kd,  ke,  kf,  /**/ ___,    ___, ___, ___, ___, \
-    /**/ /**/ ___, ___, ___, /**/ OH_OFF, ___, ___  \
-  )
 
 // ┎──────────────────────────────────────────────────────────────────────
 // ┖─┒ Layers ∴
 //   ┖──┄
 
 enum layers {
-  _BASE = 0, _ALT, _SYM, _NAV, _ANV, _FUN, _PAD, _GAM, _GMX, _LOC,
-  _OH_BAS, _OH_NAV, _OH_MOD, _OH_NUM
+  _BASE = 0, _ALT, _SYM, _NAV, _FUN, _PAD, _GAM, _GMX, _LOC,
+  FV_BASE, FV_FLIP, FV_NAV, FV_NUM, FV_SYM
 };
 
-#ifdef COMBO_ENABLE
-#include "onehand_combos.c"
-#endif
+#include "halfmak.c"
 #include "game_layers.h"
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -109,14 +91,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ┌┄┄┄┄┐    ├────┼────┼────┼────┼────┤     ├────┼────┼────┼────┼────┤
   ┆SYM ┆ ┄› │ \  │ ~  │ |  │ &  │ ;  │     │ /  │ *  │ -  │ +  │ _  │
   └┄┄┄┄┘    └────┴────┴────┴────┴────┴─┐ ┌─┴────┴────┴────┴────┴────┘
-                      │    │ ▓▓ │ ANV  │ │      │FUN │    │
+                      │    │ ▓▓ │ 1h   │ │      │FUN │    │
                       └────┴────┴──────┘ └──────┴────┴────┘ */
 
   [_SYM] = LAYOUT_36(
     KC_QUOT, KC_DQUO, KC_CIRC, KC_QUES, KC_GRV,   /**/ KC_LBRC, KC_LT,    KC_EQL,  KC_GT,   KC_RBRC,
     KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC,  /**/ KC_LCBR, KC_LPRN,  KC_COLN, KC_RPRN, KC_RCBR,
-    KC_BSLS, KC_TILD, KC_PIPE, KC_AMPR, KC_SCLN,  /**/ KC_PSLS, KC_PAST,  KC_PMNS, KC_PPLS, KC_UNDS,
-    /**/     /**/     _v_,     _v_,     MO(_ANV), /**/ _v_,     MO(_FUN), _v_      /**/     /**/
+    KC_BSLS, KC_TILD, KC_PIPE, KC_AMPR, KC_SCLN,  /**/ KC_SLSH, KC_ASTR,  KC_MINS, KC_PLUS, KC_UNDS,
+    /**/     /**/     _v_,     _v_,     FV_ON,    /**/ _v_,     MO(_FUN), _v_      /**/     /**/
   ),
 
   /* ┎─────────────────────────────────────────────────────────────┄
@@ -136,25 +118,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_1,    KC_2,    KC_3,      KC_4,     KC_5, /**/ KC_PGDN, KC_LEFT, KC_DOWN, KC_RGHT, KC_ENT,
     KC_6,    KC_7,    KC_8,      KC_9,     KC_0, /**/ KC_ESC,  x__STAB, x__CTAB, KC_DOT,  KC_DEL,
     /**/     /**/     _v_,       MO(_PAD), _v_,  /**/ _v_,     _v_,     _v_      /**/     /**/
-  ),
-
-  /* ┎─────────────────────────────────────────────────────────────┄
-     ┃ Navigate (left hand) ∴
-     ┖───── ┌────┬────┬────┬────┬────┐     ┌────┬────┬────┬────┬────┐
-            │ m  │home│ ▲  │end │ w↑ │     │ p↑ │home│ ▲  │end │ ^⌫ │
-            ├────┼────┼────┼────┼────┤     ├────┼────┼────┼────┼────┤
-            │ 1h │ ◀  │ ▼  │ ▶  │ w↓ │     │ p↓ │ ◀  │ ▼  │ ▶  │ ↵  │
-  ┌┄┄┄┄┐    ├────┼────┼────┼────┼────┤     ├────┼────┼────┼────┼────┤
-  ┆ANV ┆ ┄› │ m  │    │ M  │ R  │ L  │     │ ⎋  │ ‹‹ │ ›› │ .  │ ⌦  │
-  └┄┄┄┄┘    └────┴────┴────┴────┴────┴─┐ ┌─┴────┴────┴────┴────┴────┘
-                      │ ‹‹ │ ›› │ ▓▓   │ │      │    │    │
-                      └────┴────┴──────┘ └──────┴────┴────┘ */
-
-  [_ANV] = LAYOUT_36(
-    MC_MUTE, KC_HOME, KC_UP,   KC_END,  KC_WH_U, /**/ KC_PGUP, KC_HOME, KC_UP,   KC_END,  x__CBSP,
-    OH_ON,   KC_LEFT, KC_DOWN, KC_RGHT, KC_WH_D, /**/ KC_PGDN, KC_LEFT, KC_DOWN, KC_RGHT, KC_ENT,
-    MC_HAND, ___,     x__MMB,  x__RMB,  x__LMB,  /**/ KC_ESC,  x__STAB, x__CTAB, KC_DOT,  KC_DEL,
-    /**/     /**/     x__STAB, x__CTAB, ___,     /**/ _v_,     ___,     ___      /**/     /**/
   ),
 
   /* ┎─────────────────────────────────────────────────────────────┄
@@ -196,40 +159,17 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
 
   /* ┎─────────────────────────────────────────────────────────────┄
-     ┃ Onehand ∴
+     ┃ Onehand, game ∴
      ┖───── */
 
-  [_OH_BAS] = LAYOUT_onehand_15(
-    KC_O,        KC_I, KC_E,   KC_N, LT(_OH_NAV,KC_BSPC),
-    KC_A,        KC_R, KC_S,   KC_T, MO(_OH_MOD),
-    MO(_OH_NUM), ___,  KC_SPC, ___,  ___
-  ),
+  #ifdef FROGV_ENABLE
+  [FV_BASE] = FV_BASE_LAYOUT,
+  [FV_FLIP] = FV_FLIP_LAYOUT,
+  [FV_NAV]  = FV_NAV_LAYOUT,
+  [FV_NUM]  = FV_NUM_LAYOUT,
+  [FV_SYM]  = FV_SYM_LAYOUT,
+  #endif
 
-  /* Onehand: Mod */
-  [_OH_MOD] = LAYOUT_onehand_15(
-    OH_LCTL, OH_LGUI, OH_LALT, ___,    ___,
-    OH_LSFT, KC_ESC,  KC_ENT,  KC_TAB, ___,
-    _v_,     _v_,     _v_,     _v_,    _v_
-  ),
-
-  /* Onehand: Nav */
-  [_OH_NAV] = LAYOUT_onehand_15(
-    TG(_OH_NAV), KC_PGUP, KC_UP,   KC_PGDN, _v_,
-    ___,         KC_LEFT, KC_DOWN, KC_RGHT, _v_,
-    _v_,         _v_,     _v_,     _v_,     _v_
-  ),
-
-  /* Onehand: numbers */
-
-  [_OH_NUM] = LAYOUT_onehand_15(
-    ___,  KC_1, KC_2, KC_3, ___,
-    ___,  KC_4, KC_5, KC_6, ___,
-    ___,  KC_7, KC_8, KC_9, KC_0
-  ),
-
-  /* ┎─────────────────────────────────────────────────────────────┄
-     ┃ Game ∴
-     ┖─── */
   [_GAM] = GAM_LAYER,
   [_GMX] = GMX_LAYER,
 
@@ -314,7 +254,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     if (record->event.pressed) {
       layer_on(_GAM);
       rgblight_enable_noeeprom();
-      rgblight_sethsv_noeeprom(HSV_GREEN);
+      rgblight_sethsv_noeeprom(11, 176, 64);
     }
     return false;
     break;
@@ -326,11 +266,12 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     return false;
     break;
   }
-#ifdef COMBO_ENABLE
-  return onehand_process_record_user(keycode, record);
-#else
-  return true;
-#endif
+
+  #ifdef FROGV_ENABLE
+    return fm_process_record_user(keycode, record);
+  #else
+    return true;
+  #endif
 };
 
 // vim:fdm=marker:fmr=∴,┎

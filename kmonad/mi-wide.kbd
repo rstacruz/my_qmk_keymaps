@@ -26,6 +26,7 @@
   cesc (tap-next esc lctl)
   ntab (tap-next tab (layer-toggle nav))
 
+  cent (around lctl ent)
   cbsp (around lctl bks)
   stab (around lsft tab)
   tab+ (around lctl tab)
@@ -58,9 +59,9 @@
 (deflayer colemak-dh-ext
   _     _     _     _     _     _       _     _     _     _     _     _     _     _
   _     _     _     _     _     _       _     _     _     _     _     _     _     _
-  @ntab q     w     f     p     b       XX    j     l     u     y     bks   '     _
+  @ntab q     w     f     p     b       XX    j     l     u     y     bks   XX    _
   @cesc a     r     s     t     g       @NAV  m     n     e     i     o           _   
-  _     z     x     c     d     v       XX    k     h     ,     .                 rctl
+  _     z     x     c     d     v       '     k     h     ,     .                 @cent
   @opt  @cmd  @SYM                      _           @NAV  @opt  _     _     _     _
 )
 
