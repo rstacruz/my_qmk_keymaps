@@ -37,10 +37,10 @@ enum custom_keycodes {
 
 enum layers {
   _BASE = 0, _ALT, _SYM, _NAV, _FUN, _PAD, _GAM, _GMX, _LOC,
-  FV_BASE, FV_FLIP, FV_NAV, FV_NUM, FV_SYM
+  FV_BASE, FV_FLIP, FV_NAV, FV_NUM, FV_SYM, FV_MOU
 };
 
-#include "halfmak.c"
+#include "frogv.c"
 #include "game_layers.h"
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -95,10 +95,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                       └────┴────┴──────┘ └──────┴────┴────┘ */
 
   [_SYM] = LAYOUT_36(
-    KC_QUOT, KC_DQUO, KC_CIRC, KC_QUES, KC_GRV,   /**/ KC_LBRC, KC_LT,    KC_EQL,  KC_GT,   KC_RBRC,
-    KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC,  /**/ KC_LCBR, KC_LPRN,  KC_COLN, KC_RPRN, KC_RCBR,
-    KC_BSLS, KC_TILD, KC_PIPE, KC_AMPR, KC_SCLN,  /**/ KC_SLSH, KC_ASTR,  KC_MINS, KC_PLUS, KC_UNDS,
-    /**/     /**/     _v_,     _v_,     FV_ON,    /**/ _v_,     MO(_FUN), _v_      /**/     /**/
+    KC_QUOT, KC_DQUO, KC_CIRC, KC_QUES, KC_GRV,  /**/ KC_LBRC, KC_LT,    KC_EQL,  KC_GT,   KC_RBRC,
+    KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC, /**/ KC_LCBR, KC_LPRN,  KC_COLN, KC_RPRN, KC_RCBR,
+    KC_BSLS, KC_TILD, KC_PIPE, KC_AMPR, KC_SCLN, /**/ KC_SLSH, KC_ASTR,  KC_MINS, KC_PLUS, KC_UNDS,
+    /**/     /**/     _v_,     _v_,     FV_ON,   /**/ _v_,     MO(_FUN), _v_      /**/     /**/
   ),
 
   /* ┎─────────────────────────────────────────────────────────────┄
@@ -142,9 +142,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   /* ┎─────────────────────────────────────────────────────────────┄
      ┃ Mouse ∴
      ┖───── ┌────┬────┬────┬────┬────┐     ┌────┬────┬────┬────┬────┐
-            │QWER│    │    │    │ w↑ │     │    │    │ ▲  │ M  │ b+ │
+            │QWER│MAC │    │    │ w↑ │     │    │    │ ▲  │ M  │ b+ │
             ├────┼────┼────┼────┼────┤     ├────┼────┼────┼────┼────┤
-            │GAM │    │    │ L  │ w↓ │     │    │ ◀  │ ▼  │ ▶  │ b- │
+            │GAME│WIN │    │ L  │ w↓ │     │    │ ◀  │ ▼  │ ▶  │ b- │
   ┌┄┄┄┄┐    ├────┼────┼────┼────┼────┤     ├────┼────┼────┼────┼────┤
   ┆PAD ┆›   │rgb │    │    │    │ R  │     │ v- │ v+ │play│next│rset│
   └┄┄┄┄┘    └────┴────┴────┴────┴────┴─┐ ┌─┴────┴────┴────┴────┴────┘
@@ -152,10 +152,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                       └────┴────┴──────┘ └──────┴────┴────┘ */
 
   [_PAD] = LAYOUT_36(
-    TG(_ALT), ___, ___, ___,    KC_WH_U, /**/ KC_WH_U, ___,     KC_MS_U, x__MMB,  KC_BRIU,
-    GAM_ON,   ___, ___, x__LMB, KC_WH_D, /**/ KC_WH_D, KC_MS_L, KC_MS_D, KC_MS_R, KC_BRID,
-    RGB_TOG,  ___, ___, ___,    x__RMB,  /**/ KC_VOLD, KC_VOLU, KC_MPLY, KC_MNXT, RESET,
-    /**/      /**/ _v_, _v_,    _v_,     /**/ _v_,     _v_,     _v_      /**/     /**/
+    TG(_ALT), LAG_SWP, ___, ___,    KC_WH_U, /**/ KC_WH_U, ___,     KC_MS_U, x__MMB,  KC_BRIU,
+    GAM_ON,   LAG_NRM, ___, x__LMB, KC_WH_D, /**/ KC_WH_D, KC_MS_L, KC_MS_D, KC_MS_R, KC_BRID,
+    RGB_TOG,  ___,     ___, ___,    x__RMB,  /**/ KC_VOLD, KC_VOLU, KC_MPLY, KC_MNXT, RESET,
+    /**/      /**/     _v_, _v_,    _v_,     /**/ _v_,     _v_,     _v_      /**/     /**/
   ),
 
   /* ┎─────────────────────────────────────────────────────────────┄
@@ -168,6 +168,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [FV_NAV]  = FV_NAV_LAYOUT,
   [FV_NUM]  = FV_NUM_LAYOUT,
   [FV_SYM]  = FV_SYM_LAYOUT,
+  [FV_MOU]  = FV_MOU_LAYOUT,
   #endif
 
   [_GAM] = GAM_LAYER,
@@ -212,13 +213,13 @@ bool get_ignore_mod_tap_interrupt(uint16_t keycode, keyrecord_t *record) {
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
   case MC_MUTE: // Zoom: mute or unmute
-    if (record->event.pressed) { SEND_STRING(SS_LSFT(SS_LALT("a"))); }
+    if (record->event.pressed) { SEND_STRING(SS_LSFT(SS_LGUI("a"))); }
     break;
   case MC_HAND: // Zoom: raise hand
-    if (record->event.pressed) { SEND_STRING(SS_LSFT(SS_LALT("y"))); }
+    if (record->event.pressed) { SEND_STRING(SS_LSFT(SS_LGUI("y"))); }
     break;
   case MC_SHOT: // MacOS: take screenshot
-    if (record->event.pressed) { SEND_STRING(SS_LSFT(SS_LCTL(SS_LALT("4")))); }
+    if (record->event.pressed) { SEND_STRING(SS_LSFT(SS_LCTL(SS_LGUI("4")))); }
     break;
   case x__DOTQ: // dot
     if (record->event.pressed) {

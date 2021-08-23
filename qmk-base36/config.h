@@ -31,7 +31,7 @@
 /* Audio */
 #ifdef AUDIO_ENABLE
   #define X_HI T__NOTE(_D5), T__NOTE(_E5), T__NOTE(_GF5), T__NOTE(_B5)
-  #define X_BYE T__NOTE(_B5), T__NOTE(_GF5), T__NOTE(_E5), T__NOTE(_D5), T__NOTE(_C5)
+  #define X_BYE T__NOTE(_B5), TD_NOTE(_A0), T__NOTE(_GF5), TD_NOTE(_A0), T__NOTE(_E5), TD_NOTE(_A0), T__NOTE(_D5), TD_NOTE(_A0), T__NOTE(_C5)
   #define STARTUP_SONG SONG(X_HI)
   #define GOODBYE_SONG SONG(X_BYE)
 #endif
@@ -54,6 +54,7 @@
 #endif
 
 #ifdef KEYBOARD_crkbd
+/* #define DEBOOUNCE 9 */
 #define LAYOUT_36( \
   a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, \
   b1, b2, b3, b4, b5, b6, b7, b8, b9, b10, \

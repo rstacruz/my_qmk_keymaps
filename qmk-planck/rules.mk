@@ -3,4 +3,4 @@ LTO_ENABLE = yes
 COMBO_ENABLE = no
 AUDIO_ENABLE = yes
 TAP_DANCE_ENABLE = yes
-DEBOUNCE_TYPE = sym_eager_pk
+# DEBOUNCE_TYPE = sym_eager_pk
