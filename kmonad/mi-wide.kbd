@@ -23,10 +23,10 @@
   GAM  (layer-switch game)
   UNLO (layer-switch colemak-dh-ext)
 
+  cent (tap-next ent lctl)
   cesc (tap-next esc lctl)
   ntab (tap-next tab (layer-toggle nav))
 
-  cent (around lctl ent)
   cbsp (around lctl bks)
   stab (around lsft tab)
   tab+ (around lctl tab)
@@ -102,7 +102,7 @@
 )
 
 (deflayer lock
-  XX    XX    XX    XX    XX    @UNLO   @UNLO XX    XX    XX    XX    XX    XX    XX
+  XX    XX    XX    XX    XX    XX      @UNLO XX    XX    XX    XX    XX    XX    XX
   XX    XX    XX    XX    XX    XX      XX    XX    XX    XX    XX    XX    XX    XX
   XX    XX    XX    XX    XX    XX      XX    XX    XX    XX    XX    XX    XX    XX
   XX    XX    XX    XX    XX    XX      XX    XX    XX    XX    XX    XX          XX

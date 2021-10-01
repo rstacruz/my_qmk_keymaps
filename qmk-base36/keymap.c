@@ -5,8 +5,6 @@
 
 #define _v_     KC_TRNS
 #define ___     KC_NO
-#define x__LCMD KC_LALT            /* cmd(mac) or alt(win) */
-#define x__LOPT KC_LGUI            /* opt(mac) or gui(win) */
 #define x__ENT  LCTL_T(KC_ENT)     /* ctrl(hold) or enter(tap) */
 #define x__Q    LCTL_T(KC_Q)       /* ctrl(hold) or q(tap) */
 #define x__CBSP C(KC_BSPC)         /* Delete word */
@@ -15,7 +13,6 @@
 #define x__MMB  KC_MS_BTN3         /* Mid mouse button */
 #define x__CTAB RCTL(KC_TAB)       /* Next tab */
 #define x__STAB RCTL(LSFT(KC_TAB)) /* Previous tab */
-#define H(KEY)  S(G(KEY))          /* kinda-hyper */
 
 /* Macros and stuff */
 enum custom_keycodes {
@@ -28,7 +25,7 @@ enum custom_keycodes {
   GAM_ON,
   GAM_OFF,
   FV_ON, FV_OFF,
-  FV_LSFT, FV_LCTL, FV_LGUI, FV_LALT
+  FV_LSFT, FV_LCTL, FV_LGUI, FV_LALT, FV_OSSF
 };
 
 // }}}
@@ -36,7 +33,7 @@ enum custom_keycodes {
 // Layers {{{
 
 enum layers {
-  _BASE = 0, _QWE, _ALT, _SYM, _NAV, _ANA, _FUN, _PAD, _GAM, _GMX, _LOC,
+  _BASE = 0, _QWE, _SYM, _NAV, _HEX, _FUN, _ADJ, _GAM, _GMX, _LOC,
   FV_BASE, FV_FLIP, FV_NAV, FV_NUM, FV_SYM, FV_MOU
 };
 
@@ -58,10 +55,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                ╰────┴────┴──────╯ ╰──────┴────┴────╯ */
 
   [0] = LAYOUT_36(
-    x__Q, KC_W, KC_F,    KC_P,     KC_B,    /**/ KC_J,   KC_L,     KC_U,    KC_Y,    x__BSPX,
+    x__Q, KC_W, KC_F,    KC_P,     KC_B,    /**/ KC_J,   KC_L,     KC_U,    KC_Y,    KC_BSPC,
     KC_A, KC_R, KC_S,    KC_T,     KC_G,    /**/ KC_M,   KC_N,     KC_E,    KC_I,    KC_O,
     KC_Z, KC_X, KC_C,    KC_D,     KC_V,    /**/ KC_K,   KC_H,     x__COMU, x__DOTQ, x__ENT,
-    /**/  /**/  x__LCMD, MO(_SYM), KC_LSFT, /**/ KC_SPC, MO(_NAV), x__LOPT  /**/     /**/
+    /**/  /**/  KC_LALT, MO(_SYM), KC_LSFT, /**/ KC_SPC, MO(_NAV), KC_LGUI  /**/     /**/
   ),
 
   /* }}}
@@ -82,18 +79,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_A, KC_S, KC_D, KC_F, KC_G, /**/ KC_H, KC_J, KC_K,    KC_L,   KC_BSPC,
     KC_Z, KC_X, KC_C, KC_V, KC_B, /**/ KC_N, KC_M, KC_COMM, KC_DOT, x__ENT,
     /**/  /**/  _v_,  _v_,  _v_,  /**/ _v_,  _v_,  _v_      /**/    /**/
-  ),
-
-  /* }}}
-     ────────────────────────────────────────────────────────┄
-     _ALT / Alternate {{{
-  */
-
-  [_ALT] = LAYOUT_36(
-    _v_, _v_, _v_, _v_, _v_, /**/ _v_, _v_, _v_, _v_, LT(_NAV,KC_BSPC),
-    _v_, _v_, _v_, _v_, _v_, /**/ _v_, _v_, _v_, _v_, _v_,
-    _v_, _v_, _v_, _v_, _v_, /**/ _v_, _v_, _v_, _v_, _v_,
-    /**/ /**/ _v_, _v_, _v_, /**/ _v_, _v_, _v_  /**/ /**/
   ),
 
   /* }}}
@@ -124,76 +109,75 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      ├────┼────┼────┼────┼────┤     ├────┼────┼────┼────┤┄───┤
      │ 1  │ 2  │ 3  │ 4  │ 5  │     │pg↓ │ ◀  │ ▼  │ ▶  │ ↵  │
      ├────┼────┼────┼────┼────┤     ╰────┴────┴────┴────╯┄───┤
-     │ 6  │ 7  │ 8  │ 9  │ 0  │     │ ⎋  │ ‹‹ │ ›› │ .  │ ⌦  │
+     │ 6  │ 7  │ 8  │ 9  │ 0  │     │    │ ⎋  │ ,  │ .  │ ⌦  │
      ╰────┴────┴────┴────┴────┴─╮ ╭─┴────┴────┴────┴────┴────╯
                │    │PAD │      │ │      │ ▓▓ │    │
                ╰────┴────┴──────╯ ╰──────┴────┴────╯ */
-
   [_NAV] = LAYOUT_36(
-    KC_LCTL, KC_LGUI, S(KC_TAB), KC_TAB,   MO(_ANA), /**/ KC_PGUP, KC_HOME, KC_UP,   KC_END,  x__CBSP,
-    KC_1,    KC_2,    KC_3,      KC_4,     KC_5,     /**/ KC_PGDN, KC_LEFT, KC_DOWN, KC_RGHT, KC_ENT,
-    KC_6,    KC_7,    KC_8,      KC_9,     KC_0,     /**/ KC_ESC,  x__STAB, x__CTAB, KC_DOT,  LT(_ANA,KC_DEL),
-    /**/     /**/     _v_,       MO(_PAD), _v_,      /**/ KC_ENT,  _v_,     _v_      /**/     /**/
+    KC_LCTL, KC_LGUI, S(KC_TAB), KC_TAB,   ___,  /**/ KC_PGUP, KC_HOME, KC_UP,   KC_END,  x__CBSP,
+    KC_1,    KC_2,    KC_3,      KC_4,     KC_5, /**/ KC_PGDN, KC_LEFT, KC_DOWN, KC_RGHT, KC_ENT,
+    KC_6,    KC_7,    KC_8,      KC_9,     KC_0, /**/ KC_ESC,  KC_ESC,  KC_COMM, KC_DOT,  LT(_HEX,KC_DEL),
+    /**/     /**/     _v_,       MO(_ADJ), _v_,  /**/ KC_LCTL, KC_ENT,  _v_      /**/     /**/
   ),
 
   /* }}}
      ────────────────────────────────────────────────────────┄
-     _ANA / Alt-navigate {{{
-     ╭────┬────┬────┬────┬────╮     ╭────┬────┬────┬────╮┄───╮
-     │ ⌃  │ 1  │ 2  │ 3  │    │     │pg↑ │home│ ▲  │end │ ^⌫ │
-     ├────┼────┼────┼────┼────┤     ├────┼────┼────┼────┤┄───┤
-     │    │ 4  │ 5  │ 6  │    │     │pg↓ │ ◀  │ ▼  │ ▶  │ ↵  │
-     ├────┼────┼────┼────┼────┤     ╰────┴────┴────┴────╯┄───┤
-     │    │ 7  │ 8  │ 9  │ 0  │     │ ⎋  │ ‹‹ │ ›› │ .  │ ⌦  │
+     _HEX / Hex input {{{
+     ╭────┬────┬────┬────┬────╮     ╭────┬────┬────┬────┬────╮
+     │ ⌃  │ 1  │ 2  │ 3  │    │     │ a  │ b  │ c  │    │    │
+     ├────┼────┼────┼────┼────┤     ├────┼────┼────┼────┼────┤
+     │cmd │ 4  │ 5  │ 6  │ .  │     │ d  │ e  │ f  │    │    │
+     ├────┼────┼────┼────┼────┤     ├────┼────┼────┼────┼────┤
+     │    │ 7  │ 8  │ 9  │ 0  │     │    │    │    │    │ ▓▓ │
      ╰────┴────┴────┴────┴────┴─╮ ╭─┴────┴────┴────┴────┴────╯
-               │    │PAD │      │ │      │ ▓▓ │    │
+               │    │    │      │ │      │    │    │
                ╰────┴────┴──────╯ ╰──────┴────┴────╯ */
 
-  [_ANA] = LAYOUT_36(
-    KC_LCTL, KC_1, KC_2, KC_3,     _v_,    /**/ KC_PGUP, KC_HOME, KC_UP,   KC_END,  x__CBSP,
-    x__LCMD, KC_4, KC_5, KC_6,     KC_TAB, /**/ KC_PGDN, KC_LEFT, KC_DOWN, KC_RGHT, KC_ENT,
-    ___,     KC_7, KC_8, KC_9,     KC_0,   /**/ KC_ESC,  x__STAB, x__CTAB, KC_DOT,  KC_DEL,
-    /**/     /**/  _v_,  MO(_PAD), _v_,    /**/ _v_,     _v_,     _v_      /**/     /**/
+  [_HEX] = LAYOUT_36(
+    KC_LCTL, KC_1, KC_2, KC_3, _v_,    /**/ KC_A, KC_B, KC_C, _v_, _v_,
+    KC_LALT, KC_4, KC_5, KC_6, KC_DOT, /**/ KC_D, KC_E, KC_F, _v_, _v_,
+    ___,     KC_7, KC_8, KC_9, KC_0,   /**/ _v_,  _v_,  _v_,  _v_, _v_,
+    /**/     /**/  _v_,  _v_,  _v_,    /**/ _v_,  _v_,  _v_   /**/ /**/
   ),
 
   /* }}}
      ────────────────────────────────────────────────────────┄
      _FUN / Function {{{
      ╭────┬────┬────┬────┬────╮     ╭────┬────┬────┬────┬────╮
-     │f11 │f12 │    │ m  │    │     │ 1  │ 2  │ 3  │ ,  │ ⌫  │
+     │f11 │f12 │    │ m  │    │     │ w↑ │ L  │ ▲  │ R  │ b+ │
      ├────┼────┼────┼────┼────┤     ├────┼────┼────┼────┼────┤
-     │ f1 │ f2 │ f3 │ f4 │ f5 │     │ 4  │ 5  │ 6  │ 0  │    │
+     │ f1 │ f2 │ f3 │ f4 │ f5 │     │ w↓ │ ◀  │ ▼  │ ▶  │ b- │
      ├────┼────┼────┼────┼────┤     ├────┼────┼────┼────┼────┤
-     │ f6 │ f7 │ f8 │ f9 │f10 │     │ 7  │ 8  │ 9  │ -  │rset│
+     │ f6 │ f7 │ f8 │ f9 │f10 │     │ v- │ v+ │play│next│rset│
      ╰────┴────┴────┴────┴────┴─╮ ╭─┴────┴────┴────┴────┴────╯
-               │    │    │      │ │   0  │ ▓▓ │ .  │
-               ╰────┴────┴──────╯ ╰──────┴────┴────╯ */
+               │    │ ░░ │      │ │      │ ▓▓ │    │          
+               ╰────┴────┴──────╯ ╰──────┴────┴────╯ */       
 
   [_FUN] = LAYOUT_36(
-    KC_F11, KC_F12, ___,   MC_SHOT, ___,    /**/ KC_1, KC_2, KC_3,  KC_COMM, KC_BSPC,
-    KC_F1,  KC_F2,  KC_F3, KC_F4,   KC_F5,  /**/ KC_4, KC_5, KC_6,  KC_0,    KC_LCTL,
-    KC_F6,  KC_F7,  KC_F8, KC_F9,   KC_F10, /**/ KC_7, KC_8, KC_9,  KC_MINS, RESET,
-    /**/    /**/    _v_,   _v_,     _v_,    /**/ KC_0, _v_,  KC_DOT /**/     /**/
+    KC_F11, KC_F12, ___,   MC_SHOT, ___,    /**/ KC_WH_U, x__LMB,  KC_MS_U, x__RMB,  KC_BRIU,
+    KC_F1,  KC_F2,  KC_F3, KC_F4,   KC_F5,  /**/ KC_WH_D, KC_MS_L, KC_MS_D, KC_MS_R, KC_BRID,
+    KC_F6,  KC_F7,  KC_F8, KC_F9,   KC_F10, /**/ KC_VOLD, KC_VOLU, KC_MPLY, KC_MNXT, RESET,
+    /**/    /**/    _v_,   _v_,     _v_,    /**/ _v_,     _v_,     _v_      /**/     /**/
   ),
 
   /* }}}
      ────────────────────────────────────────────────────────┄
-     _PAD / Mouse {{{
+     _ADJ / Adjust {{{
      ╭────┬────┬────┬────┬────╮     ╭────┬────┬────┬────┬────╮
-     │    │MAC │    │    │ w↑ │     │    │    │ ▲  │ M  │ b+ │
+     │    │MAC │CC- │    │    │     │    │    │    │    │    │
      ├────┼────┼────┼────┼────┤     ├────┼────┼────┼────┼────┤
-     │GAME│WIN │    │ L  │ w↓ │     │    │ ◀  │ ▼  │ ▶  │ b- │
+     │GAME│WIN │CC+ │    │    │     │    │    │    │    │    │
      ├────┼────┼────┼────┼────┤     ├────┼────┼────┼────┼────┤
-     │QWE │ALT │    │    │ R  │     │ v- │ v+ │play│next│rset│
+     │QWE │    │    │    │    │     │    │    │    │    │rset│
      ╰────┴────┴────┴────┴────┴─╮ ╭─┴────┴────┴────┴────┴────╯
-               │    │ ▓▓ │      │ │      │    │    │
-               ╰────┴────┴──────╯ ╰──────┴────┴────╯ */
+               │    │ ▓▓ │      │ │      │ ░░ │    │          
+               ╰────┴────┴──────╯ ╰──────┴────┴────╯ */       
 
-  [_PAD] = LAYOUT_36(
-    ___,      LAG_SWP,  ___, ___,    KC_WH_U, /**/ KC_WH_U, ___,     KC_MS_U, x__MMB,  KC_BRIU,
-    GAM_ON,   LAG_NRM,  ___, x__LMB, KC_WH_D, /**/ KC_WH_D, KC_MS_L, KC_MS_D, KC_MS_R, KC_BRID,
-    TG(_QWE), TG(_ALT), ___, ___,    x__RMB,  /**/ KC_VOLD, KC_VOLU, KC_MPLY, KC_MNXT, RESET,
-    /**/      /**/      _v_, _v_,    _v_,     /**/ _v_,     _v_,     _v_      /**/     /**/
+  [_ADJ] = LAYOUT_36(
+    ___,      LAG_SWP,  CG_NORM, ___, ___, /**/ ___, ___, ___, ___, ___,
+    GAM_ON,   LAG_NRM,  CG_SWAP, ___, ___, /**/ ___, ___, ___, ___, ___,
+    TG(_QWE), ___,      ___,     ___, ___, /**/ ___, ___, ___, ___, RESET,
+    /**/      /**/      _v_,     _v_, _v_, /**/ _v_, _v_, _v_  /**/ /**/
   ),
 
   /* }}}

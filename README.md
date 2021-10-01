@@ -6,6 +6,10 @@ My (<a href='https://twitter.com/rstacruz'>@rstacruz</a>) personal keymaps for t
 
 ![Preview of the keymap](./preview.png)
 
+<p align='center'>
+👉 Steal this <a href='qmk-base36/keymap.c'><strong>keymap.c</strong></a> 👉
+</p>
+
 ## Rationale
 
 - **30% layout with 5 columns per side.** This puts all keys within one key distance from the home row, and minimises pinky movements which often involve wrist movements too. Your hands are meant to be stationary when using this layout.
@@ -20,7 +24,11 @@ My (<a href='https://twitter.com/rstacruz'>@rstacruz</a>) personal keymaps for t
 
 [home row mods]: https://precondition.github.io/home-row-mods
 
+## One-hand mode
+
+Pressing <kbd>Sym</kbd>+<kbd>Shift</kbd> (in that order) will enable an experimental [one-handed mode](./docs/frogv.md).
+
 ## Contents
 
-- [**qmk-planck/**](./qmk-planck/) &mdash; QMK keymap for an OLKB planck keyboard
+- [**qmk-base36/**](./qmk-base36/) &mdash; QMK keymap for an OLKB planck keyboard
 - [**kmonad/**](./kmonad/) &mdash; Keymaps for kmonad for laptop keyboards

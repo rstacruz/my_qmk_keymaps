@@ -12,7 +12,7 @@
 
 // For hold-tap mods
 #define IGNORE_MOD_TAP_INTERRUPT_PER_KEY
-#define TAPPING_TERM 150
+#define TAPPING_TERM 200
 
 /* Mouse keys */
 #undef MOUSEKEY_DELAY
