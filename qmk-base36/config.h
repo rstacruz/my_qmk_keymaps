@@ -71,5 +71,5 @@
 #endif
 
 /* Combo settings */
-/* #define COMBO_TERM 40 */
-/* #define COMBO_COUNT 32 */
+#define COMBO_TERM 25
+#define COMBO_COUNT 3

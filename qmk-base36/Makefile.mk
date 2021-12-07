@@ -1,6 +1,10 @@
 # Get qmk path using the qmk cli
-# qmk_home := ${HOME}/qmk_firmware
-qmk_home := $(shell qmk config user.qmk_home | cut -d= -f2)
+qmk_home := $(shell \
+	x=$$(qmk config user.qmk_home | cut -d= -f2); \
+	if [[ "$$x" == "None" ]]; then x=""; fi; \
+	if [[ "$$x" == "" ]]; then x="${HOME}/qmk_firmware"; fi; \
+	echo $$x \
+)
 
 keymap_name   ?= rsta
 keyboard_path ?= crkbd

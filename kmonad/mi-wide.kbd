@@ -59,19 +59,19 @@
 (deflayer colemak-dh-ext
   _     _     _     _     _     _       _     _     _     _     _     _     _     _
   _     _     _     _     _     _       _     _     _     _     _     _     _     _
-  @ntab q     w     f     p     b       XX    j     l     u     y     bks   XX    _
-  @cesc a     r     s     t     g       @NAV  m     n     e     i     o           _   
-  _     z     x     c     d     v       '     k     h     ,     .                 @cent
+  @ntab q     w     f     p     b       @NAV  j     l     u     y     bks   XX    @SYM
+  @cesc a     r     s     t     g       @SYM  m     n     e     i     o           _   
+  _     z     x     c     d     v       @NAV  k     h     ,     .                 @cent
   @opt  @cmd  @SYM                      _           @NAV  @opt  _     _     _     _
 )
 
 (deflayer nav
-  _     _     _     _     _     _       _     _     _     _     _     _     caps  _
-  _     _     _     _     _     _       _     _     _     _     _     _     _     _
-  _     lctl  @cmd  @stab tab   XX      XX    pgup  home  up    end   @cbsp XX    _
+  XX    XX    XX    XX    XX    XX      XX    XX    XX    XX    XX    XX    caps  XX
+  XX    XX    XX    XX    XX    XX      XX    XX    XX    XX    XX    XX    XX    XX
+  XX    lctl  @cmd  @stab tab   XX      XX    pgup  home  up    end   @cbsp XX    _
   _     1     2     3     4     5       XX    pgdn  left  down  rght  ret         _
-  _     6     7     8     9     0       XX    esc   @tab- @tab+ XX                del
-  _     _     _                         ent         _     _     _     _     @GAM  @LOC
+  _     6     7     8     9     0       XX    esc   XX    XX    XX                del
+  _     _     _                         ent         XX    _     _     _     @GAM  @LOC
 )
 
 (deflayer game
@@ -84,20 +84,20 @@
 )
 
 (deflayer sym
-  _     _     _     _     _     _       _     _     _     _     _     _     _     _
-  _     _     _     _     _     _       _     _     _     _     _     _     _     _
-  _     '     "     ^     ?     `       _     [     <     =     >     ]     _     _
-  _     !     @     #     $     %       _     {     \(    :     \)    }           _
-  _     \     ~     |     &     ;       _     /     *     -     +                \_
-  _     _     _                         _           @FUN  _     _     _     _     _
+  XX    XX    XX    XX    XX    XX      XX    XX    XX    XX    XX    XX    XX   XX
+  XX    XX    XX    XX    XX    XX      XX    XX    XX    XX    XX    XX    XX   XX
+  XX    '     "     ^     ?     `       XX    [     <     =     >     ]     XX   XX
+  _     !     @     #     $     %       XX    {     \(    :     \)    }          XX
+  _     \     ~     |     &     ;       XX    /     *     -     +                \_
+  _     _     XX                        _           @FUN  XX    XX    XX    XX   XX
 )
 
 (deflayer fun
   _     _     _     _     _     _       _     _     _     _     _     _     caps  _
   _     _     _     _     _     _       _     _     _     _     _     _     _     _
-  _     f9    f10   f11   f12   XX      XX    XX    XX    XX    XX    XX    XX    _
-  _     f1    f2    f3    f4    XX      XX    XX    XX    XX    XX    XX          _
-  _     f5    f6    f7    f8    XX      XX    @v-   @v+   @mpl  @mpn              _
+  _     f11   f12   XX    XX    XX      XX    XX    XX    XX    XX    XX    XX    _
+  _     f1    f2    f3    f4    f5      XX    XX    XX    XX    XX    XX          _
+  _     f6    f7    f8    f9    f10     XX    @v-   @v+   @mpl  @mpn              _
   _     _     _                         XX          XX    _     _     _     _     _
 )
 

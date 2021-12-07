@@ -19,9 +19,6 @@ enum custom_keycodes {
   MC_MUTE = SAFE_RANGE,
   MC_HAND,
   MC_SHOT,
-  x__COMU,
-  x__DOTQ,
-  x__BSPX,
   GAM_ON,
   GAM_OFF,
   FV_ON, FV_OFF,
@@ -33,7 +30,7 @@ enum custom_keycodes {
 // Layers {{{
 
 enum layers {
-  _BASE = 0, _QWE, _SYM, _NAV, _HEX, _FUN, _ADJ, _GAM, _GMX, _LOC,
+  _BASE = 0, _QWE, _SYM, _NAV, _HEX, _FUN, _ADJ, _GAM, _GMX, _LOC, _ULO,
   FV_BASE, FV_FLIP, FV_NAV, FV_NUM, FV_SYM, FV_MOU
 };
 
@@ -57,8 +54,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [0] = LAYOUT_36(
     x__Q, KC_W, KC_F,    KC_P,     KC_B,    /**/ KC_J,   KC_L,     KC_U,    KC_Y,    KC_BSPC,
     KC_A, KC_R, KC_S,    KC_T,     KC_G,    /**/ KC_M,   KC_N,     KC_E,    KC_I,    KC_O,
-    KC_Z, KC_X, KC_C,    KC_D,     KC_V,    /**/ KC_K,   KC_H,     x__COMU, x__DOTQ, x__ENT,
-    /**/  /**/  KC_LALT, MO(_SYM), KC_LSFT, /**/ KC_SPC, MO(_NAV), KC_LGUI  /**/     /**/
+    KC_Z, KC_X, KC_C,    KC_D,     KC_V,    /**/ KC_K,   KC_H,     KC_COMM, KC_DOT,  x__ENT,
+    /**/  /**/  KC_LGUI, MO(_SYM), KC_LSFT, /**/ KC_SPC, MO(_NAV), KC_LALT  /**/     /**/
   ),
 
   /* }}}
@@ -91,60 +88,60 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      ├────┼────┼────┼────┼────┤     ├────┼────┼────┼────┼────┤
      │ \  │ ~  │ |  │ &  │ ;  │     │ /  │ *  │ -  │ +  │ _  │
      ╰────┴────┴────┴────┴────┴─╮ ╭─┴────┴────┴────┴────┴────╯
-               │    │ ▓▓ │ 1h   │ │      │FUN │    │
+               │    │ ▓▓ │ ADJ  │ │      │FUN │    │
                ╰────┴────┴──────╯ ╰──────┴────┴────╯ */
 
   [_SYM] = LAYOUT_36(
-    KC_QUOT, KC_DQUO, KC_CIRC, KC_QUES, KC_GRV,  /**/ KC_LBRC, KC_LT,    KC_EQL,  KC_GT,   KC_RBRC,
-    KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC, /**/ KC_LCBR, KC_LPRN,  KC_COLN, KC_RPRN, KC_RCBR,
-    KC_BSLS, KC_TILD, KC_PIPE, KC_AMPR, KC_SCLN, /**/ KC_SLSH, KC_ASTR,  KC_MINS, KC_PLUS, KC_UNDS,
-    /**/     /**/     _v_,     _v_,     FV_ON,   /**/ _v_,     MO(_FUN), _v_      /**/     /**/
+    KC_QUOT, KC_DQUO, KC_CIRC, KC_QUES, KC_GRV,   /**/ KC_LBRC, KC_LT,    KC_EQL,  KC_GT,   KC_RBRC,
+    KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC,  /**/ KC_LCBR, KC_LPRN,  KC_COLN, KC_RPRN, KC_RCBR,
+    KC_BSLS, KC_TILD, KC_PIPE, KC_AMPR, KC_SCLN,  /**/ KC_SLSH, KC_ASTR,  KC_MINS, KC_PLUS, KC_UNDS,
+    /**/     /**/     _v_,     _v_,     MO(_ADJ), /**/ _v_,     MO(_FUN), _v_      /**/     /**/
   ),
 
   /* }}}
      ────────────────────────────────────────────────────────┄
      _NAV / Navigate {{{
      ╭────┬────┬────┬────┬────╮     ╭────┬────┬────┬────╮┄───╮
-     │ ⌃  │ ⌥  │ ⇧↹ │ ↹  │    │     │pg↑ │home│ ▲  │end │ ^⌫ │
+     │ ⌃  │ ⌘  │ ⇧↹ │ ↹  │ ⌥  │     │pg↑ │home│ ▲  │end │ ⌫  │
      ├────┼────┼────┼────┼────┤     ├────┼────┼────┼────┤┄───┤
      │ 1  │ 2  │ 3  │ 4  │ 5  │     │pg↓ │ ◀  │ ▼  │ ▶  │ ↵  │
      ├────┼────┼────┼────┼────┤     ╰────┴────┴────┴────╯┄───┤
-     │ 6  │ 7  │ 8  │ 9  │ 0  │     │    │ ⎋  │ ,  │ .  │ ⌦  │
+     │ 6  │ 7  │ 8  │ 9  │ 0  │     │ ⎋  │ '  │ ,  │ .  │ ⌦  │
      ╰────┴────┴────┴────┴────┴─╮ ╭─┴────┴────┴────┴────┴────╯
                │    │PAD │      │ │      │ ▓▓ │    │
                ╰────┴────┴──────╯ ╰──────┴────┴────╯ */
   [_NAV] = LAYOUT_36(
-    KC_LCTL, KC_LGUI, S(KC_TAB), KC_TAB,   ___,  /**/ KC_PGUP, KC_HOME, KC_UP,   KC_END,  x__CBSP,
-    KC_1,    KC_2,    KC_3,      KC_4,     KC_5, /**/ KC_PGDN, KC_LEFT, KC_DOWN, KC_RGHT, KC_ENT,
-    KC_6,    KC_7,    KC_8,      KC_9,     KC_0, /**/ KC_ESC,  KC_ESC,  KC_COMM, KC_DOT,  LT(_HEX,KC_DEL),
-    /**/     /**/     _v_,       MO(_ADJ), _v_,  /**/ KC_LCTL, KC_ENT,  _v_      /**/     /**/
+    KC_LCTL, KC_LGUI, S(KC_TAB), KC_TAB,   KC_LALT, /**/ KC_PGUP, KC_HOME, KC_UP,   KC_END,  LT(_HEX,KC_BSPC),
+    KC_1,    KC_2,    KC_3,      KC_4,     KC_5,    /**/ KC_PGDN, KC_LEFT, KC_DOWN, KC_RGHT, KC_ENT,
+    KC_6,    KC_7,    KC_8,      KC_9,     KC_0,    /**/ KC_ESC,  KC_QUOT, KC_COMM, KC_DOT,  LCTL_T(KC_DEL),
+    /**/     /**/     _v_,       MO(_ADJ), _v_,     /**/ KC_LCTL, KC_ENT,  _v_      /**/     /**/
   ),
 
   /* }}}
      ────────────────────────────────────────────────────────┄
      _HEX / Hex input {{{
      ╭────┬────┬────┬────┬────╮     ╭────┬────┬────┬────┬────╮
-     │ ⌃  │ 1  │ 2  │ 3  │    │     │ a  │ b  │ c  │    │    │
+     │    │ ,  │ .  │ :  │ #  │     │ 7  │ 8  │ 9  │ ‹  │ ▓▓ │
      ├────┼────┼────┼────┼────┤     ├────┼────┼────┼────┼────┤
-     │cmd │ 4  │ 5  │ 6  │ .  │     │ d  │ e  │ f  │    │    │
+     │ a  │ b  │ c  │ d  │ e  │     │ 4  │ 5  │ 6  │    │    │
      ├────┼────┼────┼────┼────┤     ├────┼────┼────┼────┼────┤
-     │    │ 7  │ 8  │ 9  │ 0  │     │    │    │    │    │ ▓▓ │
+     │ f  │ +  │ -  │ *  │ /  │     │ 1  │ 2  │ 3  │    │    │
      ╰────┴────┴────┴────┴────┴─╮ ╭─┴────┴────┴────┴────┴────╯
-               │    │    │      │ │      │    │    │
+               │    │    │ ␣    │ │   0  │    │    │
                ╰────┴────┴──────╯ ╰──────┴────┴────╯ */
 
   [_HEX] = LAYOUT_36(
-    KC_LCTL, KC_1, KC_2, KC_3, _v_,    /**/ KC_A, KC_B, KC_C, _v_, _v_,
-    KC_LALT, KC_4, KC_5, KC_6, KC_DOT, /**/ KC_D, KC_E, KC_F, _v_, _v_,
-    ___,     KC_7, KC_8, KC_9, KC_0,   /**/ _v_,  _v_,  _v_,  _v_, _v_,
-    /**/     /**/  _v_,  _v_,  _v_,    /**/ _v_,  _v_,  _v_   /**/ /**/
+    KC_LCTL, KC_COMMA, KC_DOT,  KC_COLN, KC_HASH, /**/ KC_7, KC_8, KC_9, KC_BSPC, _v_,
+    KC_A,    KC_B,     KC_C,    KC_D,    KC_E,    /**/ KC_4, KC_5, KC_6, _v_,     _v_,
+    KC_F,    KC_PLUS,  KC_MINS, KC_ASTR, KC_SLSH, /**/ KC_1, KC_2, KC_3, _v_,     _v_,
+    /**/     /**/      _v_,     _v_,     KC_SPC,  /**/ KC_0, _v_,  _v_   /**/     /**/
   ),
 
   /* }}}
      ────────────────────────────────────────────────────────┄
      _FUN / Function {{{
      ╭────┬────┬────┬────┬────╮     ╭────┬────┬────┬────┬────╮
-     │f11 │f12 │    │ m  │    │     │ w↑ │ L  │ ▲  │ R  │ b+ │
+     │f11 │f12 │ R  │ m  │ L  │     │ w↑ │    │ ▲  │    │ b+ │
      ├────┼────┼────┼────┼────┤     ├────┼────┼────┼────┼────┤
      │ f1 │ f2 │ f3 │ f4 │ f5 │     │ w↓ │ ◀  │ ▼  │ ▶  │ b- │
      ├────┼────┼────┼────┼────┤     ├────┼────┼────┼────┼────┤
@@ -154,30 +151,30 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                ╰────┴────┴──────╯ ╰──────┴────┴────╯ */       
 
   [_FUN] = LAYOUT_36(
-    KC_F11, KC_F12, ___,   MC_SHOT, ___,    /**/ KC_WH_U, x__LMB,  KC_MS_U, x__RMB,  KC_BRIU,
-    KC_F1,  KC_F2,  KC_F3, KC_F4,   KC_F5,  /**/ KC_WH_D, KC_MS_L, KC_MS_D, KC_MS_R, KC_BRID,
-    KC_F6,  KC_F7,  KC_F8, KC_F9,   KC_F10, /**/ KC_VOLD, KC_VOLU, KC_MPLY, KC_MNXT, RESET,
-    /**/    /**/    _v_,   _v_,     _v_,    /**/ _v_,     _v_,     _v_      /**/     /**/
+    KC_F11, KC_F12, x__RMB, MC_SHOT, x__LMB, /**/ KC_WH_U, x__LMB,  KC_MS_U, x__RMB,  KC_BRIU,
+    KC_F1,  KC_F2,  KC_F3,  KC_F4,   KC_F5,  /**/ KC_WH_D, KC_MS_L, KC_MS_D, KC_MS_R, KC_BRID,
+    KC_F6,  KC_F7,  KC_F8,  KC_F9,   KC_F10, /**/ KC_VOLD, KC_VOLU, KC_MPLY, KC_MNXT, RESET,
+    /**/    /**/    _v_,    _v_,     _v_,    /**/ _v_,     _v_,     _v_      /**/     /**/
   ),
 
   /* }}}
      ────────────────────────────────────────────────────────┄
      _ADJ / Adjust {{{
      ╭────┬────┬────┬────┬────╮     ╭────┬────┬────┬────┬────╮
-     │    │MAC │CC- │    │    │     │    │    │    │    │    │
+     │Lock│   MAC   │    │    │     │ p↑ │ ⇤  │ ▲  │ ⇥  │    │
      ├────┼────┼────┼────┼────┤     ├────┼────┼────┼────┼────┤
-     │GAME│WIN │CC+ │    │    │     │    │    │    │    │    │
+     │GAME│   ???   │    │    │     │ p↓ │ ◀  │ ▼  │ ▶  │ctl │
      ├────┼────┼────┼────┼────┤     ├────┼────┼────┼────┼────┤
-     │QWE │    │    │    │    │     │    │    │    │    │rset│
+     │QWE │CMB │    │    │RGB │     │    │    │    │    │rset│
      ╰────┴────┴────┴────┴────┴─╮ ╭─┴────┴────┴────┴────┴────╯
-               │    │ ▓▓ │      │ │      │ ░░ │    │          
+               │    │ 1H │   ▓▓ │ │ 1H   │    │    │          
                ╰────┴────┴──────╯ ╰──────┴────┴────╯ */       
 
   [_ADJ] = LAYOUT_36(
-    ___,      LAG_SWP,  CG_NORM, ___, ___, /**/ ___, ___, ___, ___, ___,
-    GAM_ON,   LAG_NRM,  CG_SWAP, ___, ___, /**/ ___, ___, ___, ___, ___,
-    TG(_QWE), ___,      ___,     ___, ___, /**/ ___, ___, ___, ___, RESET,
-    /**/      /**/      _v_,     _v_, _v_, /**/ _v_, _v_, _v_  /**/ /**/
+    DF(_LOC), LAG_NRM, CG_NORM, ___,   ___,     /**/ KC_PGUP, KC_HOME, KC_UP,   KC_END,  ___,
+    GAM_ON,   LAG_SWP, CG_SWAP, ___,   ___,     /**/ KC_PGDN, KC_LEFT, KC_DOWN, KC_RGHT, KC_LCTL,
+    TG(_QWE), CMB_TOG, ___,     ___,   RGB_TOG, /**/ ___,     ___,     ___,     ___,     RESET,
+    /**/      /**/     _v_,     FV_ON, _v_,     /**/ FV_ON,   _v_,     _v_      /**/     /**/
   ),
 
   /* }}}
@@ -211,10 +208,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                ╰────┴────┴──────╯ ╰──────┴────┴────╯ */
 
   [_LOC] = LAYOUT_36(
-    ___, ___, ___, ___, ___, ___, ___, ___,  ___, ___,
-    ___, ___, ___, ___, ___, ___, ___, ___,  ___, ___,
-    ___, ___, ___, ___, ___, ___, ___, ___,  ___, ___,
-    /**/ /**/ ___, ___, ___, ___, ___, DF(0) /**/ /**/
+    ___, ___, ___, ___, ___,      ___, ___, ___, ___, ___,
+    ___, ___, ___, ___, ___,      ___, ___, ___, ___, ___,
+    ___, ___, ___, ___, ___,      ___, ___, ___, ___, ___,
+    /**/ /**/ ___, ___, MO(_ULO), ___, ___, ___  /**/ /**/
+  ),
+  [_ULO] = LAYOUT_36(
+    DF(0), ___, ___, ___, ___, ___, ___, ___, ___, ___,
+    ___,   ___, ___, ___, ___, ___, ___, ___, ___, ___,
+    ___,   ___, ___, ___, ___, ___, ___, ___, ___, ___,
+    /**/   /**/ ___, ___, ___, ___, ___, ___  /**/ /**/
   )
 };
 /* ┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄ */
@@ -247,63 +250,22 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   case MC_SHOT: // MacOS: take screenshot
     if (record->event.pressed) { SEND_STRING(SS_LSFT(SS_LCTL(SS_LGUI("4")))); }
     break;
-  case x__DOTQ: // dot-quote
-    if (record->event.pressed) {
-      if (get_mods() & MODS_SHIFT_MASK) {
-        add_key(KC_SLSH); send_keyboard_report();
-      } else {
-        add_key(KC_DOT); send_keyboard_report();
-      }
-    } else {
-      if (get_mods() & MODS_SHIFT_MASK) {
-        del_key(KC_SLSH); send_keyboard_report();
-      } else {
-        del_key(KC_DOT); send_keyboard_report();
-      }
-    }
-    return false;
-  case x__COMU: // comma-underscore
-    if (record->event.pressed) {
-      if (get_mods() & MODS_SHIFT_MASK) {
-        add_key(KC_MINS); send_keyboard_report();
-      } else {
-        add_key(KC_COMM); send_keyboard_report();
-      }
-    } else {
-      if (get_mods() & MODS_SHIFT_MASK) {
-        del_key(KC_MINS); send_keyboard_report();
-      } else {
-        del_key(KC_COMM); send_keyboard_report();
-      }
-    }
-    return false;
-  case x__BSPX: // backspace-exclamation
-    if (record->event.pressed) {
-      if (get_mods() & MODS_SHIFT_MASK) {
-        add_key(KC_1); send_keyboard_report();
-      } else {
-        add_key(KC_BSPC); send_keyboard_report();
-      }
-    } else {
-      if (get_mods() & MODS_SHIFT_MASK) {
-        del_key(KC_1); send_keyboard_report();
-      } else {
-        del_key(KC_BSPC); send_keyboard_report();
-      }
-    }
-    return false;
   case GAM_ON: // enable game
     if (record->event.pressed) {
       layer_on(_GAM);
-      rgblight_enable_noeeprom();
-      rgblight_sethsv_noeeprom(11, 176, 64);
+      #ifdef RGBLIGHT_ENABLE
+        rgblight_enable_noeeprom();
+        rgblight_sethsv_noeeprom(11, 176, 64);
+      #endif
     }
     return false;
     break;
   case GAM_OFF: // disable game
     if (record->event.pressed) {
       layer_off(_GAM);
-      rgblight_disable_noeeprom();
+      #ifdef RGBLIGHT_ENABLE
+        rgblight_disable_noeeprom();
+      #endif
     }
     return false;
     break;
@@ -314,6 +276,33 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   #else
     return true;
   #endif
+};
+
+// }}}
+// Combos {{{
+
+#ifdef COMBO_ENABLE
+const uint16_t PROGMEM combo_enter[] = {KC_COMM, KC_DOT, COMBO_END};
+const uint16_t PROGMEM combo_quot[] = {KC_H, KC_COMM, COMBO_END};
+const uint16_t PROGMEM combo_esc[] = {KC_H, KC_COMM, KC_DOT, COMBO_END};
+
+combo_t key_combos[COMBO_COUNT] = {
+  COMBO(combo_enter, KC_ENT),
+  COMBO(combo_quot, KC_QUOT),
+  COMBO(combo_esc, KC_ESC),
+};
+#endif
+
+// }}}
+// Key overrides {{{
+const key_override_t override_comma = ko_make_basic(MOD_MASK_SHIFT, KC_COMM, KC_UNDS);
+const key_override_t override_dot = ko_make_basic(MOD_MASK_SHIFT, KC_DOT, KC_QUES);
+
+// This globally defines all key overrides to be used
+const key_override_t **key_overrides = (const key_override_t *[]){
+    &override_comma,
+    &override_dot,
+    NULL // Null terminate the array of overrides!
 };
 
 // vim:fdm=marker:fmr={{{,}}}

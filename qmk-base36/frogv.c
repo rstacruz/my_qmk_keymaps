@@ -65,7 +65,7 @@ LAYOUT_36( \
   KC_Q, KC_W, KC_M,    KC_J,    KC_K,    \
   ___,  KC_P, KC_L,    KC_X,    FV_OSSF, \
   ___,  KC_B, KC_V,    KC_Y,    KC_Z,    \
-  /**/  /**/  FV_CTRL, FV_LGUI, FV_LSFT  )
+  /**/  /**/  FV_CTRL, FV_LALT, FV_LSFT  )
 
 #define FV_NAV_LAYOUT LAYOUT_FROGV_18( \
   ___, KC_PGUP, KC_UP,   KC_PGDN,    KC_BSPC, \
@@ -75,9 +75,9 @@ LAYOUT_36( \
 
 #define FV_NUM_LAYOUT LAYOUT_FROGV_18( \
   MO(FV_MOU), KC_1, KC_2,    KC_3, ___,     \
-  KC_LSFT,    KC_4, KC_5,    KC_6, KC_LGUI, \
+  KC_LSFT,    KC_4, KC_5,    KC_6, KC_LALT, \
   FV_OFF,     KC_7, KC_8,    KC_9, KC_0,    \
-  /**/        /**/  KC_LALT, _v_,  FV_CTRL  )
+  /**/        /**/  KC_LGUI, _v_,  FV_CTRL  )
 
 #define FV_SYM_LAYOUT LAYOUT_FROGV_18( \
   ___, KC_EXLM, KC_LBRC, KC_RBRC, KC_BSLS, \
@@ -114,8 +114,10 @@ bool fm_process_record_user(uint16_t keycode, keyrecord_t *record) {
     case FV_ON:
       if (record->event.pressed) {
         layer_on(FV_BASE);
-        rgblight_enable_noeeprom();
-        rgblight_sethsv_noeeprom(FV_HSV_COLOR);
+        #ifdef RGBLIGHT_ENABLE
+          rgblight_enable_noeeprom();
+          rgblight_sethsv_noeeprom(FV_HSV_COLOR);
+        #endif
         #ifdef AUDIO_ENABLE
           PLAY_SONG(frogv_on_song);
         #endif
@@ -125,7 +127,9 @@ bool fm_process_record_user(uint16_t keycode, keyrecord_t *record) {
     case FV_OFF:
       if (record->event.pressed) {
         layer_off(FV_BASE);
-        rgblight_disable_noeeprom();
+        #ifdef RGBLIGHT_ENABLE
+          rgblight_disable_noeeprom();
+        #endif
         #ifdef AUDIO_ENABLE
           PLAY_SONG(frogv_off_song);
         #endif
