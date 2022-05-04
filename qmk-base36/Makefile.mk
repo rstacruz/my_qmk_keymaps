@@ -1,33 +1,42 @@
 # Get qmk path using the qmk cli
-qmk_home := $(shell \
-	x=$$(qmk config user.qmk_home | cut -d= -f2); \
-	if [[ "$$x" == "None" ]]; then x=""; fi; \
-	if [[ "$$x" == "" ]]; then x="${HOME}/qmk_firmware"; fi; \
-	echo $$x \
-)
+# qmk_home := $(shell \
+# 	x=$$(qmk config user.qmk_home | cut -d= -f2); \
+# 	if [[ "$$x" == "None" ]]; then x=""; fi; \
+# 	if [[ "$$x" == "" ]]; then x="${HOME}/qmk_firmware"; fi; \
+# 	echo $$x \
+# )
+
+qmk_home := ~/.cache/qmk_firmware
 
 keymap_name   ?= rsta
 keyboard_path ?= crkbd
-keyboard_id   ?= crkbd
+keyboard_id   ?= crkbd/rev1
 base_path ?= ../qmk-base36
-
-# Set `use_docker=1` to use Docker for building
-ifeq (${use_docker},1)
-	make := ./util/docker_build.sh
-else
-	make := make
-endif
+make ?= make
+extension ?= hex
+firmware_file ?= $(subst /,_,${keyboard_id})_${keymap_name}.${extension}
 
 help:
-	@echo "Try 'make c' (compile) or 'make f' (flash)"
+	@echo
+	@echo Makefile targets
+	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' ${base_path}/Makefile.mk | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m  %-12s\033[0m %s\n", $$1, $$2}'
+	@echo
+
+${qmk_home}:
+	git clone --recursive --depth 1 https://github.com/qmk/qmk_firmware.git ${qmk_home}
+
+docker: ${qmk_home} push ## Compile using Docker [alias: d]
+	cd ${qmk_home} && ./util/docker_build.sh ${keyboard_id}:${keymap_name}
+	cp ${qmk_home}/.build/${firmware_file} .
+	@ls -la ${firmware_file}
 
 ref:
-	@grep -E '[│─┄]' keymap.c | less
+	@grep -E '[│─]' ${base_path}/keymap.c | less
 
-compile: push
+compile: push ## Compile using qmk-cli on Linux [alias: c]
 	cd ${qmk_home} && ${make} ${keyboard_id}:${keymap_name}
 
-flash: push
+flash: push ## Flash via qmk-cli on Linux [alias: f]
 	cd ${qmk_home} && ${make} ${keyboard_id}:${keymap_name}:flash
 
 split-right: push
@@ -42,11 +51,10 @@ ${qmk_home}/keyboards/${keyboard_path}/keymaps/${keymap_name}/rules.mk: ./rules.
 ${qmk_home}/keyboards/${keyboard_path}/keymaps/${keymap_name}/%: ${base_path}/%
 	cp $< $@
 
-mkdir:
+mkdir: ${qmk_home}
 	@mkdir -p ${qmk_home}/keyboards/${keyboard_path}/keymaps/${keymap_name}
 
-push: \
-	mkdir \
+push: ${qmk_home} mkdir \
 	${qmk_home}/keyboards/${keyboard_path}/keymaps/${keymap_name}/config.h \
 	${qmk_home}/keyboards/${keyboard_path}/keymaps/${keymap_name}/rules.mk \
 	${qmk_home}/keyboards/${keyboard_path}/keymaps/${keymap_name}/keymap.c \
@@ -57,5 +65,6 @@ push: \
 .PRECIOUS: %/keymap.c %/game_layers.h %/frogv.c
 
 c: compile
+d: docker
 f: flash
 r: ref

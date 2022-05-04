@@ -19,6 +19,7 @@
   NAV  (layer-toggle nav)
   SYM  (layer-toggle sym)
   FUN  (layer-toggle fun)
+  HEX  (layer-toggle hex)
   LOC  (layer-switch lock)
   GAM  (layer-switch game)
   UNLO (layer-switch colemak-dh-ext)
@@ -29,8 +30,8 @@
 
   cbsp (around lctl bks)
   stab (around lsft tab)
-  tab+ (around lctl tab)
-  tab- (around lsft (around lctl tab))
+  tab+ (around lctl pgdn)
+  tab- (around lctl pgup)
 
   ;; Windows and Linux
   cmd  lmet
@@ -59,9 +60,9 @@
 (deflayer colemak-dh-ext
   _     _     _     _     _     _       _     _     _     _     _     _     _     _
   _     _     _     _     _     _       _     _     _     _     _     _     _     _
-  @ntab q     w     f     p     b       @NAV  j     l     u     y     bks   XX    @SYM
-  @cesc a     r     s     t     g       @SYM  m     n     e     i     o           _   
-  _     z     x     c     d     v       @NAV  k     h     ,     .                 @cent
+  lsft  q     w     f     p     b       @NAV  j     l     u     y     bks   XX    @SYM
+  @cesc a     r     s     t     g       @NAV  m     n     e     i     o           _   
+  _     z     x     c     d     v       @SYM  k     h     ,     .                 @cent
   @opt  @cmd  @SYM                      _           @NAV  @opt  _     _     _     _
 )
 
@@ -70,8 +71,8 @@
   XX    XX    XX    XX    XX    XX      XX    XX    XX    XX    XX    XX    XX    XX
   XX    lctl  @cmd  @stab tab   XX      XX    pgup  home  up    end   @cbsp XX    _
   _     1     2     3     4     5       XX    pgdn  left  down  rght  ret         _
-  _     6     7     8     9     0       XX    esc   XX    XX    XX                del
-  _     _     _                         ent         XX    _     _     _     @GAM  @LOC
+  _     6     7     8     9     0       XX    esc   @tab- @tab+ .                 del
+  _     _     @FUN                      ent         XX    _     _     _     @GAM  @LOC
 )
 
 (deflayer game
@@ -89,7 +90,16 @@
   XX    '     "     ^     ?     `       XX    [     <     =     >     ]     XX   XX
   _     !     @     #     $     %       XX    {     \(    :     \)    }          XX
   _     \     ~     |     &     ;       XX    /     *     -     +                \_
-  _     _     XX                        _           @FUN  XX    XX    XX    XX   XX
+  _     _     XX                        _           @HEX  XX    XX    XX    XX   XX
+)
+
+(deflayer hex
+  XX    XX    XX    XX    XX    XX      XX    XX    XX    XX    XX    XX    caps  XX
+  XX    XX    XX    XX    XX    XX      XX    XX    XX    XX    XX    XX    XX    XX
+  XX    XX    ,     .     :     #       XX    ,     a     b     c     bks   XX    _
+  _     1     2     3     4     5       XX    .     d     e     f     ret         _
+  _     6     7     8     9     0       XX    /     *     -     +                 :
+  _     _     @FUN                      ent         XX    _     _     _     _     _
 )
 
 (deflayer fun

@@ -7,9 +7,9 @@ base │ s↔  c   n   i   g  │  flip │ q   w   m   j   k  │
          │ ⌃  │₁₂₃ │  ␣   │           │ ⌥  │ ⌘  │  ⇧   │  ⌃  ctrl (1-tap)
          └────┴────┴──────┘           └────┴────┴──────┘     cmd/alt (2)
   ↔  ┌────────────────────┐   ₁₂₃ ┌────────────────────┐
-nav  │ ▓▓  p↑  ▲   p↓  ⌫  │   num │ MK  1   2   3      │
-     │     ◀   ▼   ▶   ↵  │       │ ⇧   4   5   6   ⌘  │
-     │     hm  en  ↹   ⎋  │       │ext  7   8   9   0  │
+nav  │ ▓▓  p↑  ▲   p↓  ⌫  │   num │ MK      ⌘   ⇧  exit│
+     │     ◀   ▼   ▶   ↵  │       │ 1   2   3   4   5  │
+     │     hm  en  ↹   ⎋  │       │ 6   7   8   9   0  │
      └────────────────────┤       └────────────────────┤
          │ ⌃  │ MK │  ⇧   │           │ ⌥  │ ▓▓ │  ⌃   │
          └────┴────┴──────┘           └────┴────┴──────┘
@@ -65,7 +65,7 @@ LAYOUT_36( \
   KC_Q, KC_W, KC_M,    KC_J,    KC_K,    \
   ___,  KC_P, KC_L,    KC_X,    FV_OSSF, \
   ___,  KC_B, KC_V,    KC_Y,    KC_Z,    \
-  /**/  /**/  FV_CTRL, FV_LALT, FV_LSFT  )
+  /**/  /**/  FV_CTRL, FV_LGUI, FV_LSFT  )
 
 #define FV_NAV_LAYOUT LAYOUT_FROGV_18( \
   ___, KC_PGUP, KC_UP,   KC_PGDN,    KC_BSPC, \
@@ -74,10 +74,10 @@ LAYOUT_36( \
   /**/ /**/     _v_,     MO(FV_MOU), KC_LSFT  )
 
 #define FV_NUM_LAYOUT LAYOUT_FROGV_18( \
-  MO(FV_MOU), KC_1, KC_2,    KC_3, ___,     \
-  KC_LSFT,    KC_4, KC_5,    KC_6, KC_LALT, \
-  FV_OFF,     KC_7, KC_8,    KC_9, KC_0,    \
-  /**/        /**/  KC_LGUI, _v_,  FV_CTRL  )
+  MO(FV_MOU), ___,  KC_LGUI, KC_LSFT, FV_OFF, \
+  KC_1,       KC_2, KC_3,    KC_4,    KC_5,   \
+  KC_6,       KC_7, KC_8,    KC_9,    KC_0,   \
+  /**/        /**/  KC_LALT, _v_,     FV_CTRL )
 
 #define FV_SYM_LAYOUT LAYOUT_FROGV_18( \
   ___, KC_EXLM, KC_LBRC, KC_RBRC, KC_BSLS, \
