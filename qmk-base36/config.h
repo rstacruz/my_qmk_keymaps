@@ -72,4 +72,4 @@
 
 /* Combo settings */
 #define COMBO_TERM 25
-#define COMBO_COUNT 7
+#define COMBO_COUNT 3

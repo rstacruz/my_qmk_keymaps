@@ -283,21 +283,15 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 // Combos {{{
 
 #ifdef COMBO_ENABLE
-const uint16_t PROGMEM combo_h_comm[] = {KC_H, KC_COMM, COMBO_END}; //     [ .XX.. ] => enter
+const uint16_t PROGMEM combo_h_comm[] = {KC_H, KC_COMM, COMBO_END}; //     [ .XX.. ] => '
 const uint16_t PROGMEM combo_comm_dot[] = {KC_COMM, KC_DOT, COMBO_END}; // [ ..XX. ] => alt-tab
 const uint16_t PROGMEM combo_h_dot[] = {KC_H, KC_DOT, COMBO_END}; //       [ .X.X. ] => esc
-const uint16_t PROGMEM combo_k_h[] = {KC_K, KC_H, COMBO_END}; //           [ XX... ] => '
-const uint16_t PROGMEM combo_h_comm_dot[] = {KC_H, KC_COMM, KC_DOT, COMBO_END}; // [ .XXX. ] => ctl-bsp
-const uint16_t PROGMEM combo_k_h_comm[] = {KC_K, KC_H, KC_COMM, COMBO_END}; //     [ XXX.. ] => alt-bsp
 
 
 combo_t key_combos[COMBO_COUNT] = {
-  COMBO(combo_k_h, KC_QUOT),
-  COMBO(combo_h_comm, KC_ENT),
-  COMBO(combo_h_dot, KC_ESC),
+  COMBO(combo_h_comm, KC_QEOT),
   COMBO(combo_comm_dot, A(KC_TAB)),
-  COMBO(combo_h_comm_dot, C(KC_BSPC)),
-  COMBO(combo_k_h_comm, A(KC_BSPC)),
+  COMBO(combo_h_dot, KC_ESC)
 };
 #endif
 
