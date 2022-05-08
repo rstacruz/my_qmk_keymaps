@@ -33,7 +33,7 @@ docker: ${qmk_home} push ## Compile using Docker [alias: d]
 ref:
 	@grep -E '[│─]' ${base_path}/keymap.c | less
 
-compile: push ## Compile using qmk-cli on Linux [alias: c]
+build: push ## Compile using qmk-cli on Linux [alias: b]
 	cd ${qmk_home} && ${make} ${keyboard_id}:${keymap_name}
 
 flash: push ## Flash via qmk-cli on Linux [alias: f]
@@ -64,7 +64,7 @@ push: ${qmk_home} mkdir \
 # Don't delete these intermediate files
 .PRECIOUS: %/keymap.c %/game_layers.h %/frogv.c
 
-c: compile
+b: build
 d: docker
 f: flash
 r: ref

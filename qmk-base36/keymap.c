@@ -289,9 +289,9 @@ const uint16_t PROGMEM combo_h_dot[] = {KC_H, KC_DOT, COMBO_END}; //       [ .X.
 
 
 combo_t key_combos[COMBO_COUNT] = {
-  COMBO(combo_h_comm, KC_QEOT),
+  COMBO(combo_h_comm, KC_QUOT),
   COMBO(combo_comm_dot, A(KC_TAB)),
-  COMBO(combo_h_dot, KC_ESC)
+  COMBO(combo_h_dot, KC_ESC),
 };
 #endif
 
