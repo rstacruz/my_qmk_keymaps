@@ -46,7 +46,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      ├────┼────┼────┼────┼────┤     ├────┼────┼────┼────┼────┤
      │ a  │ r  │ s  │ t  │ g  │     │ m  │ n  │ e  │ i  │ o  │
      ├────┼────┼────┼────┼────┤     ├────┼────┼────┼────┼────┤
-     │ z *│ x  │ c  │ d  │ v  │     │ k  │ h  │ ,_ │ ._ │ent^│
+     │ z *│ x  │ c  │ d  │ v  │     │ k  │ h  │ ,- │ ._ │ent^│
      ╰────┴────┴────┴────┴────┴─╮ ╭─┴────┴────┴────┴────┴────╯
                │cmd │SYM │ sft  │ │ spc  │NAV │opt │
                ╰────┴────┴──────╯ ╰──────┴────┴────╯ */
@@ -297,8 +297,8 @@ combo_t key_combos[COMBO_COUNT] = {
 
 // }}}
 // Key overrides {{{
-const key_override_t override_comma = ko_make_basic(MOD_MASK_SHIFT, KC_COMM, KC_UNDS);
-const key_override_t override_dot = ko_make_basic(MOD_MASK_SHIFT, KC_DOT, KC_QUES);
+const key_override_t override_comma = ko_make_basic(MOD_MASK_SHIFT, KC_COMM, KC_MINS);
+const key_override_t override_dot = ko_make_basic(MOD_MASK_SHIFT, KC_DOT, KC_UNDS);
 
 const key_override_t **key_overrides = (const key_override_t *[]){
   &override_comma,
