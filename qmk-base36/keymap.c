@@ -6,13 +6,11 @@
 #define ___     KC_NO
 #define x__ENT  LCTL_T(KC_ENT)     /* ctrl(hold) or enter(tap) */
 #define x__Q    LCTL_T(KC_Q)       /* ctrl(hold) or q(tap) */
-#define x__Z    LGUI_T(KC_Z)       /* gui(hold) or q(tap) */
 #define x__CBSP C(KC_BSPC)         /* Delete word */
 #define x__LMB  KC_MS_BTN1         /* Left mouse button */
 #define x__RMB  KC_MS_BTN2         /* Right mouse button */
 #define x__MMB  KC_MS_BTN3         /* Mid mouse button */
-#define x__TABP LCTL(KC_PGUP)      /* Next tab */
-#define x__TABN LCTL(KC_PGDN)      /* Previous tab */
+#define x__DLR  LT(_NAV,KC_DLR)    /* Nav */
 
 /* Macros and stuff */
 enum custom_keycodes {
@@ -46,7 +44,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      ├────┼────┼────┼────┼────┤     ├────┼────┼────┼────┼────┤
      │ a  │ r  │ s  │ t  │ g  │     │ m  │ n  │ e  │ i  │ o  │
      ├────┼────┼────┼────┼────┤     ├────┼────┼────┼────┼────┤
-     │ z *│ x  │ c  │ d  │ v  │     │ k  │ h  │ ,- │ ._ │ent^│
+     │ z  │ x  │ c  │ d  │ v  │     │ k  │ h  │ ,- │ ._ │ent^│
      ╰────┴────┴────┴────┴────┴─╮ ╭─┴────┴────┴────┴────┴────╯
                │cmd │SYM │ sft  │ │ spc  │NAV │opt │
                ╰────┴────┴──────╯ ╰──────┴────┴────╯ */
@@ -54,7 +52,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [0] = LAYOUT_36(
     x__Q, KC_W, KC_F,    KC_P,     KC_B,    /**/ KC_J,   KC_L,     KC_U,    KC_Y,    KC_BSPC,
     KC_A, KC_R, KC_S,    KC_T,     KC_G,    /**/ KC_M,   KC_N,     KC_E,    KC_I,    KC_O,
-    x__Z, KC_X, KC_C,    KC_D,     KC_V,    /**/ KC_K,   KC_H,     KC_COMM, KC_DOT,  x__ENT,
+    KC_Z, KC_X, KC_C,    KC_D,     KC_V,    /**/ KC_K,   KC_H,     KC_COMM, KC_DOT,  x__ENT,
     /**/  /**/  KC_LGUI, MO(_SYM), KC_LSFT, /**/ KC_SPC, MO(_NAV), KC_LALT  /**/     /**/
   ),
 
@@ -93,7 +91,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [_SYM] = LAYOUT_36(
     KC_QUOT, KC_DQUO, KC_CIRC, KC_QUES, KC_GRV,   /**/ KC_LBRC, KC_LT,    KC_EQL,  KC_GT,   KC_RBRC,
-    KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC,  /**/ KC_LCBR, KC_LPRN,  KC_COLN, KC_RPRN, KC_RCBR,
+    KC_EXLM, KC_AT,   KC_HASH, x__DLR,  KC_PERC,  /**/ KC_LCBR, KC_LPRN,  KC_COLN, KC_RPRN, KC_RCBR,
     KC_BSLS, KC_TILD, KC_PIPE, KC_AMPR, KC_SCLN,  /**/ KC_SLSH, KC_ASTR,  KC_MINS, KC_PLUS, KC_UNDS,
     /**/     /**/     _v_,     _v_,     MO(_ADJ), /**/ _v_,     MO(_HEX), _v_      /**/     /**/
   ),
@@ -141,7 +139,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      ────────────────────────────────────────────────────────┄
      _FUN / Function ── {{{
      ╭────┬────┬────┬────┬────╮     ╭────┬────┬────┬────┬────╮
-     │f11 │f12 │ R  │prnt│ L  │     │ w↑ │    │ ▲  │    │ b+ │
+     │f11 │f12 │    │prnt│    │     │ w↑ │    │ ▲  │    │ b+ │
      ├────┼────┼────┼────┼────┤     ├────┼────┼────┼────┼────┤
      │ f1 │ f2 │ f3 │ f4 │ f5 │     │ w↓ │ ◀  │ ▼  │ ▶  │ b- │
      ├────┼────┼────┼────┼────┤     ├────┼────┼────┼────┼────┤
