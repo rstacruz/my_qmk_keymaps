@@ -109,10 +109,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                │cmd │FUN │ sft  │ │      │ ▓▓ │    │
                ╰────┴────┴──────╯ ╰──────┴────┴────╯ */
   [_NAV] = LAYOUT_36(
-    KC_RCTL, KC_RGUI, S(KC_TAB), KC_TAB,   KC_RALT, /**/ KC_COMM,  KC_HOME, KC_UP,   KC_END,  MO(_HEX),
-    KC_1,    KC_2,    KC_3,      KC_4,     KC_5,    /**/ KC_DOT,   KC_LEFT, KC_DOWN, KC_RGHT, KC_ENT,
-    KC_6,    KC_7,    KC_8,      KC_9,     KC_0,    /**/ KC_ESC,   KC_PGUP, KC_PGDN, KC_ESC,  LCTL_T(KC_DEL),
-    /**/     /**/     _v_,       MO(_FUN), _v_,     /**/ MO(_HEX), KC_ENT,  _v_      /**/     /**/
+    KC_RCTL, KC_RGUI, S(KC_TAB), KC_TAB,   KC_RALT, /**/ KC_COMM, KC_HOME, KC_UP,   KC_END,  MO(_HEX),
+    KC_1,    KC_2,    KC_3,      KC_4,     KC_5,    /**/ KC_DOT,  KC_LEFT, KC_DOWN, KC_RGHT, KC_ENT,
+    KC_6,    KC_7,    KC_8,      KC_9,     KC_0,    /**/ KC_ESC,  KC_PGUP, KC_PGDN, KC_ESC,  LCTL_T(KC_DEL),
+    /**/     /**/     _v_,       MO(_FUN), _v_,     /**/ _v_,     KC_ENT,  _v_      /**/     /**/
   ),
 
   /* }}}
