@@ -10,7 +10,6 @@
 #define x__LMB  KC_MS_BTN1         /* Left mouse button */
 #define x__RMB  KC_MS_BTN2         /* Right mouse button */
 #define x__MMB  KC_MS_BTN3         /* Mid mouse button */
-#define x__DLR  LT(_NAV,KC_DLR)    /* Nav */
 
 /* Macros and stuff */
 enum custom_keycodes {
@@ -91,7 +90,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [_SYM] = LAYOUT_36(
     KC_QUOT, KC_DQUO, KC_CIRC, KC_QUES, KC_GRV,   /**/ KC_LBRC, KC_LT,    KC_EQL,  KC_GT,   KC_RBRC,
-    KC_EXLM, KC_AT,   KC_HASH, x__DLR,  KC_PERC,  /**/ KC_LCBR, KC_LPRN,  KC_COLN, KC_RPRN, KC_RCBR,
+    KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC,  /**/ KC_LCBR, KC_LPRN,  KC_COLN, KC_RPRN, KC_RCBR,
     KC_BSLS, KC_TILD, KC_PIPE, KC_AMPR, KC_SCLN,  /**/ KC_SLSH, KC_ASTR,  KC_MINS, KC_PLUS, KC_UNDS,
     /**/     /**/     _v_,     _v_,     MO(_ADJ), /**/ _v_,     MO(_HEX), _v_      /**/     /**/
   ),
