@@ -150,7 +150,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_FUN] = LAYOUT_36(
     KC_F11, KC_F12, KC_F13, KC_PSCR, KC_F15, /**/ KC_VOLU, KC_F13,  KC_MS_U, KC_F14,  KC_BRIU,
     KC_F1,  KC_F2,  KC_F3,  KC_F4,   KC_F5,  /**/ KC_VOLD, KC_MS_L, KC_MS_D, KC_MS_R, KC_BRID,
-    KC_F6,  KC_F7,  KC_F8,  KC_F9,   KC_F10, /**/ KC_PLAY, KC_WH_U, KC_WH_D, KC_MNXT, RESET,
+    KC_F6,  KC_F7,  KC_F8,  KC_F9,   KC_F10, /**/ KC_MPLY, KC_WH_U, KC_WH_D, KC_MNXT, RESET,
     /**/    /**/    _v_,    _v_,     _v_,    /**/ x__LMB,  x__RMB,  x__MMB   /**/     /**/
   ),
 
