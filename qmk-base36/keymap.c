@@ -118,7 +118,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      ────────────────────────────────────────────────────────┄
      _HEX / Hex input ── {{{
      ╭────┬────┬────┬────┬────╮     ╭────┬────┬────┬────┬────╮
-     │    │    │    │    │ #  │     │ +  │ A  │ B  │ C  │bks │
+     │    │ ,  │ .  │ :  │ #  │     │ ,  │ A  │ B  │ C  │bks │
      ├────┼────┼────┼────┼────┤     ├────┼────┼────┼────┼────┤
      │ 1  │ 2  │ 3  │ 4  │ 5  │     │ .  │ D  │ E  │ F  │ent │
      ├────┼────┼────┼────┼────┤     ├────┼────┼────┼────┼────┤
@@ -282,13 +282,14 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 #ifdef COMBO_ENABLE
 const uint16_t PROGMEM combo_h_comm[] = {KC_H, KC_COMM, COMBO_END}; //     [ .XX.. ] => '
 const uint16_t PROGMEM combo_comm_dot[] = {KC_COMM, KC_DOT, COMBO_END}; // [ ..XX. ] => alt-tab
-const uint16_t PROGMEM combo_h_dot[] = {KC_H, KC_DOT, COMBO_END}; //       [ .X.X. ] => esc
-
+const uint16_t PROGMEM combo_h_dot[] = {KC_H, KC_DOT, COMBO_END}; //       [ .X.X. ] => gui-tab
+const uint16_t PROGMEM combo_k_h[] = {KC_K, KC_H, COMBO_END}; //           [ XX... ] => esc
 
 combo_t key_combos[COMBO_COUNT] = {
   COMBO(combo_h_comm, KC_QUOT),
   COMBO(combo_comm_dot, A(KC_TAB)),
-  COMBO(combo_h_dot, KC_ESC),
+  COMBO(combo_h_dot, G(KC_TAB)),
+  COMBO(combo_k_h, KC_ESC),
 };
 #endif
 
