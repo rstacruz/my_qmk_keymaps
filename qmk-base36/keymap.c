@@ -83,7 +83,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      ├────┼────┼────┼────┼────┤     ├────┼────┼────┼────┼────┤
      │ !  │ @  │ #  │ $  │ %  │     │ {  │ (  │ :  │ )  │ }  │
      ├────┼────┼────┼────┼────┤     ├────┼────┼────┼────┼────┤
-     │ \  │ ~  │ |  │ &  │ ;  │     │ /  │ *  │ -  │ +  │ _  │
+     │ \  │ ~  │ |  │ ;  │ &  │     │ /  │ *  │ -  │ +  │ _  │
      ╰────┴────┴────┴────┴────┴─╮ ╭─┴────┴────┴────┴────┴────╯
                │    │ ▓▓ │ ADJ  │ │      │HEX │    │
                ╰────┴────┴──────╯ ╰──────┴────┴────╯ */
@@ -91,7 +91,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_SYM] = LAYOUT_36(
     KC_QUOT, KC_DQUO, KC_CIRC, KC_QUES, KC_GRV,   /**/ KC_LBRC, KC_LT,    KC_EQL,  KC_GT,   KC_RBRC,
     KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC,  /**/ KC_LCBR, KC_LPRN,  KC_COLN, KC_RPRN, KC_RCBR,
-    KC_BSLS, KC_TILD, KC_PIPE, KC_AMPR, KC_SCLN,  /**/ KC_SLSH, KC_ASTR,  KC_MINS, KC_PLUS, KC_UNDS,
+    KC_BSLS, KC_TILD, KC_PIPE, KC_SCLN, KC_AMPR,  /**/ KC_SLSH, KC_ASTR,  KC_MINS, KC_PLUS, KC_UNDS,
     /**/     /**/     _v_,     _v_,     MO(_ADJ), /**/ _v_,     MO(_HEX), _v_      /**/     /**/
   ),
 
