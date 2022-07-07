@@ -83,7 +83,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      ├────┼────┼────┼────┼────┤     ├────┼────┼────┼────┼────┤
      │ !  │ @  │ #  │ $  │ %  │     │ {  │ (  │ :  │ )  │ }  │
      ├────┼────┼────┼────┼────┤     ├────┼────┼────┼────┼────┤
-     │ \  │ ~  │ |  │ ;  │ &  │     │ /  │ *  │ -  │ +  │ _  │
+     │ \  │ ~  │ |  │ ;  │ &  │     │ /  │ *  │ -  │ +  │ _  │RSTARST
      ╰────┴────┴────┴────┴────┴─╮ ╭─┴────┴────┴────┴────┴────╯
                │    │ ▓▓ │ ADJ  │ │      │FUN │    │
                ╰────┴────┴──────╯ ╰──────┴────┴────╯ */
@@ -158,7 +158,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      ────────────────────────────────────────────────────────┄
      _ADJ / Adjust ── {{{
      ╭────┬────┬────┬────┬────╮     ╭────┬────┬────┬────┬────╮
-     │Lock│   norm  │    │    │     │ p↑ │ ⇤  │ ▲  │ ⇥  │    │
+     │Lock│   norm  │    │caps│     │ p↑ │ ⇤  │ ▲  │ ⇥  │    │
      ├────┼────┼────┼────┼────┤     ├────┼────┼────┼────┼────┤
      │GAME│   swap  │    │    │     │ p↓ │ ◀  │ ▼  │ ▶  │ctl │
      ├────┼────┼────┼────┼────┤     ├────┼────┼────┼────┼────┤
@@ -168,7 +168,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                ╰────┴────┴──────╯ ╰──────┴────┴────╯ */
 
   [_ADJ] = LAYOUT_36(
-    DF(_LOC), LAG_NRM, CG_NORM, ___,   ___,     /**/ KC_PGUP, KC_HOME, KC_UP,   KC_END,  ___,
+    DF(_LOC), LAG_NRM, CG_NORM, ___,   KC_CAPS, /**/ KC_PGUP, KC_HOME, KC_UP,   KC_END,  ___,
     GAM_ON,   LAG_SWP, CG_SWAP, ___,   ___,     /**/ KC_PGDN, KC_LEFT, KC_DOWN, KC_RGHT, KC_LCTL,
     TG(_QWE), CMB_TOG, ___,     ___,   RGB_TOG, /**/ ___,     ___,     ___,     ___,     RESET,
     /**/      /**/     _v_,     FV_ON, _v_,     /**/ FV_ON,   _v_,     _v_      /**/     /**/
