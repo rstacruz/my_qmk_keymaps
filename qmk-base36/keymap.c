@@ -118,7 +118,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      ────────────────────────────────────────────────────────┄
      _HEX / Hex input ── {{{
      ╭────┬────┬────┬────┬────╮     ╭────┬────┬────┬────┬────╮
-     │    │ ,  │ .  │ :  │ #  │     │ ,  │ A  │ B  │ C  │bks │
+     │bks │ ,  │ .  │ :  │ #  │     │ ,  │ A  │ B  │ C  │bks │
      ├────┼────┼────┼────┼────┤     ├────┼────┼────┼────┼────┤
      │ 1  │ 2  │ 3  │ 4  │ 5  │     │ .  │ D  │ E  │ F  │ent │
      ├────┼────┼────┼────┼────┤     ├────┼────┼────┼────┼────┤
@@ -128,10 +128,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                ╰────┴────┴──────╯ ╰──────┴────┴────╯ */
 
   [_HEX] = LAYOUT_36(
-  ___,  KC_COMM, KC_DOT,  KC_COLN, KC_HASH, /**/ KC_COMM, KC_A,    KC_B,    KC_C,    KC_BSPC,
-  KC_1, KC_2,    KC_3,    KC_4,    KC_5,    /**/ KC_DOT,  KC_D,    KC_E,    KC_F,    KC_ENT,
-  KC_6, KC_7,    KC_8,    KC_9,    KC_0,    /**/ KC_SLSH, KC_ASTR, KC_MINS, KC_PLUS, KC_COLN,
-  /**/  /**/     KC_COMM, KC_DOT,  KC_SPC,  /**/ KC_SPC,  ___,     ___      /**/     /**/
+  KC_BSPC, KC_COMM, KC_DOT,  KC_COLN, KC_HASH, /**/ KC_COMM, KC_A,    KC_B,    KC_C,    KC_BSPC,
+  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    /**/ KC_DOT,  KC_D,    KC_E,    KC_F,    KC_ENT,
+  KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    /**/ KC_SLSH, KC_ASTR, KC_MINS, KC_PLUS, KC_COLN,
+  /**/     /**/     KC_COMM, KC_DOT,  KC_SPC,  /**/ KC_SPC,  ___,     ___      /**/     /**/
   ),
 
   /* }}}
