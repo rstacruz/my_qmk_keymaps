@@ -99,7 +99,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      ────────────────────────────────────────────────────────┄
      _NAV / Navigate ── {{{
      ╭────┬────┬────┬────┬────╮     ╭────╭────┬────┬────╮┄───╮
-     │ctl │cmd │ ⇧↹ │ ↹  │opt │     │ ,  │home│ ▲  │end │HEX │
+     │ctl │cmd │ ⇧↹ │ ↹  │opt │     │ ,  │home│ ▲  │end │^bs │
      ├────┼────┼────┼────┼────┤     ├────├────┼────┼────┤┄───┤
      │ 1  │ 2  │ 3  │ 4  │ 5  │     │ .  │ ◀  │ ▼  │ ▶  │ent │
      ├────┼────┼────┼────┼────┤     ├────╰────┴────┴────╯┄───┤
@@ -108,7 +108,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                │cmd │HEX │ sft  │ │      │ ▓▓ │    │
                ╰────┴────┴──────╯ ╰──────┴────┴────╯ */
   [_NAV] = LAYOUT_36(
-    KC_RCTL, KC_RGUI, S(KC_TAB), KC_TAB,   KC_RALT, /**/ KC_COMM, KC_HOME, KC_UP,   KC_END,  MO(_HEX),
+    KC_RCTL, KC_RGUI, S(KC_TAB), KC_TAB,   KC_RALT, /**/ KC_COMM, KC_HOME, KC_UP,   KC_END,  C(KC_BSPC),
     KC_1,    KC_2,    KC_3,      KC_4,     KC_5,    /**/ KC_DOT,  KC_LEFT, KC_DOWN, KC_RGHT, KC_ENT,
     KC_6,    KC_7,    KC_8,      KC_9,     KC_0,    /**/ KC_ESC,  KC_PGUP, KC_PGDN, KC_ESC,  LCTL_T(KC_DEL),
     /**/     /**/     _v_,       MO(_HEX), _v_,     /**/ _v_,     KC_ENT,  _v_      /**/     /**/
@@ -284,19 +284,23 @@ const uint16_t PROGMEM combo_h_comm[] = {KC_H, KC_COMM, COMBO_END}; //     [ .XX
 const uint16_t PROGMEM combo_comm_dot[] = {KC_COMM, KC_DOT, COMBO_END}; // [ ..XX. ] => alt-tab
 const uint16_t PROGMEM combo_h_dot[] = {KC_H, KC_DOT, COMBO_END}; //       [ .X.X. ] => gui-tab
 const uint16_t PROGMEM combo_k_h[] = {KC_K, KC_H, COMBO_END}; //           [ XX... ] => esc
+const uint16_t PROGMEM combo_w_f[] = {KC_W, KC_F, COMBO_END};
+const uint16_t PROGMEM combo_f_p[] = {KC_F, KC_P, COMBO_END};
 
 combo_t key_combos[COMBO_COUNT] = {
   COMBO(combo_h_comm, KC_QUOT),
   COMBO(combo_comm_dot, A(KC_TAB)),
   COMBO(combo_h_dot, G(KC_TAB)),
   COMBO(combo_k_h, KC_ESC),
+  COMBO(combo_w_f, KC_MS_BTN1),
+  COMBO(combo_f_p, KC_MS_BTN2)
 };
 #endif
 
 // }}}
 // Key overrides {{{
-const key_override_t override_comma = ko_make_basic(MOD_MASK_SHIFT, KC_COMM, KC_MINS);
-const key_override_t override_dot = ko_make_basic(MOD_MASK_SHIFT, KC_DOT, KC_UNDS);
+const key_override_t override_comma = ko_make_basic(MOD_MASK_SHIFT, KC_COMM, KC_UNDS);
+const key_override_t override_dot = ko_make_basic(MOD_MASK_SHIFT, KC_DOT, KC_MINS);
 
 const key_override_t **key_overrides = (const key_override_t *[]){
   &override_comma,
