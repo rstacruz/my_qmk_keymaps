@@ -138,40 +138,40 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      ────────────────────────────────────────────────────────┄
      _FUN / Function ── {{{
      ╭────┬────┬────┬────┬────╮     ╭───┄┌────┬────┬────┐┄───╮
-     │f11 │f12 │    │prnt│    │     │ v+ │ L  │ ▲  │ R  │ b+ │
+     │f11 │f12 │prnt│play│next│     │ v+ │ L  │ ▲  │ R  │ b+ │
      ├────┼────┼────┼────┼────┤     ├───┄├────┼────┼────┤┄───┤
      │ f1 │ f2 │ f3 │ f4 │ f5 │     │ v- │ ◀  │ ▼  │ ▶  │ b- │
      ├────┼────┼────┼────┼────┤     ├───┄├────┼────┼────┘┄───┤
-     │ f6 │ f7 │ f8 │ f9 │f10 │     │play│ w↑ │ w↓ │next│rset│
+     │ f6 │ f7 │ f8 │ f9 │f10 │     │    │ w↑ │ w↓ │    │    │
      ╰────┴────┴────┴────┴────┴─╮ ╭─┴───┄└────┴────┘┄───┴────╯
-               │    │ L  │      │ │      │ ▓▓ │ M  │
+               │    │ L  │      │ │      │ ▓▓ │ L  │
                ╰────┴────┴──────╯ ╰──────┴────┴────╯ */
 
   [_FUN] = LAYOUT_36(
-    KC_F11, KC_F12, KC_F13, KC_PSCR, KC_F15, /**/ KC_VOLU, x__LMB,  KC_MS_U, x__RMB,  KC_BRIU,
-    KC_F1,  KC_F2,  KC_F3,  KC_F4,   KC_F5,  /**/ KC_VOLD, KC_MS_L, KC_MS_D, KC_MS_R, KC_BRID,
-    KC_F6,  KC_F7,  KC_F8,  KC_F9,   KC_F10, /**/ KC_MPLY, KC_WH_U, KC_WH_D, KC_MNXT, RESET,
-    /**/    /**/    _v_,    x__LMB,  _v_,    /**/ _v_,     _v_,     x__MMB   /**/     /**/
+    KC_F11, KC_F12, KC_PSCR, KC_MPLY, KC_MNXT, /**/ KC_VOLU, x__LMB,  KC_MS_U, x__RMB,  KC_BRIU,
+    KC_F1,  KC_F2,  KC_F3,   KC_F4,   KC_F5,   /**/ KC_VOLD, KC_MS_L, KC_MS_D, KC_MS_R, KC_BRID,
+    KC_F6,  KC_F7,  KC_F8,   KC_F9,   KC_F10,  /**/ KC_MPLY, KC_WH_U, KC_WH_D, KC_MNXT, _v_,
+    /**/    /**/    _v_,     x__LMB,  _v_,     /**/ _v_,     _v_,     x__LMB   /**/     /**/
   ),
 
   /* }}}
      ────────────────────────────────────────────────────────┄
      _ADJ / Adjust ── {{{
      ╭────┬────┬────┬────┬────╮     ╭────┬────┬────┬────┬────╮
-     │Lock│   norm  │    │caps│     │ p↑ │ ⇤  │ ▲  │ ⇥  │    │
+     │Lock│    │    │    │caps│     │ p↑ │ ⇤  │ ▲  │ ⇥  │    │
      ├────┼────┼────┼────┼────┤     ├────┼────┼────┼────┼────┤
-     │GAME│   swap  │    │    │     │ p↓ │ ◀  │ ▼  │ ▶  │ctl │
+     │GAME│ M  │ R  │ L  │    │     │ p↓ │ ◀  │ ▼  │ ▶  │ctl │
      ├────┼────┼────┼────┼────┤     ├────┼────┼────┼────┼────┤
-     │QWE │CMB │    │    │RGB │     │    │    │    │    │rset│
+     │QWE │    │    │    │RGB │     │    │    │    │    │rset│
      ╰────┴────┴────┴────┴────┴─╮ ╭─┴────┴────┴────┴────┴────╯
                │    │ 1H │   ▓▓ │ │ 1H   │    │    │
                ╰────┴────┴──────╯ ╰──────┴────┴────╯ */
 
   [_ADJ] = LAYOUT_36(
-    DF(_LOC), LAG_NRM, CG_NORM, ___,   KC_CAPS, /**/ KC_PGUP, KC_HOME, KC_UP,   KC_END,  ___,
-    GAM_ON,   LAG_SWP, CG_SWAP, ___,   ___,     /**/ KC_PGDN, KC_LEFT, KC_DOWN, KC_RGHT, KC_LCTL,
-    TG(_QWE), CMB_TOG, ___,     ___,   RGB_TOG, /**/ ___,     ___,     ___,     ___,     RESET,
-    /**/      /**/     _v_,     FV_ON, _v_,     /**/ FV_ON,   _v_,     _v_      /**/     /**/
+    DF(_LOC), ___,    ___,    ___,    KC_CAPS, /**/ KC_PGUP, KC_HOME, KC_UP,   KC_END,  ___,
+    GAM_ON,   x__MMB, x__RMB, x__LMB, ___,     /**/ KC_PGDN, KC_LEFT, KC_DOWN, KC_RGHT, KC_LCTL,
+    TG(_QWE), ___,    ___,    ___,    RGB_TOG, /**/ ___,     ___,     ___,     ___,     RESET,
+    /**/      /**/    _v_,    FV_ON,  _v_,     /**/ FV_ON,   _v_,     _v_      /**/     /**/
   ),
 
   /* }}}
