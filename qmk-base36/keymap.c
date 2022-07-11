@@ -158,20 +158,20 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      ────────────────────────────────────────────────────────┄
      _ADJ / Adjust ── {{{
      ╭────┬────┬────┬────┬────╮     ╭────┬────┬────┬────┬────╮
-     │Lock│    │    │    │caps│     │ p↑ │ ⇤  │ ▲  │ ⇥  │    │
+     │Lock│ M  │ R  │ L  │caps│     │ p↑ │ ⇤  │ ▲  │ ⇥  │    │
      ├────┼────┼────┼────┼────┤     ├────┼────┼────┼────┼────┤
-     │GAME│ M  │ R  │ L  │    │     │ p↓ │ ◀  │ ▼  │ ▶  │ctl │
+     │GAME│    │ w↓ │ w↑ │    │     │ p↓ │ ◀  │ ▼  │ ▶  │ctl │
      ├────┼────┼────┼────┼────┤     ├────┼────┼────┼────┼────┤
-     │QWE │    │    │    │RGB │     │    │    │    │    │rset│
+     │QWE │    │ p↓ │ p↑ │RGB │     │    │    │    │    │rset│
      ╰────┴────┴────┴────┴────┴─╮ ╭─┴────┴────┴────┴────┴────╯
                │    │ 1H │   ▓▓ │ │ 1H   │    │    │
                ╰────┴────┴──────╯ ╰──────┴────┴────╯ */
 
   [_ADJ] = LAYOUT_36(
-    DF(_LOC), ___,    ___,    ___,    KC_CAPS, /**/ KC_PGUP, KC_HOME, KC_UP,   KC_END,  ___,
-    GAM_ON,   x__MMB, x__RMB, x__LMB, ___,     /**/ KC_PGDN, KC_LEFT, KC_DOWN, KC_RGHT, KC_LCTL,
-    TG(_QWE), ___,    ___,    ___,    RGB_TOG, /**/ ___,     ___,     ___,     ___,     RESET,
-    /**/      /**/    _v_,    FV_ON,  _v_,     /**/ FV_ON,   _v_,     _v_      /**/     /**/
+    DF(_LOC), x__MMB, x__RMB,  x__LMB,  KC_CAPS, /**/ KC_PGUP, KC_HOME, KC_UP,   KC_END,  ___,
+    GAM_ON,   ___,    KC_WH_D, KC_WH_U, ___,     /**/ KC_PGDN, KC_LEFT, KC_DOWN, KC_RGHT, KC_LCTL,
+    TG(_QWE), ___,    KC_PGDN, KC_PGUP, RGB_TOG, /**/ ___,     ___,     ___,     ___,     RESET,
+    /**/      /**/    _v_,     FV_ON,   _v_,     /**/ FV_ON,   _v_,     _v_      /**/     /**/
   ),
 
   /* }}}
@@ -292,8 +292,8 @@ combo_t key_combos[COMBO_COUNT] = {
   COMBO(combo_comm_dot, A(KC_TAB)),
   COMBO(combo_h_dot, G(KC_TAB)),
   COMBO(combo_k_h, KC_ESC),
-  COMBO(combo_w_f, KC_MS_BTN1),
-  COMBO(combo_f_p, KC_MS_BTN2)
+  COMBO(combo_w_f, KC_MS_BTN2),
+  COMBO(combo_f_p, KC_MS_BTN1)
 };
 #endif
 
