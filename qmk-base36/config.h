@@ -51,6 +51,18 @@
     c1,  c2,  c3, c4, c5,  ___, ___, c6,  c7, c8, c9,  c10, \
     ___, ___, d1, d2, /**/ d3,  d4,  /**/ d5, d6, ___, ___  \
   )
+#define LAYOUT_46( \
+  a1, a2, a3, a4, a5, aA,  aB,  a6, a7, a8, a9, a10, \
+  b1, b2, b3, b4, b5, bA,  bB,  b6, b7, b8, b9, b10, \
+  c1, c2, c3, c4, c5, cA,  cB,  c6, c7, c8, c9, c10, \
+  dA, dB, d1, d2, d3, /**/ /**/ d4, d5, d6, dC, dD \
+) \
+  LAYOUT_planck_2x2u( \
+    a1, a2, a3, a4, a5, aA,  aA,  a6, a7, a8, a9, a10, \
+    b1, b2, b3, b4, b5, bA,  bA,  b6, b7, b8, b9, b10, \
+    c1, c2, c3, c4, c5, cA,  cB,  c6, c7, c8, c9, c10, \
+    dA, dB, d1, d2, d3, /**/ /**/ d4, d5, d6, dC, dD \
+  )
 #endif
 
 #ifdef KEYBOARD_crkbd
@@ -60,6 +72,18 @@
   b1, b2, b3, b4, b5, b6, b7, b8, b9, b10, \
   c1, c2, c3, c4, c5, c6, c7, c8, c9, c10, \
   d1, d2, d3, d4, d5, d6 \
+) \
+  LAYOUT_split_3x6_3( \
+    ___, a1,  a2,  a3, a4, a5, a6, a7, a8, a9,  a10, ___, \
+    ___, b1,  b2,  b3, b4, b5, b6, b7, b8, b9,  b10, ___, \
+    ___, c1,  c2,  c3, c4, c5, c6, c7, c8, c9,  c10, ___, \
+    d1, d2, d3, d4, d5, d6 \
+  )
+#define LAYOUT_46( \
+  a1, a2, a3, a4, a5, aA,  aB,  a6, a7, a8, a9, a10, \
+  b1, b2, b3, b4, b5, bA,  bB,  b6, b7, b8, b9, b10, \
+  c1, c2, c3, c4, c5, cA,  cB,  c6, c7, c8, c9, c10, \
+  dA, dB, d1, d2, d3, /**/ /**/ d4, d5, d6, dC, dD \
 ) \
   LAYOUT_split_3x6_3( \
     ___, a1,  a2,  a3, a4, a5, a6, a7, a8, a9,  a10, ___, \
