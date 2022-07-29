@@ -83,7 +83,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      ├────┼────┼────┼────┼────┤     ├────┼────┼────┼────┼────┤
      │ !  │ @  │ #  │ $  │ %  │     │ {  │ (  │ :  │ )  │ }  │
      ├────┼────┼────┼────┼────┤     ├────┼────┼────┼────┼────┤
-     │ \  │ ~  │ |  │ ;  │ &  │     │ /  │ *  │ -  │ +  │ _  │RSTARST
+     │ \  │ ~  │ |  │ ;  │ &  │     │ /  │ *  │ -  │ +  │ _  │
      ╰────┴────┴────┴────┴────┴─╮ ╭─┴────┴────┴────┴────┴────╯
                │    │ ▓▓ │ ADJ  │ │      │FUN │    │
                ╰────┴────┴──────╯ ╰──────┴────┴────╯ */
@@ -144,14 +144,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      ├────┼────┼────┼────┼────┤     ├───┄└────┴────┴────┘┄───┤
      │ f6 │ f7 │ f8 │ f9 │f10 │     │    │ v- │ v+ │    │    │
      ╰────┴────┴────┴────┴────┴─╮ ╭─┴────┴────┴────┴────┴────╯
-               │    │ L  │      │ │      │ ▓▓ │ L  │
+               │    │ L  │      │ │      │ ▓▓ │    │
                ╰────┴────┴──────╯ ╰──────┴────┴────╯ */
 
   [_FUN] = LAYOUT_36(
     KC_F11, KC_F12, KC_PSCR, KC_MPLY, KC_MNXT, /**/ KC_WH_U, x__LMB,  KC_MS_U, x__RMB,  KC_BRIU,
     KC_F1,  KC_F2,  KC_F3,   KC_F4,   KC_F5,   /**/ KC_WH_D, KC_MS_L, KC_MS_D, KC_MS_R, KC_BRID,
-    KC_F6,  KC_F7,  KC_F8,   KC_F9,   KC_F10,  /**/ ___,     KC_VOLU, KC_VOLD, ___,     _v_,
-    /**/    /**/    _v_,     x__LMB,  _v_,     /**/ _v_,     _v_,     x__LMB   /**/     /**/
+    KC_F6,  KC_F7,  KC_F8,   KC_F9,   KC_F10,  /**/ ___,     KC_VOLD, KC_VOLU, ___,     _v_,
+    /**/    /**/    _v_,     x__LMB,  _v_,     /**/ _v_,     _v_,     ___      /**/     /**/
   ),
 
   /* }}}
@@ -281,28 +281,24 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 #ifdef COMBO_ENABLE
 const uint16_t PROGMEM combo_h_comm[] = {KC_H, KC_COMM, COMBO_END}; //             [ .XX.. ] => '
 const uint16_t PROGMEM combo_comm_dot[] = {KC_COMM, KC_DOT, COMBO_END}; //         [ ..XX. ] => alt-tab
-const uint16_t PROGMEM combo_h_dot[] = {KC_H, KC_DOT, COMBO_END}; //               [ .X.X. ] => ?
-const uint16_t PROGMEM combo_h_comm_dot[] = {KC_H, KC_COMM, KC_DOT, COMBO_END}; // [ .XXX. ] => c-bksp
+const uint16_t PROGMEM combo_h_dot[] = {KC_H, KC_DOT, COMBO_END}; //               [ .X.X. ] => c-bksp
+const uint16_t PROGMEM combo_h_comm_dot[] = {KC_H, KC_COMM, KC_DOT, COMBO_END}; // [ .XXX. ] => ?
 const uint16_t PROGMEM combo_k_h[] = {KC_K, KC_H, COMBO_END}; //                   [ XX... ] => esc
-const uint16_t PROGMEM combo_w_f[] = {KC_W, KC_F, COMBO_END}; //         [ .XX.. ] => R click
+const uint16_t PROGMEM combo_w_f[] = {KC_W, KC_F, COMBO_END}; //         [ .XX.. ] => M click
 const uint16_t PROGMEM combo_f_p[] = {KC_F, KC_P, COMBO_END}; //         [ ..XX. ] => L click
-const uint16_t PROGMEM combo_p_b[] = {KC_P, KC_B, COMBO_END}; //         [ ...XX ] => M click
-const uint16_t PROGMEM combo_w_p[] = {KC_W, KC_P, COMBO_END}; //         [ .X.X. ] => ? down
-const uint16_t PROGMEM combo_w_f_p[] = {KC_W, KC_F, KC_P, COMBO_END}; // [ .XXX. ] => ? down
-const uint16_t PROGMEM combo_f_b[] = {KC_F, KC_B, COMBO_END}; //         [ ..X.X ] => up
+const uint16_t PROGMEM combo_p_b[] = {KC_P, KC_B, COMBO_END}; //         [ ...XX ] => R click
+const uint16_t PROGMEM combo_w_p[] = {KC_W, KC_P, COMBO_END}; //         [ .X.X. ] => (unused)
+const uint16_t PROGMEM combo_w_f_p[] = {KC_W, KC_F, KC_P, COMBO_END}; // [ .XXX. ] => (unused)
 
 combo_t key_combos[COMBO_COUNT] = {
   COMBO(combo_h_comm, KC_QUOT),
   COMBO(combo_comm_dot, A(KC_TAB)),
-  COMBO(combo_h_dot, KC_QUES),
-  COMBO(combo_h_comm_dot, C(KC_BSPC)),
+  COMBO(combo_h_dot, C(KC_BSPC)),
+  COMBO(combo_h_comm_dot, KC_QUES),
   COMBO(combo_k_h, KC_ESC),
-  COMBO(combo_w_f, KC_MS_BTN2),
+  COMBO(combo_w_f, KC_MS_BTN3),
   COMBO(combo_f_p, KC_MS_BTN1),
-  COMBO(combo_p_b, KC_MS_BTN3),
-  COMBO(combo_w_p, KC_WH_D),
-  COMBO(combo_w_f_p, KC_WH_D),
-  COMBO(combo_f_b, KC_WH_U)
+  COMBO(combo_p_b, KC_MS_BTN2)
 };
 #endif
 

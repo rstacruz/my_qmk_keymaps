@@ -96,4 +96,4 @@
 
 /* Combo settings */
 #define COMBO_TERM 25
-#define COMBO_COUNT 11
+#define COMBO_COUNT 8
