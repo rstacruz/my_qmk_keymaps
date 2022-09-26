@@ -57,11 +57,11 @@
   c1, c2, c3, c4, c5, cA,  cB,  c6, c7, c8, c9, c10, \
   dA, dB, d1, d2, d3, /**/ /**/ d4, d5, d6, dC, dD \
 ) \
-  LAYOUT_planck_2x2u( \
+  LAYOUT_planck_grid( \
     a1, a2, a3, a4, a5, aA,  aA,  a6, a7, a8, a9, a10, \
     b1, b2, b3, b4, b5, bA,  bA,  b6, b7, b8, b9, b10, \
     c1, c2, c3, c4, c5, cA,  cB,  c6, c7, c8, c9, c10, \
-    dA, dB, d1, d2, d3, /**/ /**/ d4, d5, d6, dC, dD \
+    dA, dB, d1, d2, d3, d3,  d4,  d4, d5, d6, dC, dD \
   )
 #endif
 
