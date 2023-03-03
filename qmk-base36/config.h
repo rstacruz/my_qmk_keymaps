@@ -11,7 +11,7 @@
 #define ONESHOT_TIMEOUT 500
 
 // For hold-tap mods
-#define IGNORE_MOD_TAP_INTERRUPT_PER_KEY
+#define HOLD_ON_OTHER_KEY_PRESS_PER_KEY
 #define TAPPING_TERM 125
 
 /* Mouse keys */
@@ -97,3 +97,5 @@
 /* Combo settings */
 #define COMBO_TERM 25
 #define COMBO_COUNT 8
+
+#define HOLD_ON_OTHER_KEY_PRESS_PER_KEY

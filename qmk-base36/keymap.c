@@ -27,8 +27,8 @@ enum custom_keycodes {
 // Layers {{{
 
 enum layers {
-  _BASE = 0, _QWE, _SYM, _NAV, _HEX, _FUN, _ADJ, _GAM, _GMX, _GMY, _LOC, _ULO,
-  FV_BASE, FV_FLIP, FV_NAV, FV_NUM, FV_SYM, FV_MOU
+  _BASE = 0, _QWE, _SYM, _NAV, _HEX, _FUN, _ADJ, _GAM, _GMX, _GMY,
+  FV_BASE, FV_FLIP, FV_NAV, FV_NUM, FV_SYM
 };
 
 #include "frogv.c"
@@ -158,7 +158,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      ────────────────────────────────────────────────────────┄
      _ADJ / Adjust ── {{{
      ╭────┬────┬────┬────┬────╮     ╭────┬────┬────┬────┬────╮
-     │Lock│ M  │ R  │ L  │caps│     │ p↑ │ ⇤  │ ▲  │ ⇥  │    │
+     │    │ M  │ R  │ L  │caps│     │ p↑ │ ⇤  │ ▲  │ ⇥  │    │
      ├────┼────┼────┼────┼────┤     ├────┼────┼────┼────┼────┤
      │GAME│    │ w↓ │ w↑ │    │     │ p↓ │ ◀  │ ▼  │ ▶  │ctl │
      ├────┼────┼────┼────┼────┤     ├────┼────┼────┼────┼────┤
@@ -168,9 +168,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                ╰────┴────┴──────╯ ╰──────┴────┴────╯ */
 
   [_ADJ] = LAYOUT_36(
-    DF(_LOC), x__MMB, x__RMB,  x__LMB,  KC_CAPS, /**/ KC_PGUP, KC_HOME, KC_UP,   KC_END,  ___,
+    ___,      x__MMB, x__RMB,  x__LMB,  KC_CAPS, /**/ KC_PGUP, KC_HOME, KC_UP,   KC_END,  ___,
     GAM_ON,   ___,    KC_WH_D, KC_WH_U, ___,     /**/ KC_PGDN, KC_LEFT, KC_DOWN, KC_RGHT, KC_LCTL,
-    TG(_QWE), ___,    KC_PGDN, KC_PGUP, RGB_TOG, /**/ ___,     ___,     ___,     ___,     RESET,
+    TG(_QWE), ___,    KC_PGDN, KC_PGUP, RGB_TOG, /**/ ___,     ___,     ___,     ___,     QK_BOOTLOADER,
     /**/      /**/    _v_,     FV_ON,   _v_,     /**/ FV_ON,   _v_,     _v_      /**/     /**/
   ),
 
@@ -203,33 +203,19 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      ╰────┴────┴────┴────┴────┴─╮ ╭─┴────┴────┴────┴────┴────╯
                │    │    │      │ │      │    │    │
                ╰────┴────┴──────╯ ╰──────┴────┴────╯ */
-
-  [_LOC] = LAYOUT_36(
-    ___, ___, ___, ___, ___,      ___, ___, ___, ___, ___,
-    ___, ___, ___, ___, ___,      ___, ___, ___, ___, ___,
-    ___, ___, ___, ___, ___,      ___, ___, ___, ___, ___,
-    /**/ /**/ ___, ___, MO(_ULO), ___, ___, ___  /**/ /**/
-  ),
-  [_ULO] = LAYOUT_36(
-    DF(0), ___, ___, ___, ___, ___, ___, ___, ___, ___,
-    ___,   ___, ___, ___, ___, ___, ___, ___, ___, ___,
-    ___,   ___, ___, ___, ___, ___, ___, ___, ___, ___,
-    /**/   /**/ ___, ___, ___, ___, ___, ___  /**/ /**/
-  )
 };
-/* ┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄ */
 
 // }}}
 /* ┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄ */
 // Support stuff {{{
 
 // https://beta.docs.qmk.fm/using-qmk/software-features/tap_hold#ignore-mod-tap-interrupt
-bool get_ignore_mod_tap_interrupt(uint16_t keycode, keyrecord_t *record) {
+bool get_hold_on_other_key_press(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
     case x__Q:
-      return true;
-    default:
       return false;
+    default:
+      return true;
   }
 }
 
