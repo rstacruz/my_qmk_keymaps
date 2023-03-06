@@ -74,22 +74,16 @@ LAYOUT_36( \
   /**/ /**/     _v_,     KC_LGUI,    KC_LSFT  )
 
 #define FV_NUM_LAYOUT LAYOUT_FROGV_18( \
-  MO(FV_MOU), ___,  KC_LGUI, KC_LSFT, FV_OFF, \
-  KC_1,       KC_2, KC_3,    KC_4,    KC_5,   \
-  KC_6,       KC_7, KC_8,    KC_9,    KC_0,   \
-  /**/        /**/  KC_LALT, _v_,     FV_CTRL )
+  ___,  ___,  KC_LGUI, KC_LSFT, FV_OFF, \
+  KC_1, KC_2, KC_3,    KC_4,    KC_5,   \
+  KC_6, KC_7, KC_8,    KC_9,    KC_0,   \
+  /**/  /**/  KC_LALT, _v_,     FV_CTRL )
 
 #define FV_SYM_LAYOUT LAYOUT_FROGV_18( \
   ___, KC_EXLM, KC_LBRC, KC_RBRC, KC_BSLS, \
   ___, KC_GRV,  KC_EQL,  KC_MINS, KC_SLSH, \
   ___, KC_SCLN, KC_COMM, KC_DOT,  KC_QUOT, \
   /**/ /**/     _v_,     _v_,     KC_LSFT  )
-
-#define FV_MOU_LAYOUT LAYOUT_FROGV_18( \
-  ___, KC_WH_U, KC_MS_U,    KC_WH_D,    ___,        \
-  ___, KC_MS_L, KC_MS_D,    KC_MS_R,    ___,        \
-  ___, ___,     KC_MS_BTN2, KC_MS_BTN1, KC_MS_BTN3, \
-  /**/ /**/     _v_,        _v_,        _v_         )
 
 bool fm_process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
