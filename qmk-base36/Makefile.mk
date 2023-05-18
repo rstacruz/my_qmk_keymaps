@@ -31,7 +31,10 @@ docker: ${qmk_home} push ## Compile using Docker [alias: d]
 	@ls -la ${firmware_file}
 
 docker-flash: ${qmk_home} push ## Flash using Docker [alias: df]
+	@# Since nerdctl+containerd is often rootless, this will temporarily grant permissions
+	@if [[ "${RUNTIME}" == "nerdctl" ]]; then sudo setfacl -m u:$(shell whoami):rw /dev/console; fi
 	cd ${qmk_home} && ./util/docker_build.sh ${keyboard_id}:${keymap_name}:flash
+	@if [[ "${RUNTIME}" == "nerdctl" ]]; then sudo setfacl -b /dev/console; fi
 
 ref:
 	@grep -E '[│─]' ${base_path}/keymap.c | less
