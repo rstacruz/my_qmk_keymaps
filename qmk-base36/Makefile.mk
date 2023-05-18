@@ -30,6 +30,9 @@ docker: ${qmk_home} push ## Compile using Docker [alias: d]
 	cp ${qmk_home}/.build/${firmware_file} .
 	@ls -la ${firmware_file}
 
+docker-flash: ${qmk_home} push ## Flash using Docker [alias: df]
+	cd ${qmk_home} && ./util/docker_build.sh ${keyboard_id}:${keymap_name}:flash
+
 ref:
 	@grep -E '[│─]' ${base_path}/keymap.c | less
 
@@ -68,3 +71,4 @@ b: build
 d: docker
 f: flash
 r: ref
+df: docker-flash
