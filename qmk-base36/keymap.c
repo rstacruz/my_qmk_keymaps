@@ -12,6 +12,8 @@
 #define x__LMB  KC_MS_BTN1         /* Left mouse button */
 #define x__RMB  KC_MS_BTN2         /* Right mouse button */
 #define x__MMB  KC_MS_BTN3         /* Mid mouse button */
+#define x__DLR  LT(_NAV, KC_DLR)   /* nav(hold) or $(tap) */
+#define x__BSLS LT(_ADJ, KC_BSLS)  /* adj(hold) or \(tap) */
 
 /* Macros and stuff */
 enum custom_keycodes {
@@ -30,7 +32,7 @@ enum custom_keycodes {
  */
 
 enum layers {
-  _BASE = 0, _QWE, _SYM, _NAV, _HEX, _FUN, _ADJ, _GAM, _GMX, _GMY,
+  _BASE = 0, _QWE, _SYM, _NAV, _FUN, _ADJ, _GAM, _GMX, _GMY,
   FV_BASE, FV_FLIP, FV_NAV, FV_NUM, FV_SYM
 };
 
@@ -93,8 +95,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [_SYM] = LAYOUT_36(
     KC_QUOT, KC_DQUO, KC_CIRC, KC_QUES, KC_GRV,   /**/ KC_LBRC, KC_LT,    KC_EQL,  KC_GT,   KC_RBRC,
-    KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC,  /**/ KC_LCBR, KC_LPRN,  KC_COLN, KC_RPRN, KC_RCBR,
-    KC_BSLS, KC_TILD, KC_PIPE, KC_SCLN, KC_AMPR,  /**/ KC_SLSH, KC_ASTR,  KC_MINS, KC_PLUS, KC_UNDS,
+    KC_EXLM, KC_AT,   KC_HASH, x__DLR,  KC_PERC,  /**/ KC_LCBR, KC_LPRN,  KC_COLN, KC_RPRN, KC_RCBR,
+    x__BSLS, KC_TILD, KC_PIPE, KC_SCLN, KC_AMPR,  /**/ KC_SLSH, KC_ASTR,  KC_MINS, KC_PLUS, KC_UNDS,
     /**/     /**/     _v_,     _v_,     MO(_ADJ), /**/ _v_,     MO(_FUN), _v_      /**/     /**/
   ),
   // }}}
@@ -115,27 +117,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_LCTL, KC_RGUI, S(KC_TAB), KC_TAB,   KC_RALT, /**/ KC_COMM, KC_HOME, KC_UP,   KC_END,  KC_DEL,
     KC_1,    KC_2,    KC_3,      KC_4,     KC_5,    /**/ KC_DOT,  KC_LEFT, KC_DOWN, KC_RGHT, KC_ENT,
     KC_6,    KC_7,    KC_8,      KC_9,     KC_0,    /**/ KC_ESC,  KC_PGUP, KC_PGDN, KC_ESC,  KC_LCTL,
-    /**/     /**/     _v_,       MO(_HEX), _v_,     /**/ _v_,     KC_ENT,  _v_      /**/     /**/
-  ),
-  // }}}
-
-  /*
-   * _HEX / Hex input ── {{{
-   * ╭────┬────┬────┬────┬────╮     ╭────┬────┬────┬────┬────╮
-   * │ #  │ ,  │ .  │ :  │bks │     │ ,  │ A  │ B  │ C  │bks │
-   * ├────┼────┼────┼────┼────┤     ├────┼────┼────┼────┼────┤
-   * │ 1  │ 2  │ 3  │ 4  │ 5  │     │ .  │ D  │ E  │ F  │ent │
-   * ├────┼────┼────┼────┼────┤     ├────┼────┼────┼────┼────┤
-   * │ 6  │ 7  │ 8  │ 9  │ 0  │     │ /  │ *  │ -  │ +  │ :  │
-   * ╰────┴────┴────┴────┴────┴─╮ ╭─┴────┴────┴────┴────┴────╯
-   *           │    │ ▓▓ │ spc  │ │ spc  │    │    │
-   *           ╰────┴────┴──────╯ ╰──────┴────┴────╯ */
-
-  [_HEX] = LAYOUT_36(
-  KC_HASH, KC_COMM, KC_DOT,  KC_COLN, KC_BSPC, /**/ KC_COMM, KC_A,    KC_B,    KC_C,    KC_BSPC,
-  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    /**/ KC_DOT,  KC_D,    KC_E,    KC_F,    KC_ENT,
-  KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    /**/ KC_SLSH, KC_ASTR, KC_MINS, KC_PLUS, KC_COLN,
-  /**/     /**/     KC_COMM, KC_DOT,  KC_SPC,  /**/ KC_SPC,  ___,     ___      /**/     /**/
+    /**/     /**/     _v_,       _v_,      _v_,     /**/ _v_,     KC_ENT,  _v_      /**/     /**/
   ),
   // }}}
 
